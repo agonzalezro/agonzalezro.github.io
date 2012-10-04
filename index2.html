@@ -50,47 +50,15 @@
             
 
         
-        
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="./this-is-for-oscar.html">This is for Oscar</a></h1> 
-                    <footer class="post-info">
-        <abbr class="published" title="2012-10-04T18:08:17.389129">
-                Thu 04 October 2012
-        </abbr>
-
-        
-        <address class="vcard author">
-                By <a class="url fn" href="./author/alex-gonzalez.html">Álex González</a>
-        </address>
-        
-<p>In <a href="./category/python.html">python</a>. </p>
-
-
-
-</footer><!-- /.post-info --><p>sdasdasdasd</p>
-
-                </article>
-                
-            </aside><!-- /#featured -->
+         
             
                 <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
-            
-        
-        
-        
-            
-
-        
-         
+                    <ol id="posts-list" class="hfeed" start="2">
             
             <li><article class="hentry">    
                 <header>
-                    <h1><a href="./ahora-se-pira.html" rel="bookmark"
-                           title="Permalink to ahora se pira">ahora se pira</a></h1>
+                    <h1><a href="./incredible-but-first.html" rel="bookmark"
+                           title="Permalink to Incredible but first!">Incredible but first!</a></h1>
                 </header>
                 
                 <div class="entry-content">
@@ -109,16 +77,25 @@
 
 
 </footer><!-- /.post-info -->
-                <p>Ehy, que pas si pones más cosas</p>
-<div class="section" id="quizas-se-vea">
-<h2>quizás se vea</h2>
-<p>asdjfnasjdkfnaksdbg akjsdb sg</p>
-</div>
-<div class="section" id="o-quiza-no">
-<h2>o quiza no</h2>
-<p>Esto es un <a class="reference external" href="http://example.com">http://example.com</a> link o quizás esto [es otro link](<a class="reference external" href="http://example.com">http://example.com</a>)</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse rutrum eros non sem accumsan ac blandit urna hendrerit ...</p></div>
-                <a class="readmore" href="./ahora-se-pira.html">read more</a>
+                <p>This is some code:</p>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">user</span><span class="p">,</span> <span class="n">token</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">login</span><span class="p">(</span>
+            <span class="n">email</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span>
+            <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s">&#39;SESSION_EXPIRATION_TIME&#39;</span><span class="p">])</span>
+    <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+        <span class="n">token</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="k">if</span> <span class="n">token</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">user</span><span class="o">.</span><span class="n">profile</span><span class="p">:</span>
+            <span class="n">profile_data</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">profile_data</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s">&#39;firstname&#39;</span><span class="p">:</span> <span class="n">user</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">firstname</span><span class="p">,</span>
+                <span class="s">&#39;lastname&#39;</span><span class="p">:</span> <span class="n">user</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">lastname</span><span class="p">,</span>
+                <span class="s">&#39;gender&#39;</span><span class="p">:</span> <span class="n">user</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">gender</span><span class="p">,</span>
+                <span class="s">&#39;birthday&#39;</span><span class="p">:</span> <span class="n">user</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">birthday</span><span class="p">,</span>
+                <span class="s">&#39;country&#39;</span><span class="p">:</span> <span class="n">user</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">country ...</span></pre></div>
+                <a class="readmore" href="./incredible-but-first.html">read more</a>
                 
                 </div><!-- /.entry-content -->
             </article></li>
@@ -131,8 +108,8 @@
             
             <li><article class="hentry">    
                 <header>
-                    <h1><a href="./amazing.html" rel="bookmark"
-                           title="Permalink to Amazing!">Amazing!</a></h1>
+                    <h1><a href="./my-super-title.html" rel="bookmark"
+                           title="Permalink to My super title">My super title</a></h1>
                 </header>
                 
                 <div class="entry-content">
@@ -146,13 +123,13 @@
                 By <a class="url fn" href="./author/alex-gonzalez.html">Álex González</a>
         </address>
         
-<p>In <a href="./category/dev.html">dev</a>. </p>
+<p>In <a href="./category/bar.html">bar</a>. </p>
 
 
 
 </footer><!-- /.post-info -->
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse rutrum eros non sem accumsan ac blandit urna hendrerit. Praesent egestas facilisis nisi. Nulla suscipit, sem a eleifend tempus, orci massa commodo purus, sit amet iaculis ligula mi ut magna. Praesent luctus tempor sollicitudin. Proin ultricies fermentum nisi ut volutpat. Sed ...</p>
-                <a class="readmore" href="./amazing.html">read more</a>
+                <a class="readmore" href="./my-super-title.html">read more</a>
                 
                 </div><!-- /.entry-content -->
             </article></li>
@@ -163,9 +140,11 @@
                 
 <p class="paginator">
     
-    Page 1 / 2
+        
+            <a href="./index.html">&laquo;</a>
+        
     
-        <a href="./index2.html">&raquo;</a>
+    Page 2 / 2
     
 </p>
 
