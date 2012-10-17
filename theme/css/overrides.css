@@ -1,0 +1,13 @@
+body {
+    padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+}
+
+section {
+    padding-bottom: 30px;
+}
+
+p {
+    line-height: 1.2em;
+    font-size: 1.2em;
+    text-align: justify;
+}
