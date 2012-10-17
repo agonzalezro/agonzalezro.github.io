@@ -3,6 +3,57 @@ This is the article 5
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce aliquam, lectus at auctor porta, diam velit eleifend eros, non adipiscing metus risus vitae nibh. Fusce nec nisi ac ante facilisis consectetur mollis a sem. Aenean non risus eget velit tempor adipiscing. Praesent vitae est libero, porttitor tempus ligula. In adipiscing nunc vitae turpis elementum mattis. Nullam ac tellus nisi, vitae pulvinar nisl. Sed pellentesque ornare ligula, nec condimentum quam egestas vel. Phasellus vitae mauris enim, nec venenatis augue. Nam quis mauris ligula.
 
+Some generic code here::
+
+    def f(x):
+        return 123
+
+Some python code here:
+
+.. code-block:: python
+
+    class Pelican(object):
+        def __init__(self, settings=None, path=None, theme=None, output_path=None,
+                markup=None, delete_outputdir=False, plugin_path=None):
+            """Read the settings, and performs some checks on the environment
+            before doing anything else.
+            """
+            if settings is None:
+                settings = copy.deepcopy(_DEFAULT_CONFIG)
+
+            self.path = path or settings['PATH']
+            if not self.path:
+                raise Exception('You need to specify a path containing the content'
+                        ' (see pelican --help for more information)')
+
+            if self.path.endswith('/'):
+                self.path = self.path[:-1]
+
+            # define the default settings
+            self.settings = settings
+
+            self._handle_deprecation()
+
+            self.theme = theme or settings['THEME']
+            output_path = output_path or settings['OUTPUT_PATH']
+            self.output_path = os.path.realpath(output_path)
+            self.markup = markup or settings['MARKUP']
+            self.delete_outputdir = delete_outputdir \
+                                        or settings['DELETE_OUTPUT_DIRECTORY']
+
+            # find the theme in pelican.theme if the given one does not exists
+            if not os.path.exists(self.theme):
+                theme_path = os.sep.join([os.path.dirname(
+                    os.path.abspath(__file__)), "themes/%s" % self.theme])
+                if os.path.exists(theme_path):
+                    self.theme = theme_path
+                else:
+                    raise Exception("Impossible to find the theme %s" % theme)
+
+            self.init_path()
+            self.init_plugins()
+            signals.initialized.send(self)
+
 Nulla sit amet nisl nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque ut tortor nec est dapibus dictum quis quis sem. Aliquam suscipit libero a lacus pretium ut auctor elit gravida. Praesent tempor, orci id dignissim molestie, metus risus sollicitudin orci, ut elementum elit sem sit amet lectus. Donec eu urna dui, id hendrerit mi. Quisque sed dolor quis augue accumsan pulvinar at eget neque.
 
 Fusce sed volutpat ipsum. Proin quis mauris et eros laoreet viverra. Proin vel sapien odio. Ut ac metus lectus, sit amet ultricies nisl. Aliquam purus mauris, adipiscing non dictum sed, tristique sagittis lacus. Proin scelerisque nunc et elit suscipit ut hendrerit lacus viverra. Nulla facilisi. Curabitur quis neque in felis facilisis auctor eu et dui. Curabitur sit amet nisi vitae est mollis rhoncus vitae vel leo. Proin ultricies mattis imperdiet. Proin quis urna dolor. Phasellus fringilla, ligula et feugiat aliquet, mi nisl viverra risus, et dapibus magna nibh et tellus. Vivamus lectus magna, vulputate sit amet vulputate quis, consequat in enim. Sed sollicitudin auctor magna, convallis sodales diam pellentesque ut.
