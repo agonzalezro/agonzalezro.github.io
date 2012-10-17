@@ -2,10 +2,10 @@ PELICAN=pelican
 PELICANOPTS=
 
 BASEDIR=$(CURDIR)
-INPUTDIR=$(BASEDIR)/../_content
-OUTPUTDIR=$(BASEDIR)/..
-CONFFILE=$(BASEDIR)/pelicanconf.py
-PUBLISHCONF=$(BASEDIR)/publishconf.py
+INPUTDIR=$(BASEDIR)/_content
+OUTPUTDIR=$(BASEDIR)/
+CONFFILE=$(BASEDIR)/_source/pelicanconf.py
+PUBLISHCONF=$(BASEDIR)/_source/publishconf.py
 
 FTP_HOST=localhost
 FTP_USER=anonymous
