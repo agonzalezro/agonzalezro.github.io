@@ -2,38 +2,26 @@
 {% block content_title %}{% endblock %}
 {% block content %}
 {% if articles %}
-    {% for article in articles_page.object_list %}
+  {% for article in articles_page.object_list %}
+    <section id="{{ article.id }}">
+    <div class="page-header">
+      <h1><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h1>
+      <a class="btn btn-mini btn-info" href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>
+    </div>
+    {{ article.content }}
+    <strong>
+      {% include 'comments.html' %}
+    </strong>
+    </section>
 
+    {% if loop.last %}
+      {% if loop.last and (articles_page.has_previous()
+      or not articles_page.has_previous() and loop.length > 1) %}
+      {% include 'pagination.html' %}
+    {% endif %}
+    {% endif %}
 
-        {# First item #}
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h1>
-                    {% include 'article_infos.html' %}{{ article.content }}{% include 'comments.html' %}
-                </article>
-                {% if loop.length == 1 %}
-                    {% include 'pagination.html' %}
-                {% endif %}
-            </aside><!-- /#featured -->
-            {% if loop.length > 1 %}
-                <section id="content" class="body">
-                    <hr />
-            {% endif %}
-        {# other items #}
-        {% if loop.last %}
-            {% if loop.last and (articles_page.has_previous()
-            or not articles_page.has_previous() and loop.length > 1) %}
-                {% include 'pagination.html' %}
-            {% endif %}
-            </section><!-- /#content -->
-        {% endif %}
-    {% endfor %}
+  {% endfor %}
 {% else %}
-<section id="content" class="body">
-<h2>Pages</h2>
-    {% for page in PAGES %}
-        <li><a href="{{ SITEURL }}/{{ page.url }}">{{ page.title }}</a></li>
-    {% endfor %}
-</section>
 {% endif %}
 {% endblock content %}
