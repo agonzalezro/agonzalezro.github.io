@@ -30,7 +30,7 @@ clean:
 regenerate: clean
 	$(PELICAN) -r $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS)
 
-github: publish
+github:
 	git add .
-	git commit
+	git commit -m 'Publishing'
 	git push
