@@ -44,7 +44,6 @@ $(OUTPUTDIR)/%.html:
 
 clean:
 	find . | egrep -v "/_|Makefile|.git|^.$$" | xargs rm -rf
-	#find $(OUTPUTDIR) -mindepth 1 ! -name "_source" -delete
 
 regenerate: clean
 	$(PELICAN) -r $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS)
