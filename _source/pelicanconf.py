@@ -54,8 +54,8 @@ DISQUS_SITENAME = 'agonzalezro'
 ##THEME = 'brownstone'
 ##THEME = 'mnmlist'
 
-THEME = 'notmyidea'
-#THEME = 'notmyidea-cms'
+#THEME = 'notmyidea'
+THEME = 'notmyidea-cms'
 #THEME = 'subtle'
 
 #interesante# THEME = 'tuxlite_tbs'  # parecido a bootstrap
