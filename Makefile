@@ -25,7 +25,8 @@ $(OUTPUTDIR)/%.html:
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS)
 
 clean:
-	find . | egrep -v "/_|Makefile|.git|^.$$" | xargs rm -rf
+	# Remove all except the files that start with _, the .git folder, and some other special files as Makefile or README
+	find . | egrep -v "/_|Makefile|README|.git|^.$$" | xargs rm -rf
 
 regenerate: clean
 	$(PELICAN) -r $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS)
