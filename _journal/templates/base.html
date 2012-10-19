@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <link href="{{ SITEURL }}/theme/css/pygment.css" rel="stylesheet" type="text/css" />
     <link href="{{ SITEURL }}/theme/css/bootstrap.min.css" rel="stylesheet">
-    <!--<link href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">-->
+    <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
     <link href="{{ SITEURL }}/theme/css/overrides.css" rel="stylesheet" type="text/css" />
     {% if FEED_ATOM %}
     <link href="{{ FEED_DOMAIN }}/{{ FEED_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Atom Feed" />
@@ -30,46 +30,46 @@
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="{{ SITEURL }}">{{ SITENAME }}</a>
-          <div class="nav-collapse">
-            <p class="navbar-text pull-right">
-               {% if FEED_ATOM %}
-               <a href="{{ FEED_DOMAIN }}/{{ FEED_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }}"><abbr title="Atom Feed"><b class="icon-bullhorn"></b></abbr></a>
-              {% endif %}
-              {% if FEED_RSS %}
-                <a href="{{ FEED_DOMAIN }}/{{ FEED_RSS }}" type="application/rss+xml" rel="alternate">RSS</a>
-              {% endif %}
-            </p>
-            <ul class="nav">
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categories <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  {% for cat, null in categories %}
-                    <li {% if cat == category %}class="active"{% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
+          <div class="span8 offset2">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </a>
+            <a class="brand" href="{{ SITEURL }}">{{ SITENAME }}</a>
+            <div class="nav-collapse">
+              <p class="navbar-text pull-right">
+                 {% if FEED_ATOM %}
+                 <a href="{{ FEED_DOMAIN }}/{{ FEED_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }}"><abbr title="Atom Feed"><b class="icon-bullhorn"></b></abbr></a>
+                {% endif %}
+                {% if FEED_RSS %}
+                  <a href="{{ FEED_DOMAIN }}/{{ FEED_RSS }}" type="application/rss+xml" rel="alternate">RSS</a>
+                {% endif %}
+              </p>
+              <ul class="nav">
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categories <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    {% for cat, null in categories %}
+                      <li {% if cat == category %}class="active"{% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
+                    {% endfor %}
+                  </ul>
+                </li>
+                {% if DISPLAY_PAGES_ON_MENU %}
+                  {% for page in PAGES %}
+                      <li><a href="{{ SITEURL }}/{{ page.url }}">{{ page.title }}</a></li>
                   {% endfor %}
-                </ul>
-              </li>
-              {% if DISPLAY_PAGES_ON_MENU %}
-                {% for page in PAGES %}
-                    <li><a href="{{ SITEURL }}/{{ page.url }}">{{ page.title }}</a></li>
-                {% endfor %}
-              {% endif %}
-            </ul>
-          </div><!--/.nav-collapse -->
+                {% endif %}
+              </ul>
+            </div><!--/.nav-collapse -->
+          </div>
         </div>
       </div>
     </div>
 
     <div class="container">
-      <div class="row-fluid">
-        <div class="span12">
+      <div class="span8 offset2">
           {% block content %}{% endblock %}
-        </div>
       </div>
     </div>
 
