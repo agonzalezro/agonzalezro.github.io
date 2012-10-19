@@ -4,7 +4,8 @@
     <title>{% block title %}{{ SITENAME }}{% endblock %}</title>
     <meta charset="utf-8" />
     <link href="{{ SITEURL }}/theme/css/pygment.css" rel="stylesheet" type="text/css" />
-    <link href="{{ SITEURL }}/theme/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{ SITEURL }}/theme/css/bootstrap.min.css" rel="stylesheet">
+    <!--<link href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">-->
     <link href="{{ SITEURL }}/theme/css/overrides.css" rel="stylesheet" type="text/css" />
     {% if FEED_ATOM %}
     <link href="{{ FEED_DOMAIN }}/{{ FEED_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Atom Feed" />
@@ -25,6 +26,7 @@
   </head>
 
   <body id="index" class="home">
+    {% include 'github.html' %}
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
@@ -34,20 +36,38 @@
             <span class="icon-bar"></span>
           </a>
           <a class="brand" href="{{ SITEURL }}">{{ SITENAME }}</a>
-          <div class="nav-collapse collapse">
+          <div class="nav-collapse">
+            <p class="navbar-text pull-right">
+               {% if FEED_ATOM %}
+               <a href="{{ FEED_DOMAIN }}/{{ FEED_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }}"><abbr title="Atom Feed"><b class="icon-bullhorn"></b></abbr></a>
+              {% endif %}
+              {% if FEED_RSS %}
+                <a href="{{ FEED_DOMAIN }}/{{ FEED_RSS }}" type="application/rss+xml" rel="alternate">RSS</a>
+              {% endif %}
+            </p>
             <ul class="nav">
-            {% for cat, null in categories %}
-              <li {% if cat == category %}class="active"{% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
-            {% endfor %}
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categories <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  {% for cat, null in categories %}
+                    <li {% if cat == category %}class="active"{% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
+                  {% endfor %}
+                </ul>
+              </li>
+              {% if DISPLAY_PAGES_ON_MENU %}
+                {% for page in PAGES %}
+                    <li><a href="{{ SITEURL }}/{{ page.url }}">{{ page.title }}</a></li>
+                {% endfor %}
+              {% endif %}
+            </ul>
           </div><!--/.nav-collapse -->
         </div>
       </div>
     </div>
 
     <div class="container">
-      <div class="row">
-        <div class="span1"></div>
-        <div class="span10">
+      <div class="row-fluid">
+        <div class="span12">
           {% block content %}{% endblock %}
         </div>
       </div>
@@ -56,7 +76,11 @@
     {% include 'analytics.html' %}
     {% include 'piwik.html' %}
     {% include 'disqus_script.html' %}
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script src="{{ SITEURL }}/js/bootstrap.min.js"></script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap.min.js"></script>
+    <!-- WTF!? Load it two time if not doesn't work! lol -->
+    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-dropdown.js"></script>
+    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-dropdown.js"></script>
   </body>
 </html>

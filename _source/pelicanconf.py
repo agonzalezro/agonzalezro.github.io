@@ -22,3 +22,7 @@ THEME = '_journal'
 
 OUTPUT_PATH = '.'
 DELETE_OUTPUT_DIRECTORY = False
+
+GITHUB_URL = 'https://github.com/agonzalezro/agonzalezro.github.com'
+
+DISPLAY_PAGES_ON_MENU = True
