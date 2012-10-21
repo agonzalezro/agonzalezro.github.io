@@ -1,2 +1,3 @@
 <span class="label label-success">by {{ article.author }}</span>
+<span class="label label-success"><abbr class="published" title="{{ article.date.isoformat() }}">{{ article.locale_date }}</abbr></span>
 <a class="label label-info" href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>
