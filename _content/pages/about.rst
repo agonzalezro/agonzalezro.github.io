@@ -3,6 +3,10 @@ About
 
 .. include:: age.inc
 
+.. image:: me.jpg
+   :alt: Photo of Alexandre González
+   :align: left
+
 My name is Alexandre González, I am a |age| years old Spanish developer
 currently working in Holland, exactly in Groningen at Paylogic_.
 
@@ -15,7 +19,9 @@ could be useful. You should know too that I am really passionate about
 
 The main reason of writting this blog is to improve my poor English and talk
 about the things that I really love, that usually are related with technology
-and specially with Python.
+and specially with Python. You can see in the photo that I am not lying about
+my passion :D If you want to take a photo as mine, you can go to Efteling_, I
+really recommend it!
 
 If you are still curious after reading all the text above, please take a look
 at the resources below:
@@ -32,19 +38,20 @@ at the resources below:
 * Of course, all the stuff that I do with code can be found at my `GitHub
   account`_.
 
-* And if you are not bored after all this, please, take a look to my `CV`_.
+* And if you are not bored after all this, please, take a look to my CV_.
 
 BTW, you can find the source code of this blog (generated with Pelican_) at my
 `GitHub profile`_ or clicking on the upper right corner link.
 
 
 .. _paylogic: http://paylogic.nl
+.. _efteling: http://en.wikipedia.org/wiki/Efteling
 
 .. _`twitter profile`: http://twitter.com/agonzalezro
 .. _`facebook profile`: http://facebook.com/alexandre.gonzalez
 .. _`linkedin profile`: http://linkedin.com/in/alexandregonzalezrodriguez
 .. _`github account`: http://github.com/agonzalezro
-.. _`cv`: https://github.com/agonzalezro/Curriculum-Vitae/blob/master/pdfs/cv_alex_gonzalez_en.pdf?raw=true
+.. _cv: https://github.com/agonzalezro/Curriculum-Vitae/blob/master/pdfs/cv_alex_gonzalez_en.pdf?raw=true
 
 .. _pelican: https://github.com/getpelican/pelican
 .. _`github profile`: http://github.com/agonzalez/agonzalezro.github.com

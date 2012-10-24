@@ -27,7 +27,7 @@ $(OUTPUTDIR)/%.html:
 
 clean:
 	# Remove all except the files that start with _, the .git folder, and some other special files as Makefile or README
-	find . | egrep -v "/_|Makefile|README|.git|^.$$" | xargs rm -rf
+	find . | egrep -v "/_|static|Makefile|README|.git|^.$$" | xargs rm -rf
 
 includes:
 	python $(INCLUDES)/age.py > $(INPUTDIR)/pages/age.inc

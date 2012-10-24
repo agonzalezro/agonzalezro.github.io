@@ -23,3 +23,13 @@ p {
     text-decoration: none;
     border-bottom: 1px solid;
 }
+
+.align-right {
+    float: right;
+    margin-left: 15px;
+}
+
+.align-left {
+    float: left;
+    margin-right: 15px;
+}

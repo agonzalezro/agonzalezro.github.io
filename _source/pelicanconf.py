@@ -13,9 +13,6 @@ DEFAULT_PAGINATION = 2
 
 TWITTER_USERNAME = 'agonzalezro'
 
-# static paths will be copied under the same name
-STATIC_PATHS = ["pictures", ]
-
 DISQUS_SITENAME = 'agonzalezro'
 
 THEME = '_journal'
