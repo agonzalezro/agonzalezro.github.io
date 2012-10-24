@@ -6,23 +6,21 @@ About
 Hello!
 
 My name is Alexandre González, I am a |age| years old Spanish developer
-currently working at Holland, exactly at Groningen in Paylogic_.
+currently working in Holland, exactly in Groningen at Paylogic_.
 
-My background is mainly technical, I've studied Computer Science at Spain, but
-in some time of my life I was interested in business too, so I created my own
-company which was a complete economic disaster, but, I learn a lot! At that
+My background is mainly technical, I studied Computer Science in Spain, but
+at some point during my life I was interested in business too, so I created my
+own company which was a complete economic disaster, but, I learn a lot! At that
 time I studied a Master in Electronic Commerce too because I thought that it
 could be useful. You should know too that I am really passionate about
 :abbr:`FLOSS (Free as Libre Open Source Software)`.
 
-The main reason of write this blog is improve my poor English and talk about
-the things that I really love, that usually are related with the technology and
-specially with Python. BTW, you can find the source code of this blog
-(generated with Pelican_) at my `GitHub profile`_ or clicking on the right
-upper corner link.
+The main reason of writting this blog is to improve my poor English and talk
+about the things that I really love, that usually are related with technology
+and specially with Python.
 
-If after read all the text above you continue being curious, please take a look
-to the below resources:
+If you are still curious after reading all the text above, please take a look
+at the resources below:
 
 * All the things that I try to explain in 140 characters, AKA my `Twitter
   profile`_.
@@ -38,12 +36,17 @@ to the below resources:
 
 * And if you are not bored after all this, please, take a look to my `CV`_.
 
+ BTW, you can find the source code of this blog (generated with Pelican_) at my
+ `GitHub profile`_ or clicking on the upper right corner link.
+
+
 .. _paylogic: http://paylogic.nl
-.. _pelican: https://github.com/getpelican/pelican
-.. _`github profile`: http://github.com/agonzalez/agonzalezro.github.com
 
 .. _`twitter profile`: http://twitter.com/agonzalezro
 .. _`facebook profile`: http://facebook.com/alexandre.gonzalez
 .. _`linkedin profile`: http://linkedin.com/in/alexandregonzalezrodriguez
 .. _`github account`: http://github.com/agonzalezro
 .. _`cv`: https://github.com/agonzalezro/Curriculum-Vitae/blob/master/pdfs/cv_alex_gonzalez_en.pdf?raw=true
+
+.. _pelican: https://github.com/getpelican/pelican
+.. _`github profile`: http://github.com/agonzalez/agonzalezro.github.com
