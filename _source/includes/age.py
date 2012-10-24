@@ -5,7 +5,7 @@ from datetime import date
 
 def get_age():
     # Could be improved but... fuck it! :D
-    elapsed_days = date.today() - date(1984, 4, 4)
+    elapsed_days = (date.today() - date(1984, 4, 4)).days
     return int(elapsed_days / 365.25)
 
 
