@@ -37,5 +37,4 @@ regenerate: clean includes
 
 github: html
 	git add .
-	git commit -m 'Publishing'
-	git push
+	git commit -m 'Publishing';git push
