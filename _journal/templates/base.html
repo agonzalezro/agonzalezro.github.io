@@ -28,6 +28,12 @@
     {% if FEED_RSS %}
     <link href="{{ FEED_DOMAIN }}/{{ FEED_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} RSS Feed" />
     {% endif %}
+
+    {% if SHARETHIS_PUBLISHER %}
+      <script type="text/javascript">var switchTo5x=false;</script>
+      <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+      <script type="text/javascript">stLight.options({publisher: "db740e9c-f490-4a3f-813a-5d257e1ea7f8"});</script>
+    {% endif %}
   </head>
 
   <body id="index" class="home">

@@ -26,3 +26,5 @@ DELETE_OUTPUT_DIRECTORY = False
 GITHUB_URL = 'https://github.com/agonzalezro/agonzalezro.github.com'
 
 DISPLAY_PAGES_ON_MENU = True
+
+SHARETHIS_PUBLISHER = 'db740e9c-f490-4a3f-813a-5d257e1ea7f8'
