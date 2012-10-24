@@ -10,3 +10,16 @@ p {
     line-height: 1.5em;
     font-size: 1.2em;
 }
+
+#content p a, #content li a {
+    color: #2D6987;
+}
+
+#content li a {
+    border-bottom: 1px dotted;
+}
+
+#content li a:hover {
+    text-decoration: none;
+    border-bottom: 1px solid;
+}

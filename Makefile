@@ -35,7 +35,7 @@ includes:
 regenerate: clean includes
 	$(PELICAN) -r $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS)
 
-github: regenerate
+github: html
 	git add .
 	git commit -m 'Publishing'
 	git push

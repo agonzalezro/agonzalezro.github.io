@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*- #
 
 AUTHOR = u'Álex'
-SITENAME = AUTHOR
+SITENAME = 'agonzalezro'
 SITEURL = 'http://agonzalezro.github.com'
 
 TIMEZONE = 'Europe/Paris'
