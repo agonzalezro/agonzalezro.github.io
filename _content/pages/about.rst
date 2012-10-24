@@ -3,8 +3,6 @@ About
 
 .. include:: age.inc
 
-Hello!
-
 My name is Alexandre González, I am a |age| years old Spanish developer
 currently working in Holland, exactly in Groningen at Paylogic_.
 
@@ -36,8 +34,8 @@ at the resources below:
 
 * And if you are not bored after all this, please, take a look to my `CV`_.
 
- BTW, you can find the source code of this blog (generated with Pelican_) at my
- `GitHub profile`_ or clicking on the upper right corner link.
+BTW, you can find the source code of this blog (generated with Pelican_) at my
+`GitHub profile`_ or clicking on the upper right corner link.
 
 
 .. _paylogic: http://paylogic.nl
