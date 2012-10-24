@@ -5,7 +5,8 @@ BASEDIR=$(CURDIR)
 INPUTDIR=$(BASEDIR)/_content
 OUTPUTDIR=$(BASEDIR)/
 CONFFILE=$(BASEDIR)/_source/pelicanconf.py
-PUBLISHCONF=$(BASEDIR)/_source/publishconf.py
+PUBLISHCONF=$(BASEDIR)/_source/publishconf.p
+INCLUDES=$(BASEDIR)/_source/includes
 
 help:
 	@echo 'Makefile for a pelican Web site                                        '
@@ -18,7 +19,7 @@ help:
 	@echo '                                                                       '
 
 
-html: clean $(OUTPUTDIR)/index.html
+html: clean includes $(OUTPUTDIR)/index.html
 	@echo 'Done'
 
 $(OUTPUTDIR)/%.html:
@@ -28,7 +29,10 @@ clean:
 	# Remove all except the files that start with _, the .git folder, and some other special files as Makefile or README
 	find . | egrep -v "/_|Makefile|README|.git|^.$$" | xargs rm -rf
 
-regenerate: clean
+includes:
+	python $(INCLUDES)/age.py > $(INPUTDIR)/pages/age.inc
+
+regenerate: clean includes
 	$(PELICAN) -r $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS)
 
 github:
