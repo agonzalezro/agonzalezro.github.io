@@ -5,8 +5,8 @@ About
 
 Hello!
 
-My name is Alexandre González, I am |age| years old Spanish developer currently
-working at Holland, exactly at Groningen in Paylogic_.
+My name is Alexandre González, I am a |age| years old Spanish developer
+currently working at Holland, exactly at Groningen in Paylogic_.
 
 My background is mainly technical, I've studied Computer Science at Spain, but
 in some time of my life I was interested in business too, so I created my own
