@@ -39,3 +39,7 @@ img.align-center {
     display: block;
     margin-bottom: 10px;
 }
+
+a.brand {
+    text-transform: lowercase;
+}

@@ -24,12 +24,22 @@ p {
     border-bottom: 1px solid;
 }
 
-.align-right {
+img.align-right {
     float: right;
-    margin-left: 15px;
+    margin-left: 10px;
 }
 
-.align-left {
+img.align-left {
     float: left;
-    margin-right: 15px;
+    margin-right: 10px;
+}
+
+img.align-center {
+    margin: auto;
+    display: block;
+    margin-bottom: 10px;
+}
+
+a.brand {
+    text-transform: lowercase;
 }
