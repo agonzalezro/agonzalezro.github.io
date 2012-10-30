@@ -41,5 +41,5 @@ img.align-center {
 }
 
 a.brand {
-    text-transform: lowercase;
+    text-transform: lowercase !important;
 }
