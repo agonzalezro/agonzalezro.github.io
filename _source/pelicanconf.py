@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*- #
 
 AUTHOR = u'Álex'
-SITENAME = "{author}'s blog".format(author=AUTHOR)
+SITENAME = u"{author}'s blog".format(author=AUTHOR)
 SITEURL = 'http://agonzalezro.github.com'
 
 TIMEZONE = 'Europe/Paris'
