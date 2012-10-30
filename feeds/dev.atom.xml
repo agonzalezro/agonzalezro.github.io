@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Álex's blog</title><link href="http://agonzalezro.github.com/" rel="alternate"></link><link href="http://agonzalezro.github.com/feeds/dev.atom.xml" rel="self"></link><id>http://agonzalezro.github.com/</id><updated>2012-10-30T22:31:01+01:00</updated><entry><title>backbone.js + underscore: small intro</title><link href="http://agonzalezro.github.com/backbonejs-underscore-small-intro.html" rel="alternate"></link><updated>2012-10-30T22:31:01+01:00</updated><author><name>Álex</name></author><id>tag:agonzalezro.github.com,2012-10-30:backbonejs-underscore-small-intro.html</id><summary type="html">&lt;p&gt;Today, &lt;a class="reference external" href="http://twitter.com/olegpidsadnyi/"&gt;Oleg&lt;/a&gt; gave a talk about backbone at
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Álex's blog</title><link href="http://agonzalezro.github.com/" rel="alternate"></link><link href="http://agonzalezro.github.com/feeds/dev.atom.xml" rel="self"></link><id>http://agonzalezro.github.com/</id><updated>2012-10-30T23:09:48+01:00</updated><entry><title>backbone.js + underscore: small intro</title><link href="http://agonzalezro.github.com/backbonejs-underscore-small-intro.html" rel="alternate"></link><updated>2012-10-30T23:09:48+01:00</updated><author><name>Álex</name></author><id>tag:agonzalezro.github.com,2012-10-30:backbonejs-underscore-small-intro.html</id><summary type="html">&lt;p&gt;Today, &lt;a class="reference external" href="http://twitter.com/olegpidsadnyi/"&gt;Oleg&lt;/a&gt; gave a talk about backbone at
 &lt;a class="reference external" href="http://paylogic.nl/"&gt;Paylogic&lt;/a&gt;. We were using it for a really fancy
 application inside our backoffice, it was quite funny write it and Oleg
 decided to share the knowledge.&lt;/p&gt;
@@ -22,14 +22,14 @@ events for that purpose, and let the child decide.&lt;/p&gt;
 &lt;div class="section" id="models"&gt;
 &lt;h2&gt;Models&lt;/h2&gt;
 &lt;p&gt;In backbone you can have local model and sync them with the server or with
-local storage (not expain on this intro). In our example we will:&lt;/p&gt;
+local storage (not explained in this intro). In our example we will:&lt;/p&gt;
 &lt;ol class="arabic simple"&gt;
 &lt;li&gt;Create a collection to save our objects (type Item) in.&lt;/li&gt;
 &lt;li&gt;Create the model Item.&lt;/li&gt;
 &lt;li&gt;Create 2 object type Item inside this collection.&lt;/li&gt;
 &lt;li&gt;Render them.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;The 3 points can be made only with this lines of code. It's really simple!
+&lt;p&gt;The 3 points can be made only with these lines of code. It's really simple!
 (after know how to do it :p):&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;Item&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;Backbone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Model&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;extend&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
 
@@ -89,6 +89,10 @@ iterate over the items:&lt;/p&gt;
   &lt;span class="p"&gt;},&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;If you read carefully this piece of code you will realize that we are
+instantiating a new ItemView for each particular item, so it has its own
+container element created on the fly, re-renderable each time when data is
+updated and all events are delegated to this element.&lt;/p&gt;
 &lt;p&gt;The amazing thing that you can do with underscore is use templates (yes, like
 jinja or django-templates, but in JS)! And we are doing it o/:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;script&amp;gt;&lt;/span&gt;

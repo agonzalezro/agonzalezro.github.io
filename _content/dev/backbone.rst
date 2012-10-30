@@ -33,7 +33,7 @@ Models
 ------
 
 In backbone you can have local model and sync them with the server or with
-local storage (not expain on this intro). In our example we will:
+local storage (not explained in this intro). In our example we will:
 
 1. Create a collection to save our objects (type Item) in.
 
@@ -43,7 +43,7 @@ local storage (not expain on this intro). In our example we will:
 
 4. Render them.
 
-The 3 points can be made only with this lines of code. It's really simple!
+The 3 points can be made only with these lines of code. It's really simple!
 (after know how to do it :p):
 
 .. code-block:: javascript
@@ -116,6 +116,11 @@ iterate over the items:
         $(this.el).append(itemview.render().el);
       }, this);
     }
+
+If you read carefully this piece of code you will realize that we are
+instantiating a new ItemView for each particular item, so it has its own
+container element created on the fly, re-renderable each time when data is
+updated and all events are delegated to this element.
 
 The amazing thing that you can do with underscore is use templates (yes, like
 jinja or django-templates, but in JS)! And we are doing it \o/:

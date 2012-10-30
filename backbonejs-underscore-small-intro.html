@@ -95,7 +95,7 @@
       <h1><a href="backbonejs-underscore-small-intro.html" rel="bookmark"
           title="Permalink to backbone.js + underscore: small intro">backbone.js + underscore: small intro</a></h1>
       <span class="label label-success">by Álex</span>
-<span class="label label-success"><abbr class="published" title="2012-10-30T22:31:01.700221">Tue 30 October 2012</abbr></span>
+<span class="label label-success"><abbr class="published" title="2012-10-30T23:09:48.692153">Tue 30 October 2012</abbr></span>
 <a class="label label-info" href="./category/dev.html">dev</a>
 
   <a class="label" href="./tag/backbone.html">backbone</a>
@@ -132,14 +132,14 @@ events for that purpose, and let the child decide.</p>
 <div class="section" id="models">
 <h2>Models</h2>
 <p>In backbone you can have local model and sync them with the server or with
-local storage (not expain on this intro). In our example we will:</p>
+local storage (not explained in this intro). In our example we will:</p>
 <ol class="arabic simple">
 <li>Create a collection to save our objects (type Item) in.</li>
 <li>Create the model Item.</li>
 <li>Create 2 object type Item inside this collection.</li>
 <li>Render them.</li>
 </ol>
-<p>The 3 points can be made only with this lines of code. It's really simple!
+<p>The 3 points can be made only with these lines of code. It's really simple!
 (after know how to do it :p):</p>
 <div class="highlight"><pre><span class="kd">var</span> <span class="nx">Item</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Model</span><span class="p">.</span><span class="nx">extend</span><span class="p">();</span>
 
@@ -199,6 +199,10 @@ iterate over the items:</p>
   <span class="p">},</span> <span class="k">this</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
+<p>If you read carefully this piece of code you will realize that we are
+instantiating a new ItemView for each particular item, so it has its own
+container element created on the fly, re-renderable each time when data is
+updated and all events are delegated to this element.</p>
 <p>The amazing thing that you can do with underscore is use templates (yes, like
 jinja or django-templates, but in JS)! And we are doing it o/:</p>
 <div class="highlight"><pre><span class="nt">&lt;script&gt;</span>
