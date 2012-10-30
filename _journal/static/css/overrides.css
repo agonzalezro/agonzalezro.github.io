@@ -9,5 +9,33 @@ section {
 p {
     line-height: 1.5em;
     font-size: 1.2em;
-    text-align: justify;
+}
+
+#content p a, #content li a {
+    color: #2D6987;
+}
+
+#content li a {
+    border-bottom: 1px dotted;
+}
+
+#content li a:hover {
+    text-decoration: none;
+    border-bottom: 1px solid;
+}
+
+img.align-right {
+    float: right;
+    margin-left: 10px;
+}
+
+img.align-left {
+    float: left;
+    margin-right: 10px;
+}
+
+img.align-center {
+    margin: auto;
+    display: block;
+    margin-bottom: 10px;
 }

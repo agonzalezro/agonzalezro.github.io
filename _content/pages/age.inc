@@ -1,0 +1,1 @@
+.. |age| replace:: 28
