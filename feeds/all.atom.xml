@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Álex's blog</title><link href="http://agonzalezro.github.com/" rel="alternate"></link><link href="http://agonzalezro.github.com/feeds/all.atom.xml" rel="self"></link><id>http://agonzalezro.github.com/</id><updated>2012-10-30T23:09:48+01:00</updated><entry><title>backbone.js + underscore: small intro</title><link href="http://agonzalezro.github.com/backbonejs-underscore-small-intro.html" rel="alternate"></link><updated>2012-10-30T23:09:48+01:00</updated><author><name>Álex</name></author><id>tag:agonzalezro.github.com,2012-10-30:backbonejs-underscore-small-intro.html</id><summary type="html">&lt;p&gt;Today, &lt;a class="reference external" href="http://twitter.com/olegpidsadnyi/"&gt;Oleg&lt;/a&gt; gave a talk about backbone at
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Álex's blog</title><link href="http://agonzalezro.github.com/" rel="alternate"></link><link href="http://agonzalezro.github.com/feeds/all.atom.xml" rel="self"></link><id>http://agonzalezro.github.com/</id><updated>2012-10-30T23:33:10+01:00</updated><entry><title>backbone.js + underscore: small intro</title><link href="http://agonzalezro.github.com/backbonejs-underscore-small-intro.html" rel="alternate"></link><updated>2012-10-30T23:33:10+01:00</updated><author><name>Álex</name></author><id>tag:agonzalezro.github.com,2012-10-30:backbonejs-underscore-small-intro.html</id><summary type="html">&lt;p&gt;Today, &lt;a class="reference external" href="http://twitter.com/olegpidsadnyi/"&gt;Oleg&lt;/a&gt; gave a talk about backbone at
 &lt;a class="reference external" href="http://paylogic.nl/"&gt;Paylogic&lt;/a&gt;. We were using it for a really fancy
 application inside our backoffice, it was quite funny write it and Oleg
 decided to share the knowledge.&lt;/p&gt;
@@ -118,9 +118,9 @@ drag&amp;amp;dropping an element it will be useful.&lt;/p&gt;
 &lt;p&gt;For example in our project we had to sort with drag and drop some elements of a
 list, instead send this event in each drag movement, we made it after 200s
 being quiet with:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;onChange: _.debounce(function(ev) {
-    this.pools.save();
-}, 200),
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;onChange&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;_&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;debounce&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;ev&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;pools&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;save&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;span class="p"&gt;},&lt;/span&gt; &lt;span class="mi"&gt;200&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Please comment your thoughts about the post. We are all here to learn, and it's
 really easy that I made some mistake explaining this. Furhtermore, I know that

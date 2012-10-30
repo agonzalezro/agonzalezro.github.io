@@ -153,7 +153,7 @@ For example in our project we had to sort with drag and drop some elements of a
 list, instead send this event in each drag movement, we made it after 200s
 being quiet with:
 
-.. code-block:: html
+.. code-block:: javascript
 
     onChange: _.debounce(function(ev) {
         this.pools.save();

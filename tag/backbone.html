@@ -95,7 +95,7 @@
     <div class="page-header">
       <h1><a href=".././backbonejs-underscore-small-intro.html">backbone.js + underscore: small intro</a></h1>
       <span class="label label-success">by Álex</span>
-<span class="label label-success"><abbr class="published" title="2012-10-30T23:09:48.692153">Tue 30 October 2012</abbr></span>
+<span class="label label-success"><abbr class="published" title="2012-10-30T23:33:10.116113">Tue 30 October 2012</abbr></span>
 <a class="label label-info" href=".././category/dev.html">dev</a>
 
   <a class="label" href=".././tag/backbone.html">backbone</a>
@@ -226,9 +226,9 @@ drag&amp;dropping an element it will be useful.</p>
 <p>For example in our project we had to sort with drag and drop some elements of a
 list, instead send this event in each drag movement, we made it after 200s
 being quiet with:</p>
-<div class="highlight"><pre>onChange: _.debounce(function(ev) {
-    this.pools.save();
-}, 200),
+<div class="highlight"><pre><span class="nx">onChange</span><span class="o">:</span> <span class="nx">_</span><span class="p">.</span><span class="nx">debounce</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">pools</span><span class="p">.</span><span class="nx">save</span><span class="p">();</span>
+<span class="p">},</span> <span class="mi">200</span><span class="p">),</span>
 </pre></div>
 <p>Please comment your thoughts about the post. We are all here to learn, and it's
 really easy that I made some mistake explaining this. Furhtermore, I know that
