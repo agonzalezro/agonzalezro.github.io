@@ -123,7 +123,7 @@ container element created on the fly, re-renderable each time when data is
 updated and all events are delegated to this element.
 
 The amazing thing that you can do with underscore is use templates (yes, like
-jinja or django-templates, but in JS)! And we are doing it \o/:
+jinja or django-templates, but in JS)! And we are doing it:
 
 .. code-block:: html
 
