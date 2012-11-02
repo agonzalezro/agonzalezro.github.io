@@ -11,7 +11,7 @@ p {
     font-size: 1.2em;
 }
 
-#content p a, #content li a {
+.container p a, .container li a {
     color: #2D6987;
 }
 
