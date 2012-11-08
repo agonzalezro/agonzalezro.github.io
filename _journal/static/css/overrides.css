@@ -11,7 +11,7 @@ p {
     font-size: 1.2em;
 }
 
-.container p a, .container li a {
+section p a, section li a {
     color: #2D6987;
 }
 
