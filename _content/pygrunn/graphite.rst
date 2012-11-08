@@ -4,9 +4,8 @@ Graphite, Carbon and Diamond
 :date: 2012-11-6 19:30
 :tags: graphite, carbon, diamond, monitoring, python
 
-Two days ago we my, sadly, last PyGrunn monthly meeting. Thanks to `Bram`_ now
+Two days ago was my, sadly, last PyGrunn monthly meeting. Thanks to `Bram`_ now
 we know a little bit more about how to monitoring with Python applications.
-
 
 Below you will find the notes that I take to the people that couldn't assist to
 the talk. But they are only that, some notes, don't expect to find a really cool
