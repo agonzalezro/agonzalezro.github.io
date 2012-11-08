@@ -1,6 +1,7 @@
 backbone.js + underscore: small intro
 =====================================
 
+:date: 2012-11-1 00:30
 :tags: backbone, undercore, javascript, gui
 
 Today, `Oleg <http://twitter.com/olegpidsadnyi/>`_ gave a talk about backbone at
@@ -17,6 +18,7 @@ improve it.
 This is only a introductory post, if you want advance stuff you should go to
 the `backbone official documentation <http://backbonejs.org/>`_ & `underscore
 docs <http://underscorejs.org/>`_.
+
 
 Why?
 ----
