@@ -28,8 +28,7 @@ start a discussion on why we did/didn't make a good choice.&lt;/p&gt;
 &lt;h3&gt;Backend&lt;/h3&gt;
 &lt;p&gt;The backend of the application was almost inexistent, we only wanted to allow
 the users to login with a Google account to have access to edit their slides.
-Being a hackathon we didn't spend time adding &lt;cite&gt;CRUD
-(Create/Read/Update/Delete)&lt;/cite&gt; functionalities to manage the users.&lt;/p&gt;
+Being a hackathon we didn't spend time adding &lt;abbr title="Create/Read/Update/Delete"&gt;CRUD&lt;/abbr&gt; functionalities to manage the users.&lt;/p&gt;
 &lt;p&gt;If you want to delete your user, let me know, I will do it by hand :) It was
 made with &lt;a class="reference external" href="http://flask.pocoo.org/"&gt;Flask&lt;/a&gt;, Flask-OAuth for the authentication with Google and &lt;a class="reference external" href="http://redis.io/"&gt;redis&lt;/a&gt;
 to store the presentations.&lt;/p&gt;
@@ -51,7 +50,7 @@ results and will be applied to the current slide.&lt;/dd&gt;
 automagically but we couldn't finish it at time. The behaviour is the same,
 you choose a font and its applied to the current slide.&lt;/dd&gt;
 &lt;dt&gt;The slide content&lt;/dt&gt;
-&lt;dd&gt;that should be &lt;cite&gt;WYSIWYG (What You See Is What You Get)&lt;/cite&gt;
+&lt;dd&gt;that should be &lt;abbr title="What You See Is What You Get"&gt;WYSIWYG&lt;/abbr&gt;
 but for now is on the middle, because we couldn't make the text bigger while
 you are writing.&lt;/dd&gt;
 &lt;/dl&gt;
