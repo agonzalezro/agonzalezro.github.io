@@ -109,7 +109,7 @@ Resources
 Thanks!
 -------
 
-I really want to thank `Paylogic`_ for let us a place where to do the project
+I really want to thank `Paylogic`_ for letting us a place where to do the project
 and for provide us food & beers. What a developer will develop without food and
 beer?
 
@@ -123,7 +123,7 @@ backend guys is saved without any action needed. The idea of this full project
 was:
 
 1. **Have fun!**
-2. Make it really simply to create slides.
+2. Simplifying slide creation
 3. Make it really simply to share those slides.
 
 I didn't want to go really depth into the development of this project, **I only wanted to give a quick overview of what we made in two days.** But if you are really interested on something more explained, let me know on the comments and I will try to help you in all what I can.
