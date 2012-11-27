@@ -39,7 +39,7 @@ Backend
 
 The backend of the application was almost inexistent, we only wanted to allow
 the users to login with a Google account to have access to edit their slides.
-Being a hackathon we didn't spend time adding `CRUD
+Being a hackathon we didn't spend time adding :abbr:`CRUD
 (Create/Read/Update/Delete)` functionalities to manage the users.
 
 If you want to delete your user, let me know, I will do it by hand :) It was
@@ -67,7 +67,7 @@ The font chooser
   you choose a font and its applied to the current slide.
 
 The slide content
-  that should be `WYSIWYG (What You See Is What You Get)`
+  that should be :abbr:`WYSIWYG (What You See Is What You Get)`
   but for now is on the middle, because we couldn't make the text bigger while
   you are writing.
 
