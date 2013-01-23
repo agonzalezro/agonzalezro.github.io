@@ -78,6 +78,8 @@
                     
                       <li ><a href="./category/pygrunn.html">pygrunn</a></li>
                     
+                      <li ><a href="./category/vim.html">vim</a></li>
+                    
                   </ul>
                 </li>
                 
@@ -99,73 +101,152 @@
   
     <section id="">
     <div class="page-header">
-      <h1><a href="./im-starting-to-hate-gnome-3.html">I'm starting to hate GNOME 3</a></h1>
+      <h1><a href="./backbonejs-underscore-small-intro.html">backbone.js + underscore: small intro</a></h1>
       <span class="label label-success">by Álex</span>
-<span class="label label-success"><abbr class="published" title="2011-06-08T19:02:00">Wed 08 June 2011</abbr></span>
-<a class="label label-info" href="./category/gnome.html">gnome</a>
+<span class="label label-success"><abbr class="published" title="2012-11-01T00:30:00">Thu 01 November 2012</abbr></span>
+<a class="label label-info" href="./category/dev.html">dev</a>
 
-  <a class="label" href="./tag/unity.html">unity</a>
+  <a class="label" href="./tag/backbone.html">backbone</a>
 
-  <a class="label" href="./tag/gnome3.html">gnome3</a>
+  <a class="label" href="./tag/undercore.html">undercore</a>
 
-  <a class="label" href="./tag/hate.html">hate</a>
+  <a class="label" href="./tag/javascript.html">javascript</a>
+
+  <a class="label" href="./tag/gui.html">gui</a>
 
     </div>
-    <p>First of all, I'm GNOME user as main desktop on Linux since the version
-1.x (about 10 years ago). I've played with another desktops but GNOME
-was always in my heart. But now, with the arrival of GNOME 3 and after
-two weeks using it I can say that I'm starting to hate it. In this new
-version it has a lot of functions that I don't like and doesn't have a
-lot of functions that I like :)</p>
-<p>After see my arguments, perhaps you can help me to change my opinion but
-possibily my next post will treat about how erase GNOME 3 and go back to
-Unity. Go to see them:</p>
-<a class="reference external image-reference" href="static/fuuuu.jpg"><img alt="fuuuu.jpg" class="align-center" src="static/fuuuu.jpg" style="width: 50%;" /></a>
-<div class="section" id="dynamic-virtual-desktops">
-<h2>Dynamic virtual desktops</h2>
-<p>I've always used virtual desktops. One for terminals, antoher for
-explorers, another for music and a extra one for all other stuff. When I
-want to go to my explorer I push Alt+2 and change my virtual desktop to
-2. But now, I can't do it, because if I want to open the explorers in
-the desktop 2 I must open something in the desktop one, but I don't like
-it!</p>
-<p>This is a very big problem for me because I'm not accustomed to use
-Alt-Tab to change the windows.</p>
+    <p>Today, <a class="reference external" href="http://twitter.com/olegpidsadnyi/">Oleg</a> gave a talk about backbone at
+<a class="reference external" href="http://paylogic.nl/">Paylogic</a>. We were using it for a really fancy
+application inside our backoffice, it was quite funny write it and Oleg
+decided to share the knowledge.</p>
+<p>I used the techtalk to take some notes and, since this piece of code will
+have no sense out of our backoffice, I've written a small example that you can
+find as a <a class="reference external" href="https://gist.github.com/3982819">gist</a> on my github. I will use it to explain to you some of the
+useful things that you can do with backbone and underscore. Feel free to
+improve it.</p>
+<p>This is only a introductory post, if you want advance stuff you should go to
+the <a class="reference external" href="http://backbonejs.org/">backbone official documentation</a> &amp; <a class="reference external" href="http://underscorejs.org/">underscore
+docs</a>.</p>
+<div class="section" id="why">
+<h2>Why?</h2>
+<p>Backbone is really useful when you make complex GUIs on client side. You can
+make your code like in a desktop app using events to handle the actions. It's
+not needed to pass around instances of parents views, let's use only the
+events for that purpose, and let the child decide.</p>
+<p>You have models too, that you can sync (or not) with the server.</p>
 </div>
-<div class="section" id="when-you-close-the-las-window-in-a-desktop">
-<h2>When you close the las window in a desktop...</h2>
-<p>the gnome-shell will be open! I don't like it! Perhpas I've closed this
-window to go to my home folder, let me do that!</p>
+<div class="section" id="models">
+<h2>Models</h2>
+<p>In backbone you can have local model and sync them with the server or with
+local storage (not explained in this intro). In our example we will:</p>
+<ol class="arabic simple">
+<li>Create a collection to save our objects (type Item) in.</li>
+<li>Create the model Item.</li>
+<li>Create 2 object type Item inside this collection.</li>
+<li>Render them.</li>
+</ol>
+<p>The 3 points can be made only with these lines of code. It's really simple!
+(after know how to do it :p):</p>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">Item</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Model</span><span class="p">.</span><span class="nx">extend</span><span class="p">();</span>
+
+<span class="kd">var</span> <span class="nx">Items</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Collection</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+  <span class="nx">model</span><span class="o">:</span> <span class="nx">Item</span>
+<span class="p">});</span>
+
+<span class="kd">var</span> <span class="nx">items</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Items</span><span class="p">();</span>
+<span class="nx">items</span><span class="p">.</span><span class="nx">add</span><span class="p">([{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;foo&quot;</span><span class="p">},</span> <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;bar&quot;</span><span class="p">}]);</span>
+</pre></div>
+<dl class="docutils">
+<dt><strong>Note</strong></dt>
+<dd>Setting values in the objects With .set will trigger the event
+change. You can silent it in case that needed, but it's really useful, for
+example, to save it.</dd>
+<dt><strong>Second note</strong></dt>
+<dd>backbone is f***ing clever! Imagine, you are changing a name, if the
+name has changed on the collection, the event will be raised, if not, it will
+not. This means that if you are editing, but finally you change your mind and
+you didn't made any change, the event will not be raised.</dd>
+</dl>
 </div>
-<div class="section" id="alt-f2-doesn-t-autocomplete">
-<h2>Alt+F2 doesn't autocomplete</h2>
-<p>GNOME always had this option instead KDE that didn't have it, and now,
-they erase it? I can't understand why! I know that you can use the Super
-key (the fuc***g windows key presented on all keyboards), but use the
-gnome-shell to open a program isn't so quickly as open it with alt-f2.</p>
+<div class="section" id="events">
+<h2>Events</h2>
+<p>They are really useful to remove dependencies between elements. For example,
+with jQuery if you change a element from another, the first one needs to know
+about the second. With backbone you can catch the event with the child element
+and do whatever you want with it.</p>
+<p>On the example of my <a class="reference external" href="https://gist.github.com/3982819">gist</a> I show an alert box with the name of the element.
+But you could, for example, change it to an editable input.</p>
+<p>This is the code of the example:</p>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">ItemView</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+  <span class="p">...</span>
+  <span class="nx">events</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;dblclick&quot;</span><span class="o">:</span> <span class="s2">&quot;onDoubleClick&quot;</span>
+  <span class="p">},</span>
+  <span class="p">...</span>
+  <span class="nx">onDoubleClick</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">text</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">trim</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="nx">ev</span><span class="p">.</span><span class="nx">target</span><span class="p">).</span><span class="nx">text</span><span class="p">());</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;Hey! Why do you click on &quot;</span> <span class="o">+</span> <span class="nx">text</span> <span class="o">+</span> <span class="s2">&quot;?&quot;</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ev</span><span class="p">);</span> <span class="c1">//Play with this :)</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+<p>We are binding the <tt class="docutils literal">dblclick</tt> event to the function <tt class="docutils literal">onDoubleClick</tt>. This
+function will receive the event, and the event will have the target (in this
+case the <tt class="docutils literal">&lt;li/&gt;</tt> that we are clicking.</p>
 </div>
-<div class="section" id="autologin-on-gdm">
-<h2>Autologin on GDM</h2>
-<p>I like to suppose that this bug is only on my pc, because I've tried to
-configure my autologin user and never ever is autologued. Perhaps I
-should submit a bug for this case.</p>
+<div class="section" id="underscore">
+<h2>Underscore</h2>
+<p>It's really useful to Work with collections. In out example we are using it to
+iterate over the items:</p>
+<div class="highlight"><pre><span class="nx">render</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">_</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">items</span><span class="p">.</span><span class="nx">models</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">itemview</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ItemView</span><span class="p">(</span><span class="nx">item</span><span class="p">);</span>
+    <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">el</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">itemview</span><span class="p">.</span><span class="nx">render</span><span class="p">().</span><span class="nx">el</span><span class="p">);</span>
+  <span class="p">},</span> <span class="k">this</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+<p>If you read carefully this piece of code you will realize that we are
+instantiating a new ItemView for each particular item, so it has its own
+container element created on the fly, re-renderable each time when data is
+updated and all events are delegated to this element.</p>
+<p>The amazing thing that you can do with underscore is use templates (yes, like
+jinja or django-templates, but in JS)! And we are doing it:</p>
+<div class="highlight"><pre><span class="nt">&lt;script&gt;</span>
+  <span class="kd">var</span> <span class="nx">ItemView</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+  <span class="p">...</span>
+  <span class="nx">template</span><span class="o">:</span> <span class="nx">_</span><span class="p">.</span><span class="nx">template</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#item-template&quot;</span><span class="p">).</span><span class="nx">html</span><span class="p">()),</span>
+  <span class="p">...</span>
+  <span class="nx">render</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+     <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">el</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">template</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">item</span><span class="p">.</span><span class="nx">toJSON</span><span class="p">()));</span>
+     <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+  <span class="p">},</span>
+  <span class="p">...</span>
+<span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/template&quot;</span> <span class="na">id=</span><span class="s">&quot;item-template&quot;</span><span class="nt">&gt;</span>
+  <span class="o">&lt;%=</span> <span class="nx">name</span> <span class="o">%&gt;</span>
+<span class="nt">&lt;/script&gt;</span>
+</pre></div>
 </div>
-<div class="section" id="difficulty-to-install-extensions">
-<h2>Difficulty to install extensions</h2>
-<p>I will not say anything more about this.</p>
-</div>
-<div class="section" id="no-autohide-bar-and-no-more-bars">
-<h2>No autohide bar, and no more bars?</h2>
-<p>I know that gnome-shell isn't thinked to do that, but perhaps they must
-give a chance to do that to the users that like it.</p>
-<p>And finally, one thing that happens with gnome-shell, gnome-do, meego
-desktop... Why if you have hide files they appear on recent documents or
-in the shell when you start to type? Of course... this hide files isn't
-for p0rn, they are my personal documents only.</p>
+<div class="section" id="extra-ball">
+<h2>Extra ball</h2>
+<p>Use <tt class="docutils literal">_.debounce</tt> to don't call the functions thousands of times, example
+drag&amp;dropping an element it will be useful.</p>
+<p>For example in our project we had to sort with drag and drop some elements of a
+list, instead send this event in each drag movement, we made it after 200s
+being quiet with:</p>
+<div class="highlight"><pre><span class="nx">onChange</span><span class="o">:</span> <span class="nx">_</span><span class="p">.</span><span class="nx">debounce</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">pools</span><span class="p">.</span><span class="nx">save</span><span class="p">();</span>
+<span class="p">},</span> <span class="mi">200</span><span class="p">),</span>
+</pre></div>
+<p>Please comment your thoughts about the post. We are all here to learn, and it's
+really easy that I made some mistake explaining this. Furhtermore, I know that
+my English is not really good, so, I will apreciate constructive comments about
+it too :)</p>
+<p>Enjoy it!</p>
 </div>
 
     <strong>
-      <p>There are <a href="./im-starting-to-hate-gnome-3.html#disqus_thread">comments</a>.</p>
+      <p>There are <a href="./backbonejs-underscore-small-intro.html#disqus_thread">comments</a>.</p>
     </strong>
     </section>
 
@@ -174,60 +255,49 @@ for p0rn, they are my personal documents only.</p>
   
     <section id="">
     <div class="page-header">
-      <h1><a href="./how-to-install-gnome-3-instead-of-unity-on-ubuntu-1104.html">How-to install GNOME 3 instead of Unity on Ubuntu 11.04</a></h1>
+      <h1><a href="./fix-low-wifi-speed-on-linux-ubuntu-with-chip-atheros-ar9285.html">Fix low wifi speed on Linux (Ubuntu) with chip Atheros AR9285</a></h1>
       <span class="label label-success">by Álex</span>
-<span class="label label-success"><abbr class="published" title="2011-06-08T18:28:00">Wed 08 June 2011</abbr></span>
-<a class="label label-info" href="./category/gnome.html">gnome</a>
+<span class="label label-success"><abbr class="published" title="2011-07-03T13:07:00">Sun 03 July 2011</abbr></span>
+<a class="label label-info" href="./category/linux.html">linux</a>
 
-  <a class="label" href="./tag/unity.html">unity</a>
+  <a class="label" href="./tag/low-speed.html">low speed</a>
 
-  <a class="label" href="./tag/gnome3.html">gnome3</a>
+  <a class="label" href="./tag/linux.html">linux</a>
 
-  <a class="label" href="./tag/desktop.html">desktop</a>
+  <a class="label" href="./tag/atheros.html">atheros</a>
+
+  <a class="label" href="./tag/wifi.html">wifi</a>
+
+  <a class="label" href="./tag/ath9k.html">ath9k</a>
 
   <a class="label" href="./tag/ubuntu.html">ubuntu</a>
 
-  <a class="label" href="./tag/gnome.html">gnome</a>
+  <a class="label" href="./tag/ar9285.html">ar9285</a>
 
     </div>
-    <p>I don't have anything against Unity, but sometimes I want to test, and
-this is one of this times.</p>
-<p>I don't know the reason (or perhaps I do), but install GNOME 3 on a
-ubuntu system isn't as easy as it must be.</p>
-<p>First of all we need to add the GNOME 3 repos, so, in a console (Alt+F2
-and then write gnome-terminal) you must write:</p>
+    <p>I was very happer after buy my new computer Dell Vostro v130, but after
+install Linux on it I've realized that the download speed via WiFi was
+very slow! To solve this I found two &quot;solutions&quot;, one of them works, but
+the other not (for me).</p>
+<p>The solutions that didn't work is more easy, so I will start with it,
+you must install <tt class="docutils literal"><span class="pre">linux-backports-modules-net-natty-generic</span></tt>, you can do
+it via synaptic, ubuntu software center, aptitude, apt... I show you a
+screenshot doing it with ubuntu software center:</p>
+<a class="reference external image-reference" href="static/software_center.png"><img alt="software_center.png" class="align-center" src="static/software_center.png" style="width: 50%;" /></a>
+<p>The second &quot;solution&quot; is deactivate the hardware cryptography of the
+module, I don't know if this could cause security problems or instead
+use hardware it will use software crypt, anyway, it is the best
+solutions that I find until the moment.</p>
+<p>To do that, you must create the file <tt class="docutils literal">/etc/modprobe.d/ath9k.conf</tt> with
+the content: <tt class="docutils literal">options ath9k nohwcrypt=1</tt>, you can do it easily with:</p>
 <pre class="literal-block">
-sudo add-apt-repository ppa:gnome3-team/gnome3
+echo &quot;options ath9k nohwcrypt=1&quot; &gt; /etc/modprobe.d/ath9k.conf
 </pre>
-<p>Then, we must update our system and install the gnome shell:</p>
-<pre class="literal-block">
-sudo apt-get updatesudo apt-get dist-upgradesudo apt-get install gnome-shell
-</pre>
-<p>After that, sometimes we have problems with the themes (you can reboot
-to test it, but I recommend you to follow this steps), so, we must
-remove the accesibility themes and install the new ones (and another
-program that we will need after that):</p>
-<pre class="literal-block">
-sudo apt-get remove gnome-accessibility-themessudo apt-get install gnome-themes-standard gnome-tweak-tool
-</pre>
-<p>Well... now, you can reboot your system and login with GNOME selected as
-session. You will see your new GNOME 3, but, we must tweak it, for this,
-you can push Alt+F2 and write:</p>
-<pre class="literal-block">
-gnome-tweak-tool
-</pre>
-<p>I recommend you to have this themes configuration (you can change the
-icons if you like) and activate the option on the first tab called &quot;Have
-file manager handle the desktop&quot;:</p>
-<a class="reference external image-reference" href="static/tweak_tool.png"><img alt="tweak_tool.png" class="align-center" src="static/tweak_tool.png" style="width: 50%;" /></a>
-<p>Good luck! And if you have any trouble, please, feel free to ask me in
-the comments!</p>
-<p>PS:&nbsp;<a class="reference external" href="http://twitter.com/marioquartz">&#64;marioquartz</a>&nbsp;wants to see the result, so here it is (click to
-enlarge)!</p>
-<a class="reference external image-reference" href="static/gnome3_desktop.png"><img alt="gnome3_desktop.png" class="align-center" src="static/gnome3_desktop.png" style="width: 50%;" /></a>
+<p>If you have any questions, or you find a better solution, please, let me
+know.</p>
 
     <strong>
-      <p>There are <a href="./how-to-install-gnome-3-instead-of-unity-on-ubuntu-1104.html#disqus_thread">comments</a>.</p>
+      <p>There are <a href="./fix-low-wifi-speed-on-linux-ubuntu-with-chip-atheros-ar9285.html#disqus_thread">comments</a>.</p>
     </strong>
     </section>
 
@@ -254,10 +324,14 @@ enlarge)!</p>
     <a href="./index3.html">3</a>
   </li>
   
+  <li >
+    <a href="./index4.html">4</a>
+  </li>
+  
 
 
   
-    <li class="disabled"><a href="#"">&raquo;</a></li>
+    <li><a href="./index4.html">&raquo;</a></li>
   
 </ul></div>
 

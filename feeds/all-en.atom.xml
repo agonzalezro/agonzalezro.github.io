@@ -1,5 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Álex's blog</title><link href="http://agonzalezro.github.com/" rel="alternate"></link><link href="http://agonzalezro.github.com/feeds/all-en.atom.xml" rel="self"></link><id>http://agonzalezro.github.com/</id><updated>2012-11-27T00:00:00+01:00</updated><entry><title>PyGrunn Winter Hackathon 2012</title><link href="http://agonzalezro.github.com/pygrunn-winter-hackathon-2012.html" rel="alternate"></link><updated>2012-11-27T00:00:00+01:00</updated><author><name>Álex</name></author><id>tag:agonzalezro.github.com,2012-11-27:pygrunn-winter-hackathon-2012.html</id><summary type="html">&lt;p&gt;Few days ago, actually, more than one week ago (but I was very busy :) we made
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Álex's blog</title><link href="http://agonzalezro.github.com/" rel="alternate"></link><link href="http://agonzalezro.github.com/feeds/all-en.atom.xml" rel="self"></link><id>http://agonzalezro.github.com/</id><updated>2013-01-23T23:52:00+01:00</updated><entry><title>Best vim colors ever!</title><link href="http://agonzalezro.github.com/best-vim-colors-ever.html" rel="alternate"></link><updated>2013-01-23T23:52:00+01:00</updated><author><name>Álex</name></author><id>tag:agonzalezro.github.com,2013-01-23:best-vim-colors-ever.html</id><summary type="html">&lt;p&gt;Sometimes a developer needs a change, and what can you change better that the color scheme that you use to develop? You are more than 8h per day in front of your vim with some beautiful, or crappy, code in front of you. In the first case the colors doesn't matter, but in the second it's really important to enjoy, at least, the colors!&lt;/p&gt;
+&lt;p&gt;The colors scheme that you use is something really personal, but it always help when somebody checked them and show them to you without the embarrasment of doing it yourself, and this is what I will do, because I was looking, but out of the amazing vimcolorschemetest project nobody seems to give importance to this. This project is really good, but it just show to you a bunch of colors without any order of preference, I will fix that for you!&lt;/p&gt;
+&lt;p&gt;Below is the list of the colors that I've tried that need some mention here. The order is just alfabetically, not my preferences.&lt;/p&gt;
+&lt;div class="section" id="my-choices"&gt;
+&lt;h2&gt;My choices&lt;/h2&gt;
+&lt;div class="section" id="bensday"&gt;
+&lt;h3&gt;bensday&lt;/h3&gt;
+&lt;a class="reference external image-reference" href="vim/bensday.png"&gt;&lt;img alt="vim/bensday.png" class="align-center" src="vim/bensday.png" style="width: 50%;" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="section" id="clarity"&gt;
+&lt;h3&gt;clarity&lt;/h3&gt;
+&lt;a class="reference external image-reference" href="clarity.png"&gt;&lt;img alt="vim/clarity.png" class="align-center" src="vim/clarity.png" style="width: 50%;" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="section" id="desertex"&gt;
+&lt;h3&gt;desertEx&lt;/h3&gt;
+&lt;p&gt;It's really similar to deser, which comes by default&lt;/p&gt;
+&lt;a class="reference external image-reference" href="vim/desertEx.png"&gt;&lt;img alt="vim/desertEx.png" class="align-center" src="vim/desertEx.png" style="width: 50%;" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="section" id="jelleybeans"&gt;
+&lt;h3&gt;jelleybeans&lt;/h3&gt;
+&lt;p&gt;My favourite for now, but make me chnage my opinion&lt;/p&gt;
+&lt;a class="reference external image-reference" href="vim/jelleybeans.png"&gt;&lt;img alt="vim/jelleybeans.png" class="align-center" src="vim/jelleybeans.png" style="width: 50%;" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="section" id="winsterday"&gt;
+&lt;h3&gt;winsterday&lt;/h3&gt;
+&lt;a class="reference external image-reference" href="vim/winsterday.png"&gt;&lt;img alt="vim/winsterday.png" class="align-center" src="vim/winsterday.png" style="width: 50%;" /&gt;&lt;/a&gt;
+&lt;p&gt;I am currently using &lt;em&gt;jelleybeans&lt;/em&gt; (after a recommendation of my colleague Robin), I really like it, but a little bit &amp;quot;happier&amp;quot; colors would not be bad either :)&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="find-them"&gt;
+&lt;h2&gt;Find them!&lt;/h2&gt;
+&lt;p&gt;You can find all this colors and a lot more here: &lt;a class="reference external" href="https://github.com/flazz/vim-colorschemes"&gt;https://github.com/flazz/vim-colorschemes&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Please, I am open to all the suggestion that you want, since the new amazing color scheme for vim that I don't know yet, until the killer plugin that I can not miss! And of course, if you want to codereview the code that you see on the screenshots feel free too!&lt;/p&gt;
+&lt;/div&gt;
+</summary><category term="vim"></category><category term="colors"></category><category term="dev"></category><category term="contrast"></category><category term="python"></category></entry><entry><title>PyGrunn Winter Hackathon 2012</title><link href="http://agonzalezro.github.com/pygrunn-winter-hackathon-2012.html" rel="alternate"></link><updated>2012-11-27T00:00:00+01:00</updated><author><name>Álex</name></author><id>tag:agonzalezro.github.com,2012-11-27:pygrunn-winter-hackathon-2012.html</id><summary type="html">&lt;p&gt;Few days ago, actually, more than one week ago (but I was very busy :) we made
+our first &lt;a class="reference external" href="http://paylogic.github.com/winter-hackathon/"&gt;PyGrunn hackathon&lt;/a&gt;. I was lucky and from all the list of ideas, the
+selected was one of mines! The slides generator, that finally we call
+&lt;strong&gt;hovercraft&lt;/strong&gt;. Here is a small introduction about what I wanted:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;A small platform to create slides and have them always associated to a web
+with this possibilities:&lt;/em&gt;&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;em&gt;Create an account with Google (or perhaps twitter, facebook...), but Google
+seems the best option for me now.&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Create or edit new slides related with this account. This slides
+creator/editor will have the following functionalities:&lt;/em&gt;&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Select one image for background in fullscreen.&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Write one or 2 lines of text that will always fulfill the width of the
+slide.&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Change the font family.&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Have a permanent link to your slide (completely public for now).&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;After the hackathon we got something very similar to what I wanted, with some
+small issues. But this post is not about what we did wrong! This post is about
+which technologies did we use to finish the project and perhaps, if I am lucky,
+start a discussion on why we did/didn't make a good choice.&lt;/p&gt;
+&lt;div class="section" id="how-do-we-achieve-this"&gt;
+&lt;h2&gt;How do we achieve this?&lt;/h2&gt;
+&lt;div class="section" id="backend"&gt;
+&lt;h3&gt;Backend&lt;/h3&gt;
+&lt;p&gt;The backend of the application was almost inexistent, we only wanted to allow
+the users to login with a Google account to have access to edit their slides.
+Being a hackathon we didn't spend time adding &lt;abbr title="Create/Read/Update/Delete"&gt;CRUD&lt;/abbr&gt; functionalities to manage the users.&lt;/p&gt;
+&lt;p&gt;If you want to delete your user, let me know, I will do it by hand :) It was
+made with &lt;a class="reference external" href="http://flask.pocoo.org/"&gt;Flask&lt;/a&gt;, Flask-OAuth for the authentication with Google and &lt;a class="reference external" href="http://redis.io/"&gt;redis&lt;/a&gt;
+to store the presentations.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="frontend"&gt;
+&lt;h3&gt;Frontend&lt;/h3&gt;
+&lt;p&gt;The viewer was really simply too because from the beginning we wanted to play
+with the editor (it was more funny). For doing it we used &lt;a class="reference external" href="http://lab.hakim.se/reveal-js/#/"&gt;revealjs&lt;/a&gt; to show
+the presentation with slide effect and &lt;a class="reference external" href="http://fittextjs.com/"&gt;jquery-fittext&lt;/a&gt; to make it fullslide.&lt;/p&gt;
+&lt;p&gt;Now the important part! We made the editor with &lt;a class="reference external" href="http://agonzalezro.github.com/backbonejs-underscore-small-intro.html"&gt;backbone and underscore&lt;/a&gt;, it
+seems to us the better choice, since we will have 3 principal views:&lt;/p&gt;
+&lt;dl class="docutils"&gt;
+&lt;dt&gt;The background chooser&lt;/dt&gt;
+&lt;dd&gt;which is connection to &lt;a class="reference external" href="http://www.deviantart.com/"&gt;deviantart&lt;/a&gt; to perform a
+query of good backgrounds for your slide. Then you can click on one of the
+results and will be applied to the current slide.&lt;/dd&gt;
+&lt;dt&gt;The font chooser&lt;/dt&gt;
+&lt;dd&gt;which is loading some google fonts, we wanted to do this
+automagically but we couldn't finish it at time. The behaviour is the same,
+you choose a font and its applied to the current slide.&lt;/dd&gt;
+&lt;dt&gt;The slide content&lt;/dt&gt;
+&lt;dd&gt;that should be &lt;abbr title="What You See Is What You Get"&gt;WYSIWYG&lt;/abbr&gt;
+but for now is on the middle, because we couldn't make the text bigger while
+you are writing.&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;/div&gt;
+&lt;div class="section" id="deployment"&gt;
+&lt;h3&gt;Deployment&lt;/h3&gt;
+&lt;p&gt;And finally the deployment that was made with &lt;cite&gt;heroku&lt;/cite&gt; and &lt;cite&gt;redistogo&lt;/cite&gt; that
+allows you to use a 5M non-persistant DB that is good for a demo.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="resources"&gt;
+&lt;h2&gt;Resources&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;You can see &lt;cite&gt;the list of all the projects&lt;/cite&gt; or...&lt;/li&gt;
+&lt;li&gt;You can find all the &lt;a class="reference external" href="https://github.com/agonzalezro/hovercraft"&gt;source on github&lt;/a&gt; or...&lt;/li&gt;
+&lt;li&gt;You can &lt;a class="reference external" href="http://nameless-spire-1402.herokuapp.com/"&gt;try a demo&lt;/a&gt; too!&lt;/li&gt;
+&lt;li&gt;And if you are too lazy to try it, here you have an screenshot:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;a class="reference external image-reference" href="hovercraft.png"&gt;&lt;img alt="hovercraft.png" class="align-center" src="hovercraft.png" style="width: 66%;" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="section" id="thanks"&gt;
+&lt;h2&gt;Thanks!&lt;/h2&gt;
+&lt;p&gt;I really want to thank &lt;a class="reference external" href="http://www.paylogic.nl"&gt;Paylogic&lt;/a&gt; for letting us a place where to do the project
+and for provide us food &amp;amp; beers. What a developer will develop without food and
+beer?&lt;/p&gt;
+&lt;p&gt;I want to thank too all the guys that &amp;quot;spend&amp;quot; the weekend with me having fun, but working hard too!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="conclusions"&gt;
+&lt;h2&gt;Conclusions&lt;/h2&gt;
+&lt;p&gt;The good point of all this editing is that thanks to backbone and thanks to the
+backend guys is saved without any action needed. The idea of this full project
+was:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;&lt;strong&gt;Have fun!&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Simplifying slide creation&lt;/li&gt;
+&lt;li&gt;Make it really simply to share those slides.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I didn't want to go really depth into the development of this project, &lt;strong&gt;I only wanted to give a quick overview of what we made in two days.&lt;/strong&gt; But if you are really interested on something more explained, let me know on the comments and I will try to help you in all what I can.&lt;/p&gt;
+&lt;/div&gt;
+</summary><category term="hackathon"></category><category term="pygrunn"></category><category term="paylogic"></category><category term="backbone"></category><category term="flask"></category><category term="slides"></category></entry><entry><title>PyGrunn Winter Hackathon 2012</title><link href="http://agonzalezro.github.com/pygrunn-winter-hackathon-2012.html" rel="alternate"></link><updated>2012-11-27T00:00:00+01:00</updated><author><name>Álex</name></author><id>tag:agonzalezro.github.com,2012-11-27:pygrunn-winter-hackathon-2012.html</id><summary type="html">&lt;p&gt;Few days ago, actually, more than one week ago (but I was very busy :) we made
 our first &lt;a class="reference external" href="http://paylogic.github.com/winter-hackathon/"&gt;PyGrunn hackathon&lt;/a&gt;. I was lucky and from all the list of ideas, the
 selected was one of mines! The slides generator, that finally we call
 &lt;strong&gt;hovercraft&lt;/strong&gt;. Here is a small introduction about what I wanted:&lt;/p&gt;
