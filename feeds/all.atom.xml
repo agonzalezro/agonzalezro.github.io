@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Álex's blog</title><link href="http://agonzalezro.github.com/" rel="alternate"></link><link href="http://agonzalezro.github.com/feeds/all.atom.xml" rel="self"></link><id>http://agonzalezro.github.com/</id><updated>2013-01-23T23:52:00+01:00</updated><entry><title>Best vim colors ever!</title><link href="http://agonzalezro.github.com/best-vim-colors-ever.html" rel="alternate"></link><updated>2013-01-23T23:52:00+01:00</updated><author><name>Álex</name></author><id>tag:agonzalezro.github.com,2013-01-23:best-vim-colors-ever.html</id><summary type="html">&lt;p&gt;Sometimes a developer needs a change, and what can you change better that the color scheme that you use to develop? You are more than 8h per day in front of your vim with some beautiful, or crappy, code in front of you. In the first case the colors doesn't matter, but in the second it's really important to enjoy, at least, the colors!&lt;/p&gt;
-&lt;p&gt;The colors scheme that you use is something really personal, but it always help when somebody checked them and show them to you without the embarrasment of doing it yourself, and this is what I will do, because I was looking, but out of the amazing vimcolorschemetest project nobody seems to give importance to this. This project is really good, but it just show to you a bunch of colors without any order of preference, I will fix that for you!&lt;/p&gt;
-&lt;p&gt;Below is the list of the colors that I've tried that need some mention here. The order is just alfabetically, not my preferences.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Álex's blog</title><link href="http://agonzalezro.github.com/" rel="alternate"></link><link href="http://agonzalezro.github.com/feeds/all.atom.xml" rel="self"></link><id>http://agonzalezro.github.com/</id><updated>2013-01-23T23:52:00+01:00</updated><entry><title>Best vim colors ever!</title><link href="http://agonzalezro.github.com/best-vim-colors-ever.html" rel="alternate"></link><updated>2013-01-23T23:52:00+01:00</updated><author><name>Álex</name></author><id>tag:agonzalezro.github.com,2013-01-23:best-vim-colors-ever.html</id><summary type="html">&lt;p&gt;Sometimes a developer needs a change, and what can you change better that the
+color scheme that you use to develop? You are more than 8h per day in front of
+your vim with some beautiful, or crappy, code in front of you. In the first
+case the colors doesn't matter, but in the second it's really important to
+enjoy, at least, the colors!&lt;/p&gt;
+&lt;p&gt;The colors scheme that you use is something really personal, but it always help
+when somebody checked them and show them to you without the embarrasment of
+doing it yourself, and this is what I will do, because I was looking, but out
+of the amazing vimcolorschemetest project nobody seems to give importance to
+this. This project is really good, but it just show to you a bunch of colors
+without any order of preference, I will fix that for you!&lt;/p&gt;
+&lt;p&gt;Below is the list of the colors that I've tried that need some mention here.
+The order is just alfabetically, not my preferences.&lt;/p&gt;
 &lt;div class="section" id="my-choices"&gt;
 &lt;h2&gt;My choices&lt;/h2&gt;
 &lt;div class="section" id="bensday"&gt;
@@ -25,15 +35,21 @@
 &lt;div class="section" id="winsterday"&gt;
 &lt;h3&gt;winsterday&lt;/h3&gt;
 &lt;a class="reference external image-reference" href="vim/winsterday.png"&gt;&lt;img alt="vim/winsterday.png" class="align-center" src="vim/winsterday.png" style="width: 50%;" /&gt;&lt;/a&gt;
-&lt;p&gt;I am currently using &lt;em&gt;jelleybeans&lt;/em&gt; (after a recommendation of my colleague Robin), I really like it, but a little bit &amp;quot;happier&amp;quot; colors would not be bad either :)&lt;/p&gt;
+&lt;p&gt;I am currently using &lt;em&gt;jelleybeans&lt;/em&gt; (after a recommendation of my colleague
+Robin), I really like it, but a little bit &amp;quot;happier&amp;quot; colors would not be bad
+either :)&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="find-them"&gt;
 &lt;h2&gt;Find them!&lt;/h2&gt;
-&lt;p&gt;You can find all this colors and a lot more here: &lt;a class="reference external" href="https://github.com/flazz/vim-colorschemes"&gt;https://github.com/flazz/vim-colorschemes&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Please, I am open to all the suggestion that you want, since the new amazing color scheme for vim that I don't know yet, until the killer plugin that I can not miss! And of course, if you want to codereview the code that you see on the screenshots feel free too!&lt;/p&gt;
+&lt;p&gt;You can find all this colors and a lot more here:
+&lt;a class="reference external" href="https://github.com/flazz/vim-colorschemes"&gt;https://github.com/flazz/vim-colorschemes&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Please, I am open to all the suggestion that you want, since the new amazing
+color scheme for vim that I don't know yet, until the killer plugin that I can
+not miss! And of course, if you want to codereview the code that you see on the
+screenshots feel free too!&lt;/p&gt;
 &lt;/div&gt;
-</summary><category term="vim"></category><category term="colors"></category><category term="dev"></category><category term="contrast"></category><category term="python"></category></entry><entry><title>PyGrunn Winter Hackathon 2012</title><link href="http://agonzalezro.github.com/pygrunn-winter-hackathon-2012.html" rel="alternate"></link><updated>2012-11-27T00:00:00+01:00</updated><author><name>Álex</name></author><id>tag:agonzalezro.github.com,2012-11-27:pygrunn-winter-hackathon-2012.html</id><summary type="html">&lt;p&gt;Few days ago, actually, more than one week ago (but I was very busy :) we made
+</summary><category term="colors"></category><category term="dev"></category><category term="contrast"></category><category term="python"></category><category term="bensday"></category><category term="clarity"></category><category term="desertEx"></category><category term="jelleybeans"></category><category term="winsterday"></category></entry><entry><title>PyGrunn Winter Hackathon 2012</title><link href="http://agonzalezro.github.com/pygrunn-winter-hackathon-2012.html" rel="alternate"></link><updated>2012-11-27T00:00:00+01:00</updated><author><name>Álex</name></author><id>tag:agonzalezro.github.com,2012-11-27:pygrunn-winter-hackathon-2012.html</id><summary type="html">&lt;p&gt;Few days ago, actually, more than one week ago (but I was very busy :) we made
 our first &lt;a class="reference external" href="http://paylogic.github.com/winter-hackathon/"&gt;PyGrunn hackathon&lt;/a&gt;. I was lucky and from all the list of ideas, the
 selected was one of mines! The slides generator, that finally we call
 &lt;strong&gt;hovercraft&lt;/strong&gt;. Here is a small introduction about what I wanted:&lt;/p&gt;
