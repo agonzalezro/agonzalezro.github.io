@@ -7,7 +7,7 @@ the other not (for me).&lt;/p&gt;
 you must install &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;linux-backports-modules-net-natty-generic&lt;/span&gt;&lt;/tt&gt;, you can do
 it via synaptic, ubuntu software center, aptitude, apt... I show you a
 screenshot doing it with ubuntu software center:&lt;/p&gt;
-&lt;a class="reference external image-reference" href="software_center.png"&gt;&lt;img alt="software_center.png" class="align-center" src="software_center.png" style="width: 50%;" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="software_center.png"&gt;&lt;img alt="static/software_center.png" class="align-center" src="static/software_center.png" style="width: 50%;" /&gt;&lt;/a&gt;
 &lt;p&gt;The second &amp;quot;solution&amp;quot; is deactivate the hardware cryptography of the
 module, I don't know if this could cause security problems or instead
 use hardware it will use software crypt, anyway, it is the best
