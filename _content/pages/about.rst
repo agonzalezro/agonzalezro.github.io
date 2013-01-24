@@ -4,7 +4,10 @@ About
 .. include:: age.inc
 
 My name is Alexandre González, I am a |age| years old Spanish developer
-currently working in Holland, exactly in Groningen at Paylogic_.
+currently working in UK, exactly in London at GreenManGaming_.
+
+I always wanted to travel, so before coming to London I was working in
+Groningen, a beautiful place in Holland with my excolleagues of Paylogic_.
 
 .. image:: me.jpg
    :alt: Photo of Alexandre González
@@ -43,6 +46,8 @@ at the resources below:
 BTW, you can find the source code of this blog (generated with Pelican_) at my
 `GitHub profile`_ or clicking on the upper right corner link.
 
+
+.. _greenmangaming: http://www.greenmangaming.com
 
 .. _paylogic: http://paylogic.nl
 .. _efteling: http://en.wikipedia.org/wiki/Efteling
