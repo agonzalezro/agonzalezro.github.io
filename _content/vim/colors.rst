@@ -39,7 +39,7 @@ clarity
 .. image:: static/vim/clarity.png
     :width: 50%
     :align: center
-    :target: static/clarity.png
+    :target: static/vim/clarity.png
 
 desertEx
 ~~~~~~~~
