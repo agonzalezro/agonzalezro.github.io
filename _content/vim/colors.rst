@@ -2,7 +2,7 @@ Best vim colors ever!
 =====================
 
 :date: 2013-01-23 23:52
-:tags: colors, dev, contrast, python, bensday, clarity, desertEx, jelleybeans, winsterday
+:tags: colors, python, bensday, clarity, desertEx, jelleybeans, winsterday
 
 Sometimes a developer needs a change, and what can you change better that the
 color scheme that you use to develop? You are more than 8h per day in front of
