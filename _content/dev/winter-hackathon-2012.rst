@@ -95,7 +95,7 @@ Resources
 - You can `try a demo`_ too!
 - And if you are too lazy to try it, here you have an screenshot:
 
-.. image:: hovercraft.png
+.. image:: static/hovercraft.png
     :width: 66%
     :align: center
     :target: hovercraft.png

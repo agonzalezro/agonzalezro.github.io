@@ -14,7 +14,7 @@ you must install ``linux-backports-modules-net-natty-generic``, you can do
 it via synaptic, ubuntu software center, aptitude, apt... I show you a
 screenshot doing it with ubuntu software center:
 
-.. image:: software_center.png
+.. image:: static/software_center.png
     :width: 50%
     :align: center
     :target: software_center.png

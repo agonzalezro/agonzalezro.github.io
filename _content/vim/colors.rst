@@ -28,7 +28,7 @@ My choices
 bensday
 ~~~~~~~
 
-.. image:: vim/bensday.png
+.. image:: static/vim/bensday.png
     :width: 50%
     :align: center
     :target: vim/bensday.png
@@ -36,7 +36,7 @@ bensday
 clarity
 ~~~~~~~
 
-.. image:: vim/clarity.png
+.. image:: static/vim/clarity.png
     :width: 50%
     :align: center
     :target: clarity.png
@@ -46,7 +46,7 @@ desertEx
 
 It's really similar to deser, which comes by default
 
-.. image:: vim/desertEx.png
+.. image:: static/vim/desertEx.png
     :width: 50%
     :align: center
     :target: vim/desertEx.png
@@ -56,7 +56,7 @@ jelleybeans
 
 My favourite for now, but make me chnage my opinion
 
-.. image:: vim/jelleybeans.png
+.. image:: static/vim/jelleybeans.png
     :width: 50%
     :align: center
     :target: vim/jelleybeans.png
@@ -64,7 +64,7 @@ My favourite for now, but make me chnage my opinion
 winsterday
 ~~~~~~~~~~
 
-.. image:: vim/winsterday.png
+.. image:: static/vim/winsterday.png
     :width: 50%
     :align: center
     :target: vim/winsterday.png

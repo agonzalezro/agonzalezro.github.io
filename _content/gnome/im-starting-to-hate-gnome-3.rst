@@ -15,7 +15,7 @@ After see my arguments, perhaps you can help me to change my opinion but
 possibily my next post will treat about how erase GNOME 3 and go back to
 Unity. Go to see them:
 
-.. image:: fuuuu.jpg
+.. image:: static/fuuuu.jpg
     :width: 50%
     :align: center
     :target: fuuuu.jpg

@@ -9,7 +9,7 @@ currently working in UK, exactly in London at GreenManGaming_.
 I always wanted to travel, so before coming to London I was working in
 Groningen, a beautiful place in Holland with my excolleagues of Paylogic_.
 
-.. image:: me.jpg
+.. image:: static/me.jpg
    :alt: Photo of Alexandre González
    :align: left
 
