@@ -31,7 +31,7 @@ bensday
 .. image:: static/vim/bensday.png
     :width: 50%
     :align: center
-    :target: vim/bensday.png
+    :target: static/vim/bensday.png
 
 clarity
 ~~~~~~~
@@ -39,7 +39,7 @@ clarity
 .. image:: static/vim/clarity.png
     :width: 50%
     :align: center
-    :target: clarity.png
+    :target: static/clarity.png
 
 desertEx
 ~~~~~~~~
@@ -49,7 +49,7 @@ It's really similar to deser, which comes by default
 .. image:: static/vim/desertEx.png
     :width: 50%
     :align: center
-    :target: vim/desertEx.png
+    :target: static/vim/desertEx.png
 
 jelleybeans
 ~~~~~~~~~~~
@@ -59,7 +59,7 @@ My favourite for now, but make me chnage my opinion
 .. image:: static/vim/jelleybeans.png
     :width: 50%
     :align: center
-    :target: vim/jelleybeans.png
+    :target: static/vim/jelleybeans.png
 
 winsterday
 ~~~~~~~~~~
@@ -67,7 +67,7 @@ winsterday
 .. image:: static/vim/winsterday.png
     :width: 50%
     :align: center
-    :target: vim/winsterday.png
+    :target: static/vim/winsterday.png
 
 I am currently using *jelleybeans* (after a recommendation of my colleague
 Robin), I really like it, but a little bit "happier" colors would not be bad

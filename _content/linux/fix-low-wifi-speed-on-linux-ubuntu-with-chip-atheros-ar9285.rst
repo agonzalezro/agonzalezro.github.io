@@ -17,7 +17,7 @@ screenshot doing it with ubuntu software center:
 .. image:: static/software_center.png
     :width: 50%
     :align: center
-    :target: software_center.png
+    :target: static/software_center.png
 
 The second "solution" is deactivate the hardware cryptography of the
 module, I don't know if this could cause security problems or instead

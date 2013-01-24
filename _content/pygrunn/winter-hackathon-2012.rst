@@ -98,7 +98,7 @@ Resources
 .. image:: static/hovercraft.png
     :width: 66%
     :align: center
-    :target: hovercraft.png
+    :target: static/hovercraft.png
 
 
 .. _the list of all the projects: http://paylogic.github.com/winter-hackathon/

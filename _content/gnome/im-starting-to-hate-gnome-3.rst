@@ -18,7 +18,7 @@ Unity. Go to see them:
 .. image:: static/fuuuu.jpg
     :width: 50%
     :align: center
-    :target: fuuuu.jpg
+    :target: static/fuuuu.jpg
 
 
 Dynamic virtual desktops

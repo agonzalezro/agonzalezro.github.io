@@ -16,25 +16,25 @@ The order is just alfabetically, not my preferences.&lt;/p&gt;
 &lt;h2&gt;My choices&lt;/h2&gt;
 &lt;div class="section" id="bensday"&gt;
 &lt;h3&gt;bensday&lt;/h3&gt;
-&lt;a class="reference external image-reference" href="vim/bensday.png"&gt;&lt;img alt="static/vim/bensday.png" class="align-center" src="static/vim/bensday.png" style="width: 50%;" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="static/vim/bensday.png"&gt;&lt;img alt="static/vim/bensday.png" class="align-center" src="static/vim/bensday.png" style="width: 50%;" /&gt;&lt;/a&gt;
 &lt;/div&gt;
 &lt;div class="section" id="clarity"&gt;
 &lt;h3&gt;clarity&lt;/h3&gt;
-&lt;a class="reference external image-reference" href="clarity.png"&gt;&lt;img alt="static/vim/clarity.png" class="align-center" src="static/vim/clarity.png" style="width: 50%;" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="static/clarity.png"&gt;&lt;img alt="static/vim/clarity.png" class="align-center" src="static/vim/clarity.png" style="width: 50%;" /&gt;&lt;/a&gt;
 &lt;/div&gt;
 &lt;div class="section" id="desertex"&gt;
 &lt;h3&gt;desertEx&lt;/h3&gt;
 &lt;p&gt;It's really similar to deser, which comes by default&lt;/p&gt;
-&lt;a class="reference external image-reference" href="vim/desertEx.png"&gt;&lt;img alt="static/vim/desertEx.png" class="align-center" src="static/vim/desertEx.png" style="width: 50%;" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="static/vim/desertEx.png"&gt;&lt;img alt="static/vim/desertEx.png" class="align-center" src="static/vim/desertEx.png" style="width: 50%;" /&gt;&lt;/a&gt;
 &lt;/div&gt;
 &lt;div class="section" id="jelleybeans"&gt;
 &lt;h3&gt;jelleybeans&lt;/h3&gt;
 &lt;p&gt;My favourite for now, but make me chnage my opinion&lt;/p&gt;
-&lt;a class="reference external image-reference" href="vim/jelleybeans.png"&gt;&lt;img alt="static/vim/jelleybeans.png" class="align-center" src="static/vim/jelleybeans.png" style="width: 50%;" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="static/vim/jelleybeans.png"&gt;&lt;img alt="static/vim/jelleybeans.png" class="align-center" src="static/vim/jelleybeans.png" style="width: 50%;" /&gt;&lt;/a&gt;
 &lt;/div&gt;
 &lt;div class="section" id="winsterday"&gt;
 &lt;h3&gt;winsterday&lt;/h3&gt;
-&lt;a class="reference external image-reference" href="vim/winsterday.png"&gt;&lt;img alt="static/vim/winsterday.png" class="align-center" src="static/vim/winsterday.png" style="width: 50%;" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="static/vim/winsterday.png"&gt;&lt;img alt="static/vim/winsterday.png" class="align-center" src="static/vim/winsterday.png" style="width: 50%;" /&gt;&lt;/a&gt;
 &lt;p&gt;I am currently using &lt;em&gt;jelleybeans&lt;/em&gt; (after a recommendation of my colleague
 Robin), I really like it, but a little bit &amp;quot;happier&amp;quot; colors would not be bad
 either :)&lt;/p&gt;
@@ -119,7 +119,7 @@ allows you to use a 5M non-persistant DB that is good for a demo.&lt;/p&gt;
 &lt;li&gt;You can &lt;a class="reference external" href="http://nameless-spire-1402.herokuapp.com/"&gt;try a demo&lt;/a&gt; too!&lt;/li&gt;
 &lt;li&gt;And if you are too lazy to try it, here you have an screenshot:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;a class="reference external image-reference" href="hovercraft.png"&gt;&lt;img alt="static/hovercraft.png" class="align-center" src="static/hovercraft.png" style="width: 66%;" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="static/hovercraft.png"&gt;&lt;img alt="static/hovercraft.png" class="align-center" src="static/hovercraft.png" style="width: 66%;" /&gt;&lt;/a&gt;
 &lt;/div&gt;
 &lt;div class="section" id="thanks"&gt;
 &lt;h2&gt;Thanks!&lt;/h2&gt;
@@ -210,7 +210,7 @@ allows you to use a 5M non-persistant DB that is good for a demo.&lt;/p&gt;
 &lt;li&gt;You can &lt;a class="reference external" href="http://nameless-spire-1402.herokuapp.com/"&gt;try a demo&lt;/a&gt; too!&lt;/li&gt;
 &lt;li&gt;And if you are too lazy to try it, here you have an screenshot:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;a class="reference external image-reference" href="hovercraft.png"&gt;&lt;img alt="static/hovercraft.png" class="align-center" src="static/hovercraft.png" style="width: 66%;" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="static/hovercraft.png"&gt;&lt;img alt="static/hovercraft.png" class="align-center" src="static/hovercraft.png" style="width: 66%;" /&gt;&lt;/a&gt;
 &lt;/div&gt;
 &lt;div class="section" id="thanks"&gt;
 &lt;h2&gt;Thanks!&lt;/h2&gt;
@@ -301,7 +301,7 @@ allows you to use a 5M non-persistant DB that is good for a demo.&lt;/p&gt;
 &lt;li&gt;You can &lt;a class="reference external" href="http://nameless-spire-1402.herokuapp.com/"&gt;try a demo&lt;/a&gt; too!&lt;/li&gt;
 &lt;li&gt;And if you are too lazy to try it, here you have an screenshot:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;a class="reference external image-reference" href="hovercraft.png"&gt;&lt;img alt="static/hovercraft.png" class="align-center" src="static/hovercraft.png" style="width: 66%;" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="static/hovercraft.png"&gt;&lt;img alt="static/hovercraft.png" class="align-center" src="static/hovercraft.png" style="width: 66%;" /&gt;&lt;/a&gt;
 &lt;/div&gt;
 &lt;div class="section" id="thanks"&gt;
 &lt;h2&gt;Thanks!&lt;/h2&gt;
@@ -392,7 +392,7 @@ allows you to use a 5M non-persistant DB that is good for a demo.&lt;/p&gt;
 &lt;li&gt;You can &lt;a class="reference external" href="http://nameless-spire-1402.herokuapp.com/"&gt;try a demo&lt;/a&gt; too!&lt;/li&gt;
 &lt;li&gt;And if you are too lazy to try it, here you have an screenshot:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;a class="reference external image-reference" href="hovercraft.png"&gt;&lt;img alt="static/hovercraft.png" class="align-center" src="static/hovercraft.png" style="width: 66%;" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="static/hovercraft.png"&gt;&lt;img alt="static/hovercraft.png" class="align-center" src="static/hovercraft.png" style="width: 66%;" /&gt;&lt;/a&gt;
 &lt;/div&gt;
 &lt;div class="section" id="thanks"&gt;
 &lt;h2&gt;Thanks!&lt;/h2&gt;
@@ -652,7 +652,7 @@ the other not (for me).&lt;/p&gt;
 you must install &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;linux-backports-modules-net-natty-generic&lt;/span&gt;&lt;/tt&gt;, you can do
 it via synaptic, ubuntu software center, aptitude, apt... I show you a
 screenshot doing it with ubuntu software center:&lt;/p&gt;
-&lt;a class="reference external image-reference" href="software_center.png"&gt;&lt;img alt="static/software_center.png" class="align-center" src="static/software_center.png" style="width: 50%;" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="static/software_center.png"&gt;&lt;img alt="static/software_center.png" class="align-center" src="static/software_center.png" style="width: 50%;" /&gt;&lt;/a&gt;
 &lt;p&gt;The second &amp;quot;solution&amp;quot; is deactivate the hardware cryptography of the
 module, I don't know if this could cause security problems or instead
 use hardware it will use software crypt, anyway, it is the best
@@ -673,7 +673,7 @@ lot of functions that I like :)&lt;/p&gt;
 &lt;p&gt;After see my arguments, perhaps you can help me to change my opinion but
 possibily my next post will treat about how erase GNOME 3 and go back to
 Unity. Go to see them:&lt;/p&gt;
-&lt;a class="reference external image-reference" href="fuuuu.jpg"&gt;&lt;img alt="static/fuuuu.jpg" class="align-center" src="static/fuuuu.jpg" style="width: 50%;" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="static/fuuuu.jpg"&gt;&lt;img alt="static/fuuuu.jpg" class="align-center" src="static/fuuuu.jpg" style="width: 50%;" /&gt;&lt;/a&gt;
 &lt;div class="section" id="dynamic-virtual-desktops"&gt;
 &lt;h2&gt;Dynamic virtual desktops&lt;/h2&gt;
 &lt;p&gt;I've always used virtual desktops. One for terminals, antoher for
@@ -745,10 +745,10 @@ gnome-tweak-tool
 &lt;p&gt;I recommend you to have this themes configuration (you can change the
 icons if you like) and activate the option on the first tab called &amp;quot;Have
 file manager handle the desktop&amp;quot;:&lt;/p&gt;
-&lt;a class="reference external image-reference" href="tweak_tool.png"&gt;&lt;img alt="static/tweak_tool.png" class="align-center" src="static/tweak_tool.png" style="width: 50%;" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="static/tweak_tool.png"&gt;&lt;img alt="static/tweak_tool.png" class="align-center" src="static/tweak_tool.png" style="width: 50%;" /&gt;&lt;/a&gt;
 &lt;p&gt;Good luck! And if you have any trouble, please, feel free to ask me in
 the comments!&lt;/p&gt;
 &lt;p&gt;PS:&amp;nbsp;&lt;a class="reference external" href="http://twitter.com/marioquartz"&gt;&amp;#64;marioquartz&lt;/a&gt;&amp;nbsp;wants to see the result, so here it is (click to
 enlarge)!&lt;/p&gt;
-&lt;a class="reference external image-reference" href="gnome3_desktop.png"&gt;&lt;img alt="static/gnome3_desktop.png" class="align-center" src="static/gnome3_desktop.png" style="width: 50%;" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="static/gnome3_desktop.png"&gt;&lt;img alt="static/gnome3_desktop.png" class="align-center" src="static/gnome3_desktop.png" style="width: 50%;" /&gt;&lt;/a&gt;
 </summary><category term="unity"></category><category term="gnome3"></category><category term="desktop"></category><category term="ubuntu"></category><category term="gnome"></category></entry></feed>

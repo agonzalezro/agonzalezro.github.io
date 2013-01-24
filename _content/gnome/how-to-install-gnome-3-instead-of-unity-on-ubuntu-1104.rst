@@ -39,7 +39,7 @@ file manager handle the desktop":
 .. image:: static/tweak_tool.png
     :width: 50%
     :align: center
-    :target: tweak_tool.png
+    :target: static/tweak_tool.png
 
 Good luck! And if you have any trouble, please, feel free to ask me in
 the comments!
@@ -50,6 +50,6 @@ enlarge)!
 .. image:: static/gnome3_desktop.png
     :width: 50%
     :align: center
-    :target: gnome3_desktop.png
+    :target: static/gnome3_desktop.png
 
 .. _@marioquartz: http://twitter.com/marioquartz
