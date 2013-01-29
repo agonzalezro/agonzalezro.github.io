@@ -31,7 +31,10 @@ request just for some spaces that are not in place.&lt;/p&gt;
 &lt;p&gt;For the point 3, yep, let me jump the second for now. Unit testing, integration
 testing, functional testing... whatever you want, but try to automate it. This
 + a CI server will make your live really &amp;quot;easy&amp;quot;!&lt;/p&gt;
-&lt;p&gt;And finally, about the second point. Each developer have their way to do the things, but usually there are some points that can be fixed and sometimes because we don't know, other times just because we are lazy but we post code like this:&lt;/p&gt;
+&lt;p&gt;And finally, about the second point. Each developer have their way to do the
+things, but usually there are some points that can be fixed and sometimes
+because we don't know, other times just because we are lazy but we post code
+like this:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;f&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt;
         &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;user&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt;
@@ -46,7 +49,7 @@ improve. This is what, in my opinion should be more checked in the reviews.&lt;/
 &lt;p&gt;This was just an example (please, remember that :D), but could be improved with
 something like this:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;proper_function_name&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;proper_variable_name&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;This is an amazing function that will do just this things.&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;This is an amazing function that will do just a thing.&lt;/span&gt;
 
 &lt;span class="sd"&gt;    :param proper_variable_name: what I am?&lt;/span&gt;
 
@@ -65,7 +68,7 @@ something like this:&lt;/p&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;HttpResponse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
         &lt;span class="n"&gt;json&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dumps&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;
             &lt;span class="s"&gt;&amp;#39;authorized&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;is_authorized&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-            &lt;span class="s"&gt;&amp;#39;proper_variable_name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;proper_var_name&lt;/span&gt;
+            &lt;span class="s"&gt;&amp;#39;proper_variable_name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;proper_variable_name&lt;/span&gt;
         &lt;span class="p"&gt;})&lt;/span&gt;
     &lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -75,7 +78,8 @@ something like this:&lt;/p&gt;
 autocompletion! :D&lt;/li&gt;
 &lt;li&gt;Give a proper name to the vars.&lt;/li&gt;
 &lt;li&gt;DOCUMENT! In this example, ready for Sphinx.&lt;/li&gt;
-&lt;li&gt;Simplify the if statements, actually, after take a look you made it dissapear.&lt;/li&gt;
+&lt;li&gt;Simplify the if statements, actually, after take a look you made it
+dissapear.&lt;/li&gt;
 &lt;li&gt;One return.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;So, what's your opinion? What do you think that is more important in a

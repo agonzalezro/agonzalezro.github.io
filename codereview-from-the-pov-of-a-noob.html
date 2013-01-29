@@ -117,7 +117,10 @@ request just for some spaces that are not in place.</p>
 <p>For the point 3, yep, let me jump the second for now. Unit testing, integration
 testing, functional testing... whatever you want, but try to automate it. This
 + a CI server will make your live really &quot;easy&quot;!</p>
-<p>And finally, about the second point. Each developer have their way to do the things, but usually there are some points that can be fixed and sometimes because we don't know, other times just because we are lazy but we post code like this:</p>
+<p>And finally, about the second point. Each developer have their way to do the
+things, but usually there are some points that can be fixed and sometimes
+because we don't know, other times just because we are lazy but we post code
+like this:</p>
 <div class="highlight"><pre><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="ow">and</span>
         <span class="n">request</span><span class="o">.</span><span class="n">user</span> <span class="ow">and</span>
@@ -132,7 +135,7 @@ improve. This is what, in my opinion should be more checked in the reviews.</p>
 <p>This was just an example (please, remember that :D), but could be improved with
 something like this:</p>
 <div class="highlight"><pre><span class="k">def</span> <span class="nf">proper_function_name</span><span class="p">(</span><span class="n">proper_variable_name</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;This is an amazing function that will do just this things.</span>
+    <span class="sd">&quot;&quot;&quot;This is an amazing function that will do just a thing.</span>
 
 <span class="sd">    :param proper_variable_name: what I am?</span>
 
@@ -151,7 +154,7 @@ something like this:</p>
     <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span>
         <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span>
             <span class="s">&#39;authorized&#39;</span><span class="p">:</span> <span class="n">is_authorized</span><span class="p">,</span>
-            <span class="s">&#39;proper_variable_name&#39;</span><span class="p">:</span> <span class="n">proper_var_name</span>
+            <span class="s">&#39;proper_variable_name&#39;</span><span class="p">:</span> <span class="n">proper_variable_name</span>
         <span class="p">})</span>
     <span class="p">)</span>
 </pre></div>
@@ -161,7 +164,8 @@ something like this:</p>
 autocompletion! :D</li>
 <li>Give a proper name to the vars.</li>
 <li>DOCUMENT! In this example, ready for Sphinx.</li>
-<li>Simplify the if statements, actually, after take a look you made it dissapear.</li>
+<li>Simplify the if statements, actually, after take a look you made it
+dissapear.</li>
 <li>One return.</li>
 </ol>
 <p>So, what's your opinion? What do you think that is more important in a

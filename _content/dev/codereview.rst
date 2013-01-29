@@ -43,7 +43,10 @@ For the point 3, yep, let me jump the second for now. Unit testing, integration
 testing, functional testing... whatever you want, but try to automate it. This
 + a CI server will make your live really "easy"!
 
-And finally, about the second point. Each developer have their way to do the things, but usually there are some points that can be fixed and sometimes because we don't know, other times just because we are lazy but we post code like this:
+And finally, about the second point. Each developer have their way to do the
+things, but usually there are some points that can be fixed and sometimes
+because we don't know, other times just because we are lazy but we post code
+like this:
 
 .. code-block:: python
 
@@ -65,7 +68,7 @@ something like this:
 .. code-block:: python
 
     def proper_function_name(proper_variable_name):
-        """This is an amazing function that will do just this things.
+        """This is an amazing function that will do just a thing.
 
         :param proper_variable_name: what I am?
 
@@ -84,7 +87,7 @@ something like this:
         return HttpResponse(
             json.dumps({
                 'authorized': is_authorized,
-                'proper_variable_name': proper_var_name
+                'proper_variable_name': proper_variable_name
             })
         )
 
@@ -94,7 +97,8 @@ Those were the improvements (again, remember that it's just an example):
    autocompletion! :D
 2. Give a proper name to the vars.
 3. DOCUMENT! In this example, ready for Sphinx.
-4. Simplify the if statements, actually, after take a look you made it dissapear.
+4. Simplify the if statements, actually, after take a look you made it
+   dissapear.
 5. One return.
 
 So, what's your opinion? What do you think that is more important in a
