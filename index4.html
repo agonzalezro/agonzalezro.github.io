@@ -74,6 +74,46 @@
       <div class="span8 offset2">
                 <section id="">
     <div class="page-header">
+      <h1><a href="./fix-low-wifi-speed-on-linux-ubuntu-with-chip-atheros-ar9285.html">Fix low wifi speed on Linux (Ubuntu) with chip Atheros AR9285</a></h1>
+      <span class="label label-success">by Álex</span>
+<span class="label label-success"><abbr class="published" title="2011-07-03T13:07:00">Sun 03 July 2011</abbr></span>
+<a class="label label-info" href="./category/linux.html">linux</a>
+  <a class="label" href="./tag/low-speed.html">low speed</a>
+  <a class="label" href="./tag/linux.html">linux</a>
+  <a class="label" href="./tag/atheros.html">atheros</a>
+  <a class="label" href="./tag/wifi.html">wifi</a>
+  <a class="label" href="./tag/ath9k.html">ath9k</a>
+  <a class="label" href="./tag/ubuntu.html">ubuntu</a>
+  <a class="label" href="./tag/ar9285.html">ar9285</a>
+    </div>
+    <p>I was very happer after buy my new computer Dell Vostro v130, but after
+install Linux on it I've realized that the download speed via WiFi was
+very slow! To solve this I found two &quot;solutions&quot;, one of them works, but
+the other not (for me).</p>
+<p>The solutions that didn't work is more easy, so I will start with it,
+you must install <tt class="docutils literal"><span class="pre">linux-backports-modules-net-natty-generic</span></tt>, you can do
+it via synaptic, ubuntu software center, aptitude, apt... I show you a
+screenshot doing it with ubuntu software center:</p>
+<a class="reference external image-reference" href="static/software_center.png"><img alt="static/software_center.png" class="align-center" src="static/software_center.png" style="width: 50%;" /></a>
+<p>The second &quot;solution&quot; is deactivate the hardware cryptography of the
+module, I don't know if this could cause security problems or instead
+use hardware it will use software crypt, anyway, it is the best
+solutions that I find until the moment.</p>
+<p>To do that, you must create the file <tt class="docutils literal">/etc/modprobe.d/ath9k.conf</tt> with
+the content: <tt class="docutils literal">options ath9k nohwcrypt=1</tt>, you can do it easily with:</p>
+<pre class="literal-block">
+echo &quot;options ath9k nohwcrypt=1&quot; &gt; /etc/modprobe.d/ath9k.conf
+</pre>
+<p>If you have any questions, or you find a better solution, please, let me
+know.</p>
+
+    <strong>
+      <p>There are <a href="./fix-low-wifi-speed-on-linux-ubuntu-with-chip-atheros-ar9285.html#disqus_thread">comments</a>.</p>    </strong>
+    </section>
+
+    
+      <section id="">
+    <div class="page-header">
       <h1><a href="./im-starting-to-hate-gnome-3.html">I'm starting to hate GNOME 3</a></h1>
       <span class="label label-success">by Álex</span>
 <span class="label label-success"><abbr class="published" title="2011-06-08T19:02:00">Wed 08 June 2011</abbr></span>
@@ -139,59 +179,6 @@ for p0rn, they are my personal documents only.</p>
       <p>There are <a href="./im-starting-to-hate-gnome-3.html#disqus_thread">comments</a>.</p>    </strong>
     </section>
 
-    
-      <section id="">
-    <div class="page-header">
-      <h1><a href="./how-to-install-gnome-3-instead-of-unity-on-ubuntu-1104.html">How-to install GNOME 3 instead of Unity on Ubuntu 11.04</a></h1>
-      <span class="label label-success">by Álex</span>
-<span class="label label-success"><abbr class="published" title="2011-06-08T18:28:00">Wed 08 June 2011</abbr></span>
-<a class="label label-info" href="./category/gnome.html">gnome</a>
-  <a class="label" href="./tag/unity.html">unity</a>
-  <a class="label" href="./tag/gnome3.html">gnome3</a>
-  <a class="label" href="./tag/desktop.html">desktop</a>
-  <a class="label" href="./tag/ubuntu.html">ubuntu</a>
-  <a class="label" href="./tag/gnome.html">gnome</a>
-    </div>
-    <p>I don't have anything against Unity, but sometimes I want to test, and
-this is one of this times.</p>
-<p>I don't know the reason (or perhaps I do), but install GNOME 3 on a
-ubuntu system isn't as easy as it must be.</p>
-<p>First of all we need to add the GNOME 3 repos, so, in a console (Alt+F2
-and then write gnome-terminal) you must write:</p>
-<pre class="literal-block">
-sudo add-apt-repository ppa:gnome3-team/gnome3
-</pre>
-<p>Then, we must update our system and install the gnome shell:</p>
-<pre class="literal-block">
-sudo apt-get updatesudo apt-get dist-upgradesudo apt-get install gnome-shell
-</pre>
-<p>After that, sometimes we have problems with the themes (you can reboot
-to test it, but I recommend you to follow this steps), so, we must
-remove the accesibility themes and install the new ones (and another
-program that we will need after that):</p>
-<pre class="literal-block">
-sudo apt-get remove gnome-accessibility-themessudo apt-get install gnome-themes-standard gnome-tweak-tool
-</pre>
-<p>Well... now, you can reboot your system and login with GNOME selected as
-session. You will see your new GNOME 3, but, we must tweak it, for this,
-you can push Alt+F2 and write:</p>
-<pre class="literal-block">
-gnome-tweak-tool
-</pre>
-<p>I recommend you to have this themes configuration (you can change the
-icons if you like) and activate the option on the first tab called &quot;Have
-file manager handle the desktop&quot;:</p>
-<a class="reference external image-reference" href="static/tweak_tool.png"><img alt="static/tweak_tool.png" class="align-center" src="static/tweak_tool.png" style="width: 50%;" /></a>
-<p>Good luck! And if you have any trouble, please, feel free to ask me in
-the comments!</p>
-<p>PS:&nbsp;<a class="reference external" href="http://twitter.com/marioquartz">&#64;marioquartz</a>&nbsp;wants to see the result, so here it is (click to
-enlarge)!</p>
-<a class="reference external image-reference" href="static/gnome3_desktop.png"><img alt="static/gnome3_desktop.png" class="align-center" src="static/gnome3_desktop.png" style="width: 50%;" /></a>
-
-    <strong>
-      <p>There are <a href="./how-to-install-gnome-3-instead-of-unity-on-ubuntu-1104.html#disqus_thread">comments</a>.</p>    </strong>
-    </section>
-
                 <div class="pagination"><ul>
     <li>    <a href="./index3.html">&laquo;</a>
   </li>
@@ -204,9 +191,11 @@ enlarge)!</p>
   </li>
     <li class="active">    <a href="./index4.html">4</a>
   </li>
+    <li >    <a href="./index5.html">5</a>
+  </li>
   
 
-      <li class="disabled"><a href="#"">&raquo;</a></li>
+      <li><a href="./index5.html">&raquo;</a></li>
   </ul></div>
         
         </div>

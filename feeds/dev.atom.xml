@@ -1,5 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Álex's blog</title><link href="http://agonzalezro.github.com/" rel="alternate"></link><link href="http://agonzalezro.github.com/feeds/dev.atom.xml" rel="self"></link><id>http://agonzalezro.github.com/</id><updated>2013-01-29T19:16:00+01:00</updated><entry><title>codereview from the POV of a noob</title><link href="http://agonzalezro.github.com/codereview-from-the-pov-of-a-noob.html" rel="alternate"></link><updated>2013-01-29T19:16:00+01:00</updated><author><name>Álex</name></author><id>tag:agonzalezro.github.com,2013-01-29:codereview-from-the-pov-of-a-noob.html</id><summary type="html">&lt;p&gt;Hi g(irl|uy)s! I would like to start with a disclaimer:&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Álex's blog</title><link href="http://agonzalezro.github.com/" rel="alternate"></link><link href="http://agonzalezro.github.com/feeds/dev.atom.xml" rel="self"></link><id>http://agonzalezro.github.com/</id><updated>2013-02-12T00:30:00+01:00</updated><entry><title>TechTalk: from python 2.x to python 3</title><link href="http://agonzalezro.github.com/techtalk-from-python-2x-to-python-3.html" rel="alternate"></link><updated>2013-02-12T00:30:00+01:00</updated><author><name>Álex</name></author><id>tag:agonzalezro.github.com,2013-02-12:techtalk-from-python-2x-to-python-3.html</id><summary type="html">&lt;div class="section" id="introduction"&gt;
+&lt;h2&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;This are some notes that I took while the talk that I saw today, the original
+title of the talk that I had the chance to see today was: &amp;quot;Switch to Python
+3... Now... Inmediately&amp;quot; by the &lt;a class="reference external" href="http://www.russel.org.uk"&gt;professor Russel Winder&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;More or less all that you will find here is a transaction, just ordered in my
+style and perhaps with some notes by myself.&lt;/p&gt;
+&lt;p&gt;Python 2.x remains being the default python. Too many people and organizations
+are afraid of the change.&lt;/p&gt;
+&lt;p&gt;Python software foundation should declare python 3 the default python
+immediately.&lt;/p&gt;
+&lt;div class="section" id="problems"&gt;
+&lt;h3&gt;Problems&lt;/h3&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;some big companies are telling people to don't use it.&lt;/li&gt;
+&lt;li&gt;some crucial projects are not using Python 3 yet.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="companies-and-people"&gt;
+&lt;h3&gt;Companies and people&lt;/h3&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;from the point of view of Russel, the problem are those companies that
+doesn't want to migrate, and not the fact that the code needs to be migrate.&lt;/li&gt;
+&lt;li&gt;at least they should have version 2 and 3 compatible on the codebase.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="migration"&gt;
+&lt;h3&gt;Migration&lt;/h3&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;2to3&lt;/tt&gt; tool is not useful at all. Just one shot transform tool.&lt;/li&gt;
+&lt;li&gt;the manual the better? From my POV (Álex) you can never let a machine this
+kind of work and it usually will be a biblical proportion job for large
+codebases. And more important... usually without tests :D&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="justifications"&gt;
+&lt;h2&gt;Justifications&lt;/h2&gt;
+&lt;p&gt;Python 2 is a dead end and python 3 is the developing future.&lt;/p&gt;
+&lt;p&gt;This piece of code is compatible with both versions, why don't use them?&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;exec&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Problem: &lt;tt class="docutils literal"&gt;print(x)&lt;/tt&gt; support multiple parameter in python 3, so, let's import
+the function from future to have the same behaviour in python 2.x:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;__future__&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;print_function&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Let's make it bigger:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;__future__&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;division&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;absolute_import&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;print_function&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;unicode_literals&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;With this we will avoid problems with floats on divisions, add &lt;cite&gt;.&lt;/cite&gt; to the
+imports, import the python3 version of print and work always with unicode.&lt;/p&gt;
+&lt;p&gt;Another problem is the list-comprehensions which will change a little bit,
+instead create list, they will create sets.&lt;/p&gt;
+&lt;div class="section" id="some-other-problems"&gt;
+&lt;h3&gt;Some other problems&lt;/h3&gt;
+&lt;p&gt;python 2 is strict, but python 3 is kinda lazy.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;map&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Will produce an iterator in python 3, in python 2 is a data structure.&lt;/p&gt;
+&lt;p&gt;This is one of the biggest issues into the migration, other functions with same
+problems will be, for example: &lt;tt class="docutils literal"&gt;items&lt;/tt&gt;, &lt;tt class="docutils literal"&gt;keys&lt;/tt&gt;, &lt;tt class="docutils literal"&gt;values&lt;/tt&gt;, &lt;tt class="docutils literal"&gt;iteritems&lt;/tt&gt;,
+&lt;tt class="docutils literal"&gt;iterkeys&lt;/tt&gt; &amp;amp; &lt;tt class="docutils literal"&gt;itervalues&lt;/tt&gt; which in python 3 will become: &lt;tt class="docutils literal"&gt;items&lt;/tt&gt;,
+&lt;tt class="docutils literal"&gt;keys&lt;/tt&gt; &amp;amp; &lt;tt class="docutils literal"&gt;values&lt;/tt&gt;.&lt;/p&gt;
+&lt;p&gt;If you want a data structure instead a iterator, you should make it manually:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c"&gt;# python 2.x&lt;/span&gt;
+&lt;span class="nb"&gt;tuple&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c"&gt;# python 3&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="concurrency"&gt;
+&lt;h3&gt;Concurrency&lt;/h3&gt;
+&lt;p&gt;At least IronPython and Jython do not have a &lt;a class="reference external" href="http://wiki.python.org/moin/GlobalInterpreterLock"&gt;GIL&lt;/a&gt; as CPython and PyPy do.&lt;/p&gt;
+&lt;p&gt;There is an experiment to mode GIL out of PyPy.&lt;/p&gt;
+&lt;dl class="docutils"&gt;
+&lt;dt&gt;Actors&lt;/dt&gt;
+&lt;dd&gt;communicate processes with messages.&lt;/dd&gt;
+&lt;dt&gt;Dataflow&lt;/dt&gt;
+&lt;dd&gt;operators connected by channels with activity triggered by arrival of data on
+the channels.&lt;/dd&gt;
+&lt;dt&gt;CSP&lt;/dt&gt;
+&lt;dd&gt;we have &lt;a class="reference external" href="http://code.google.com/p/pycsp/"&gt;PyCSP&lt;/a&gt; and &lt;a class="reference external" href="https://github.com/python-concurrency/python-csp"&gt;PythonCSP&lt;/a&gt;.&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;/div&gt;
+&lt;div class="section" id="data-parallelism"&gt;
+&lt;h3&gt;Data parallelism&lt;/h3&gt;
+&lt;p&gt;Transform a sequence to another sequence where all individual actions happen at
+the same time. Python has not a lot of utilities for that, since Go or D do.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="futures-are-the-future"&gt;
+&lt;h3&gt;Futures are the future&lt;/h3&gt;
+&lt;dl class="docutils"&gt;
+&lt;dt&gt;&lt;cite&gt;concurrent.futures&lt;/cite&gt;&lt;/dt&gt;
+&lt;dd&gt;python 3.2 package to abstract over threads and processes to give an
+asynchronous function call and future system.&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="under-challengue"&gt;
+&lt;h2&gt;Under challengue&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Go is taking over from Python, because it's native and it has a solid concurrency models (CSP).&lt;/li&gt;
+&lt;li&gt;D is on the market too.&lt;/li&gt;
+&lt;li&gt;Native programs are almost always quicker than python.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="funny-points"&gt;
+&lt;h2&gt;Funny points&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;One rule of the guy is to use one month a year just &lt;tt class="docutils literal"&gt;ed&lt;/tt&gt; no &lt;tt class="docutils literal"&gt;vim&lt;/tt&gt; or
+&lt;tt class="docutils literal"&gt;emacs&lt;/tt&gt; rubbish.&lt;/li&gt;
+&lt;li&gt;C has a rubbish syntax in comparison with Python. You will touch your head
+if you check some C++ code: why!?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</summary><category term="python"></category><category term="migration"></category><category term="python3k"></category></entry><entry><title>codereview from the POV of a noob</title><link href="http://agonzalezro.github.com/codereview-from-the-pov-of-a-noob.html" rel="alternate"></link><updated>2013-01-29T19:16:00+01:00</updated><author><name>Álex</name></author><id>tag:agonzalezro.github.com,2013-01-29:codereview-from-the-pov-of-a-noob.html</id><summary type="html">&lt;p&gt;Hi g(irl|uy)s! I would like to start with a disclaimer:&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;I am not (and I don't pretend to be) a craftmanship trooper (they like to be
 called like that isn't?), senior engineer with more years of experience that
 the technology has, guru, blablabla...&lt;/em&gt;&lt;/p&gt;
