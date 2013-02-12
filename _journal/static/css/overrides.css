@@ -1,7 +1,10 @@
 body {
   padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+}
+
+p, dl, ul, ol {
   line-height: 1.5em;
-  font-size: 1.2em;
+  font-size: 1.1em;
 }
 
 section {
