@@ -1,5 +1,5 @@
-DJUGL: Inside Lanyrd architecture (Andry)
-=========================================
+DJUGL: Inside Lanyrd architecture
+=================================
 
 :date: 2013-12-3 20:30
 :tags: djugl, march, lanyrd, django, solr, celery, postgresql, redis, mongodb,

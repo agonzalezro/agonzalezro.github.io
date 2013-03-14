@@ -1,5 +1,5 @@
-DJGUL: What's new on Django 1.5 (Marc Tamlyn)
-=============================================
+DJGUL: What's new on Django 1.5
+===============================
 
 :date: 2013-12-3 21:30
 :tags: djugl, march, django, 1.5
