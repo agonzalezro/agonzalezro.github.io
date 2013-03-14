@@ -1,7 +1,7 @@
 DJUGL: Advanced python trought Django: Metaclasses
 ==================================================
 
-:date: 2013-12-3 20:00
+:date: 2013-3-12 20:00
 :tags: djugl, march, django, python, metaclass
 
 This talk was made by Peter Ingles, you can check his twitter here: `@inglesp
