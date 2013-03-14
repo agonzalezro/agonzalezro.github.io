@@ -1,5 +1,387 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Álex's blog</title><link href="http://agonzalezro.github.com/" rel="alternate"></link><link href="http://agonzalezro.github.com/feeds/all-en.atom.xml" rel="self"></link><id>http://agonzalezro.github.com/</id><updated>2013-02-12T00:30:00+01:00</updated><entry><title>TechTalk: from python 2.x to python 3</title><link href="http://agonzalezro.github.com/techtalk-from-python-2x-to-python-3.html" rel="alternate"></link><updated>2013-02-12T00:30:00+01:00</updated><author><name>Álex</name></author><id>tag:agonzalezro.github.com,2013-02-12:techtalk-from-python-2x-to-python-3.html</id><summary type="html">&lt;div class="section" id="introduction"&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Álex's blog</title><link href="http://agonzalezro.github.com/" rel="alternate"></link><link href="http://agonzalezro.github.com/feeds/all-en.atom.xml" rel="self"></link><id>http://agonzalezro.github.com/</id><updated>2013-12-03T21:30:00+01:00</updated><entry><title>DJGUL: What's new on Django 1.5 (Marc Tamlyn)</title><link href="http://agonzalezro.github.com/djgul-whats-new-on-django-15-marc-tamlyn.html" rel="alternate"></link><updated>2013-12-03T21:30:00+01:00</updated><author><name>Álex</name></author><id>tag:agonzalezro.github.com,2013-12-03:djgul-whats-new-on-django-15-marc-tamlyn.html</id><summary type="html">&lt;p&gt;In this talk Marc Tamlyn (&lt;a class="reference external" href="https://twitter.com/mjtamlyn"&gt;&amp;#64;mjtamlyn&lt;/a&gt;) was
+explained to us what where all the change in the new &amp;quot;major&amp;quot; version of django,
+django 1.5.&lt;/p&gt;
+&lt;p&gt;As always you can find the original talks in Internet:
+&lt;a class="reference external" href="https://speakerdeck.com/mjtamlyn/whats-new-in-django-1-dot-5"&gt;https://speakerdeck.com/mjtamlyn/whats-new-in-django-1-dot-5&lt;/a&gt;&lt;/p&gt;
+&lt;div class="section" id="major-changes"&gt;
+&lt;h2&gt;Major changes&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Pluggable user models. Which means that you will need some proxy classes
+magic or similar to extend your users.&lt;/li&gt;
+&lt;li&gt;Python 3 support.&lt;/li&gt;
+&lt;li&gt;Security improvements.&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;StreamingHTTPResponse&lt;/tt&gt;.&lt;/li&gt;
+&lt;li&gt;The {% url %} tag change his behaviour. It seems that using &lt;tt class="docutils literal"&gt;future&lt;/tt&gt; you
+can had this behaviour before (1.3?) but... who use &lt;tt class="docutils literal"&gt;future&lt;/tt&gt;? :)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You can see a better explanation of this points here:&lt;/p&gt;
+&lt;div class="section" id="pluggable-user-models"&gt;
+&lt;h3&gt;Pluggable user models&lt;/h3&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Solution to schema chnages on the default user model.&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;AUTH_PROFILE_MODEL&lt;/tt&gt; becomes &lt;tt class="docutils literal"&gt;AUTH_USER_MODEL&lt;/tt&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This was a problem since 2014 when Django was created.&lt;/p&gt;
+&lt;p&gt;If you want to change something this is your first start point:
+&lt;tt class="docutils literal"&gt;auth.models.AbstractUser&lt;/tt&gt;. If you want to go one step forward:
+&lt;tt class="docutils literal"&gt;auth.models.PermissionMixin&lt;/tt&gt; &amp;amp; &lt;tt class="docutils literal"&gt;auth.models.AbstractBaseUse&lt;/tt&gt;.&lt;/p&gt;
+&lt;p&gt;You can override &lt;tt class="docutils literal"&gt;USERNAME_FIELD&lt;/tt&gt; too, to override the standard username
+field of the model.&lt;/p&gt;
+&lt;p&gt;&lt;tt class="docutils literal"&gt;contrib.admin&lt;/tt&gt; integration. Which I didn't try yet (Álex) but if it works as
+they said, it should be just amazing!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="python-3"&gt;
+&lt;h3&gt;Python 3&lt;/h3&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;3.2 and 3.3 supported, but python 2.5 was gone.&lt;/li&gt;
+&lt;li&gt;Not yet &amp;quot;production ready&amp;quot;. You will probably be ok, but it's up to you to
+give it a chance.&lt;/li&gt;
+&lt;li&gt;Upgrade your third party apps! You will be able to import compatibility apps
+from django that will help you using this apps.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Caveats&lt;/strong&gt;: MySQL, PIL, Selenium... this all need to be migrated also :(&lt;/p&gt;
+&lt;p&gt;Armin (&lt;a class="reference external" href="https://twitter.com/mitsuhiko"&gt;&amp;#64;mitsuhiko&lt;/a&gt;) said that PIL is already
+supported o/&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="security"&gt;
+&lt;h3&gt;Security&lt;/h3&gt;
+&lt;p&gt;&lt;tt class="docutils literal"&gt;ALLOWED_HOSTS&lt;/tt&gt; is a whitelist backported to django 1.3.x and 1.4.x but
+required in 1.5.&lt;/p&gt;
+&lt;p&gt;You can read the django documentation about this here:
+&lt;a class="reference external" href="https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts"&gt;https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="streaminghttpresponse"&gt;
+&lt;h3&gt;StreamingHTTPResponse&lt;/h3&gt;
+&lt;p&gt;Fixes the handling of streaming http responses. Instead use the normal
+&lt;tt class="docutils literal"&gt;.content&lt;/tt&gt; you need to use &lt;tt class="docutils literal"&gt;streamed_content&lt;/tt&gt; if you want to access to the
+content.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="url"&gt;
+&lt;h3&gt;{% url %}&lt;/h3&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;The API was wrong, it was fixed in 1.3 loading from future... but hey, who made that? :)&lt;/li&gt;
+&lt;li&gt;Old style is actually gone now.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="more-new-things"&gt;
+&lt;h2&gt;More new things&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Caching of related model instances... this will transparently improve the
+performance of your site a lot. It was one of the biggest causes of delay on
+this new django version.&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;update_fields&lt;/tt&gt; is a new variable received on the save method that allows you
+to know what are the fileds that has changed.&lt;/li&gt;
+&lt;li&gt;PostGIS 2.0 is supported now.&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;{% verbatim %}&lt;/tt&gt; that allows a little bit more easy javascript (for
+example) development in django templates.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="backwards-incompatibilities-perhaps"&gt;
+&lt;h2&gt;Backwards incompatibilities (perhaps)&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Context in various class views can break.&lt;/li&gt;
+&lt;li&gt;Simplejson could cause incompatibilities since python 2.5 was removed from
+django compatibility.&lt;/li&gt;
+&lt;li&gt;Session not saved on 500 errors.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="section" id="testing"&gt;
+&lt;h3&gt;Testing&lt;/h3&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;OPTIONS&lt;/tt&gt;, &lt;tt class="docutils literal"&gt;PUT&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;DELETE&lt;/tt&gt;.&lt;/li&gt;
+&lt;li&gt;DB flushing, it was move from the end of the test to the beginning of the test.&lt;/li&gt;
+&lt;li&gt;Ordering of test executing changes, this shouldn't matter because your test
+will be always non dependant, right?&lt;/li&gt;
+&lt;li&gt;contrib.localflavor has some changes too.&lt;/li&gt;
+&lt;li&gt;contrib.markup usually marked all at safe and hope for the best, now it's not
+doing it.&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;django-admin.py&lt;/span&gt; cleanup&lt;/tt&gt; clear up the sessions, actually, now it's called
+&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;django-admin.py&lt;/span&gt; clearsessions&lt;/tt&gt;.&lt;/li&gt;
+&lt;li&gt;depth argument to select related, to don't follow all the possible joins.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="nice-things-you-may-have-missed"&gt;
+&lt;h2&gt;Nice things you may have missed&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;LOGIN_URL&lt;/tt&gt; can be an url name now, and django will make the &lt;tt class="docutils literal"&gt;reverse()&lt;/tt&gt;
+for you.&lt;/li&gt;
+&lt;li&gt;True, False and None in templates.&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;user_login_failed&lt;/tt&gt; signal.&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;assertXMLEqual()&lt;/tt&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;index_together&lt;/tt&gt;, create a indexes with several fields.&lt;/li&gt;
+&lt;li&gt;admin lists customisable by request.&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;django.utils.text.slugify&lt;/tt&gt; get an string in and returns an slug for you.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</summary><category term="djugl"></category><category term="march"></category><category term="django"></category><category term="1.5"></category></entry><entry><title>DJUGL: Inside Lanyrd architecture (Andry)</title><link href="http://agonzalezro.github.com/djugl-inside-lanyrd-architecture-andry.html" rel="alternate"></link><updated>2013-12-03T20:30:00+01:00</updated><author><name>Álex</name></author><id>tag:agonzalezro.github.com,2013-12-03:djugl-inside-lanyrd-architecture-andry.html</id><summary type="html">&lt;p&gt;This talk was just amazing! Andrew Godwin (&lt;cite&gt;&amp;#64;andrewgodwin
+&amp;lt;http://twitter.com/andrewgodwin&amp;gt;&lt;/cite&gt; or &lt;a class="reference external" href="http://areacode.org"&gt;http://areacode.org&lt;/a&gt;) gave us a talk about
+the internal architecture that they are using at &lt;a class="reference external" href="http://lanyrd.com"&gt;lanyrd.com&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I would say 2 things:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Even before that talk I was using lanyrd, it's a really good service if you
+are organizing some kind of event.&lt;/li&gt;
+&lt;li&gt;At &lt;a class="reference external" href="http://greenmangaming.com"&gt;GreenManGaming&lt;/a&gt; we are using a very similar
+infrastructure, which I think that means that when 2 different companies
+without any relation are sharing so many layers, it should be good!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;After this lines you will fine almost a C&amp;amp;P of the Andrew slide that you can
+find here: &lt;a class="reference external" href="https://speakerdeck.com/andrewgodwin/inside-lanyrds-architecture"&gt;https://speakerdeck.com/andrewgodwin/inside-lanyrds-architecture&lt;/a&gt;,
+but there are some additional notes added by me.&lt;/p&gt;
+&lt;div class="section" id="the-origin-story"&gt;
+&lt;h2&gt;The Origin Story&lt;/h2&gt;
+&lt;p&gt;They launch in Aug'10 and after half an hour going down because the load was
+too high&lt;/p&gt;
+&lt;p&gt;In Sep'11 they got some inversion that allows them to start with the curren
+architecture.&lt;/p&gt;
+&lt;p&gt;The ecosystem that they need to take care of:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;conferences&lt;/li&gt;
+&lt;li&gt;profile pages&lt;/li&gt;
+&lt;li&gt;emails&lt;/li&gt;
+&lt;li&gt;dashboard&lt;/li&gt;
+&lt;li&gt;coverage&lt;/li&gt;
+&lt;li&gt;topics&lt;/li&gt;
+&lt;li&gt;guides&lt;/li&gt;
+&lt;li&gt;mobile app&lt;/li&gt;
+&lt;li&gt;...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;And all this with just 6 technical guys! That know this:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;You don't need a big team to write a complex product.&lt;/li&gt;
+&lt;li&gt;Communication is absolutely key.&lt;/li&gt;
+&lt;li&gt;Using Open Source well is also crucial.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="what-they-run-on"&gt;
+&lt;h2&gt;What they run on&lt;/h2&gt;
+&lt;p&gt;Almost all the site is written in django with some spices:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;celery for the background tasks.&lt;/li&gt;
+&lt;li&gt;management cron jobs.&lt;/li&gt;
+&lt;li&gt;served by Gunicorn containers.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The main services that you can find on, are this:&lt;/p&gt;
+&lt;div class="section" id="postresql"&gt;
+&lt;h3&gt;PostreSQL&lt;/h3&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;main data store for everythin except upload
+master &amp;amp; replicated
+around 80G in 5 DBs
+each server run in RAID1&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="redis"&gt;
+&lt;h3&gt;Redis&lt;/h3&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Task queue transport for Celery and tweet listeners,&lt;/li&gt;
+&lt;li&gt;Contains user sets for every conference, user and topic.&lt;/li&gt;
+&lt;li&gt;Used for efficient narrowing of queries before Solr is hit,&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="solr"&gt;
+&lt;h3&gt;Solr&lt;/h3&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Stores conferences, users, sessions and more...&lt;/li&gt;
+&lt;li&gt;Very rich metada on each item.&lt;/li&gt;
+&lt;li&gt;Heavy use of sharding throughout the site.&lt;/li&gt;
+&lt;li&gt;They run Solr in master and replicated slave.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="varnish"&gt;
+&lt;h3&gt;Varnish&lt;/h3&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;First point of call for all requests.&lt;/li&gt;
+&lt;li&gt;Caches most anonymous requests.&lt;/li&gt;
+&lt;li&gt;Enforces read-only mode if enabled.&lt;/li&gt;
+&lt;li&gt;One used an one hot spare at all times.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="haproxy"&gt;
+&lt;h3&gt;HAProxy&lt;/h3&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Sits behind Varnish.&lt;/li&gt;
+&lt;li&gt;Distributes load amongst frontend servers.&lt;/li&gt;
+&lt;li&gt;Re-routes request during deploys.&lt;/li&gt;
+&lt;li&gt;They always have 2 up identically configured.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="s3"&gt;
+&lt;h3&gt;S3&lt;/h3&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Stores all uploaded files from users.&lt;/li&gt;
+&lt;li&gt;Uploads forms post directly to S3.&lt;/li&gt;
+&lt;li&gt;Servers all static assets for the site (images, Css, JS).&lt;/li&gt;
+&lt;li&gt;Static assets are versioned with hash to help cache break.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="what-they-have-eliminated"&gt;
+&lt;h2&gt;What they have eliminated&lt;/h2&gt;
+&lt;p&gt;It's a shame because I am reading it in several places, but it seems that after
+the hype a lot of companies are eliminating MongoDB from their backends.&lt;/p&gt;
+&lt;div class="section" id="mongodb"&gt;
+&lt;h3&gt;MongoDB&lt;/h3&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Stored analytics, logs and some other data.&lt;/li&gt;
+&lt;li&gt;Lack of schema meant some bad data persisted.
+poor complex query performance.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Nevertheless they think that it's a really useful tool for quick prototyping.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="mysql"&gt;
+&lt;h3&gt;MySQL&lt;/h3&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Primary data store for things that where not stored in MongoDB.&lt;/li&gt;
+&lt;li&gt;Very poor complex query performance.&lt;/li&gt;
+&lt;li&gt;No advances field types.&lt;/li&gt;
+&lt;li&gt;Full database locks during schema changes.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="the-great-move-of-2012"&gt;
+&lt;h2&gt;The great move of 2012&lt;/h2&gt;
+&lt;p&gt;They move from EC2 to Softlayer basically because it's real hardware, if
+something fail, just change it).
+From MySQL to PostgreSQL for the reasons that he explained before.&lt;/p&gt;
+&lt;div class="section" id="why"&gt;
+&lt;h3&gt;Why?&lt;/h3&gt;
+&lt;p&gt;It seems that lanyrd has a very predictable traffic, they can know months in
+advanced what is the expected load.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="how"&gt;
+&lt;h3&gt;How&lt;/h3&gt;
+&lt;p&gt;Both moves required database downtime, couple of tables were really big, any
+change on that table means around 20-30min of downtime.&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Replicate Solr and Redis across to new servers.&lt;/li&gt;
+&lt;li&gt;Enter RO mode.&lt;/li&gt;
+&lt;li&gt;Dump MySQL data.&lt;/li&gt;
+&lt;li&gt;Convert MySQL dump into PostgreSQL dump.&lt;/li&gt;
+&lt;li&gt;Load PostgresSQL dump.&lt;/li&gt;
+&lt;li&gt;Re-point DNS, proxy request from old server.&lt;/li&gt;
+&lt;li&gt;Exit RO mode.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;After all this process they can say that they have been 1 hour and a half in Read Only mode but without any downtime at all.&lt;/p&gt;
+&lt;p&gt;From their experience, the advantages of have a content site are that the RO
+mode is completely viable. They logged out all the people from the site and in
+the mean time Varnish was blocking all the POST request &amp;amp; cache aggressively.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="always-be-deploying"&gt;
+&lt;h2&gt;Always be deploying&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;They deploy at least 5 times a day, if not 20.&lt;/li&gt;
+&lt;li&gt;Nearly all code goes into master or short-lived branches.&lt;/li&gt;
+&lt;li&gt;Anything released is feature flagged.&lt;ul&gt;
+&lt;li&gt;simple named boolean toggles.&lt;/li&gt;
+&lt;li&gt;settable by user, user tag, or conference.&lt;/li&gt;
+&lt;li&gt;can change templates, view code, URLs, etc...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Just a quick note: if you had never used this feature you should try something
+like &lt;a class="reference external" href="https://github.com/disqus/gargoyle"&gt;gargoyle&lt;/a&gt;. It's just amazing to
+deploy some functionalities to just some of your users. I don't know what they
+are using, but if it's not this, it should be something similar.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="legacy-code-decisions"&gt;
+&lt;h2&gt;Legacy code &amp;amp; decisions&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;It's fine to have some legacy code. It can speed thing ups.&lt;/li&gt;
+&lt;li&gt;A good chunk of their legacy code is gone, some remains (I would say like in
+all the big projects :D).&lt;/li&gt;
+&lt;li&gt;Big schema change get harder and harder.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Awareness (every ppl know what is going on) &amp;amp; always deployable (master branch always shippable).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="small-and-nimble"&gt;
+&lt;h2&gt;Small and nimble&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Continue deployment and development style allows easy project changing&lt;/li&gt;
+&lt;li&gt;No long approval processes.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="fix-it-while-you-can"&gt;
+&lt;h2&gt;Fix it while you can&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;The bigger you get, the harder a fix.&lt;/li&gt;
+&lt;li&gt;They moved to PostgreSQL just in time.&lt;/li&gt;
+&lt;li&gt;Big schema changes now take days of coding.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</summary><category term="djugl"></category><category term="march"></category><category term="lanyrd"></category><category term="django"></category><category term="solr"></category><category term="celery"></category><category term="postgresql"></category><category term="redis"></category><category term="mongodb"></category><category term="mysql"></category><category term="varnish"></category><category term="haproxy"></category><category term="s3"></category></entry><entry><title>DJUGL: Advanced python trought Django: Metaclasses</title><link href="http://agonzalezro.github.com/djugl-advanced-python-trought-django-metaclasses.html" rel="alternate"></link><updated>2013-12-03T20:00:00+01:00</updated><author><name>Álex</name></author><id>tag:agonzalezro.github.com,2013-12-03:djugl-advanced-python-trought-django-metaclasses.html</id><summary type="html">&lt;p&gt;This talk was made by Peter Ingles, you can check his twitter here: &lt;a class="reference external" href="http://twitter.com/inglesp"&gt;&amp;#64;inglesp&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;What is write above is basically what he said, mixed with some of my thoughts.
+The talk was really good, and even using metaclasses almost daily
+(&lt;tt class="docutils literal"&gt;forms.Form&lt;/tt&gt;) you don't feel the power of them until somebody explain it to
+you (shame on me!).&lt;/p&gt;
+&lt;p&gt;In all the Peter example we was using Django 1.4.&lt;/p&gt;
+&lt;p&gt;The typical example as I said before is &lt;tt class="docutils literal"&gt;forms.Form&lt;/tt&gt; from django.&lt;/p&gt;
+&lt;p&gt;For some reason, Peter was in love with the Ponies, so, he tried to create some
+meta stable:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;A&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Model&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Meta&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;app_label&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;ponies&amp;#39;&lt;/span&gt;
+        &lt;span class="n"&gt;abstract&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Stable&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Models&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Meta&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;app_label&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;ponies&amp;#39;&lt;/span&gt;
+    &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CharField&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;stable&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ForeignKey&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Stable&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="section" id="create-classes-dinamycally"&gt;
+&lt;h2&gt;Create classes dinamycally:&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;init&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;
+
+&lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;ExampleClass&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;bases&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;attrs&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;#39;__init__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;init&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="n"&gt;instance&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;type&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;bases&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;attrs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This is a pretty coold way to create classes at runtime.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="type"&gt;
+&lt;h2&gt;type&lt;/h2&gt;
+&lt;p&gt;I don't know you, but I was always using &lt;tt class="docutils literal"&gt;type&lt;/tt&gt; just for the type comparation,
+but never for create classes...&lt;/p&gt;
+&lt;p&gt;Some &amp;quot;strange&amp;quot; (puzzling) things about &lt;tt class="docutils literal"&gt;type&lt;/tt&gt; is that &lt;tt class="docutils literal"&gt;type&lt;/tt&gt; is a class of type
+type:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;type&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;type&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;type&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;type&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;And we can subclass &lt;tt class="docutils literal"&gt;type&lt;/tt&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;A&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;type&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;pass&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="python-3"&gt;
+&lt;h2&gt;Python 3&lt;/h2&gt;
+&lt;p&gt;The syntax to create a metaclass is sightly different:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Form&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;metaclass&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;Formtype&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="o"&gt;...&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="key-takeaways"&gt;
+&lt;h2&gt;Key takeaways&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;classes are factories for creating objects.&lt;/li&gt;
+&lt;li&gt;we can create classes dynamically at runtime.&lt;/li&gt;
+&lt;li&gt;metaclasses are factories for creating classes.&lt;/li&gt;
+&lt;li&gt;we can control what happens when we create classes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="the-slides"&gt;
+&lt;h2&gt;The slides&lt;/h2&gt;
+&lt;p&gt;You can find the interactive talk of Peter in his github account:
+&lt;a class="reference external" href="http://github.com/inglesp/prescons"&gt;http://github.com/inglesp/prescons&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Enjoy them!&lt;/p&gt;
+&lt;/div&gt;
+</summary><category term="djugl"></category><category term="march"></category><category term="django"></category><category term="python"></category><category term="metaclass"></category></entry><entry><title>TechTalk: from python 2.x to python 3</title><link href="http://agonzalezro.github.com/techtalk-from-python-2x-to-python-3.html" rel="alternate"></link><updated>2013-02-12T00:30:00+01:00</updated><author><name>Álex</name></author><id>tag:agonzalezro.github.com,2013-02-12:techtalk-from-python-2x-to-python-3.html</id><summary type="html">&lt;div class="section" id="introduction"&gt;
 &lt;h2&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;This are some notes that I took while the talk that I saw today, the original
 title of the talk that I had the chance to see today was: &amp;quot;Switch to Python

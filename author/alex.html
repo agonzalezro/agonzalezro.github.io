@@ -59,6 +59,7 @@
                                           <li ><a href="../category/gnome.html">gnome</a></li>
                                           <li ><a href="../category/linux.html">linux</a></li>
                                           <li ><a href="../category/pygrunn.html">pygrunn</a></li>
+                                          <li ><a href="../category/talks.html">talks</a></li>
                                           <li ><a href="../category/vim.html">vim</a></li>
                                       </ul>
                 </li>
@@ -287,6 +288,106 @@ screenshots feel free too!</p>
       <p>There are <a href="../best-vim-colors-ever.html#disqus_thread">comments</a>.</p>    </strong>
     </section>
 
+    
+      <section id="">
+    <div class="page-header">
+      <h1><a href="../codereview-from-the-pov-of-a-noob.html">codereview from the POV of a noob</a></h1>
+      <span class="label label-success">by Álex</span>
+<span class="label label-success"><abbr class="published" title="2013-01-29T19:16:00">Tue 29 January 2013</abbr></span>
+<a class="label label-info" href="../category/dev.html">dev</a>
+  <a class="label" href="../tag/codereview.html">codereview</a>
+  <a class="label" href="../tag/python.html">python</a>
+    </div>
+    <p>Hi g(irl|uy)s! I would like to start with a disclaimer:</p>
+<p><em>I am not (and I don't pretend to be) a craftmanship trooper (they like to be
+called like that isn't?), senior engineer with more years of experience that
+the technology has, guru, blablabla...</em></p>
+<p><em>I just want to show my opinion about this process (which I really like!). But
+more important that share my opinion, is to know what is yours, so, please,
+comment!</em></p>
+<p>Today we had an interesting conversation at work about how we make and how we
+should make our codereviews. My point of view is that there are three different
+things to check:</p>
+<ol class="arabic simple">
+<li><strong>Code syntax.</strong> It's a part that should be 100% automagically done. I
+usually work with python and I let this work to <a class="reference external" href="http://pypi.python.org/pypi/flake8">Flake8</a> on vim, but it's
+always good to have a <cite>git</cite> hook.</li>
+<li><strong>Reusability and maintainability.</strong> I am afraid that this is the worst part
+to check, it's a manual process and it is really subjective. Some people can
+think that use <cite>itertools</cite> with 2 lambda functions is pretty clear and
+comprehensible, other people can think that this code is the result of a
+dirty mind developer.</li>
+<li><strong>Functionality.</strong> Automated test! All the test that you can, and of course,
+they worst the time that you will spent developing them. There are things
+that can not be easily tested but in that case let's suppose that you were
+clever enough to test them manually and in the case that is possible you
+can show it to anybody else (this really helps!).</li>
+</ol>
+<p>As I said the point 1 can be (and should be) automated! It's really easy to do,
+the same way that <a class="reference external" href="http://pypi.python.org/pypi/flake8">Flake8</a> exists for python, I am pretty sure that you will
+have one for your favourite language. It's really painful get back a pull
+request just for some spaces that are not in place.</p>
+<p>For the point 3, yep, let me jump the second for now. Unit testing, integration
+testing, functional testing... whatever you want, but try to automate it. This
++ a CI server will make your live really &quot;easy&quot;!</p>
+<p>And finally, about the second point. Each developer have their way to do the
+things, but usually there are some points that can be fixed and sometimes
+because we don't know, other times just because we are lazy but we post code
+like this:</p>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="ow">and</span>
+        <span class="n">request</span><span class="o">.</span><span class="n">user</span> <span class="ow">and</span>
+        <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">()</span> <span class="ow">and</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">has_perm</span><span class="p">(</span><span class="s">&#39;write&#39;</span><span class="p">)</span>
+    <span class="p">):</span>
+        <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="s">&#39;{authorized: True, &#39;</span><span class="n">a</span><span class="s">&#39;: a}))</span>
+    <span class="k">if</span> <span class="n">a</span> <span class="o">&gt;=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="s">&#39;{authorized: True, &#39;</span><span class="n">a</span><span class="s">&#39;: a}))</span>
+</pre></div>
+<p>This is just an example, but you should agree with me that it's really easy to
+improve. This is what, in my opinion should be more checked in the reviews.</p>
+<p>This was just an example (please, remember that :D), but could be improved with
+something like this:</p>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">proper_function_name</span><span class="p">(</span><span class="n">proper_variable_name</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This is an amazing function that will do just a thing.</span>
+
+<span class="sd">    :param proper_variable_name: what I am?</span>
+
+<span class="sd">    :returns: An HttpResponse object with the following JSON content:</span>
+
+<span class="sd">        {&#39;authorized&#39;: bool,</span>
+<span class="sd">         &#39;proper_variable_name: int}</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">is_authorized</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">request</span><span class="o">.</span><span class="n">user</span> <span class="ow">and</span>
+        <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">()</span> <span class="ow">and</span>
+        <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">has_perm</span><span class="p">(</span><span class="s">&#39;write-resource&#39;</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span>
+        <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span>
+            <span class="s">&#39;authorized&#39;</span><span class="p">:</span> <span class="n">is_authorized</span><span class="p">,</span>
+            <span class="s">&#39;proper_variable_name&#39;</span><span class="p">:</span> <span class="n">proper_variable_name</span>
+        <span class="p">})</span>
+    <span class="p">)</span>
+</pre></div>
+<p>Those were the improvements (again, remember that it's just an example):</p>
+<ol class="arabic simple">
+<li>Give a proper name to the function. Don't be afraid, everybody has
+autocompletion! :D</li>
+<li>Give a proper name to the vars.</li>
+<li>DOCUMENT! In this example, ready for Sphinx.</li>
+<li>Simplify the if statements, actually, after take a look you made it
+dissapear.</li>
+<li>One return.</li>
+</ol>
+<p>So, what's your opinion? What do you think that is more important in a
+codereview.</p>
+
+    <strong>
+      <p>There are <a href="../codereview-from-the-pov-of-a-noob.html#disqus_thread">comments</a>.</p>    </strong>
+    </section>
+
                 <div class="pagination"><ul>
       <li class="disabled"><a href="#">&laquo;</a></li>
   
@@ -297,8 +398,6 @@ screenshots feel free too!</p>
     <li >    <a href="../author/alex3.html">3</a>
   </li>
     <li >    <a href="../author/alex4.html">4</a>
-  </li>
-    <li >    <a href="../author/alex5.html">5</a>
   </li>
   
 

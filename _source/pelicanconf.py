@@ -9,7 +9,7 @@ TIMEZONE = 'Europe/Paris'
 
 DEFAULT_LANG = 'en'
 
-DEFAULT_PAGINATION = 2
+DEFAULT_PAGINATION = 3
 
 TWITTER_USERNAME = 'agonzalezro'
 

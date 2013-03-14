@@ -59,6 +59,7 @@
                                           <li ><a href="../category/gnome.html">gnome</a></li>
                                           <li ><a href="../category/linux.html">linux</a></li>
                                           <li ><a href="../category/pygrunn.html">pygrunn</a></li>
+                                          <li ><a href="../category/talks.html">talks</a></li>
                                           <li ><a href="../category/vim.html">vim</a></li>
                                       </ul>
                 </li>
@@ -306,16 +307,160 @@ codereview.</p>
       <p>There are <a href="../codereview-from-the-pov-of-a-noob.html#disqus_thread">comments</a>.</p>    </strong>
     </section>
 
+    
+      <section id="">
+    <div class="page-header">
+      <h1><a href="../backbonejs-underscore-small-intro.html">backbone.js + underscore: small intro</a></h1>
+      <span class="label label-success">by Álex</span>
+<span class="label label-success"><abbr class="published" title="2012-11-01T00:30:00">Thu 01 November 2012</abbr></span>
+<a class="label label-info" href="../category/dev.html">dev</a>
+  <a class="label" href="../tag/backbone.html">backbone</a>
+  <a class="label" href="../tag/undercore.html">undercore</a>
+  <a class="label" href="../tag/javascript.html">javascript</a>
+  <a class="label" href="../tag/gui.html">gui</a>
+    </div>
+    <p>Today, <a class="reference external" href="http://twitter.com/olegpidsadnyi/">Oleg</a> gave a talk about backbone at
+<a class="reference external" href="http://paylogic.nl/">Paylogic</a>. We were using it for a really fancy
+application inside our backoffice, it was quite funny write it and Oleg
+decided to share the knowledge.</p>
+<p>I used the techtalk to take some notes and, since this piece of code will
+have no sense out of our backoffice, I've written a small example that you can
+find as a <a class="reference external" href="https://gist.github.com/3982819">gist</a> on my github. I will use it to explain to you some of the
+useful things that you can do with backbone and underscore. Feel free to
+improve it.</p>
+<p>This is only a introductory post, if you want advance stuff you should go to
+the <a class="reference external" href="http://backbonejs.org/">backbone official documentation</a> &amp; <a class="reference external" href="http://underscorejs.org/">underscore
+docs</a>.</p>
+<div class="section" id="why">
+<h2>Why?</h2>
+<p>Backbone is really useful when you make complex GUIs on client side. You can
+make your code like in a desktop app using events to handle the actions. It's
+not needed to pass around instances of parents views, let's use only the
+events for that purpose, and let the child decide.</p>
+<p>You have models too, that you can sync (or not) with the server.</p>
+</div>
+<div class="section" id="models">
+<h2>Models</h2>
+<p>In backbone you can have local model and sync them with the server or with
+local storage (not explained in this intro). In our example we will:</p>
+<ol class="arabic simple">
+<li>Create a collection to save our objects (type Item) in.</li>
+<li>Create the model Item.</li>
+<li>Create 2 object type Item inside this collection.</li>
+<li>Render them.</li>
+</ol>
+<p>The 3 points can be made only with these lines of code. It's really simple!
+(after know how to do it :p):</p>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">Item</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Model</span><span class="p">.</span><span class="nx">extend</span><span class="p">();</span>
+
+<span class="kd">var</span> <span class="nx">Items</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Collection</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+  <span class="nx">model</span><span class="o">:</span> <span class="nx">Item</span>
+<span class="p">});</span>
+
+<span class="kd">var</span> <span class="nx">items</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Items</span><span class="p">();</span>
+<span class="nx">items</span><span class="p">.</span><span class="nx">add</span><span class="p">([{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;foo&quot;</span><span class="p">},</span> <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;bar&quot;</span><span class="p">}]);</span>
+</pre></div>
+<dl class="docutils">
+<dt><strong>Note</strong></dt>
+<dd>Setting values in the objects With .set will trigger the event
+change. You can silent it in case that needed, but it's really useful, for
+example, to save it.</dd>
+<dt><strong>Second note</strong></dt>
+<dd>backbone is f***ing clever! Imagine, you are changing a name, if the
+name has changed on the collection, the event will be raised, if not, it will
+not. This means that if you are editing, but finally you change your mind and
+you didn't made any change, the event will not be raised.</dd>
+</dl>
+</div>
+<div class="section" id="events">
+<h2>Events</h2>
+<p>They are really useful to remove dependencies between elements. For example,
+with jQuery if you change a element from another, the first one needs to know
+about the second. With backbone you can catch the event with the child element
+and do whatever you want with it.</p>
+<p>On the example of my <a class="reference external" href="https://gist.github.com/3982819">gist</a> I show an alert box with the name of the element.
+But you could, for example, change it to an editable input.</p>
+<p>This is the code of the example:</p>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">ItemView</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+  <span class="p">...</span>
+  <span class="nx">events</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;dblclick&quot;</span><span class="o">:</span> <span class="s2">&quot;onDoubleClick&quot;</span>
+  <span class="p">},</span>
+  <span class="p">...</span>
+  <span class="nx">onDoubleClick</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">text</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">trim</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="nx">ev</span><span class="p">.</span><span class="nx">target</span><span class="p">).</span><span class="nx">text</span><span class="p">());</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;Hey! Why do you click on &quot;</span> <span class="o">+</span> <span class="nx">text</span> <span class="o">+</span> <span class="s2">&quot;?&quot;</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ev</span><span class="p">);</span> <span class="c1">//Play with this :)</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+<p>We are binding the <tt class="docutils literal">dblclick</tt> event to the function <tt class="docutils literal">onDoubleClick</tt>. This
+function will receive the event, and the event will have the target (in this
+case the <tt class="docutils literal">&lt;li/&gt;</tt> that we are clicking.</p>
+</div>
+<div class="section" id="underscore">
+<h2>Underscore</h2>
+<p>It's really useful to Work with collections. In out example we are using it to
+iterate over the items:</p>
+<div class="highlight"><pre><span class="nx">render</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">_</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">items</span><span class="p">.</span><span class="nx">models</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">itemview</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ItemView</span><span class="p">(</span><span class="nx">item</span><span class="p">);</span>
+    <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">el</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">itemview</span><span class="p">.</span><span class="nx">render</span><span class="p">().</span><span class="nx">el</span><span class="p">);</span>
+  <span class="p">},</span> <span class="k">this</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+<p>If you read carefully this piece of code you will realize that we are
+instantiating a new ItemView for each particular item, so it has its own
+container element created on the fly, re-renderable each time when data is
+updated and all events are delegated to this element.</p>
+<p>The amazing thing that you can do with underscore is use templates (yes, like
+jinja or django-templates, but in JS)! And we are doing it:</p>
+<div class="highlight"><pre><span class="nt">&lt;script&gt;</span>
+  <span class="kd">var</span> <span class="nx">ItemView</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+  <span class="p">...</span>
+  <span class="nx">template</span><span class="o">:</span> <span class="nx">_</span><span class="p">.</span><span class="nx">template</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#item-template&quot;</span><span class="p">).</span><span class="nx">html</span><span class="p">()),</span>
+  <span class="p">...</span>
+  <span class="nx">render</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+     <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">el</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">template</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">item</span><span class="p">.</span><span class="nx">toJSON</span><span class="p">()));</span>
+     <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+  <span class="p">},</span>
+  <span class="p">...</span>
+<span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/template&quot;</span> <span class="na">id=</span><span class="s">&quot;item-template&quot;</span><span class="nt">&gt;</span>
+  <span class="o">&lt;%=</span> <span class="nx">name</span> <span class="o">%&gt;</span>
+<span class="nt">&lt;/script&gt;</span>
+</pre></div>
+</div>
+<div class="section" id="extra-ball">
+<h2>Extra ball</h2>
+<p>Use <tt class="docutils literal">_.debounce</tt> to don't call the functions thousands of times, example
+drag&amp;dropping an element it will be useful.</p>
+<p>For example in our project we had to sort with drag and drop some elements of a
+list, instead send this event in each drag movement, we made it after 200s
+being quiet with:</p>
+<div class="highlight"><pre><span class="nx">onChange</span><span class="o">:</span> <span class="nx">_</span><span class="p">.</span><span class="nx">debounce</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">pools</span><span class="p">.</span><span class="nx">save</span><span class="p">();</span>
+<span class="p">},</span> <span class="mi">200</span><span class="p">),</span>
+</pre></div>
+<p>Please comment your thoughts about the post. We are all here to learn, and it's
+really easy that I made some mistake explaining this. Furhtermore, I know that
+my English is not really good, so, I will apreciate constructive comments about
+it too :)</p>
+<p>Enjoy it!</p>
+</div>
+
+    <strong>
+      <p>There are <a href="../backbonejs-underscore-small-intro.html#disqus_thread">comments</a>.</p>    </strong>
+    </section>
+
                 <div class="pagination"><ul>
       <li class="disabled"><a href="#">&laquo;</a></li>
   
     <li class="active">    <a href="../category/dev.html">1</a></li>
   </li>
-    <li >    <a href="../category/dev2.html">2</a>
-  </li>
   
 
-      <li><a href="../category/dev2.html">&raquo;</a></li>
+      <li class="disabled"><a href="#"">&raquo;</a></li>
   </ul></div>
         
         </div>
