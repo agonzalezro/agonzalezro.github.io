@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Álex's blog</title>
+    <title>agonzalezro.github.com</title>
 
     <meta charset="utf-8" />
     <!-- What do you think, are all really needed? -->
@@ -40,20 +40,20 @@
 </a>
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
-        <div class="container">
+        <divclass="container">
           <div class="span8 offset2">
             <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </a>
-            <a class="brand" href=".">Álex's blog</a>
+            <a class="brand" href=".">agonzalezro.github.com</a>
             <div class="nav-collapse">
               <p class="navbar-text pull-right">
                                                </p>
               <ul class="nav">
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categories <b class="caret"></b></a>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-tags"></i> Categories <b class="caret"></b></a>
                   <ul class="dropdown-menu">
                                           <li ><a href="./category/dev.html">dev</a></li>
                                           <li ><a href="./category/gnome.html">gnome</a></li>
@@ -63,7 +63,10 @@
                                           <li ><a href="./category/vim.html">vim</a></li>
                                       </ul>
                 </li>
-                                                        <li><a href="./pages/about.html">About</a></li>
+                                                      <li><a href="./pages/about.html">
+                                              <i class="icon-user"></i>&nbsp;
+                                            About
+                    </a></li>
                                                 </ul>
             </div><!--/.nav-collapse -->
           </div>
@@ -73,164 +76,138 @@
 
     <div class="container">
       <div class="span8 offset2">
-                <section id="">
+              <section id="">
     <div class="page-header">
-      <h1><a href="./fix-low-wifi-speed-on-linux-ubuntu-with-chip-atheros-ar9285.html">Fix low wifi speed on Linux (Ubuntu) with chip Atheros AR9285</a></h1>
+      <h1><a href="./techtalk-from-python-2x-to-python-3.html">TechTalk: from python 2.x to python 3</a></h1>
       <span class="label label-success">by Álex</span>
-<span class="label label-success"><abbr class="published" title="2011-07-03T13:07:00">Sun 03 July 2011</abbr></span>
-<a class="label label-info" href="./category/linux.html">linux</a>
-  <a class="label" href="./tag/low-speed.html">low speed</a>
-  <a class="label" href="./tag/linux.html">linux</a>
-  <a class="label" href="./tag/atheros.html">atheros</a>
-  <a class="label" href="./tag/wifi.html">wifi</a>
-  <a class="label" href="./tag/ath9k.html">ath9k</a>
-  <a class="label" href="./tag/ubuntu.html">ubuntu</a>
-  <a class="label" href="./tag/ar9285.html">ar9285</a>
+<span class="label label-success"><abbr class="published" title="2013-02-12T00:30:00">Tue 12 February 2013</abbr></span>
+<a class="label label-info" href="./category/dev.html">dev</a>
+  <a class="label" href="./tag/python.html">python</a>
+  <a class="label" href="./tag/migration.html">migration</a>
+  <a class="label" href="./tag/python3k.html">python3k</a>
     </div>
-    <p>I was very happer after buy my new computer Dell Vostro v130, but after
-install Linux on it I've realized that the download speed via WiFi was
-very slow! To solve this I found two &quot;solutions&quot;, one of them works, but
-the other not (for me).</p>
-<p>The solutions that didn't work is more easy, so I will start with it,
-you must install <tt class="docutils literal"><span class="pre">linux-backports-modules-net-natty-generic</span></tt>, you can do
-it via synaptic, ubuntu software center, aptitude, apt... I show you a
-screenshot doing it with ubuntu software center:</p>
-<a class="reference external image-reference" href="static/software_center.png"><img alt="static/software_center.png" class="align-center" src="static/software_center.png" style="width: 50%;" /></a>
-<p>The second &quot;solution&quot; is deactivate the hardware cryptography of the
-module, I don't know if this could cause security problems or instead
-use hardware it will use software crypt, anyway, it is the best
-solutions that I find until the moment.</p>
-<p>To do that, you must create the file <tt class="docutils literal">/etc/modprobe.d/ath9k.conf</tt> with
-the content: <tt class="docutils literal">options ath9k nohwcrypt=1</tt>, you can do it easily with:</p>
-<pre class="literal-block">
-echo &quot;options ath9k nohwcrypt=1&quot; &gt; /etc/modprobe.d/ath9k.conf
-</pre>
-<p>If you have any questions, or you find a better solution, please, let me
-know.</p>
+    <div class="section" id="introduction">
+<h2>Introduction</h2>
+<p>This are some notes that I took while the talk that I saw today, the original
+title of the talk that I had the chance to see today was: &quot;Switch to Python
+3... Now... Inmediately&quot; by the <a class="reference external" href="http://www.russel.org.uk">professor Russel Winder</a>.</p>
+<p>More or less all that you will find here is a transaction, just ordered in my
+style and perhaps with some notes by myself.</p>
+<p>Python 2.x remains being the default python. Too many people and organizations
+are afraid of the change.</p>
+<p>Python software foundation should declare python 3 the default python
+immediately.</p>
+<div class="section" id="problems">
+<h3>Problems</h3>
+<ul class="simple">
+<li>some big companies are telling people to don't use it.</li>
+<li>some crucial projects are not using Python 3 yet.</li>
+</ul>
+</div>
+<div class="section" id="companies-and-people">
+<h3>Companies and people</h3>
+<ul class="simple">
+<li>from the point of view of Russel, the problem are those companies that
+doesn't want to migrate, and not the fact that the code needs to be migrate.</li>
+<li>at least they should have version 2 and 3 compatible on the codebase.</li>
+</ul>
+</div>
+<div class="section" id="migration">
+<h3>Migration</h3>
+<ul class="simple">
+<li><tt class="docutils literal">2to3</tt> tool is not useful at all. Just one shot transform tool.</li>
+<li>the manual the better? From my POV (Álex) you can never let a machine this
+kind of work and it usually will be a biblical proportion job for large
+codebases. And more important... usually without tests :D</li>
+</ul>
+</div>
+</div>
+<div class="section" id="justifications">
+<h2>Justifications</h2>
+<p>Python 2 is a dead end and python 3 is the developing future.</p>
+<p>This piece of code is compatible with both versions, why don't use them?</p>
+<div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="k">exec</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+<p>Problem: <tt class="docutils literal">print(x)</tt> support multiple parameter in python 3, so, let's import
+the function from future to have the same behaviour in python 2.x:</p>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+</pre></div>
+<p>Let's make it bigger:</p>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">division</span><span class="p">,</span>
+    <span class="n">absolute_import</span><span class="p">,</span>
+    <span class="n">print_function</span><span class="p">,</span>
+    <span class="n">unicode_literals</span>
+<span class="p">)</span>
+</pre></div>
+<p>With this we will avoid problems with floats on divisions, add <cite>.</cite> to the
+imports, import the python3 version of print and work always with unicode.</p>
+<p>Another problem is the list-comprehensions which will change a little bit,
+instead create list, they will create sets.</p>
+<div class="section" id="some-other-problems">
+<h3>Some other problems</h3>
+<p>python 2 is strict, but python 3 is kinda lazy.</p>
+<div class="highlight"><pre><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span><span class="p">,</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+</pre></div>
+<p>Will produce an iterator in python 3, in python 2 is a data structure.</p>
+<p>This is one of the biggest issues into the migration, other functions with same
+problems will be, for example: <tt class="docutils literal">items</tt>, <tt class="docutils literal">keys</tt>, <tt class="docutils literal">values</tt>, <tt class="docutils literal">iteritems</tt>,
+<tt class="docutils literal">iterkeys</tt> &amp; <tt class="docutils literal">itervalues</tt> which in python 3 will become: <tt class="docutils literal">items</tt>,
+<tt class="docutils literal">keys</tt> &amp; <tt class="docutils literal">values</tt>.</p>
+<p>If you want a data structure instead a iterator, you should make it manually:</p>
+<div class="highlight"><pre><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>  <span class="c"># python 2.x</span>
+<span class="nb">tuple</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>  <span class="c"># python 3</span>
+</pre></div>
+</div>
+<div class="section" id="concurrency">
+<h3>Concurrency</h3>
+<p>At least IronPython and Jython do not have a <a class="reference external" href="http://wiki.python.org/moin/GlobalInterpreterLock">GIL</a> as CPython and PyPy do.</p>
+<p>There is an experiment to mode GIL out of PyPy.</p>
+<dl class="docutils">
+<dt>Actors</dt>
+<dd>communicate processes with messages.</dd>
+<dt>Dataflow</dt>
+<dd>operators connected by channels with activity triggered by arrival of data on
+the channels.</dd>
+<dt>CSP</dt>
+<dd>we have <a class="reference external" href="http://code.google.com/p/pycsp/">PyCSP</a> and <a class="reference external" href="https://github.com/python-concurrency/python-csp">PythonCSP</a>.</dd>
+</dl>
+</div>
+<div class="section" id="data-parallelism">
+<h3>Data parallelism</h3>
+<p>Transform a sequence to another sequence where all individual actions happen at
+the same time. Python has not a lot of utilities for that, since Go or D do.</p>
+</div>
+<div class="section" id="futures-are-the-future">
+<h3>Futures are the future</h3>
+<dl class="docutils">
+<dt><cite>concurrent.futures</cite></dt>
+<dd>python 3.2 package to abstract over threads and processes to give an
+asynchronous function call and future system.</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="under-challengue">
+<h2>Under challengue</h2>
+<ul class="simple">
+<li>Go is taking over from Python, because it's native and it has a solid concurrency models (CSP).</li>
+<li>D is on the market too.</li>
+<li>Native programs are almost always quicker than python.</li>
+</ul>
+</div>
+<div class="section" id="funny-points">
+<h2>Funny points</h2>
+<ul class="simple">
+<li>One rule of the guy is to use one month a year just <tt class="docutils literal">ed</tt> no <tt class="docutils literal">vim</tt> or
+<tt class="docutils literal">emacs</tt> rubbish.</li>
+<li>C has a rubbish syntax in comparison with Python. You will touch your head
+if you check some C++ code: why!?</li>
+</ul>
+</div>
 
     <strong>
-      <p>There are <a href="./fix-low-wifi-speed-on-linux-ubuntu-with-chip-atheros-ar9285.html#disqus_thread">comments</a>.</p>    </strong>
-    </section>
-
-    
-      <section id="">
-    <div class="page-header">
-      <h1><a href="./im-starting-to-hate-gnome-3.html">I'm starting to hate GNOME 3</a></h1>
-      <span class="label label-success">by Álex</span>
-<span class="label label-success"><abbr class="published" title="2011-06-08T19:02:00">Wed 08 June 2011</abbr></span>
-<a class="label label-info" href="./category/gnome.html">gnome</a>
-  <a class="label" href="./tag/unity.html">unity</a>
-  <a class="label" href="./tag/gnome3.html">gnome3</a>
-  <a class="label" href="./tag/hate.html">hate</a>
-    </div>
-    <p>First of all, I'm GNOME user as main desktop on Linux since the version
-1.x (about 10 years ago). I've played with another desktops but GNOME
-was always in my heart. But now, with the arrival of GNOME 3 and after
-two weeks using it I can say that I'm starting to hate it. In this new
-version it has a lot of functions that I don't like and doesn't have a
-lot of functions that I like :)</p>
-<p>After see my arguments, perhaps you can help me to change my opinion but
-possibily my next post will treat about how erase GNOME 3 and go back to
-Unity. Go to see them:</p>
-<a class="reference external image-reference" href="static/fuuuu.jpg"><img alt="static/fuuuu.jpg" class="align-center" src="static/fuuuu.jpg" style="width: 50%;" /></a>
-<div class="section" id="dynamic-virtual-desktops">
-<h2>Dynamic virtual desktops</h2>
-<p>I've always used virtual desktops. One for terminals, antoher for
-explorers, another for music and a extra one for all other stuff. When I
-want to go to my explorer I push Alt+2 and change my virtual desktop to
-2. But now, I can't do it, because if I want to open the explorers in
-the desktop 2 I must open something in the desktop one, but I don't like
-it!</p>
-<p>This is a very big problem for me because I'm not accustomed to use
-Alt-Tab to change the windows.</p>
-</div>
-<div class="section" id="when-you-close-the-las-window-in-a-desktop">
-<h2>When you close the las window in a desktop...</h2>
-<p>the gnome-shell will be open! I don't like it! Perhpas I've closed this
-window to go to my home folder, let me do that!</p>
-</div>
-<div class="section" id="alt-f2-doesn-t-autocomplete">
-<h2>Alt+F2 doesn't autocomplete</h2>
-<p>GNOME always had this option instead KDE that didn't have it, and now,
-they erase it? I can't understand why! I know that you can use the Super
-key (the fuc***g windows key presented on all keyboards), but use the
-gnome-shell to open a program isn't so quickly as open it with alt-f2.</p>
-</div>
-<div class="section" id="autologin-on-gdm">
-<h2>Autologin on GDM</h2>
-<p>I like to suppose that this bug is only on my pc, because I've tried to
-configure my autologin user and never ever is autologued. Perhaps I
-should submit a bug for this case.</p>
-</div>
-<div class="section" id="difficulty-to-install-extensions">
-<h2>Difficulty to install extensions</h2>
-<p>I will not say anything more about this.</p>
-</div>
-<div class="section" id="no-autohide-bar-and-no-more-bars">
-<h2>No autohide bar, and no more bars?</h2>
-<p>I know that gnome-shell isn't thinked to do that, but perhaps they must
-give a chance to do that to the users that like it.</p>
-<p>And finally, one thing that happens with gnome-shell, gnome-do, meego
-desktop... Why if you have hide files they appear on recent documents or
-in the shell when you start to type? Of course... this hide files isn't
-for p0rn, they are my personal documents only.</p>
-</div>
-
-    <strong>
-      <p>There are <a href="./im-starting-to-hate-gnome-3.html#disqus_thread">comments</a>.</p>    </strong>
-    </section>
-
-    
-      <section id="">
-    <div class="page-header">
-      <h1><a href="./how-to-install-gnome-3-instead-of-unity-on-ubuntu-1104.html">How-to install GNOME 3 instead of Unity on Ubuntu 11.04</a></h1>
-      <span class="label label-success">by Álex</span>
-<span class="label label-success"><abbr class="published" title="2011-06-08T18:28:00">Wed 08 June 2011</abbr></span>
-<a class="label label-info" href="./category/gnome.html">gnome</a>
-  <a class="label" href="./tag/unity.html">unity</a>
-  <a class="label" href="./tag/gnome3.html">gnome3</a>
-  <a class="label" href="./tag/desktop.html">desktop</a>
-  <a class="label" href="./tag/ubuntu.html">ubuntu</a>
-  <a class="label" href="./tag/gnome.html">gnome</a>
-    </div>
-    <p>I don't have anything against Unity, but sometimes I want to test, and
-this is one of this times.</p>
-<p>I don't know the reason (or perhaps I do), but install GNOME 3 on a
-ubuntu system isn't as easy as it must be.</p>
-<p>First of all we need to add the GNOME 3 repos, so, in a console (Alt+F2
-and then write gnome-terminal) you must write:</p>
-<pre class="literal-block">
-sudo add-apt-repository ppa:gnome3-team/gnome3
-</pre>
-<p>Then, we must update our system and install the gnome shell:</p>
-<pre class="literal-block">
-sudo apt-get updatesudo apt-get dist-upgradesudo apt-get install gnome-shell
-</pre>
-<p>After that, sometimes we have problems with the themes (you can reboot
-to test it, but I recommend you to follow this steps), so, we must
-remove the accesibility themes and install the new ones (and another
-program that we will need after that):</p>
-<pre class="literal-block">
-sudo apt-get remove gnome-accessibility-themessudo apt-get install gnome-themes-standard gnome-tweak-tool
-</pre>
-<p>Well... now, you can reboot your system and login with GNOME selected as
-session. You will see your new GNOME 3, but, we must tweak it, for this,
-you can push Alt+F2 and write:</p>
-<pre class="literal-block">
-gnome-tweak-tool
-</pre>
-<p>I recommend you to have this themes configuration (you can change the
-icons if you like) and activate the option on the first tab called &quot;Have
-file manager handle the desktop&quot;:</p>
-<a class="reference external image-reference" href="static/tweak_tool.png"><img alt="static/tweak_tool.png" class="align-center" src="static/tweak_tool.png" style="width: 50%;" /></a>
-<p>Good luck! And if you have any trouble, please, feel free to ask me in
-the comments!</p>
-<p>PS:&nbsp;<a class="reference external" href="http://twitter.com/marioquartz">&#64;marioquartz</a>&nbsp;wants to see the result, so here it is (click to
-enlarge)!</p>
-<a class="reference external image-reference" href="static/gnome3_desktop.png"><img alt="static/gnome3_desktop.png" class="align-center" src="static/gnome3_desktop.png" style="width: 50%;" /></a>
-
-    <strong>
-      <p>There are <a href="./how-to-install-gnome-3-instead-of-unity-on-ubuntu-1104.html#disqus_thread">comments</a>.</p>    </strong>
+      <p>There are <a href="./techtalk-from-python-2x-to-python-3.html#disqus_thread">comments</a>.</p>    </strong>
     </section>
 
                 <div class="pagination"><ul>
@@ -245,13 +222,47 @@ enlarge)!</p>
   </li>
     <li class="active">    <a href="./index4.html">4</a>
   </li>
+    <li >    <a href="./index5.html">5</a>
+  </li>
+    <li >    <a href="./index6.html">6</a>
+  </li>
+    <li >    <a href="./index7.html">7</a>
+  </li>
+    <li >    <a href="./index8.html">8</a>
+  </li>
+    <li >    <a href="./index9.html">9</a>
+  </li>
+    <li >    <a href="./index10.html">10</a>
+  </li>
+    <li >    <a href="./index11.html">11</a>
+  </li>
+    <li >    <a href="./index12.html">12</a>
+  </li>
   
 
-      <li class="disabled"><a href="#"">&raquo;</a></li>
+      <li><a href="./index5.html">&raquo;</a></li>
   </ul></div>
         
         </div>
-    </div>
+      <div class="span5 offset1">
+  <h2><i class="icon-fire"> </i>Latest entries...</h2>
+  <ol>
+            <li><a href="./djugl-inside-lanyrd-architecture.html">DJUGL: Inside Lanyrd architecture</a></li>
+            <li><a href="./djugl-advanced-python-trought-django-metaclasses.html">DJUGL: Advanced python trought Django: Metaclasses</a></li>
+            <li><a href="./techtalk-from-python-2x-to-python-3.html">TechTalk: from python 2.x to python 3</a></li>
+            <li><a href="./codereview-from-the-pov-of-a-noob.html">codereview from the POV of a noob</a></li>
+            <li><a href="./best-vim-colors-ever.html">Best vim colors ever!</a></li>
+            <li><a href="./pygrunn-winter-hackathon-2012.html">PyGrunn Winter Hackathon 2012</a></li>
+            <li><a href="./graphite-carbon-and-diamond.html">Graphite, Carbon and Diamond</a></li>
+            <li><a href="./backbonejs-underscore-small-intro.html">backbone.js + underscore: small intro</a></li>
+                    </ol>
+  <p><a href="/archives.html">Show all!</a></p>
+</div>
+
+<div class="span5">
+  <h2><a class="twitter-timeline" href="https://twitter.com/agonzalezro" data-widget-id="314142355777257472"><i class="icon-pencil"></i> @agonzalezro</a></h2>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</div>    </div>
 
     <script type="text/javascript">
   var _gaq = _gaq || [];

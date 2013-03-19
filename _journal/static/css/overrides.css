@@ -11,7 +11,7 @@ section {
   padding-bottom: 30px;
 }
 
-section p a, section li a {
+.container p a, .container li a {
   color: #2D6987;
 }
 

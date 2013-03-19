@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Álex's blog - march</title>
+    <title>agonzalezro.github.com - march</title>
 
     <meta charset="utf-8" />
     <!-- What do you think, are all really needed? -->
@@ -40,20 +40,20 @@
 </a>
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
-        <div class="container">
+        <divclass="container">
           <div class="span8 offset2">
             <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </a>
-            <a class="brand" href="..">Álex's blog</a>
+            <a class="brand" href="..">agonzalezro.github.com</a>
             <div class="nav-collapse">
               <p class="navbar-text pull-right">
                                                </p>
               <ul class="nav">
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categories <b class="caret"></b></a>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-tags"></i> Categories <b class="caret"></b></a>
                   <ul class="dropdown-menu">
                                           <li ><a href="../category/dev.html">dev</a></li>
                                           <li ><a href="../category/gnome.html">gnome</a></li>
@@ -63,7 +63,10 @@
                                           <li ><a href="../category/vim.html">vim</a></li>
                                       </ul>
                 </li>
-                                                        <li><a href="../pages/about.html">About</a></li>
+                                                      <li><a href="../pages/about.html">
+                                              <i class="icon-user"></i>&nbsp;
+                                            About
+                    </a></li>
                                                 </ul>
             </div><!--/.nav-collapse -->
           </div>
@@ -73,7 +76,7 @@
 
     <div class="container">
       <div class="span8 offset2">
-                <section id="">
+              <section id="">
     <div class="page-header">
       <h1><a href="../djgul-whats-new-on-django-15.html">DJGUL: What's new on Django 1.5</a></h1>
       <span class="label label-success">by Álex</span>
@@ -205,328 +208,21 @@ for you.</li>
       <p>There are <a href="../djgul-whats-new-on-django-15.html#disqus_thread">comments</a>.</p>    </strong>
     </section>
 
-    
-      <section id="">
-    <div class="page-header">
-      <h1><a href="../djugl-inside-lanyrd-architecture.html">DJUGL: Inside Lanyrd architecture</a></h1>
-      <span class="label label-success">by Álex</span>
-<span class="label label-success"><abbr class="published" title="2013-03-12T20:30:00">Tue 12 March 2013</abbr></span>
-<a class="label label-info" href="../category/talks.html">talks</a>
-  <a class="label" href="../tag/djugl.html">djugl</a>
-  <a class="label" href="../tag/march.html">march</a>
-  <a class="label" href="../tag/lanyrd.html">lanyrd</a>
-  <a class="label" href="../tag/django.html">django</a>
-  <a class="label" href="../tag/solr.html">solr</a>
-  <a class="label" href="../tag/celery.html">celery</a>
-  <a class="label" href="../tag/postgresql.html">postgresql</a>
-  <a class="label" href="../tag/redis.html">redis</a>
-  <a class="label" href="../tag/mongodb.html">mongodb</a>
-  <a class="label" href="../tag/mysql.html">mysql</a>
-  <a class="label" href="../tag/varnish.html">varnish</a>
-  <a class="label" href="../tag/haproxy.html">haproxy</a>
-  <a class="label" href="../tag/s3.html">s3</a>
-    </div>
-    <p>This talk was just amazing! Andrew Godwin (<cite>&#64;andrewgodwin
-&lt;http://twitter.com/andrewgodwin&gt;</cite> or <a class="reference external" href="http://areacode.org">http://areacode.org</a>) gave us a talk about
-the internal architecture that they are using at <a class="reference external" href="http://lanyrd.com">lanyrd.com</a>.</p>
-<p>I would say 2 things:</p>
-<ul class="simple">
-<li>Even before that talk I was using lanyrd, it's a really good service if you
-are organizing some kind of event.</li>
-<li>At <a class="reference external" href="http://greenmangaming.com">GreenManGaming</a> we are using a very similar
-infrastructure, which I think that means that when 2 different companies
-without any relation are sharing so many layers, it should be good!</li>
-</ul>
-<p>After this lines you will fine almost a C&amp;P of the Andrew slide that you can
-find here: <a class="reference external" href="https://speakerdeck.com/andrewgodwin/inside-lanyrds-architecture">https://speakerdeck.com/andrewgodwin/inside-lanyrds-architecture</a>,
-but there are some additional notes added by me.</p>
-<div class="section" id="the-origin-story">
-<h2>The Origin Story</h2>
-<p>They launch in Aug'10 and after half an hour going down because the load was
-too high</p>
-<p>In Sep'11 they got some inversion that allows them to start with the curren
-architecture.</p>
-<p>The ecosystem that they need to take care of:</p>
-<ul class="simple">
-<li>conferences</li>
-<li>profile pages</li>
-<li>emails</li>
-<li>dashboard</li>
-<li>coverage</li>
-<li>topics</li>
-<li>guides</li>
-<li>mobile app</li>
-<li>...</li>
-</ul>
-<p>And all this with just 6 technical guys! That know this:</p>
-<ul class="simple">
-<li>You don't need a big team to write a complex product.</li>
-<li>Communication is absolutely key.</li>
-<li>Using Open Source well is also crucial.</li>
-</ul>
-</div>
-<div class="section" id="what-they-run-on">
-<h2>What they run on</h2>
-<p>Almost all the site is written in django with some spices:</p>
-<ul class="simple">
-<li>celery for the background tasks.</li>
-<li>management cron jobs.</li>
-<li>served by Gunicorn containers.</li>
-</ul>
-<p>The main services that you can find on, are this:</p>
-<div class="section" id="postresql">
-<h3>PostreSQL</h3>
-<ul class="simple">
-<li>main data store for everythin except upload
-master &amp; replicated
-around 80G in 5 DBs
-each server run in RAID1</li>
-</ul>
-</div>
-<div class="section" id="redis">
-<h3>Redis</h3>
-<ul class="simple">
-<li>Task queue transport for Celery and tweet listeners,</li>
-<li>Contains user sets for every conference, user and topic.</li>
-<li>Used for efficient narrowing of queries before Solr is hit,</li>
-</ul>
-</div>
-<div class="section" id="solr">
-<h3>Solr</h3>
-<ul class="simple">
-<li>Stores conferences, users, sessions and more...</li>
-<li>Very rich metada on each item.</li>
-<li>Heavy use of sharding throughout the site.</li>
-<li>They run Solr in master and replicated slave.</li>
-</ul>
-</div>
-<div class="section" id="varnish">
-<h3>Varnish</h3>
-<ul class="simple">
-<li>First point of call for all requests.</li>
-<li>Caches most anonymous requests.</li>
-<li>Enforces read-only mode if enabled.</li>
-<li>One used an one hot spare at all times.</li>
-</ul>
-</div>
-<div class="section" id="haproxy">
-<h3>HAProxy</h3>
-<ul class="simple">
-<li>Sits behind Varnish.</li>
-<li>Distributes load amongst frontend servers.</li>
-<li>Re-routes request during deploys.</li>
-<li>They always have 2 up identically configured.</li>
-</ul>
-</div>
-<div class="section" id="s3">
-<h3>S3</h3>
-<ul class="simple">
-<li>Stores all uploaded files from users.</li>
-<li>Uploads forms post directly to S3.</li>
-<li>Servers all static assets for the site (images, Css, JS).</li>
-<li>Static assets are versioned with hash to help cache break.</li>
-</ul>
-</div>
-</div>
-<div class="section" id="what-they-have-eliminated">
-<h2>What they have eliminated</h2>
-<p>It's a shame because I am reading it in several places, but it seems that after
-the hype a lot of companies are eliminating MongoDB from their backends.</p>
-<div class="section" id="mongodb">
-<h3>MongoDB</h3>
-<ul class="simple">
-<li>Stored analytics, logs and some other data.</li>
-<li>Lack of schema meant some bad data persisted.
-poor complex query performance.</li>
-</ul>
-<p>Nevertheless they think that it's a really useful tool for quick prototyping.</p>
-</div>
-<div class="section" id="mysql">
-<h3>MySQL</h3>
-<ul class="simple">
-<li>Primary data store for things that where not stored in MongoDB.</li>
-<li>Very poor complex query performance.</li>
-<li>No advances field types.</li>
-<li>Full database locks during schema changes.</li>
-</ul>
-</div>
-</div>
-<div class="section" id="the-great-move-of-2012">
-<h2>The great move of 2012</h2>
-<p>They move from EC2 to Softlayer basically because it's real hardware, if
-something fail, just change it).
-From MySQL to PostgreSQL for the reasons that he explained before.</p>
-<div class="section" id="why">
-<h3>Why?</h3>
-<p>It seems that lanyrd has a very predictable traffic, they can know months in
-advanced what is the expected load.</p>
-</div>
-<div class="section" id="how">
-<h3>How</h3>
-<p>Both moves required database downtime, couple of tables were really big, any
-change on that table means around 20-30min of downtime.</p>
-<ol class="arabic simple">
-<li>Replicate Solr and Redis across to new servers.</li>
-<li>Enter RO mode.</li>
-<li>Dump MySQL data.</li>
-<li>Convert MySQL dump into PostgreSQL dump.</li>
-<li>Load PostgresSQL dump.</li>
-<li>Re-point DNS, proxy request from old server.</li>
-<li>Exit RO mode.</li>
-</ol>
-<p>After all this process they can say that they have been 1 hour and a half in Read Only mode but without any downtime at all.</p>
-<p>From their experience, the advantages of have a content site are that the RO
-mode is completely viable. They logged out all the people from the site and in
-the mean time Varnish was blocking all the POST request &amp; cache aggressively.</p>
-</div>
-</div>
-<div class="section" id="always-be-deploying">
-<h2>Always be deploying</h2>
-<ul class="simple">
-<li>They deploy at least 5 times a day, if not 20.</li>
-<li>Nearly all code goes into master or short-lived branches.</li>
-<li>Anything released is feature flagged.<ul>
-<li>simple named boolean toggles.</li>
-<li>settable by user, user tag, or conference.</li>
-<li>can change templates, view code, URLs, etc...</li>
-</ul>
-</li>
-</ul>
-<p>Just a quick note: if you had never used this feature you should try something
-like <a class="reference external" href="https://github.com/disqus/gargoyle">gargoyle</a>. It's just amazing to
-deploy some functionalities to just some of your users. I don't know what they
-are using, but if it's not this, it should be something similar.</p>
-</div>
-<div class="section" id="legacy-code-decisions">
-<h2>Legacy code &amp; decisions</h2>
-<ul class="simple">
-<li>It's fine to have some legacy code. It can speed thing ups.</li>
-<li>A good chunk of their legacy code is gone, some remains (I would say like in
-all the big projects :D).</li>
-<li>Big schema change get harder and harder.</li>
-</ul>
-<p>Awareness (every ppl know what is going on) &amp; always deployable (master branch always shippable).</p>
-</div>
-<div class="section" id="small-and-nimble">
-<h2>Small and nimble</h2>
-<ul class="simple">
-<li>Continue deployment and development style allows easy project changing</li>
-<li>No long approval processes.</li>
-</ul>
-</div>
-<div class="section" id="fix-it-while-you-can">
-<h2>Fix it while you can</h2>
-<ul class="simple">
-<li>The bigger you get, the harder a fix.</li>
-<li>They moved to PostgreSQL just in time.</li>
-<li>Big schema changes now take days of coding.</li>
-</ul>
-</div>
-
-    <strong>
-      <p>There are <a href="../djugl-inside-lanyrd-architecture.html#disqus_thread">comments</a>.</p>    </strong>
-    </section>
-
-    
-      <section id="">
-    <div class="page-header">
-      <h1><a href="../djugl-advanced-python-trought-django-metaclasses.html">DJUGL: Advanced python trought Django: Metaclasses</a></h1>
-      <span class="label label-success">by Álex</span>
-<span class="label label-success"><abbr class="published" title="2013-03-12T20:00:00">Tue 12 March 2013</abbr></span>
-<a class="label label-info" href="../category/talks.html">talks</a>
-  <a class="label" href="../tag/djugl.html">djugl</a>
-  <a class="label" href="../tag/march.html">march</a>
-  <a class="label" href="../tag/django.html">django</a>
-  <a class="label" href="../tag/python.html">python</a>
-  <a class="label" href="../tag/metaclass.html">metaclass</a>
-    </div>
-    <p>This talk was made by Peter Ingles, you can check his twitter here: <a class="reference external" href="http://twitter.com/inglesp">&#64;inglesp</a>.</p>
-<p>What is write above is basically what he said, mixed with some of my thoughts.
-The talk was really good, and even using metaclasses almost daily
-(<tt class="docutils literal">forms.Form</tt>) you don't feel the power of them until somebody explain it to
-you (shame on me!).</p>
-<p>In all the Peter example we was using Django 1.4.</p>
-<p>The typical example as I said before is <tt class="docutils literal">forms.Form</tt> from django.</p>
-<p>For some reason, Peter was in love with the Ponies, so, he tried to create some
-meta stable:</p>
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">A</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
-        <span class="n">app_label</span> <span class="o">=</span> <span class="s">&#39;ponies&#39;</span>
-        <span class="n">abstract</span> <span class="o">=</span> <span class="bp">True</span>
-
-<span class="k">class</span> <span class="nc">Stable</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Models</span><span class="p">):</span>
-    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
-        <span class="n">app_label</span> <span class="o">=</span> <span class="s">&#39;ponies&#39;</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">()</span>
-    <span class="n">stable</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Stable</span><span class="p">)</span>
-</pre></div>
-<div class="section" id="create-classes-dinamycally">
-<h2>Create classes dinamycally:</h2>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span><span class="n">x</span>
-
-<span class="n">name</span> <span class="o">=</span> <span class="s">&#39;ExampleClass&#39;</span>
-<span class="n">bases</span> <span class="o">=</span> <span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="p">)</span>
-<span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">&#39;__init__&#39;</span><span class="p">:</span> <span class="n">init</span>
-<span class="p">}</span>
-<span class="n">instance</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="n">attrs</span><span class="p">)</span>
-</pre></div>
-<p>This is a pretty coold way to create classes at runtime.</p>
-</div>
-<div class="section" id="type">
-<h2>type</h2>
-<p>I don't know you, but I was always using <tt class="docutils literal">type</tt> just for the type comparation,
-but never for create classes...</p>
-<p>Some &quot;strange&quot; (puzzling) things about <tt class="docutils literal">type</tt> is that <tt class="docutils literal">type</tt> is a class of type
-type:</p>
-<div class="highlight"><pre><span class="nb">type</span><span class="p">(</span><span class="nb">type</span><span class="p">)</span>
-<span class="o">&lt;</span><span class="nb">type</span> <span class="s">&#39;type&#39;</span><span class="o">&gt;</span>
-</pre></div>
-<p>And we can subclass <tt class="docutils literal">type</tt>:</p>
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">A</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
-    <span class="k">pass</span>
-</pre></div>
-</div>
-<div class="section" id="python-3">
-<h2>Python 3</h2>
-<p>The syntax to create a metaclass is sightly different:</p>
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">Form</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">Formtype</span><span class="p">):</span>
-    <span class="o">...</span>
-</pre></div>
-</div>
-<div class="section" id="key-takeaways">
-<h2>Key takeaways</h2>
-<ul class="simple">
-<li>classes are factories for creating objects.</li>
-<li>we can create classes dynamically at runtime.</li>
-<li>metaclasses are factories for creating classes.</li>
-<li>we can control what happens when we create classes</li>
-</ul>
-</div>
-<div class="section" id="the-slides">
-<h2>The slides</h2>
-<p>You can find the interactive talk of Peter in his github account:
-<a class="reference external" href="http://github.com/inglesp/prescons">http://github.com/inglesp/prescons</a></p>
-<p>Enjoy them!</p>
-</div>
-
-    <strong>
-      <p>There are <a href="../djugl-advanced-python-trought-django-metaclasses.html#disqus_thread">comments</a>.</p>    </strong>
-    </section>
-
-                <div class="pagination"><ul>
-      <li class="disabled"><a href="#">&laquo;</a></li>
-  
-    <li class="active">    <a href="../tag/march.html">1</a></li>
-  </li>
-  
-
-      <li class="disabled"><a href="#"">&raquo;</a></li>
-  </ul></div>
-        
+              
         </div>
-    </div>
+      <div class="span5 offset1">
+  <h2><i class="icon-fire"> </i>Latest entries...</h2>
+  <ol>
+            <li><a href="../djugl-inside-lanyrd-architecture.html">DJUGL: Inside Lanyrd architecture</a></li>
+            <li><a href="../djugl-advanced-python-trought-django-metaclasses.html">DJUGL: Advanced python trought Django: Metaclasses</a></li>
+        </ol>
+  <p><a href="/archives.html">Show all!</a></p>
+</div>
+
+<div class="span5">
+  <h2><a class="twitter-timeline" href="https://twitter.com/agonzalezro" data-widget-id="314142355777257472"><i class="icon-pencil"></i> @agonzalezro</a></h2>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</div>    </div>
 
     <script type="text/javascript">
   var _gaq = _gaq || [];

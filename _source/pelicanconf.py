@@ -2,14 +2,15 @@
 # -*- coding: utf-8 -*- #
 
 AUTHOR = u'Álex'
-SITENAME = u"{author}'s blog".format(author=AUTHOR)
 SITEURL = 'http://agonzalezro.github.com'
+SITENAME = SITEURL.replace('http://', '')
 
 TIMEZONE = 'Europe/Paris'
 
 DEFAULT_LANG = 'en'
 
-DEFAULT_PAGINATION = 3
+DEFAULT_PAGINATION = 1
+LAST_POSTS = 8
 
 TWITTER_USERNAME = 'agonzalezro'
 
