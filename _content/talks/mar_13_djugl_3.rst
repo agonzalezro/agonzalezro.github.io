@@ -5,7 +5,7 @@ DJGUL: What's new on Django 1.5
 :tags: djugl, march, django, 1.5
 
 In this talk Marc Tamlyn (`@mjtamlyn <https://twitter.com/mjtamlyn>`_) was
-explained to us what where all the change in the new "major" version of django,
+explained to us all the changes in the new "major" version of django,
 django 1.5.
 
 As always you can find the original talks in Internet:
