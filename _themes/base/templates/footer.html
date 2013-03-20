@@ -2,7 +2,7 @@
   <h2><i class="icon-fire"> </i>More related stuff...</h2>
   <ol>
   {% for article in dates %}
-  {% if loop.index0 and loop.index0 <= LAST_POSTS %}
+  {% if loop.index > DEFAULT_PAGINATION and loop.index <= LAST_POSTS + DEFAULT_PAGINATION %}
     <li><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></li>
     {% endif %}
   {% endfor %}
