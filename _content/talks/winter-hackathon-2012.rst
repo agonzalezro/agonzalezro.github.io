@@ -2,7 +2,7 @@ PyGrunn Winter Hackathon 2012
 =============================
 
 :date: 2012-11-27
-:tags: hackathon, pygrunn, paylogic, backbone, flask, slides
+:tags: hackathon, pygrunn, paylogic, backbone, flask, slides, pygrunn
 
 Few days ago, actually, more than one week ago (but I was very busy :) we made
 our first `PyGrunn hackathon`_. I was lucky and from all the list of ideas, the
