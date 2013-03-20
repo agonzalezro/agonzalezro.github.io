@@ -10,7 +10,7 @@ TIMEZONE = 'Europe/Paris'
 DEFAULT_LANG = 'en'
 
 DEFAULT_PAGINATION = 1
-LAST_POSTS = 8
+LAST_POSTS = 16
 
 TWITTER_USERNAME = 'agonzalezro'
 
