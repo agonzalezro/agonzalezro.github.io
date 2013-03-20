@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>agonzalezro.github.com</title><link href="http://agonzalezro.github.com/" rel="alternate"></link><link href="http://agonzalezro.github.com/feeds/all.atom.xml" rel="self"></link><id>http://agonzalezro.github.com/</id><updated>2013-03-12T21:30:00+01:00</updated><entry><title>DJGUL: What's new on Django 1.5</title><link href="http://agonzalezro.github.com/djgul-whats-new-on-django-15.html" rel="alternate"></link><updated>2013-03-12T21:30:00+01:00</updated><author><name>Álex</name></author><id>tag:agonzalezro.github.com,2013-03-12:djgul-whats-new-on-django-15.html</id><summary type="html">&lt;p&gt;In this talk Marc Tamlyn (&lt;a class="reference external" href="https://twitter.com/mjtamlyn"&gt;&amp;#64;mjtamlyn&lt;/a&gt;) was
+<feed xmlns="http://www.w3.org/2005/Atom"><title>agonzalezro.github.com</title><link href="http://agonzalezro.github.com/" rel="alternate"></link><link href="http://agonzalezro.github.com/feeds/all.atom.xml" rel="self"></link><id>http://agonzalezro.github.com/</id><updated>2013-03-20T00:48:00+01:00</updated><entry><title>Changes on the blog</title><link href="http://agonzalezro.github.com/changes-on-the-blog.html" rel="alternate"></link><updated>2013-03-20T00:48:00+01:00</updated><author><name>Álex</name></author><id>tag:agonzalezro.github.com,2013-03-20:changes-on-the-blog.html</id><summary type="html">&lt;p&gt;One of the problems that I always have when I start trying to blog something is
+that I get bored very quick of writing and I focus in other things like CMS,
+CSS or this kind of things that really doesn't matter if you have good content.&lt;/p&gt;
+&lt;p&gt;Today was one of those day when I got bored about it and I decided to make some
+changes:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;The theme is &lt;a class="reference external" href="http://bootswatch.com/readable"&gt;readable&lt;/a&gt; instead &lt;a class="reference external" href="http://bootswatch.com/journal"&gt;journal&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;I've added a &lt;a class="reference external" href="http://twitter.com/agonzalezro"&gt;twitter&lt;/a&gt; widget because I post half of my life there :D&lt;/li&gt;
+&lt;li&gt;I don't post so often, so I decided that the pagination was not
+really needed and instead that I am showing a column with 16 old
+post. If you look for a tag you will find this column too, but just
+for the post on that tag.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I hope that you enjoy the changes, and if you are a master of the design,
+please, help me! :D You can find all the &lt;a class="reference external" href="http://github.com/agonzalezro/agonzalezro.github.com"&gt;source code of the blog here&lt;/a&gt;!&lt;/p&gt;
+</summary><category term="theme"></category><category term="readable"></category><category term="layout"></category></entry><entry><title>DJGUL: What's new on Django 1.5</title><link href="http://agonzalezro.github.com/djgul-whats-new-on-django-15.html" rel="alternate"></link><updated>2013-03-12T21:30:00+01:00</updated><author><name>Álex</name></author><id>tag:agonzalezro.github.com,2013-03-12:djgul-whats-new-on-django-15.html</id><summary type="html">&lt;p&gt;In this talk Marc Tamlyn (&lt;a class="reference external" href="https://twitter.com/mjtamlyn"&gt;&amp;#64;mjtamlyn&lt;/a&gt;) was
 explained to us all the changes in the new &amp;quot;major&amp;quot; version of django,
 django 1.5.&lt;/p&gt;
 &lt;p&gt;As always you can find the original talks in Internet:
