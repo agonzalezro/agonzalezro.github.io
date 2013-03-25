@@ -16,7 +16,7 @@ TWITTER_USERNAME = 'agonzalezro'
 
 DISQUS_SITENAME = 'agonzalezro'
 
-THEME = '_themes/readable'
+THEME = '_themes/journal'
 
 OUTPUT_PATH = '.'
 DELETE_OUTPUT_DIRECTORY = False

@@ -23,7 +23,7 @@ could be useful. You should know too that I am really passionate about
 The main reason of writting this blog is to improve my poor English and talk
 about the things that I really love, that usually are related with technology
 and specially with Python. You can see in the photo that I am not lying about
-my passion :D If you want to take a photo as mine, you can go to Efteling_, I
+my passion :D If you want to take a photo like mine, you can go to Efteling_, I
 really recommend it!
 
 If you are still curious after reading all the text above, please take a look
