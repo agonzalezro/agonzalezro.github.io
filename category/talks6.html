@@ -79,122 +79,112 @@ forkme_right_orange_ff7600.png" alt="Fork me on GitHub" />
       <div class="span8 offset2">
               <section id="">
     <div class="page-header">
-      <h1><a href="../graphite-carbon-and-diamond.html">Graphite, Carbon and Diamond</a></h1>
+      <h1><a href="../pygrunn-winter-hackathon-2012.html">PyGrunn Winter Hackathon 2012</a></h1>
       <span class="label label-success">by Álex</span>
-<span class="label label-success"><abbr class="published" title="2012-11-06T19:30:00">Tue 06 November 2012</abbr></span>
+<span class="label label-success"><abbr class="published" title="2012-11-27T00:00:00">Tue 27 November 2012</abbr></span>
 <a class="label label-info" href="../category/talks.html">talks</a>
-  <a class="label" href="../tag/graphite.html">graphite</a>
-  <a class="label" href="../tag/carbon.html">carbon</a>
-  <a class="label" href="../tag/diamond.html">diamond</a>
-  <a class="label" href="../tag/monitoring.html">monitoring</a>
-  <a class="label" href="../tag/python.html">python</a>
+  <a class="label" href="../tag/hackathon.html">hackathon</a>
+  <a class="label" href="../tag/pygrunn.html">pygrunn</a>
+  <a class="label" href="../tag/paylogic.html">paylogic</a>
+  <a class="label" href="../tag/backbone.html">backbone</a>
+  <a class="label" href="../tag/flask.html">flask</a>
+  <a class="label" href="../tag/slides.html">slides</a>
   <a class="label" href="../tag/pygrunn.html">pygrunn</a>
     </div>
-    <p>Two days ago was my, sadly, last PyGrunn monthly meeting. Thanks to <a class="reference external" href="http://www.linkedin.com/profile/view?id=17961952&amp;locale=en_US&amp;trk=tyah">Bram</a> now
-we know a little bit more about how to monitoring with Python applications.</p>
-<p>Below you will find the notes that I take to the people that couldn't assist to
-the talk. But they are only that, some notes, don't expect to find a really cool
-story on them. I am pretty sure that <a class="reference external" href="/graphite.slides/graphite.html">the original slides made by Bram</a> will help
-you.</p>
-<div class="section" id="why-graphite">
-<h2>Why graphite?</h2>
+    <p>Few days ago, actually, more than one week ago (but I was very busy :) we made
+our first <a class="reference external" href="http://paylogic.github.com/winter-hackathon/">PyGrunn hackathon</a>. I was lucky and from all the list of ideas, the
+selected was one of mines! The slides generator, that finally we call
+<strong>hovercraft</strong>. Here is a small introduction about what I wanted:</p>
+<p><em>A small platform to create slides and have them always associated to a web
+with this possibilities:</em></p>
 <ul class="simple">
-<li>Dev friendly</li>
-<li>Ops friendly</li>
-<li>Growth friendly: very scalable</li>
+<li><em>Create an account with Google (or perhaps twitter, facebook...), but Google
+seems the best option for me now.</em></li>
+<li><em>Create or edit new slides related with this account. This slides
+creator/editor will have the following functionalities:</em><ul>
+<li><em>Select one image for background in fullscreen.</em></li>
+<li><em>Write one or 2 lines of text that will always fulfill the width of the
+slide.</em></li>
+<li><em>Change the font family.</em></li>
 </ul>
-<p>Some important companies are using it: Instragram, Etsy, Github, <a class="reference external" href="http://www.kalooga.com">Kalooga</a> (this is the company where Bram is working :).</p>
-<p>It's a project created by <a class="reference external" href="orbitz.com">Orbitz.com</a>.</p>
+</li>
+<li><em>Have a permanent link to your slide (completely public for now).</em></li>
+</ul>
+<p>After the hackathon we got something very similar to what I wanted, with some
+small issues. But this post is not about what we did wrong! This post is about
+which technologies did we use to finish the project and perhaps, if I am lucky,
+start a discussion on why we did/didn't make a good choice.</p>
+<div class="section" id="how-do-we-achieve-this">
+<h2>How do we achieve this?</h2>
+<div class="section" id="backend">
+<h3>Backend</h3>
+<p>The backend of the application was almost inexistent, we only wanted to allow
+the users to login with a Google account to have access to edit their slides.
+Being a hackathon we didn't spend time adding <abbr title="Create/Read/Update/Delete">CRUD</abbr> functionalities to manage the users.</p>
+<p>If you want to delete your user, let me know, I will do it by hand :) It was
+made with <a class="reference external" href="http://flask.pocoo.org/">Flask</a>, Flask-OAuth for the authentication with Google and <a class="reference external" href="http://redis.io/">redis</a>
+to store the presentations.</p>
 </div>
-<div class="section" id="ecosystem">
-<h2>Ecosystem</h2>
+<div class="section" id="frontend">
+<h3>Frontend</h3>
+<p>The viewer was really simply too because from the beginning we wanted to play
+with the editor (it was more funny). For doing it we used <a class="reference external" href="http://lab.hakim.se/reveal-js/#/">revealjs</a> to show
+the presentation with slide effect and <a class="reference external" href="http://fittextjs.com/">jquery-fittext</a> to make it fullslide.</p>
+<p>Now the important part! We made the editor with <a class="reference external" href="http://agonzalezro.github.com/backbonejs-underscore-small-intro.html">backbone and underscore</a>, it
+seems to us the better choice, since we will have 3 principal views:</p>
 <dl class="docutils">
-<dt>Graphite</dt>
-<dd>The tool that makes the graphs.</dd>
-<dt>Carbon</dt>
-<dd>Colects the statistics.</dd>
-<dt>Whisper</dt>
-<dd>Metrics <cite>RRD (Round Robin database)</cite>.</dd>
-<dt>Diamond</dt>
-<dd>It's the metrics collector, they are others: CollectD, Munin, Ganglia... Of
-course, you can develop yours.</dd>
+<dt>The background chooser</dt>
+<dd>which is connection to <a class="reference external" href="http://www.deviantart.com/">deviantart</a> to perform a
+query of good backgrounds for your slide. Then you can click on one of the
+results and will be applied to the current slide.</dd>
+<dt>The font chooser</dt>
+<dd>which is loading some google fonts, we wanted to do this
+automagically but we couldn't finish it at time. The behaviour is the same,
+you choose a font and its applied to the current slide.</dd>
+<dt>The slide content</dt>
+<dd>that should be <abbr title="What You See Is What You Get">WYSIWYG</abbr>
+but for now is on the middle, because we couldn't make the text bigger while
+you are writing.</dd>
 </dl>
 </div>
-<div class="section" id="how-do-you-gate-the-data-in">
-<h2>How do you gate the data in?</h2>
+<div class="section" id="deployment">
+<h3>Deployment</h3>
+<p>And finally the deployment that was made with <cite>heroku</cite> and <cite>redistogo</cite> that
+allows you to use a 5M non-persistant DB that is good for a demo.</p>
+</div>
+</div>
+<div class="section" id="resources">
+<h2>Resources</h2>
+<ul class="simple">
+<li>You can see <cite>the list of all the projects</cite> or...</li>
+<li>You can find all the <a class="reference external" href="https://github.com/agonzalezro/hovercraft">source on github</a> or...</li>
+<li>You can <a class="reference external" href="http://nameless-spire-1402.herokuapp.com/">try a demo</a> too!</li>
+<li>And if you are too lazy to try it, here you have an screenshot:</li>
+</ul>
+<a class="reference external image-reference" href="static/hovercraft.png"><img alt="static/hovercraft.png" class="align-center" src="static/hovercraft.png" style="width: 66%;" /></a>
+</div>
+<div class="section" id="thanks">
+<h2>Thanks!</h2>
+<p>I really want to thank <a class="reference external" href="http://www.paylogic.nl">Paylogic</a> for letting us a place where to do the project
+and for provide us food &amp; beers. What a developer will develop without food and
+beer?</p>
+<p>I want to thank too all the guys that &quot;spend&quot; the weekend with me having fun, but working hard too!</p>
+</div>
+<div class="section" id="conclusions">
+<h2>Conclusions</h2>
+<p>The good point of all this editing is that thanks to backbone and thanks to the
+backend guys is saved without any action needed. The idea of this full project
+was:</p>
 <ol class="arabic simple">
-<li>Create an HTTP connection to the server.</li>
-<li>Each line will be a data point.</li>
+<li><strong>Have fun!</strong></li>
+<li>Simplifying slide creation</li>
+<li>Make it really simply to share those slides.</li>
 </ol>
-<p>If you want namespaces you can always use dots <cite>.</cite>. Example: <cite>pygrunn.load
-[load] [now]</cite>.</p>
-</div>
-<div class="section" id="improvements">
-<h2>Improvements</h2>
-<p>Why don't use statsd? It's a layer for Graphite that you can use to keep your
-application running and send the data to statsd. If it can write it ok, if not,
-you have a problem.</p>
-<p>The original implementation of StatsD is in Node.js but there are another
-projects that do it with C (StatsD-c) or python (Bucky) or [write your prefered
-language here].</p>
-</div>
-<div class="section" id="uses">
-<h2>Uses</h2>
-<ul class="simple">
-<li>Open a <cite>dev</cite> file and write directly to it.</li>
-<li>Open HTTP connection.</li>
-<li>Use a statsd decorator.</li>
-<li>...</li>
-</ul>
-</div>
-<div class="section" id="plots">
-<h2>Plots</h2>
-<p>You can plot data with:</p>
-<ul class="simple">
-<li>JSON</li>
-<li>CSV</li>
-<li>HTML</li>
-<li>XML</li>
-<li>...</li>
-</ul>
-</div>
-<div class="section" id="api">
-<h2>API</h2>
-<p>You can do funny things as:</p>
-<ul class="simple">
-<li>Check the registered users over past day in json data</li>
-<li>Keep track of your 404 errors</li>
-<li>...</li>
-</ul>
-</div>
-<div class="section" id="where-is-the-data-store">
-<h2>Where is the data store?</h2>
-<p>They are stored in files, in case that you run out of space this data will be
-stored on the Carbon cache until something happen to it.a</p>
-</div>
-<div class="section" id="functions">
-<h2>Functions</h2>
-<p>You can filter results, for example mostDeviant (take a look to the slides to
-see the screenshots that show the use).</p>
-</div>
-<div class="section" id="what-s-also-nice">
-<h2>What's also nice?</h2>
-<dl class="docutils">
-<dt>Sentry</dt>
-<dd>Error caching middleware that you can run with your WSGI application to
-check the Exceptions and the stacktraces.</dd>
-<dt>Shinken</dt>
-<dd>It's also written in python and it's compatible with Nagios. It could be a
-good complement to Graphite to show some alerts when the thing are really
-wrong.</dd>
-<dt>New Relic</dt>
-<dd>It's a Web Application Performance Management (<cite>APM (Application
-Performance Management</cite>).</dd>
-</dl>
+<p>I didn't want to go really depth into the development of this project, <strong>I only wanted to give a quick overview of what we made in two days.</strong> But if you are really interested on something more explained, let me know on the comments and I will try to help you in all what I can.</p>
 </div>
 
     <strong>
-      <p>There are <a href="../graphite-carbon-and-diamond.html#disqus_thread">comments</a>.</p>    </strong>
+      <p>There are <a href="../pygrunn-winter-hackathon-2012.html#disqus_thread">comments</a>.</p>    </strong>
     </section>
 
                 <div class="pagination"><ul>
@@ -213,15 +203,18 @@ Performance Management</cite>).</dd>
   </li>
     <li class="active">    <a href="../category/talks6.html">6</a>
   </li>
+    <li >    <a href="../category/talks7.html">7</a>
+  </li>
   
 
-      <li class="disabled"><a href="#"">&raquo;</a></li>
+      <li><a href="../category/talks7.html">&raquo;</a></li>
   </ul></div>
         
         </div>
       <div class="span5 offset1">
   <h2><i class="icon-fire"> </i>More related stuff...</h2>
   <ol>
+            <li><a href="../djgul-whats-new-on-django-15.html">DJGUL: What's new on Django 1.5</a></li>
             <li><a href="../djugl-inside-lanyrd-architecture.html">DJUGL: Inside Lanyrd architecture</a></li>
             <li><a href="../djugl-advanced-python-trought-django-metaclasses.html">DJUGL: Advanced python trought Django: Metaclasses</a></li>
             <li><a href="../techtalk-from-python-2x-to-python-3.html">TechTalk: from python 2.x to python 3</a></li>

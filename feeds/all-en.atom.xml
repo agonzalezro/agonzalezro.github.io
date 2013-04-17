@@ -1,5 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>agonzalezro.github.com</title><link href="http://agonzalezro.github.com/" rel="alternate"></link><link href="http://agonzalezro.github.com/feeds/all-en.atom.xml" rel="self"></link><id>http://agonzalezro.github.com/</id><updated>2013-03-20T00:48:00+01:00</updated><entry><title>Changes on the blog</title><link href="http://agonzalezro.github.com/changes-on-the-blog.html" rel="alternate"></link><updated>2013-03-20T00:48:00+01:00</updated><author><name>Álex</name></author><id>tag:agonzalezro.github.com,2013-03-20:changes-on-the-blog.html</id><summary type="html">&lt;p&gt;One of the problems that I always have when I start trying to blog something is
+<feed xmlns="http://www.w3.org/2005/Atom"><title>agonzalezro.github.com</title><link href="http://agonzalezro.github.com/" rel="alternate"></link><link href="http://agonzalezro.github.com/feeds/all-en.atom.xml" rel="self"></link><id>http://agonzalezro.github.com/</id><updated>2013-04-17T00:00:00+02:00</updated><entry><title>Here I go PyGrunn'13!</title><link href="http://agonzalezro.github.com/here-i-go-pygrunn13.html" rel="alternate"></link><updated>2013-04-17T00:00:00+02:00</updated><author><name>Álex</name></author><id>tag:agonzalezro.github.com,2013-04-17:here-i-go-pygrunn13.html</id><summary type="html">&lt;p&gt;I am really proud of say that the next month I will be giving a talk at
+PyGrunn!&lt;/p&gt;
+&lt;p&gt;This is a really good new for me because PyGrunn is the conference that my old
+colleagues organize since years ago. I was on it first time in 2011 just one
+week after I started working at &lt;a class="reference external" href="http://paylogic.com"&gt;Paylogic&lt;/a&gt;. I meet a lot of interesting people
+there and I will see them again this year!&lt;/p&gt;
+&lt;p&gt;In 2012 I repeat, but at that time I had already started to organize the
+&amp;quot;Monthly PyGrunn&amp;quot;s with &lt;a class="reference external" href="http://twitter.com/_ivor"&gt;Ivor&lt;/a&gt;. TBH that talks were quite successful, and not
+for the quantity of people that we get there, if not for the quality of them
+and the networking after!&lt;/p&gt;
+&lt;p&gt;I am really happy too because going there I will be able to see a lot of
+friends that I miss! I just moved here 5 months ago but I really want to see
+them!&lt;/p&gt;
+&lt;p&gt;Now, the less important thing: about the talk! I will be talking about Thrift
+and how can we use it to talk between different applications in different
+languages (in the examples: Python &amp;amp; Scala). When PyGrunn finish I think that
+I will have a video where you can see the talk (or check my English) and I
+will upload the slides too!&lt;/p&gt;
+&lt;p&gt;Thanks to &lt;a class="reference external" href="http://www.pygrunn.org"&gt;PyGrunn&lt;/a&gt; for give me this chance!&lt;/p&gt;
+</summary><category term="pygrunn"></category><category term="talk"></category><category term="friends"></category><category term="groningen"></category><category term="my-english-is-crap"></category></entry><entry><title>Changes on the blog</title><link href="http://agonzalezro.github.com/changes-on-the-blog.html" rel="alternate"></link><updated>2013-03-20T00:48:00+01:00</updated><author><name>Álex</name></author><id>tag:agonzalezro.github.com,2013-03-20:changes-on-the-blog.html</id><summary type="html">&lt;p&gt;One of the problems that I always have when I start trying to blog something is
 that I get bored very quick of writing and I focus in other things like CMS,
 CSS or this kind of things that really doesn't matter if you have good content.&lt;/p&gt;
 &lt;p&gt;Today was one of those day when I got bored about it and I decided to make some

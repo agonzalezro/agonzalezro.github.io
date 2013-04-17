@@ -79,136 +79,89 @@ forkme_right_orange_ff7600.png" alt="Fork me on GitHub" />
       <div class="span8 offset2">
               <section id="">
     <div class="page-header">
-      <h1><a href="./techtalk-from-python-2x-to-python-3.html">TechTalk: from python 2.x to python 3</a></h1>
+      <h1><a href="./djugl-advanced-python-trought-django-metaclasses.html">DJUGL: Advanced python trought Django: Metaclasses</a></h1>
       <span class="label label-success">by Álex</span>
-<span class="label label-success"><abbr class="published" title="2013-02-12T00:30:00">Tue 12 February 2013</abbr></span>
+<span class="label label-success"><abbr class="published" title="2013-03-12T20:00:00">Tue 12 March 2013</abbr></span>
 <a class="label label-info" href="./category/talks.html">talks</a>
+  <a class="label" href="./tag/djugl.html">djugl</a>
+  <a class="label" href="./tag/march.html">march</a>
+  <a class="label" href="./tag/django.html">django</a>
   <a class="label" href="./tag/python.html">python</a>
-  <a class="label" href="./tag/migration.html">migration</a>
-  <a class="label" href="./tag/python3k.html">python3k</a>
+  <a class="label" href="./tag/metaclass.html">metaclass</a>
     </div>
-    <div class="section" id="introduction">
-<h2>Introduction</h2>
-<p>This are some notes that I took while the talk that I saw today, the original
-title of the talk that I had the chance to see today was: &quot;Switch to Python
-3... Now... Inmediately&quot; by the <a class="reference external" href="http://www.russel.org.uk">professor Russel Winder</a>.</p>
-<p>More or less all that you will find here is a transaction, just ordered in my
-style and perhaps with some notes by myself.</p>
-<p>Python 2.x remains being the default python. Too many people and organizations
-are afraid of the change.</p>
-<p>Python software foundation should declare python 3 the default python
-immediately.</p>
-<div class="section" id="problems">
-<h3>Problems</h3>
-<ul class="simple">
-<li>some big companies are telling people to don't use it.</li>
-<li>some crucial projects are not using Python 3 yet.</li>
-</ul>
-</div>
-<div class="section" id="companies-and-people">
-<h3>Companies and people</h3>
-<ul class="simple">
-<li>from the point of view of Russel, the problem are those companies that
-doesn't want to migrate, and not the fact that the code needs to be migrate.</li>
-<li>at least they should have version 2 and 3 compatible on the codebase.</li>
-</ul>
-</div>
-<div class="section" id="migration">
-<h3>Migration</h3>
-<ul class="simple">
-<li><tt class="docutils literal">2to3</tt> tool is not useful at all. Just one shot transform tool.</li>
-<li>the manual the better? From my POV (Álex) you can never let a machine this
-kind of work and it usually will be a biblical proportion job for large
-codebases. And more important... usually without tests :D</li>
-</ul>
-</div>
-</div>
-<div class="section" id="justifications">
-<h2>Justifications</h2>
-<p>Python 2 is a dead end and python 3 is the developing future.</p>
-<p>This piece of code is compatible with both versions, why don't use them?</p>
-<div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="k">exec</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <p>This talk was made by Peter Ingles, you can check his twitter here: <a class="reference external" href="http://twitter.com/inglesp">&#64;inglesp</a>.</p>
+<p>What is write above is basically what he said, mixed with some of my thoughts.
+The talk was really good, and even using metaclasses almost daily
+(<tt class="docutils literal">forms.Form</tt>) you don't feel the power of them until somebody explain it to
+you (shame on me!).</p>
+<p>In all the Peter example we was using Django 1.4.</p>
+<p>The typical example as I said before is <tt class="docutils literal">forms.Form</tt> from django.</p>
+<p>For some reason, Peter was in love with the Ponies, so, he tried to create some
+meta stable:</p>
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">A</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">app_label</span> <span class="o">=</span> <span class="s">&#39;ponies&#39;</span>
+        <span class="n">abstract</span> <span class="o">=</span> <span class="bp">True</span>
+
+<span class="k">class</span> <span class="nc">Stable</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Models</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">app_label</span> <span class="o">=</span> <span class="s">&#39;ponies&#39;</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">()</span>
+    <span class="n">stable</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Stable</span><span class="p">)</span>
 </pre></div>
-<p>Problem: <tt class="docutils literal">print(x)</tt> support multiple parameter in python 3, so, let's import
-the function from future to have the same behaviour in python 2.x:</p>
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+<div class="section" id="create-classes-dinamycally">
+<h2>Create classes dinamycally:</h2>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span><span class="n">x</span>
+
+<span class="n">name</span> <span class="o">=</span> <span class="s">&#39;ExampleClass&#39;</span>
+<span class="n">bases</span> <span class="o">=</span> <span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="p">)</span>
+<span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&#39;__init__&#39;</span><span class="p">:</span> <span class="n">init</span>
+<span class="p">}</span>
+<span class="n">instance</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="n">attrs</span><span class="p">)</span>
 </pre></div>
-<p>Let's make it bigger:</p>
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">division</span><span class="p">,</span>
-    <span class="n">absolute_import</span><span class="p">,</span>
-    <span class="n">print_function</span><span class="p">,</span>
-    <span class="n">unicode_literals</span>
-<span class="p">)</span>
+<p>This is a pretty coold way to create classes at runtime.</p>
+</div>
+<div class="section" id="type">
+<h2>type</h2>
+<p>I don't know you, but I was always using <tt class="docutils literal">type</tt> just for the type comparation,
+but never for create classes...</p>
+<p>Some &quot;strange&quot; (puzzling) things about <tt class="docutils literal">type</tt> is that <tt class="docutils literal">type</tt> is a class of type
+type:</p>
+<div class="highlight"><pre><span class="nb">type</span><span class="p">(</span><span class="nb">type</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="nb">type</span> <span class="s">&#39;type&#39;</span><span class="o">&gt;</span>
 </pre></div>
-<p>With this we will avoid problems with floats on divisions, add <cite>.</cite> to the
-imports, import the python3 version of print and work always with unicode.</p>
-<p>Another problem is the list-comprehensions which will change a little bit,
-instead create list, they will create sets.</p>
-<div class="section" id="some-other-problems">
-<h3>Some other problems</h3>
-<p>python 2 is strict, but python 3 is kinda lazy.</p>
-<div class="highlight"><pre><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span><span class="p">,</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
-</pre></div>
-<p>Will produce an iterator in python 3, in python 2 is a data structure.</p>
-<p>This is one of the biggest issues into the migration, other functions with same
-problems will be, for example: <tt class="docutils literal">items</tt>, <tt class="docutils literal">keys</tt>, <tt class="docutils literal">values</tt>, <tt class="docutils literal">iteritems</tt>,
-<tt class="docutils literal">iterkeys</tt> &amp; <tt class="docutils literal">itervalues</tt> which in python 3 will become: <tt class="docutils literal">items</tt>,
-<tt class="docutils literal">keys</tt> &amp; <tt class="docutils literal">values</tt>.</p>
-<p>If you want a data structure instead a iterator, you should make it manually:</p>
-<div class="highlight"><pre><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>  <span class="c"># python 2.x</span>
-<span class="nb">tuple</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>  <span class="c"># python 3</span>
+<p>And we can subclass <tt class="docutils literal">type</tt>:</p>
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">A</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
+    <span class="k">pass</span>
 </pre></div>
 </div>
-<div class="section" id="concurrency">
-<h3>Concurrency</h3>
-<p>At least IronPython and Jython do not have a <a class="reference external" href="http://wiki.python.org/moin/GlobalInterpreterLock">GIL</a> as CPython and PyPy do.</p>
-<p>There is an experiment to mode GIL out of PyPy.</p>
-<dl class="docutils">
-<dt>Actors</dt>
-<dd>communicate processes with messages.</dd>
-<dt>Dataflow</dt>
-<dd>operators connected by channels with activity triggered by arrival of data on
-the channels.</dd>
-<dt>CSP</dt>
-<dd>we have <a class="reference external" href="http://code.google.com/p/pycsp/">PyCSP</a> and <a class="reference external" href="https://github.com/python-concurrency/python-csp">PythonCSP</a>.</dd>
-</dl>
+<div class="section" id="python-3">
+<h2>Python 3</h2>
+<p>The syntax to create a metaclass is sightly different:</p>
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">Form</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">Formtype</span><span class="p">):</span>
+    <span class="o">...</span>
+</pre></div>
 </div>
-<div class="section" id="data-parallelism">
-<h3>Data parallelism</h3>
-<p>Transform a sequence to another sequence where all individual actions happen at
-the same time. Python has not a lot of utilities for that, since Go or D do.</p>
-</div>
-<div class="section" id="futures-are-the-future">
-<h3>Futures are the future</h3>
-<dl class="docutils">
-<dt><cite>concurrent.futures</cite></dt>
-<dd>python 3.2 package to abstract over threads and processes to give an
-asynchronous function call and future system.</dd>
-</dl>
-</div>
-</div>
-<div class="section" id="under-challengue">
-<h2>Under challengue</h2>
+<div class="section" id="key-takeaways">
+<h2>Key takeaways</h2>
 <ul class="simple">
-<li>Go is taking over from Python, because it's native and it has a solid concurrency models (CSP).</li>
-<li>D is on the market too.</li>
-<li>Native programs are almost always quicker than python.</li>
+<li>classes are factories for creating objects.</li>
+<li>we can create classes dynamically at runtime.</li>
+<li>metaclasses are factories for creating classes.</li>
+<li>we can control what happens when we create classes</li>
 </ul>
 </div>
-<div class="section" id="funny-points">
-<h2>Funny points</h2>
-<ul class="simple">
-<li>One rule of the guy is to use one month a year just <tt class="docutils literal">ed</tt> no <tt class="docutils literal">vim</tt> or
-<tt class="docutils literal">emacs</tt> rubbish.</li>
-<li>C has a rubbish syntax in comparison with Python. You will touch your head
-if you check some C++ code: why!?</li>
-</ul>
+<div class="section" id="the-slides">
+<h2>The slides</h2>
+<p>You can find the interactive talk of Peter in his github account:
+<a class="reference external" href="http://github.com/inglesp/prescons">http://github.com/inglesp/prescons</a></p>
+<p>Enjoy them!</p>
 </div>
 
     <strong>
-      <p>There are <a href="./techtalk-from-python-2x-to-python-3.html#disqus_thread">comments</a>.</p>    </strong>
+      <p>There are <a href="./djugl-advanced-python-trought-django-metaclasses.html#disqus_thread">comments</a>.</p>    </strong>
     </section>
 
                 <div class="pagination"><ul>
@@ -241,6 +194,8 @@ if you check some C++ code: why!?</li>
   </li>
     <li >    <a href="./index13.html">13</a>
   </li>
+    <li >    <a href="./index14.html">14</a>
+  </li>
   
 
       <li><a href="./index6.html">&raquo;</a></li>
@@ -250,6 +205,7 @@ if you check some C++ code: why!?</li>
       <div class="span5 offset1">
   <h2><i class="icon-fire"> </i>More related stuff...</h2>
   <ol>
+            <li><a href="./changes-on-the-blog.html">Changes on the blog</a></li>
             <li><a href="./djgul-whats-new-on-django-15.html">DJGUL: What's new on Django 1.5</a></li>
             <li><a href="./djugl-inside-lanyrd-architecture.html">DJUGL: Inside Lanyrd architecture</a></li>
             <li><a href="./djugl-advanced-python-trought-django-metaclasses.html">DJUGL: Advanced python trought Django: Metaclasses</a></li>
