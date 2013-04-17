@@ -32,3 +32,9 @@ a:hover {
   color: #333;
   text-decoration: none;
 }
+
+.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus, .dropdown-submenu:hover>a, .dropdown-submenu:focus>a,
+.dropdown-menu>.active>a, .dropdown-menu>.active>a:hover, .dropdown-menu>.active>a:focus
+{
+  background-image: linear-gradient(to bottom, #e78b24, #fa5a14)
+}

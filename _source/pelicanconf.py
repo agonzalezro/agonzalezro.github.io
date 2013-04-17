@@ -22,6 +22,7 @@ OUTPUT_PATH = '.'
 DELETE_OUTPUT_DIRECTORY = False
 
 GITHUB_URL = 'https://github.com/agonzalezro/agonzalezro.github.com'
+GITHUB_RIBBON = 'forkme_right_orange_ff7600.png'
 
 DISPLAY_PAGES_ON_MENU = True
 
