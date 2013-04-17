@@ -1,3 +1,5 @@
+# TODO: remove all this files is not a good idea, I would prefer to use another branch
+
 PELICAN=pelican
 PELICANOPTS=
 
@@ -27,7 +29,7 @@ $(OUTPUTDIR)/%.html:
 
 clean:
 	# Remove all except the files that start with _, the .git folder, and some other special files as Makefile or README
-	find . | egrep -v "/_|static|google51b6ddce6144c458.html|Makefile|README|.git|^.$$" | xargs rm -rf
+	find . | egrep -v "/_|static|Makefile|README|.git|^.$$" | xargs rm -rf
 
 includes:
 	python $(INCLUDES)/age.py > $(INPUTDIR)/pages/age.inc
