@@ -79,223 +79,134 @@ forkme_right_orange_ff7600.png" alt="Fork me on GitHub" />
       <div class="span8 offset2">
               <section id="">
     <div class="page-header">
-      <h1><a href="./djugl-inside-lanyrd-architecture.html">DJUGL: Inside Lanyrd architecture</a></h1>
+      <h1><a href="./djgul-whats-new-on-django-15.html">DJGUL: What's new on Django 1.5</a></h1>
       <span class="label label-success">by Álex</span>
-<span class="label label-success"><abbr class="published" title="2013-03-12T20:30:00">Tue 12 March 2013</abbr></span>
+<span class="label label-success"><abbr class="published" title="2013-03-12T21:30:00">Tue 12 March 2013</abbr></span>
 <a class="label label-info" href="./category/talks.html">talks</a>
   <a class="label" href="./tag/djugl.html">djugl</a>
   <a class="label" href="./tag/march.html">march</a>
-  <a class="label" href="./tag/lanyrd.html">lanyrd</a>
   <a class="label" href="./tag/django.html">django</a>
-  <a class="label" href="./tag/solr.html">solr</a>
-  <a class="label" href="./tag/celery.html">celery</a>
-  <a class="label" href="./tag/postgresql.html">postgresql</a>
-  <a class="label" href="./tag/redis.html">redis</a>
-  <a class="label" href="./tag/mongodb.html">mongodb</a>
-  <a class="label" href="./tag/mysql.html">mysql</a>
-  <a class="label" href="./tag/varnish.html">varnish</a>
-  <a class="label" href="./tag/haproxy.html">haproxy</a>
-  <a class="label" href="./tag/s3.html">s3</a>
+  <a class="label" href="./tag/15.html">1.5</a>
     </div>
-    <p>This talk was just amazing! Andrew Godwin (<cite>&#64;andrewgodwin
-&lt;http://twitter.com/andrewgodwin&gt;</cite> or <a class="reference external" href="http://areacode.org">http://areacode.org</a>) gave us a talk about
-the internal architecture that they are using at <a class="reference external" href="http://lanyrd.com">lanyrd.com</a>.</p>
-<p>I would say 2 things:</p>
+    <p>In this talk Marc Tamlyn (<a class="reference external" href="https://twitter.com/mjtamlyn">&#64;mjtamlyn</a>) was
+explained to us all the changes in the new &quot;major&quot; version of django,
+django 1.5.</p>
+<p>As always you can find the original talks in Internet:
+<a class="reference external" href="https://speakerdeck.com/mjtamlyn/whats-new-in-django-1-dot-5">https://speakerdeck.com/mjtamlyn/whats-new-in-django-1-dot-5</a></p>
+<div class="section" id="major-changes">
+<h2>Major changes</h2>
 <ul class="simple">
-<li>Even before that talk I was using lanyrd, it's a really good service if you
-are organizing some kind of event.</li>
-<li>At <a class="reference external" href="http://greenmangaming.com">GreenManGaming</a> we are using a very similar
-infrastructure, which I think that means that when 2 different companies
-without any relation are sharing so many layers, it should be good!</li>
+<li>Pluggable user models. Which means that you will need some proxy classes
+magic or similar to extend your users.</li>
+<li>Python 3 support.</li>
+<li>Security improvements.</li>
+<li><tt class="docutils literal">StreamingHTTPResponse</tt>.</li>
+<li>The {% url %} tag change his behaviour. It seems that using <tt class="docutils literal">future</tt> you
+can had this behaviour before (1.3?) but... who use <tt class="docutils literal">future</tt>? :)</li>
 </ul>
-<p>After this lines you will fine almost a C&amp;P of the Andrew slide that you can
-find here: <a class="reference external" href="https://speakerdeck.com/andrewgodwin/inside-lanyrds-architecture">https://speakerdeck.com/andrewgodwin/inside-lanyrds-architecture</a>,
-but there are some additional notes added by me.</p>
-<div class="section" id="the-origin-story">
-<h2>The Origin Story</h2>
-<p>They launch in Aug'10 and after half an hour going down because the load was
-too high</p>
-<p>In Sep'11 they got some inversion that allows them to start with the curren
-architecture.</p>
-<p>The ecosystem that they need to take care of:</p>
+<p>You can see a better explanation of this points here:</p>
+<div class="section" id="pluggable-user-models">
+<h3>Pluggable user models</h3>
 <ul class="simple">
-<li>conferences</li>
-<li>profile pages</li>
-<li>emails</li>
-<li>dashboard</li>
-<li>coverage</li>
-<li>topics</li>
-<li>guides</li>
-<li>mobile app</li>
-<li>...</li>
+<li>Solution to schema chnages on the default user model.</li>
+<li><tt class="docutils literal">AUTH_PROFILE_MODEL</tt> becomes <tt class="docutils literal">AUTH_USER_MODEL</tt>.</li>
 </ul>
-<p>And all this with just 6 technical guys! That know this:</p>
-<ul class="simple">
-<li>You don't need a big team to write a complex product.</li>
-<li>Communication is absolutely key.</li>
-<li>Using Open Source well is also crucial.</li>
-</ul>
+<p>This was a problem since 2014 when Django was created.</p>
+<p>If you want to change something this is your first start point:
+<tt class="docutils literal">auth.models.AbstractUser</tt>. If you want to go one step forward:
+<tt class="docutils literal">auth.models.PermissionMixin</tt> &amp; <tt class="docutils literal">auth.models.AbstractBaseUse</tt>.</p>
+<p>You can override <tt class="docutils literal">USERNAME_FIELD</tt> too, to override the standard username
+field of the model.</p>
+<p><tt class="docutils literal">contrib.admin</tt> integration. Which I didn't try yet (Álex) but if it works as
+they said, it should be just amazing!</p>
 </div>
-<div class="section" id="what-they-run-on">
-<h2>What they run on</h2>
-<p>Almost all the site is written in django with some spices:</p>
+<div class="section" id="python-3">
+<h3>Python 3</h3>
 <ul class="simple">
-<li>celery for the background tasks.</li>
-<li>management cron jobs.</li>
-<li>served by Gunicorn containers.</li>
+<li>3.2 and 3.3 supported, but python 2.5 was gone.</li>
+<li>Not yet &quot;production ready&quot;. You will probably be ok, but it's up to you to
+give it a chance.</li>
+<li>Upgrade your third party apps! You will be able to import compatibility apps
+from django that will help you using this apps.</li>
 </ul>
-<p>The main services that you can find on, are this:</p>
-<div class="section" id="postresql">
-<h3>PostreSQL</h3>
-<ul class="simple">
-<li>main data store for everythin except upload
-master &amp; replicated
-around 80G in 5 DBs
-each server run in RAID1</li>
-</ul>
+<p><strong>Caveats</strong>: MySQL, PIL, Selenium... this all need to be migrated also :(</p>
+<p>Armin (<a class="reference external" href="https://twitter.com/mitsuhiko">&#64;mitsuhiko</a>) said that PIL is already
+supported o/</p>
 </div>
-<div class="section" id="redis">
-<h3>Redis</h3>
-<ul class="simple">
-<li>Task queue transport for Celery and tweet listeners,</li>
-<li>Contains user sets for every conference, user and topic.</li>
-<li>Used for efficient narrowing of queries before Solr is hit,</li>
-</ul>
+<div class="section" id="security">
+<h3>Security</h3>
+<p><tt class="docutils literal">ALLOWED_HOSTS</tt> is a whitelist backported to django 1.3.x and 1.4.x but
+required in 1.5.</p>
+<p>You can read the django documentation about this here:
+<a class="reference external" href="https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts">https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts</a></p>
 </div>
-<div class="section" id="solr">
-<h3>Solr</h3>
-<ul class="simple">
-<li>Stores conferences, users, sessions and more...</li>
-<li>Very rich metada on each item.</li>
-<li>Heavy use of sharding throughout the site.</li>
-<li>They run Solr in master and replicated slave.</li>
-</ul>
+<div class="section" id="streaminghttpresponse">
+<h3>StreamingHTTPResponse</h3>
+<p>Fixes the handling of streaming http responses. Instead use the normal
+<tt class="docutils literal">.content</tt> you need to use <tt class="docutils literal">streamed_content</tt> if you want to access to the
+content.</p>
 </div>
-<div class="section" id="varnish">
-<h3>Varnish</h3>
+<div class="section" id="url">
+<h3>{% url %}</h3>
 <ul class="simple">
-<li>First point of call for all requests.</li>
-<li>Caches most anonymous requests.</li>
-<li>Enforces read-only mode if enabled.</li>
-<li>One used an one hot spare at all times.</li>
-</ul>
-</div>
-<div class="section" id="haproxy">
-<h3>HAProxy</h3>
-<ul class="simple">
-<li>Sits behind Varnish.</li>
-<li>Distributes load amongst frontend servers.</li>
-<li>Re-routes request during deploys.</li>
-<li>They always have 2 up identically configured.</li>
-</ul>
-</div>
-<div class="section" id="s3">
-<h3>S3</h3>
-<ul class="simple">
-<li>Stores all uploaded files from users.</li>
-<li>Uploads forms post directly to S3.</li>
-<li>Servers all static assets for the site (images, Css, JS).</li>
-<li>Static assets are versioned with hash to help cache break.</li>
+<li>The API was wrong, it was fixed in 1.3 loading from future... but hey, who made that? :)</li>
+<li>Old style is actually gone now.</li>
 </ul>
 </div>
 </div>
-<div class="section" id="what-they-have-eliminated">
-<h2>What they have eliminated</h2>
-<p>It's a shame because I am reading it in several places, but it seems that after
-the hype a lot of companies are eliminating MongoDB from their backends.</p>
-<div class="section" id="mongodb">
-<h3>MongoDB</h3>
+<div class="section" id="more-new-things">
+<h2>More new things</h2>
 <ul class="simple">
-<li>Stored analytics, logs and some other data.</li>
-<li>Lack of schema meant some bad data persisted.
-poor complex query performance.</li>
-</ul>
-<p>Nevertheless they think that it's a really useful tool for quick prototyping.</p>
-</div>
-<div class="section" id="mysql">
-<h3>MySQL</h3>
-<ul class="simple">
-<li>Primary data store for things that where not stored in MongoDB.</li>
-<li>Very poor complex query performance.</li>
-<li>No advances field types.</li>
-<li>Full database locks during schema changes.</li>
+<li>Caching of related model instances... this will transparently improve the
+performance of your site a lot. It was one of the biggest causes of delay on
+this new django version.</li>
+<li><tt class="docutils literal">update_fields</tt> is a new variable received on the save method that allows you
+to know what are the fileds that has changed.</li>
+<li>PostGIS 2.0 is supported now.</li>
+<li><tt class="docutils literal">{% verbatim %}</tt> that allows a little bit more easy javascript (for
+example) development in django templates.</li>
 </ul>
 </div>
-</div>
-<div class="section" id="the-great-move-of-2012">
-<h2>The great move of 2012</h2>
-<p>They move from EC2 to Softlayer basically because it's real hardware, if
-something fail, just change it).
-From MySQL to PostgreSQL for the reasons that he explained before.</p>
-<div class="section" id="why">
-<h3>Why?</h3>
-<p>It seems that lanyrd has a very predictable traffic, they can know months in
-advanced what is the expected load.</p>
-</div>
-<div class="section" id="how">
-<h3>How</h3>
-<p>Both moves required database downtime, couple of tables were really big, any
-change on that table means around 20-30min of downtime.</p>
-<ol class="arabic simple">
-<li>Replicate Solr and Redis across to new servers.</li>
-<li>Enter RO mode.</li>
-<li>Dump MySQL data.</li>
-<li>Convert MySQL dump into PostgreSQL dump.</li>
-<li>Load PostgresSQL dump.</li>
-<li>Re-point DNS, proxy request from old server.</li>
-<li>Exit RO mode.</li>
-</ol>
-<p>After all this process they can say that they have been 1 hour and a half in Read Only mode but without any downtime at all.</p>
-<p>From their experience, the advantages of have a content site are that the RO
-mode is completely viable. They logged out all the people from the site and in
-the mean time Varnish was blocking all the POST request &amp; cache aggressively.</p>
-</div>
-</div>
-<div class="section" id="always-be-deploying">
-<h2>Always be deploying</h2>
+<div class="section" id="backwards-incompatibilities-perhaps">
+<h2>Backwards incompatibilities (perhaps)</h2>
 <ul class="simple">
-<li>They deploy at least 5 times a day, if not 20.</li>
-<li>Nearly all code goes into master or short-lived branches.</li>
-<li>Anything released is feature flagged.<ul>
-<li>simple named boolean toggles.</li>
-<li>settable by user, user tag, or conference.</li>
-<li>can change templates, view code, URLs, etc...</li>
+<li>Context in various class views can break.</li>
+<li>Simplejson could cause incompatibilities since python 2.5 was removed from
+django compatibility.</li>
+<li>Session not saved on 500 errors.</li>
 </ul>
-</li>
-</ul>
-<p>Just a quick note: if you had never used this feature you should try something
-like <a class="reference external" href="https://github.com/disqus/gargoyle">gargoyle</a>. It's just amazing to
-deploy some functionalities to just some of your users. I don't know what they
-are using, but if it's not this, it should be something similar.</p>
-</div>
-<div class="section" id="legacy-code-decisions">
-<h2>Legacy code &amp; decisions</h2>
+<div class="section" id="testing">
+<h3>Testing</h3>
 <ul class="simple">
-<li>It's fine to have some legacy code. It can speed thing ups.</li>
-<li>A good chunk of their legacy code is gone, some remains (I would say like in
-all the big projects :D).</li>
-<li>Big schema change get harder and harder.</li>
-</ul>
-<p>Awareness (every ppl know what is going on) &amp; always deployable (master branch always shippable).</p>
-</div>
-<div class="section" id="small-and-nimble">
-<h2>Small and nimble</h2>
-<ul class="simple">
-<li>Continue deployment and development style allows easy project changing</li>
-<li>No long approval processes.</li>
+<li><tt class="docutils literal">OPTIONS</tt>, <tt class="docutils literal">PUT</tt> and <tt class="docutils literal">DELETE</tt>.</li>
+<li>DB flushing, it was move from the end of the test to the beginning of the test.</li>
+<li>Ordering of test executing changes, this shouldn't matter because your test
+will be always non dependant, right?</li>
+<li>contrib.localflavor has some changes too.</li>
+<li>contrib.markup usually marked all at safe and hope for the best, now it's not
+doing it.</li>
+<li><tt class="docutils literal"><span class="pre">django-admin.py</span> cleanup</tt> clear up the sessions, actually, now it's called
+<tt class="docutils literal"><span class="pre">django-admin.py</span> clearsessions</tt>.</li>
+<li>depth argument to select related, to don't follow all the possible joins.</li>
 </ul>
 </div>
-<div class="section" id="fix-it-while-you-can">
-<h2>Fix it while you can</h2>
+</div>
+<div class="section" id="nice-things-you-may-have-missed">
+<h2>Nice things you may have missed</h2>
 <ul class="simple">
-<li>The bigger you get, the harder a fix.</li>
-<li>They moved to PostgreSQL just in time.</li>
-<li>Big schema changes now take days of coding.</li>
+<li><tt class="docutils literal">LOGIN_URL</tt> can be an url name now, and django will make the <tt class="docutils literal">reverse()</tt>
+for you.</li>
+<li>True, False and None in templates.</li>
+<li><tt class="docutils literal">user_login_failed</tt> signal.</li>
+<li><tt class="docutils literal">assertXMLEqual()</tt>.</li>
+<li><tt class="docutils literal">index_together</tt>, create a indexes with several fields.</li>
+<li>admin lists customisable by request.</li>
+<li><tt class="docutils literal">django.utils.text.slugify</tt> get an string in and returns an slug for you.</li>
 </ul>
 </div>
 
     <strong>
-      <p>There are <a href="./djugl-inside-lanyrd-architecture.html#disqus_thread">comments</a>.</p>    </strong>
+      <p>There are <a href="./djgul-whats-new-on-django-15.html#disqus_thread">comments</a>.</p>    </strong>
     </section>
 
                 <div class="pagination"><ul>
@@ -330,6 +241,8 @@ all the big projects :D).</li>
   </li>
     <li >    <a href="./index14.html">14</a>
   </li>
+    <li >    <a href="./index15.html">15</a>
+  </li>
   
 
       <li><a href="./index5.html">&raquo;</a></li>
@@ -339,6 +252,7 @@ all the big projects :D).</li>
       <div class="span5 offset1">
   <h2><i class="icon-fire"> </i>More related stuff...</h2>
   <ol>
+            <li><a href="./here-i-go-pygrunn13.html">Here I go PyGrunn'13!</a></li>
             <li><a href="./changes-on-the-blog.html">Changes on the blog</a></li>
             <li><a href="./djgul-whats-new-on-django-15.html">DJGUL: What's new on Django 1.5</a></li>
             <li><a href="./djugl-inside-lanyrd-architecture.html">DJUGL: Inside Lanyrd architecture</a></li>

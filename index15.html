@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Changes on the blog</title>
+    <title>agonzalezro.github.com</title>
 
     <meta charset="utf-8" />
     <!-- What do you think, are all really needed? -->
@@ -56,7 +56,7 @@ forkme_right_orange_ff7600.png" alt="Fork me on GitHub" />
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-tags"></i> Categories <b class="caret"></b></a>
                   <ul class="dropdown-menu">
-                                          <li class="active"><a href="./category/blog.html">blog</a></li>
+                                          <li ><a href="./category/blog.html">blog</a></li>
                                           <li ><a href="./category/dev.html">dev</a></li>
                                           <li ><a href="./category/gnome.html">gnome</a></li>
                                           <li ><a href="./category/linux.html">linux</a></li>
@@ -77,60 +77,98 @@ forkme_right_orange_ff7600.png" alt="Fork me on GitHub" />
 
     <div class="container">
       <div class="span8 offset2">
-        <section id="content" class="body">
-  <article>
+              <section id="">
     <div class="page-header">
-      <h1><a href="changes-on-the-blog.html" rel="bookmark"
-          title="Permalink to Changes on the blog">Changes on the blog</a></h1>
+      <h1><a href="./how-to-install-gnome-3-instead-of-unity-on-ubuntu-1104.html">How-to install GNOME 3 instead of Unity on Ubuntu 11.04</a></h1>
       <span class="label label-success">by Álex</span>
-<span class="label label-success"><abbr class="published" title="2013-03-20T00:48:00">Wed 20 March 2013</abbr></span>
-<a class="label label-info" href="./category/blog.html">blog</a>
-  <a class="label" href="./tag/theme.html">theme</a>
-  <a class="label" href="./tag/readable.html">readable</a>
-  <a class="label" href="./tag/layout.html">layout</a>
+<span class="label label-success"><abbr class="published" title="2011-06-08T18:28:00">Wed 08 June 2011</abbr></span>
+<a class="label label-info" href="./category/gnome.html">gnome</a>
+  <a class="label" href="./tag/unity.html">unity</a>
+  <a class="label" href="./tag/gnome3.html">gnome3</a>
+  <a class="label" href="./tag/desktop.html">desktop</a>
+  <a class="label" href="./tag/ubuntu.html">ubuntu</a>
+  <a class="label" href="./tag/gnome.html">gnome</a>
     </div>
+    <p>I don't have anything against Unity, but sometimes I want to test, and
+this is one of this times.</p>
+<p>I don't know the reason (or perhaps I do), but install GNOME 3 on a
+ubuntu system isn't as easy as it must be.</p>
+<p>First of all we need to add the GNOME 3 repos, so, in a console (Alt+F2
+and then write gnome-terminal) you must write:</p>
+<pre class="literal-block">
+sudo add-apt-repository ppa:gnome3-team/gnome3
+</pre>
+<p>Then, we must update our system and install the gnome shell:</p>
+<pre class="literal-block">
+sudo apt-get updatesudo apt-get dist-upgradesudo apt-get install gnome-shell
+</pre>
+<p>After that, sometimes we have problems with the themes (you can reboot
+to test it, but I recommend you to follow this steps), so, we must
+remove the accesibility themes and install the new ones (and another
+program that we will need after that):</p>
+<pre class="literal-block">
+sudo apt-get remove gnome-accessibility-themessudo apt-get install gnome-themes-standard gnome-tweak-tool
+</pre>
+<p>Well... now, you can reboot your system and login with GNOME selected as
+session. You will see your new GNOME 3, but, we must tweak it, for this,
+you can push Alt+F2 and write:</p>
+<pre class="literal-block">
+gnome-tweak-tool
+</pre>
+<p>I recommend you to have this themes configuration (you can change the
+icons if you like) and activate the option on the first tab called &quot;Have
+file manager handle the desktop&quot;:</p>
+<a class="reference external image-reference" href="static/tweak_tool.png"><img alt="static/tweak_tool.png" class="align-center" src="static/tweak_tool.png" style="width: 50%;" /></a>
+<p>Good luck! And if you have any trouble, please, feel free to ask me in
+the comments!</p>
+<p>PS:&nbsp;<a class="reference external" href="http://twitter.com/marioquartz">&#64;marioquartz</a>&nbsp;wants to see the result, so here it is (click to
+enlarge)!</p>
+<a class="reference external image-reference" href="static/gnome3_desktop.png"><img alt="static/gnome3_desktop.png" class="align-center" src="static/gnome3_desktop.png" style="width: 50%;" /></a>
 
-    <div class="entry-content">
-      <p>One of the problems that I always have when I start trying to blog something is
-that I get bored very quick of writing and I focus in other things like CMS,
-CSS or this kind of things that really doesn't matter if you have good content.</p>
-<p>Today was one of those day when I got bored about it and I decided to make some
-changes:</p>
-<ul class="simple">
-<li>The theme is <a class="reference external" href="http://bootswatch.com/readable">readable</a> instead <a class="reference external" href="http://bootswatch.com/journal">journal</a>.</li>
-<li>I've added a <a class="reference external" href="http://twitter.com/agonzalezro">twitter</a> widget because I post half of my life there :D</li>
-<li>I don't post so often, so I decided that the pagination was not
-really needed and instead that I am showing a column with 16 old
-post. If you look for a tag you will find this column too, but just
-for the post on that tag.</li>
-</ul>
-<p>I hope that you enjoy the changes, and if you are a master of the design,
-please, help me! :D You can find all the <a class="reference external" href="http://github.com/agonzalezro/agonzalezro.github.com">source code of the blog here</a>!</p>
+    <strong>
+      <p>There are <a href="./how-to-install-gnome-3-instead-of-unity-on-ubuntu-1104.html#disqus_thread">comments</a>.</p>    </strong>
+    </section>
 
-    </div><!-- /.entry-content -->
-        <div class="sharethis">
-      <span class='st_twitter_large' displayText='Tweet'></span>
-      <span class='st_facebook_large' displayText='Facebook'></span>
-      <span class='st_google_large' displayText='Google'></span>
-      <span class='st_linkedin_large' displayText='LinkedIn'></span>
-      <span class='st_email_large' displayText='Email'></span>
-    </div>
-            <div class="comments">
-      <h2>Comments!</h2>
-      <div id="disqus_thread"></div>
-      <script type="text/javascript">
-        var disqus_identifier = "changes-on-the-blog.html";
-        (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = 'http://agonzalezro.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-      </script>
-    </div>
-    
-  </article>
-</section>
-      </div>
+                <div class="pagination"><ul>
+    <li>    <a href="./index14.html">&laquo;</a>
+  </li>
+  
+    <li >    <a href="./index.html">1</a></li>
+  </li>
+    <li >    <a href="./index2.html">2</a>
+  </li>
+    <li >    <a href="./index3.html">3</a>
+  </li>
+    <li >    <a href="./index4.html">4</a>
+  </li>
+    <li >    <a href="./index5.html">5</a>
+  </li>
+    <li >    <a href="./index6.html">6</a>
+  </li>
+    <li >    <a href="./index7.html">7</a>
+  </li>
+    <li >    <a href="./index8.html">8</a>
+  </li>
+    <li >    <a href="./index9.html">9</a>
+  </li>
+    <li >    <a href="./index10.html">10</a>
+  </li>
+    <li >    <a href="./index11.html">11</a>
+  </li>
+    <li >    <a href="./index12.html">12</a>
+  </li>
+    <li >    <a href="./index13.html">13</a>
+  </li>
+    <li >    <a href="./index14.html">14</a>
+  </li>
+    <li class="active">    <a href="./index15.html">15</a>
+  </li>
+  
+
+      <li class="disabled"><a href="#"">&raquo;</a></li>
+  </ul></div>
+        
+        </div>
       <div class="span5 offset1">
   <h2><i class="icon-fire"> </i>More related stuff...</h2>
   <ol>
