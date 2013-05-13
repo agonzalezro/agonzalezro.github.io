@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*- #
 
 AUTHOR = u'Álex'
-SITEURL = 'http://agonzalezro.github.com'
+SITEURL = 'http://agonzalezro.github.io'
 SITENAME = SITEURL.replace('http://', '')
 
 TIMEZONE = 'Europe/Paris'
