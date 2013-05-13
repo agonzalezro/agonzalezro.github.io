@@ -18,6 +18,8 @@ I really need to improve my speed talking for the next time. I thought that I
 will not have enough time to explain all, so, my subconscious decided that I
 should be talking as a machine gun.
 
+Below, you will find the slides, if not, `try this link`_.
+
 .. raw:: html
 
     <script async class="speakerdeck-embed" data-id="398a32709de70130aa882eefb3b6c3d2" data-ratio="1.6" src="//speakerdeck.com/assets/embed.js"></script>
@@ -29,5 +31,6 @@ Enjoy them!
 
 .. _pygrunn: http://pygrunn.nl
 .. _apache thrift: http://thrift.apache.org/
+.. _try this link: https://speakerdeck.com/agonzalezro/python-and-scala-smoke-the-peace-pipe
 .. _[1]: https://github.com/agonzalezro/slides/tree/master/thrift
 .. _[2]: https://github.com/agonzalezro/thriftest
