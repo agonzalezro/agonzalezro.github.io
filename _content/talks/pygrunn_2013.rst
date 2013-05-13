@@ -22,8 +22,8 @@ should be talking as a machine gun.
 
     <script async class="speakerdeck-embed" data-id="398a32709de70130aa882eefb3b6c3d2" data-ratio="1.6" src="//speakerdeck.com/assets/embed.js"></script>
 
-PS: you can find the source code of the slides here [1] & the source code of
-the demo here [2].
+PS: you can find the source code of the slides here `[1]`_ & the source code of
+the demo here `[2]`_.
 
 Enjoy them!
 
