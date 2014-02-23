@@ -1,4 +1,5 @@
 date: 2014-02-23
+tags: go, golang, polo, pelican, static
 
 Hi all from my new blog engine!
 ===============================
