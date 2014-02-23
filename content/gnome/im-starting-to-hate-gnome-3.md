@@ -1,8 +1,8 @@
+date: 2011-06-08 19:02
+tags: unity, gnome3, hate
+
 I'm starting to hate GNOME 3
 ============================
-
-:date: 2011-06-08 19:02
-:tags: unity, gnome3, hate
 
 First of all, I'm GNOME user as main desktop on Linux since the version
 1.x (about 10 years ago). I've played with another desktops but GNOME
@@ -15,11 +15,7 @@ After see my arguments, perhaps you can help me to change my opinion but
 possibily my next post will treat about how erase GNOME 3 and go back to
 Unity. Go to see them:
 
-.. image:: static/fuuuu.jpg
-    :width: 50%
-    :align: center
-    :target: static/fuuuu.jpg
-
+![image](static/fuuuu.jpg%0A%20:width:%2050%%0A%20:align:%20center%0A%20:target:%20static/fuuuu.jpg)
 
 Dynamic virtual desktops
 ------------------------
@@ -34,13 +30,11 @@ it!
 This is a very big problem for me because I'm not accustomed to use
 Alt-Tab to change the windows.
 
-
 When you close the las window in a desktop...
 ---------------------------------------------
 
 the gnome-shell will be open! I don't like it! Perhpas I've closed this
 window to go to my home folder, let me do that!
-
 
 Alt+F2 doesn't autocomplete
 ---------------------------
@@ -50,7 +44,6 @@ they erase it? I can't understand why! I know that you can use the Super
 key (the fuc\*\*\*g windows key presented on all keyboards), but use the
 gnome-shell to open a program isn't so quickly as open it with alt-f2.
 
-
 Autologin on GDM
 ----------------
 
@@ -58,12 +51,10 @@ I like to suppose that this bug is only on my pc, because I've tried to
 configure my autologin user and never ever is autologued. Perhaps I
 should submit a bug for this case.
 
-
 Difficulty to install extensions
 --------------------------------
 
 I will not say anything more about this.
-
 
 No autohide bar, and no more bars?
 ----------------------------------

@@ -3,7 +3,7 @@ all:
 	make html
 
 clean:
-	rm -rf *.html pages feeds
+	rm -rf -- *.html pages feeds
 
 html:
 	polo -input content

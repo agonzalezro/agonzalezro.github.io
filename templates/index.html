@@ -1,0 +1,23 @@
+{{define "title"}}
+{{.Config.Title}}
+{{end}}
+
+{{define "content"}}
+{{if .Articles}}
+<h1>Archive</h1>
+<ul>
+  {{range $_, $article := .Articles}}
+  <li><a href="{{$article.Slug}}.html">{{$article.Title}}</a></li>
+  {{end}}
+</ul>
+{{end}}
+
+{{if .Tags}}
+<h1>Tags</h1>
+<ul>
+  {{range $_, $tag := .Tags}}
+  <li>{{$tag}}</li>
+  {{end}}
+</ul>
+{{end}}
+{{end}}

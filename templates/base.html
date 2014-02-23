@@ -1,0 +1,61 @@
+{{define "base"}}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{template "title" .}}</title>
+
+    <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
+  </head>
+
+  <body>
+    <div class="navbar navbar-default navbar-static-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">{{.Config.Title}}</a>
+        </div>
+        {{if .Pages}}
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            {{range $_, $page := .Pages}}
+            <li><a href="pages/{{$page.Slug}}.html">{{$page.Title}}</a></li>
+            {{end}}
+          </ul>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+
+    <div class="container-fluid col-lg-8 col-lg-offset-2">
+      {{template "content" .}}
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//getbootstrap.com/dist/js/bootstrap.min.js"></script>
+    {{if .Config.GoogleAnalyticsId}}
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', '{{.Config.GoogleAnalyticsId}}']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    {{end}}
+  </body>
+</html>
+{{end}}

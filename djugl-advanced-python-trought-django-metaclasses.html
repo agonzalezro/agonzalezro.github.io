@@ -1,0 +1,185 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+DJUGL: Advanced python trought Django: Metaclasses | agonzalezro.github.io
+</title>
+
+    <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
+  </head>
+
+  <body>
+    <div class="navbar navbar-default navbar-static-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">agonzalezro.github.io</a>
+        </div>
+        
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            
+            <li><a href="pages/about.html">About</a></li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+    <div class="container-fluid col-lg-8 col-lg-offset-2">
+      
+<h1>DJUGL: Advanced python trought Django: Metaclasses</h1>
+
+<p>
+
+<span class="label label-success">by Álex</span>
+
+
+
+<span class="label label-success">2013-3-12 20:00</span>
+
+
+
+
+<span class="label label-info">djugl</span>
+
+<span class="label label-info"> march</span>
+
+<span class="label label-info"> django</span>
+
+<span class="label label-info"> python</span>
+
+<span class="label label-info"> metaclass</span>
+
+
+</p>
+
+<p>This talk was made by Peter Ingles, you can check his twitter here:
+<a href="http://twitter.com/inglesp">@inglesp</a>.</p>
+
+<p>What is write above is basically what he said, mixed with some of my
+thoughts. The talk was really good, and even using metaclasses almost
+daily (<code>forms.Form</code>) you don&rsquo;t feel the power of them until somebody
+explain it to you (shame on me!).</p>
+
+<p>In all the Peter example we was using Django 1.4.</p>
+
+<p>The typical example as I said before is <code>forms.Form</code> from django.</p>
+
+<p>For some reason, Peter was in love with the Ponies, so, he tried to
+create some meta stable:</p>
+
+<pre><code class="python">class A(models.Model):
+    class Meta:
+        app_label = 'ponies'
+        abstract = True
+
+class Stable(models.Models):
+    class Meta:
+        app_label = 'ponies'
+    name = models.CharField()
+    stable = models.ForeignKey(Stable)
+</code></pre>
+
+<h2>Create classes dinamycally:</h2>
+
+<pre><code class="python">def init(self, x):
+    self.x =x
+
+name = 'ExampleClass'
+bases = (object, )
+attrs = {
+    '__init__': init
+}
+instance = type(name, bases, attrs)
+</code></pre>
+
+<p>This is a pretty coold way to create classes at runtime.</p>
+
+<h2>type</h2>
+
+<p>I don&rsquo;t know you, but I was always using <code>type</code> just for the type
+comparation, but never for create classes&hellip;</p>
+
+<p>Some &ldquo;strange&rdquo; (puzzling) things about <code>type</code> is that <code>type</code> is a class
+of type type:</p>
+
+<pre><code class="python">type(type)
+&lt;type 'type'&gt;
+</code></pre>
+
+<p>And we can subclass <code>type</code>:</p>
+
+<pre><code class="python">class A(type):
+    pass
+</code></pre>
+
+<h2>Python 3</h2>
+
+<p>The syntax to create a metaclass is sightly different:</p>
+
+<pre><code class="python">class Form(metaclass=Formtype):
+    ...
+</code></pre>
+
+<h2>Key takeaways</h2>
+
+<ul>
+<li>classes are factories for creating objects.</li>
+<li>we can create classes dynamically at runtime.</li>
+<li>metaclasses are factories for creating classes.</li>
+<li>we can control what happens when we create classes</li>
+</ul>
+
+<h2>The slides</h2>
+
+<p>You can find the interactive talk of Peter in his github account:
+<a href="http://github.com/inglesp/prescons">http://github.com/inglesp/prescons</a></p>
+
+<p>Enjoy them!</p>
+
+
+<h2>Comments</h2>
+<script type="text/javascript">
+  var disqus_shortname = 'agonzalezro';
+  (function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  }());
+</script>
+
+
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//getbootstrap.com/dist/js/bootstrap.min.js"></script>
+    
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-35984509-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    
+  </body>
+</html>
