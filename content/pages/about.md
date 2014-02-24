@@ -1,7 +1,7 @@
 About
 =====
 
-My name is Alexandre González, I am a |age| years old Spanish developer
+My name is Alexandre González, I am a 29 years old Spanish developer
 currently working in UK, exactly in London at
 [GreenManGaming](http://www.greenmangaming.com).
 
@@ -41,6 +41,5 @@ look at the resources below:
     [CV](https://github.com/agonzalezro/Curriculum-Vitae/blob/master/pdfs/cv_alex_gonzalez_en.pdf?raw=true).
 
 BTW, you can find the source code of this blog (generated with
-[Pelican](https://github.com/getpelican/pelican)) at my [GitHub
-profile](http://github.com/agonzalez/agonzalezro.github.com) or clicking
-on the upper right corner link.
+[Polo](https://github.com/agonzalezro/polo)) at my [GitHub
+profile](http://github.com/agonzalez/agonzalezro.github.io).
