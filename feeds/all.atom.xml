@@ -3,7 +3,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>agonzalezro.github.io</title>
   <link href="http://agonzalezro.github.io" />
-  <updated>2014-02-24T15:51:11Z</updated>
+  <updated>2014-02-24T21:09:14Z</updated>
 
   
   
@@ -101,8 +101,9 @@ decided that I should be talking as a machine gun.</p>
 <p>Below, you will find the slides, if not, <a href="https://speakerdeck.com/agonzalezro/python-and-scala-smoke-the-peace-pipe">try this
 link</a>.</p>
 
-<p>
-PS: you can find the source code of the slides here
+<script async class="speakerdeck-embed" data-id="398a32709de70130aa882eefb3b6c3d2" data-ratio="1.6" src="//speakerdeck.com/assets/embed.js"></script>
+
+<p>PS: you can find the source code of the slides here
 <a href="https://github.com/agonzalezro/slides/tree/master/thrift">[1]</a> &amp; the
 source code of the demo here
 <a href="https://github.com/agonzalezro/thriftest">[2]</a>.</p>
@@ -459,31 +460,31 @@ here. The order is just alfabetically, not my preferences.</p>
 
 <h3>bensday</h3>
 
-<p><img src="static/vim/bensday.png" alt="image" />
+<p><img src="static/vim/bensday.png" alt="image">
 </p>
 
 <h3>clarity</h3>
 
-<p><img src="static/vim/clarity.png" alt="image" />
+<p><img src="static/vim/clarity.png" alt="image">
 </p>
 
 <h3>desertEx</h3>
 
 <p>It&rsquo;s really similar to deser, which comes by default</p>
 
-<p><img src="static/vim/desertEx.png" alt="image" />
+<p><img src="static/vim/desertEx.png" alt="image">
 </p>
 
 <h3>jelleybeans</h3>
 
 <p>My favourite for now, but make me chnage my opinion</p>
 
-<p><img src="static/vim/jelleybeans.png" alt="image" />
+<p><img src="static/vim/jelleybeans.png" alt="image">
 </p>
 
 <h3>winsterday</h3>
 
-<p><img src="static/vim/winsterday.png" alt="image" />
+<p><img src="static/vim/winsterday.png" alt="image">
 </p>
 
 <p>I am currently using <em>jelleybeans</em> (after a recommendation of my
@@ -605,7 +606,7 @@ github</a> or&hellip;</li>
 <li>And if you are too lazy to try it, here you have an screenshot:</li>
 </ul>
 
-<p><img src="static/hovercraft.png%0A%20:width:%2066%%0A%20:align:%20center%0A%20:target:%20static/hovercraft.png" alt="image" />
+<p><img src="static/hovercraft.png%0A%20:width:%2066%%0A%20:align:%20center%0A%20:target:%20static/hovercraft.png" alt="image">
 </p>
 
 <h2>Thanks!</h2>
@@ -657,7 +658,7 @@ you must install <code>linux-backports-modules-net-natty-generic</code>, you can
 it via synaptic, ubuntu software center, aptitude, apt&hellip; I show you a
 screenshot doing it with ubuntu software center:</p>
 
-<p><img src="static/software_center.png%0A%20:width:%2050%%0A%20:align:%20center%0A%20:target:%20static/software_center.png" alt="image" />
+<p><img src="static/software_center.png%0A%20:width:%2050%%0A%20:align:%20center%0A%20:target:%20static/software_center.png" alt="image">
 </p>
 
 <p>The second &ldquo;solution&rdquo; is deactivate the hardware cryptography of the
@@ -698,7 +699,7 @@ lot of functions that I like :)</p>
 possibily my next post will treat about how erase GNOME 3 and go back to
 Unity. Go to see them:</p>
 
-<p><img src="static/fuuuu.jpg%0A%20:width:%2050%%0A%20:align:%20center%0A%20:target:%20static/fuuuu.jpg" alt="image" />
+<p><img src="static/fuuuu.jpg%0A%20:width:%2050%%0A%20:align:%20center%0A%20:target:%20static/fuuuu.jpg" alt="image">
 </p>
 
 <h2>Dynamic virtual desktops</h2>
@@ -794,7 +795,7 @@ you can push Alt+F2 and write:</p>
 icons if you like) and activate the option on the first tab called &ldquo;Have
 file manager handle the desktop&rdquo;:</p>
 
-<p><img src="static/tweak_tool.png%0A%20:width:%2050%%0A%20:align:%20center%0A%20:target:%20static/tweak_tool.png" alt="image" />
+<p><img src="static/tweak_tool.png%0A%20:width:%2050%%0A%20:align:%20center%0A%20:target:%20static/tweak_tool.png" alt="image">
 </p>
 
 <p>Good luck! And if you have any trouble, please, feel free to ask me in
@@ -803,7 +804,7 @@ the comments!</p>
 <p>PS: <a href="http://twitter.com/marioquartz">@marioquartz</a> wants to see the
 result, so here it is (click to enlarge)!</p>
 
-<p><img src="static/gnome3_desktop.png%0A%20:width:%2050%%0A%20:align:%20center%0A%20:target:%20static/gnome3_desktop.png" alt="image" />
+<p><img src="static/gnome3_desktop.png%0A%20:width:%2050%%0A%20:align:%20center%0A%20:target:%20static/gnome3_desktop.png" alt="image">
 </p>
 
     </summary>

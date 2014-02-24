@@ -23,6 +23,7 @@ Below, you will find the slides, if not, [try this
 link](https://speakerdeck.com/agonzalezro/python-and-scala-smoke-the-peace-pipe).
 
 <script async class="speakerdeck-embed" data-id="398a32709de70130aa882eefb3b6c3d2" data-ratio="1.6" src="//speakerdeck.com/assets/embed.js"></script>
+
 PS: you can find the source code of the slides here
 [[1]](https://github.com/agonzalezro/slides/tree/master/thrift) & the
 source code of the demo here
