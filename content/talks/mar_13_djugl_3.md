@@ -1,4 +1,4 @@
-date: 2013-3-12 21:30
+date: 2013-03-12 21:30
 tags: djugl, march, django, 1.5
 slug: djgul-whats-new-on-django-15
 

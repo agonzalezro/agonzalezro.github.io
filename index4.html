@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>
-How-to install GNOME 3 instead of Unity on Ubuntu 11.04 | agonzalezro.github.io
+agonzalezro.github.io
 </title>
 
     <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
@@ -428,6 +428,10 @@ How-to install GNOME 3 instead of Unity on Ubuntu 11.04 | agonzalezro.github.io
 
     <div class="container col-lg-8 col-lg-offset-2">
       
+
+
+
+<article>
 <h1>How-to install GNOME 3 instead of Unity on Ubuntu 11.04</h1>
 
 <p>
@@ -510,24 +514,450 @@ result, so here it is (click to enlarge)!</p>
 <p><img src="static/gnome3_desktop.png%0A%20:width:%2050%%0A%20:align:%20center%0A%20:target:%20static/gnome3_desktop.png" alt="image">
 </p>
 
+<p><a class="btn btn-success" href="how-to-install-gnome-3-instead-of-unity-on-ubuntu-1104.html#comments">Leave a comment!</a></p>
 
-<h2 id="comments">Comments</h2>
-<div id="disqus_thread"></div>
-<script type="text/javascript">
-  var disqus_shortname = 'agonzalezro';
+<article>
+<h1>Changes on the blog</h1>
+
+<p>
+
+<span class="label label-default">by Álex</span>
+
+
+
+<span class="label label-default">2013-3-20 00:48</span>
+
+
+
+<a class="label label-success" href="/category/blog.html">blog</a>
+
+
+
+
+<a class="label label-info" href="/tag/.html"></a>
+
+<a class="label label-info" href="/tag/theme.html">theme</a>
+
+<a class="label label-info" href="/tag/readable.html">readable</a>
+
+<a class="label label-info" href="/tag/layout.html">layout</a>
+
+<a class="label label-info" href="/tag/.html"></a>
+
+
+</p>
+
+<p>One of the problems that I always have when I start trying to blog
+something is that I get bored very quick of writing and I focus in other
+things like CMS, CSS or this kind of things that really doesn&rsquo;t matter
+if you have good content.</p>
+
+<p>Today was one of those day when I got bored about it and I decided to
+make some changes:</p>
+
+<ul>
+<li>The theme is <a href="http://bootswatch.com/readable">readable</a> instead
+<a href="http://bootswatch.com/journal">journal</a>.</li>
+<li>I&rsquo;ve added a <a href="http://twitter.com/agonzalezro">twitter</a> widget
+because I post half of my life there :D</li>
+<li>I don&rsquo;t post so often, so I decided that the pagination was not
+really needed and instead that I am showing a column with 16 old
+post. If you look for a tag you will find this column too, but just
+for the post on that tag.</li>
+</ul>
+
+<p>I hope that you enjoy the changes, and if you are a master of the
+design, please, help me! :D You can find all the <a href="http://github.com/agonzalezro/agonzalezro.github.com">source code of the
+blog here</a>!</p>
+
+<p><a class="btn btn-success" href="changes-on-the-blog.html#comments">Leave a comment!</a></p>
+
+<article>
+<h1>backbone.js &#43; underscore: small intro</h1>
+
+<p>
+
+<span class="label label-default">by Álex</span>
+
+
+
+<span class="label label-default">2012-11-1 00:30</span>
+
+
+
+<a class="label label-success" href="/category/dev.html">dev</a>
+
+
+
+
+<a class="label label-info" href="/tag/.html"></a>
+
+<a class="label label-info" href="/tag/backbone.html">backbone</a>
+
+<a class="label label-info" href="/tag/undercore.html">undercore</a>
+
+<a class="label label-info" href="/tag/javascript.html">javascript</a>
+
+<a class="label label-info" href="/tag/gui.html">gui</a>
+
+<a class="label label-info" href="/tag/.html"></a>
+
+
+</p>
+
+<p>Today, <a href="http://twitter.com/olegpidsadnyi/">Oleg</a> gave a talk about
+backbone at <a href="http://paylogic.nl/">Paylogic</a>. We were using it for a
+really fancy application inside our backoffice, it was quite funny write
+it and Oleg decided to share the knowledge.</p>
+
+<p>I used the techtalk to take some notes and, since this piece of code
+will have no sense out of our backoffice, I&rsquo;ve written a small example
+that you can find as a <a href="https://gist.github.com/3982819">gist</a> on my
+github. I will use it to explain to you some of the useful things that
+you can do with backbone and underscore. Feel free to improve it.</p>
+
+<p>This is only a introductory post, if you want advance stuff you should
+go to the <a href="http://backbonejs.org/">backbone official documentation</a> &amp;
+<a href="http://underscorejs.org/">underscore docs</a>.</p>
+
+<h2>Why?</h2>
+
+<p>Backbone is really useful when you make complex GUIs on client side. You
+can make your code like in a desktop app using events to handle the
+actions. It&rsquo;s not needed to pass around instances of parents views,
+let&rsquo;s use only the events for that purpose, and let the child decide.</p>
+
+<p>You have models too, that you can sync (or not) with the server.</p>
+
+<h2>Models</h2>
+
+<p>In backbone you can have local model and sync them with the server or
+with local storage (not explained in this intro). In our example we
+will:</p>
+
+<ol>
+<li>Create a collection to save our objects (type Item) in.</li>
+<li>Create the model Item.</li>
+<li>Create 2 object type Item inside this collection.</li>
+<li>Render them.</li>
+</ol>
+
+<p>The 3 points can be made only with these lines of code. It&rsquo;s really
+simple! (after know how to do it :p):</p>
+
+<pre><code class="javascript">var Item = Backbone.Model.extend();
+
+var Items = Backbone.Collection.extend({
+  model: Item
+});
+
+var items = new Items();
+items.add([{name: &quot;foo&quot;}, {name: &quot;bar&quot;}]);
+</code></pre>
+
+<p><strong>Note</strong>: Setting values in the objects With .set will trigger the event
+    change. You can silent it in case that needed, but it&rsquo;s really
+    useful, for example, to save it.</p>
+
+<p><strong>Second note</strong>: backbone is f***ing clever! Imagine, you are changing a
+    name, if the name has changed on the collection, the event will be raised,
+    if not, it will not. This means that if you are editing, but finally
+    you change your mind and you didn&rsquo;t made any change, the event will
+    not be raised.</p>
+
+<h2>Events</h2>
+
+<p>They are really useful to remove dependencies between elements. For
+example, with jQuery if you change a element from another, the first one
+needs to know about the second. With backbone you can catch the event
+with the child element and do whatever you want with it.</p>
+
+<p>On the example of my <a href="https://gist.github.com/3982819">gist</a> I show an
+alert box with the name of the element. But you could, for example,
+change it to an editable input.</p>
+
+<p>This is the code of the example:</p>
+
+<pre><code class="javascript">var ItemView = Backbone.View.extend({
+  ...
+  events: {
+    &quot;dblclick&quot;: &quot;onDoubleClick&quot;
+  },
+  ...
+  onDoubleClick: function(ev) {
+    var text = $.trim($(ev.target).text());
+    alert(&quot;Hey! Why do you click on &quot; + text + &quot;?&quot;);
+    console.log(ev); //Play with this :)
+  }
+});
+</code></pre>
+
+<p>We are binding the <code>dblclick</code> event to the function <code>onDoubleClick</code>.
+This function will receive the event, and the event will have the target
+(in this case the <code>&lt;li/&gt;</code> that we are clicking.</p>
+
+<h2>Underscore</h2>
+
+<p>It&rsquo;s really useful to Work with collections. In out example we are using
+it to iterate over the items:</p>
+
+<pre><code class="javascript">render: function() {
+  _.each(this.items.models, function(item) {
+    var itemview = new ItemView(item);
+    $(this.el).append(itemview.render().el);
+  }, this);
+}
+</code></pre>
+
+<p>If you read carefully this piece of code you will realize that we are
+instantiating a new ItemView for each particular item, so it has its own
+container element created on the fly, re-renderable each time when data
+is updated and all events are delegated to this element.</p>
+
+<p>The amazing thing that you can do with underscore is use templates (yes,
+like jinja or django-templates, but in JS)! And we are doing it:</p>
+
+<pre><code class="html">&lt;script&gt;
+  var ItemView = Backbone.View.extend({
+  ...
+  template: _.template($(&quot;#item-template&quot;).html()),
+  ...
+  render: function() {
+     $(this.el).html(this.template(this.item.toJSON()));
+     return this;
+  },
+  ...
+&lt;/script&gt;
+&lt;script type=&quot;text/template&quot; id=&quot;item-template&quot;&gt;
+  &lt;%= name %&gt;
+&lt;/script&gt;
+</code></pre>
+
+<h2>Extra ball</h2>
+
+<p>Use <code>_.debounce</code> to don&rsquo;t call the functions thousands of times, example
+drag&amp;dropping an element it will be useful.</p>
+
+<p>For example in our project we had to sort with drag and drop some
+elements of a list, instead send this event in each drag movement, we
+made it after 200s being quiet with:</p>
+
+<pre><code class="javascript">onChange: _.debounce(function(ev) {
+    this.pools.save();
+}, 200),
+</code></pre>
+
+<p>Please comment your thoughts about the post. We are all here to learn,
+and it&rsquo;s really easy that I made some mistake explaining this.
+Furhtermore, I know that my English is not really good, so, I will
+apreciate constructive comments about it too :)</p>
+
+<p>Enjoy it!</p>
+
+<p><a class="btn btn-success" href="backbonejs-underscore-small-intro.html#comments">Leave a comment!</a></p>
+
+<article>
+<h1>Graphite, Carbon and Diamond</h1>
+
+<p>
+
+<span class="label label-default">by Álex</span>
+
+
+
+<span class="label label-default">2012-11-6 19:30</span>
+
+
+
+<a class="label label-success" href="/category/talks.html">talks</a>
+
+
+
+
+<a class="label label-info" href="/tag/.html"></a>
+
+<a class="label label-info" href="/tag/graphite.html">graphite</a>
+
+<a class="label label-info" href="/tag/carbon.html">carbon</a>
+
+<a class="label label-info" href="/tag/diamond.html">diamond</a>
+
+<a class="label label-info" href="/tag/monitoring.html">monitoring</a>
+
+<a class="label label-info" href="/tag/python.html">python</a>
+
+<a class="label label-info" href="/tag/pygrunn.html">pygrunn</a>
+
+<a class="label label-info" href="/tag/.html"></a>
+
+
+</p>
+
+<p>Two days ago was my, sadly, last PyGrunn monthly meeting. Thanks to
+<a href="http://www.linkedin.com/profile/view?id=17961952&amp;locale=en_US&amp;trk=tyah">Bram</a>
+now we know a little bit more about how to monitoring with Python
+applications.</p>
+
+<p>Below you will find the notes that I take to the people that couldn&rsquo;t
+assist to the talk. But they are only that, some notes, don&rsquo;t expect to
+find a really cool story on them. I am pretty sure that <a href="/graphite.slides/graphite.html">the original
+slides made by Bram</a> will help you.</p>
+
+<h2>Why graphite?</h2>
+
+<ul>
+<li>Dev friendly</li>
+<li>Ops friendly</li>
+<li>Growth friendly: very scalable</li>
+</ul>
+
+<p>Some important companies are using it: Instragram, Etsy, Github,
+<a href="http://www.kalooga.com">Kalooga</a> (this is the company where Bram is
+working :).</p>
+
+<p>It&rsquo;s a project created by <a href="orbitz.com">Orbitz.com</a>.</p>
+
+<h2>Ecosystem</h2>
+
+<p>Graphite
+:   The tool that makes the graphs.</p>
+
+<p>Carbon
+:   Colects the statistics.</p>
+
+<p>Whisper
+:   Metrics RRD (Round Robin database).</p>
+
+<p>Diamond
+:   It&rsquo;s the metrics collector, they are others: CollectD, Munin,
+    Ganglia&hellip; Of course, you can develop yours.</p>
+
+<h2>How do you gate the data in?</h2>
+
+<ol>
+<li>Create an HTTP connection to the server.</li>
+<li>Each line will be a data point.</li>
+</ol>
+
+<p>If you want namespaces you can always use dots .. Example: pygrunn.load
+[load] [now].</p>
+
+<h2>Improvements</h2>
+
+<p>Why don&rsquo;t use statsd? It&rsquo;s a layer for Graphite that you can use to keep
+your application running and send the data to statsd. If it can write it
+ok, if not, you have a problem.</p>
+
+<p>The original implementation of StatsD is in Node.js but there are
+another projects that do it with C (StatsD-c) or python (Bucky) or
+-write your prefered language here-.</p>
+
+<h2>Uses</h2>
+
+<ul>
+<li>Open a dev file and write directly to it.</li>
+<li>Open HTTP connection.</li>
+<li>Use a statsd decorator.</li>
+<li>&hellip;</li>
+</ul>
+
+<h2>Plots</h2>
+
+<p>You can plot data with:</p>
+
+<ul>
+<li>JSON</li>
+<li>CSV</li>
+<li>HTML</li>
+<li>XML</li>
+<li>&hellip;</li>
+</ul>
+
+<h2>API</h2>
+
+<p>You can do funny things as:</p>
+
+<ul>
+<li>Check the registered users over past day in json data</li>
+<li>Keep track of your 404 errors</li>
+<li>&hellip;</li>
+</ul>
+
+<h2>Where is the data store?</h2>
+
+<p>They are stored in files, in case that you run out of space this data
+will be stored on the Carbon cache until something happen to it.a</p>
+
+<h2>Functions</h2>
+
+<p>You can filter results, for example mostDeviant (take a look to the
+slides to see the screenshots that show the use).</p>
+
+<h2>What&rsquo;s also nice?</h2>
+
+<p>Sentry
+:   Error caching middleware that you can run with your WSGI application
+    to check the Exceptions and the stacktraces.</p>
+
+<p>Shinken
+:   It&rsquo;s also written in python and it&rsquo;s compatible with Nagios. It
+    could be a good complement to Graphite to show some alerts when the
+    thing are really wrong.</p>
+
+<p>New Relic
+:   It&rsquo;s a Web Application Performance Management (APM (Application
+    Performance Management).</p>
+
+<p><a class="btn btn-success" href="graphite-carbon-and-diamond.html#comments">Leave a comment!</a></p>
+
+</article>
+
+
+
+<ul class="pagination center-block text-center">
+
+  <li class="
   
+  ">
+  <a href="/index3.html">&laquo;</a>
+  </li>
+
   
-  var disqus_identifier = 'how-to-install-gnome-3-instead-of-unity-on-ubuntu-1104.html';
+  <li >
+  <a href="/index.html">
+    1
+  </a>
+  </li>
+  
+  <li >
+  <a href="/index2.html">
+    2
+  </a>
+  </li>
+  
+  <li >
+  <a href="/index3.html">
+    3
+  </a>
+  </li>
+  
+  <li class="active">
+  <a href="/index4.html">
+    4
+  </a>
+  </li>
+   
 
-  (function() {
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-  })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  <li class="
+  
+  disabled
+  
+  ">
+  <a href="#">&raquo;</a>
+  </li>
 
+</ul>
+ 
 
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>

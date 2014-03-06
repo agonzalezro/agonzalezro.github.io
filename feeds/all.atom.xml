@@ -3,7 +3,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>agonzalezro.github.io</title>
   <link href="http://agonzalezro.github.io" />
-  <updated>2014-02-27T18:00:28Z</updated>
+  <updated>2014-03-06T19:08:36Z</updated>
 
   
   
@@ -51,6 +51,57 @@ Friday.</p>
     <summary>
       <p>I am really proud of say that the next month I will be giving a talk at
 PyGrunn!</p>
+
+    </summary>
+    <author>
+      <name>Álex</name>
+    </author>
+  </entry>
+  
+  <entry>
+    <title>DJUGL: What&#39;s new on Django 1.5</title>
+    <link href="http://agonzalezro.github.io/djgul-whats-new-on-django-15.html" />
+    
+    <updated>2013-03-12 21:30</updated>
+    
+    <summary>
+      <p>In this talk Marc Tamlyn (<a href="https://twitter.com/mjtamlyn">@mjtamlyn</a>) was
+explained to us all the changes in the new &ldquo;major&rdquo; version of django,
+django 1.5.</p>
+
+    </summary>
+    <author>
+      <name>Álex</name>
+    </author>
+  </entry>
+  
+  <entry>
+    <title>DJUGL: Inside Lanyrd architecture</title>
+    <link href="http://agonzalezro.github.io/djugl-inside-lanyrd-architecture.html" />
+    
+    <updated>2013-03-12 20:30</updated>
+    
+    <summary>
+      <p>This talk was just amazing! Andrew Godwin
+(<a href="http://twitter.com/andrewgodwin">@andrewgodwin</a> or <a href="http://areacode.org">http://areacode.org</a>) gave
+us talk about the internal architecture that they are using at
+<a href="http://lanyrd.com">lanyrd.com</a>.</p>
+
+    </summary>
+    <author>
+      <name>Álex</name>
+    </author>
+  </entry>
+  
+  <entry>
+    <title>DJUGL: Advanced python trought Django: Metaclasses</title>
+    <link href="http://agonzalezro.github.io/djugl-advanced-python-trought-django-metaclasses.html" />
+    
+    <updated>2013-03-12 20:00</updated>
+    
+    <summary>
+      <p>This talk was made by Peter Ingles, you can check his twitter here:
+<a href="http://twitter.com/inglesp">@inglesp</a>.</p>
 
     </summary>
     <author>
@@ -120,60 +171,6 @@ hackathon</a>. I was lucky
 and from all the list of ideas, the selected was one of mines! The
 slides generator, that finally we call <strong>hovercraft</strong>. Here is a small
 introduction about what I wanted:</p>
-
-    </summary>
-    <author>
-      <name>Álex</name>
-    </author>
-  </entry>
-  
-  <entry>
-    <title>Fix low wifi speed on Linux (Ubuntu) with chip Atheros AR9285</title>
-    <link href="http://agonzalezro.github.io/fix-low-wifi-speed-on-linux-ubuntu-with-chip-atheros-ar9285.html" />
-    
-    <updated>2011-07-03 13:07</updated>
-    
-    <summary>
-      <p>I was very happer after buy my new computer Dell Vostro v130, but after
-install Linux on it I&rsquo;ve realized that the download speed via WiFi was
-very slow! To solve this I found two &ldquo;solutions&rdquo;, one of them works, but
-the other not (for me).</p>
-
-    </summary>
-    <author>
-      <name>Álex</name>
-    </author>
-  </entry>
-  
-  <entry>
-    <title>I&#39;m starting to hate GNOME 3</title>
-    <link href="http://agonzalezro.github.io/im-starting-to-hate-gnome-3.html" />
-    
-    <updated>2011-06-08 19:02</updated>
-    
-    <summary>
-      <p>First of all, I&rsquo;m GNOME user as main desktop on Linux since the version
-1.x (about 10 years ago). I&rsquo;ve played with another desktops but GNOME
-was always in my heart. But now, with the arrival of GNOME 3 and after
-two weeks using it I can say that I&rsquo;m starting to hate it. In this new
-version it has a lot of functions that I don&rsquo;t like and doesn&rsquo;t have a
-lot of functions that I like :)</p>
-
-    </summary>
-    <author>
-      <name>Álex</name>
-    </author>
-  </entry>
-  
-  <entry>
-    <title>How-to install GNOME 3 instead of Unity on Ubuntu 11.04</title>
-    <link href="http://agonzalezro.github.io/how-to-install-gnome-3-instead-of-unity-on-ubuntu-1104.html" />
-    
-    <updated>2011-06-08 18:28</updated>
-    
-    <summary>
-      <p>I don&rsquo;t have anything against Unity, but sometimes I want to test, and
-this is one of this times.</p>
 
     </summary>
     <author>

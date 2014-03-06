@@ -1,4 +1,4 @@
-date: 2013-3-12 20:00
+date: 2013-03-12 20:00
 tags: djugl, march, django, python, metaclass
 
 DJUGL: Advanced python trought Django: Metaclasses
