@@ -30,11 +30,14 @@
 </p>
 
 {{$article.Html $article.Content}}
-<p class="text-right"><a class="btn btn-default" href="{{$article.Slug}}.html#comments">Leave a comment!</a></p>
-{{end}}
+<p class="text-right"><a class="btn btn-default" href="{{$article.Slug}}.html#disqus_thread">Leave a comment!</a></p>
 </article>
+<hr>
+{{end}}
+
 {{else}}
 <h1>Nothing to see here!</h1>
+<hr>
 {{end}}
 
 {{if .NumberOfPages}}
