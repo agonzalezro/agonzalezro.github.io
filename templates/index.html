@@ -41,7 +41,7 @@
 {{end}}
 
 {{if .NumberOfPages}}
-<ul class="pagination center-block text-center">
+<div class="text-center"><ul class="pagination">
 
   <li class="
   {{if eq $.PageNumber 1}}
@@ -67,6 +67,6 @@
   <a href="{{$.GetNextPageSlug $.PageNumber}}">&raquo;</a>
   </li>
 
-</ul>
+</ul></div>
 {{end}} {{/* if */}}
 {{end}} {{/* content */}}
