@@ -3,9 +3,27 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>agonzalezro.github.io</title>
   <link href="http://agonzalezro.github.io" />
-  <updated>2014-03-08T21:09:11Z</updated>
+  <updated>2014-03-15T20:45:23Z</updated>
 
   
+  
+  <entry>
+    <title>Tailing multiple logs with tmux</title>
+    <link href="http://agonzalezro.github.io/tailing-multiple-logs-with-tmux.html" />
+    
+    <updated>2014-03-15</updated>
+    
+    <summary>
+      <p>I had a system that was creating a different log for each worker. Those logs
+where in the form: <code>/var/log/baselog</code>, <code>/var/log/baselog.1</code>,
+<code>/var/log/baselog.2</code> and so on. I wanted to tail them but they were being
+updated simultaneously so the output of the tail was being a mess.</p>
+
+    </summary>
+    <author>
+      <name>Álex</name>
+    </author>
+  </entry>
   
   <entry>
     <title>Hi all from my new blog engine!</title>
@@ -151,26 +169,6 @@ that the color scheme that you use to develop? You are more than 8h per
 day in front of your vim with some beautiful, or crappy, code in front
 of you. In the first case the colors doesn&rsquo;t matter, but in the second
 it&rsquo;s really important to enjoy, at least, the colors!</p>
-
-    </summary>
-    <author>
-      <name>Álex</name>
-    </author>
-  </entry>
-  
-  <entry>
-    <title>PyGrunn Winter Hackathon 2012</title>
-    <link href="http://agonzalezro.github.io/pygrunn-winter-hackathon-2012.html" />
-    
-    <updated>2012-11-27</updated>
-    
-    <summary>
-      <p>Few days ago, actually, more than one week ago (but I was very busy :)
-we made our first <a href="http://paylogic.github.com/winter-hackathon/">PyGrunn
-hackathon</a>. I was lucky
-and from all the list of ideas, the selected was one of mines! The
-slides generator, that finally we call <strong>hovercraft</strong>. Here is a small
-introduction about what I wanted:</p>
 
     </summary>
     <author>

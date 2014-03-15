@@ -43,29 +43,29 @@
 {{if .NumberOfPages}}
 <div class="text-center"><ul class="pagination">
 
-  <li class="
-  {{if eq $.PageNumber 1}}
-  disabled
-  {{end}}
-  ">
-  <a href="{{$.GetPreviousPageSlug $.PageNumber}}">&laquo;</a>
-  </li>
+    <li class="
+    {{if eq $.PageNumber 1}}
+    disabled
+    {{end}}
+    ">
+    <a href="{{$.GetPreviousPageSlug $.PageNumber}}">&laquo;</a>
+    </li>
 
-  {{range $_, $page := .ArrayOfPages}}
-  <li {{if eq $page $.PageNumber}}class="active"{{end}}>
-  <a href="/index{{if ne $page 1}}{{$page}}{{end}}.html">
-    {{$page}}
-  </a>
-  </li>
-  {{end}} {{/* range */}}
+    {{range $_, $page := .ArrayOfPages}}
+    <li {{if eq $page $.PageNumber}}class="active"{{end}}>
+    <a href="/index{{if ne $page 1}}{{$page}}{{end}}.html">
+      {{$page}}
+    </a>
+    </li>
+    {{end}} {{/* range */}}
 
-  <li class="
-  {{if eq $.PageNumber $.NumberOfPages}}
-  disabled
-  {{end}}
-  ">
-  <a href="{{$.GetNextPageSlug $.PageNumber}}">&raquo;</a>
-  </li>
+    <li class="
+    {{if eq $.PageNumber $.NumberOfPages}}
+    disabled
+    {{end}}
+    ">
+    <a href="{{$.GetNextPageSlug $.PageNumber}}">&raquo;</a>
+    </li>
 
 </ul></div>
 {{end}} {{/* if */}}
