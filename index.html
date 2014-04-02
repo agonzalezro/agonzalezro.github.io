@@ -80,7 +80,7 @@ agonzalezro.github.io
               
               
               <li>
-              <a href="/category/talks.html">talks <span class="badge pull-right">8</span></a>
+              <a href="/category/talks.html">talks <span class="badge pull-right">9</span></a>
               </li>
               
               
@@ -129,6 +129,11 @@ agonzalezro.github.io
               
               <li>
               <a href="/tag/bensday.html">bensday <span class="badge pull-right">1</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/tag/best.html">best <span class="badge pull-right">1</span></a>
               </li>
               
               
@@ -203,7 +208,7 @@ agonzalezro.github.io
               
               
               <li>
-              <a href="/tag/go.html">go <span class="badge pull-right">1</span></a>
+              <a href="/tag/go.html">go <span class="badge pull-right">2</span></a>
               </li>
               
               
@@ -328,6 +333,11 @@ agonzalezro.github.io
               
               
               <li>
+              <a href="/tag/practices.html">practices <span class="badge pull-right">1</span></a>
+              </li>
+              
+              
+              <li>
               <a href="/tag/pygrunn.html">pygrunn <span class="badge pull-right">4</span></a>
               </li>
               
@@ -445,6 +455,78 @@ agonzalezro.github.io
       
 
 
+
+<article>
+<h1>12 Go Best Practices</h1>
+
+<p>
+
+<span class="label label-default">by Álex</span>
+
+
+
+<span class="label label-default">2014-04-02</span>
+
+
+
+<a class="label label-success" href="/category/talks.html">talks</a>
+
+
+
+
+<a class="label label-info" href="/tag/.html"></a>
+
+<a class="label label-info" href="/tag/go.html">go</a>
+
+<a class="label label-info" href="/tag/best.html">best</a>
+
+<a class="label label-info" href="/tag/practices.html">practices</a>
+
+<a class="label label-info" href="/tag/.html"></a>
+
+
+</p>
+
+<p>Last Monday I had the chance to see <a href="https://twitter.com/francesc">@francesc</a>
+talking on the <a href="http://www.meetup.com/Go-London-User-Group">Go London User
+Group</a>. His talk was about best
+practices (and advices) when you are programming in Go.</p>
+
+<p>Summarising it a little bit, I would say that some of the cases explained there
+are things that you are going to finish doing even without knowing that you are
+doing &ldquo;best practices&rdquo;, but they are other examples that are incredible useful
+and clever &amp; I would love to assist to this conference few months ago.</p>
+
+<p>At the beginning of the slides you are going to see an step-by-step refactoring
+which could (and should) be applied to any other language out there. You will
+realise of the major improvement on the readability of that piece of code.
+Francesc said that the refactored version could possibly be a little bit
+slower, but you will have in your power a piece of maintainable code.</p>
+
+<p>If I need to choose one of the tricks showed, I would definitely go for the
+type switch on the (<a href="http://talks.golang.org/2013/bestpractices.slide#8">slide
+#8</a>). Basically, you can
+receive an interface as parameter and do a quick casting to whatever kind of
+type that you want:</p>
+
+<pre><code>....
+switch x := v.(type) {  // where v is an interface{}
+case string:
+    w.Write(int32(len(x)))
+    w.Write([]byte(x))
+...
+</code></pre>
+
+<p>I would say too that coming from a language like Python, it&rsquo;s really easy to be
+temped to overuse that functionality :) What do you think?</p>
+
+<p>Finally, <a href="http://talks.golang.org/2013/bestpractices.slide#1">here you have the
+slides</a> enjoy them as I
+did!</p>
+
+<p class="text-right"><a class="btn btn-default" href="12-go-best-practices.html#disqus_thread">Leave a comment!</a></p>
+</article>
+<hr>
 
 <article>
 <h1>Tailing multiple logs with tmux</h1>
@@ -673,71 +755,6 @@ source code of the demo here
 <p>Enjoy them!</p>
 
 <p class="text-right"><a class="btn btn-default" href="python-and-scala-smoke-the-peace-pipe.html#disqus_thread">Leave a comment!</a></p>
-</article>
-<hr>
-
-<article>
-<h1>Here I go PyGrunn&#39;13!</h1>
-
-<p>
-
-<span class="label label-default">by Álex</span>
-
-
-
-<span class="label label-default">2013-04-17</span>
-
-
-
-<a class="label label-success" href="/category/talks.html">talks</a>
-
-
-
-
-<a class="label label-info" href="/tag/.html"></a>
-
-<a class="label label-info" href="/tag/pygrunn.html">pygrunn</a>
-
-<a class="label label-info" href="/tag/talk.html">talk</a>
-
-<a class="label label-info" href="/tag/friends.html">friends</a>
-
-<a class="label label-info" href="/tag/groningen.html">groningen</a>
-
-<a class="label label-info" href="/tag/my-english-is-crap.html">my-english-is-crap</a>
-
-<a class="label label-info" href="/tag/.html"></a>
-
-
-</p>
-
-<p>I am really proud of say that the next month I will be giving a talk at
-PyGrunn!</p>
-
-<p>This is a really good new for me because PyGrunn is the conference that
-my old colleagues organize since years ago. I was on it first time in
-2011 just one week after I started working at
-<a href="http://paylogic.com">Paylogic</a>. I meet a lot of interesting people
-there and I will see them again this year!</p>
-
-<p>In 2012 I repeat, but at that time I had already started to organize the
-&ldquo;Monthly PyGrunn&rdquo;s with <a href="http://twitter.com/_ivor">Ivor</a>. TBH that talks
-were quite successful, and not for the quantity of people that we get
-there, if not for the quality of them and the networking after!</p>
-
-<p>I am really happy too because going there I will be able to see a lot of
-friends that I miss! I just moved here 5 months ago but I really want to
-see them!</p>
-
-<p>Now, the less important thing: about the talk! I will be talking about
-Thrift and how can we use it to talk between different applications in
-different languages (in the examples: Python &amp; Scala). When PyGrunn
-finish I think that I will have a video where you can see the talk (or
-check my English) and I will upload the slides too!</p>
-
-<p>Thanks to <a href="http://www.pygrunn.org">PyGrunn</a> for give me this chance!</p>
-
-<p class="text-right"><a class="btn btn-default" href="here-i-go-pygrunn13.html#disqus_thread">Leave a comment!</a></p>
 </article>
 <hr>
 

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>
-Tailing multiple logs with tmux | agonzalezro.github.io
+practices | agonzalezro.github.io
 </title>
 
     <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
@@ -453,86 +453,12 @@ Tailing multiple logs with tmux | agonzalezro.github.io
 
     <div class="container col-lg-8 col-lg-offset-2">
       
-<h1>Tailing multiple logs with tmux</h1>
-
-<p>
-
-<span class="label label-default">by Álex</span>
-
-
-
-<span class="label label-default">2014-03-15</span>
-
-
-
-<a class="label label-success" href="/category/devop.html">devop</a>
-
-
-
-
-<a class="label label-info" href="/tag/.html"></a>
-
-<a class="label label-info" href="/tag/tail.html">tail</a>
-
-<a class="label label-info" href="/tag/tmux.html">tmux</a>
-
-<a class="label label-info" href="/tag/.html"></a>
-
-
-</p>
-
-<p>I had a system that was creating a different log for each worker. Those logs
-where in the form: <code>/var/log/baselog</code>, <code>/var/log/baselog.1</code>,
-<code>/var/log/baselog.2</code> and so on. I wanted to tail them but they were being
-updated simultaneously so the output of the tail was being a mess.</p>
-
-<p>I am a <a href="http://tmux.sourceforge.net/">tmux</a> user since few months ago (if you
-aren&rsquo;t, you should!) so I&rsquo;ve decide to open all of them in different tmux
-panes. Thanks to having a pane for every log what we will achieve is the
-ability to scroll just one of them, maximize it in case that we need it, move
-to a new window, save the buffer&hellip;</p>
-
-<p>How can you achieve that? Quite simple, just download this script to some
-place:</p>
-
-<script src="https://gist.github.com/agonzalezro/9573541.js"></script>
-
-<p>Once you have saved it installed, run it with the base log file:</p>
-
-<pre><code>sh tail_several_logs.sh /var/log/baselog
-</code></pre>
-
-<p>The script have some limitations easily fixable:</p>
-
+<h1>practices</h1>
 <ul>
-<li>You should provide a fullpath.</li>
-<li>The logs should be in the form of baselog.N where N is a number.</li>
-<li>I am pretty sure that the loop can be done better.</li>
-<li>And select the layout in every iteration is not the best of the ideas, but it
-works.</li>
+  
+  <li><a href="/12-go-best-practices.html">12 Go Best Practices</a></li>
+  
 </ul>
-
-<p>Feel free of do whatever you want with the script. I just hope that it&rsquo;s useful
-for somebody else.</p>
-
-
-<h2>Comments</h2>
-<div id="disqus_thread"></div>
-<script type="text/javascript">
-  var disqus_shortname = 'agonzalezro';
-  
-  
-  var disqus_identifier = 'tailing-multiple-logs-with-tmux.html';
-
-  (function() {
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-  })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
 
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>

@@ -3,9 +3,27 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>agonzalezro.github.io</title>
   <link href="http://agonzalezro.github.io" />
-  <updated>2014-03-16T22:51:58Z</updated>
+  <updated>2014-04-02T22:48:03&#43;01:00</updated>
 
   
+  
+  <entry>
+    <title>12 Go Best Practices</title>
+    <link href="http://agonzalezro.github.io/12-go-best-practices.html" />
+    
+    <updated>2014-04-02</updated>
+    
+    <summary>
+      <p>Last Monday I had the chance to see <a href="https://twitter.com/francesc">@francesc</a>
+talking on the <a href="http://www.meetup.com/Go-London-User-Group">Go London User
+Group</a>. His talk was about best
+practices (and advices) when you are programming in Go.</p>
+
+    </summary>
+    <author>
+      <name>Álex</name>
+    </author>
+  </entry>
   
   <entry>
     <title>Tailing multiple logs with tmux</title>
@@ -150,25 +168,6 @@ us talk about the internal architecture that they are using at
     
     <summary>
       <p>Hi g(irl|uy)s! I would like to start with a disclaimer:</p>
-
-    </summary>
-    <author>
-      <name>Álex</name>
-    </author>
-  </entry>
-  
-  <entry>
-    <title>Best vim colors ever!</title>
-    <link href="http://agonzalezro.github.io/best-vim-colors-ever.html" />
-    
-    <updated>2013-01-23 23:52</updated>
-    
-    <summary>
-      <p>Sometimes a developer needs a change, and what can you change better
-that the color scheme that you use to develop? You are more than 8h per
-day in front of your vim with some beautiful, or crappy, code in front
-of you. In the first case the colors doesn&rsquo;t matter, but in the second
-it&rsquo;s really important to enjoy, at least, the colors!</p>
 
     </summary>
     <author>

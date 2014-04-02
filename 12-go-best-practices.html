@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>
-Tailing multiple logs with tmux | agonzalezro.github.io
+12 Go Best Practices | agonzalezro.github.io
 </title>
 
     <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
@@ -453,7 +453,7 @@ Tailing multiple logs with tmux | agonzalezro.github.io
 
     <div class="container col-lg-8 col-lg-offset-2">
       
-<h1>Tailing multiple logs with tmux</h1>
+<h1>12 Go Best Practices</h1>
 
 <p>
 
@@ -461,59 +461,64 @@ Tailing multiple logs with tmux | agonzalezro.github.io
 
 
 
-<span class="label label-default">2014-03-15</span>
+<span class="label label-default">2014-04-02</span>
 
 
 
-<a class="label label-success" href="/category/devop.html">devop</a>
+<a class="label label-success" href="/category/talks.html">talks</a>
 
 
 
 
 <a class="label label-info" href="/tag/.html"></a>
 
-<a class="label label-info" href="/tag/tail.html">tail</a>
+<a class="label label-info" href="/tag/go.html">go</a>
 
-<a class="label label-info" href="/tag/tmux.html">tmux</a>
+<a class="label label-info" href="/tag/best.html">best</a>
+
+<a class="label label-info" href="/tag/practices.html">practices</a>
 
 <a class="label label-info" href="/tag/.html"></a>
 
 
 </p>
 
-<p>I had a system that was creating a different log for each worker. Those logs
-where in the form: <code>/var/log/baselog</code>, <code>/var/log/baselog.1</code>,
-<code>/var/log/baselog.2</code> and so on. I wanted to tail them but they were being
-updated simultaneously so the output of the tail was being a mess.</p>
+<p>Last Monday I had the chance to see <a href="https://twitter.com/francesc">@francesc</a>
+talking on the <a href="http://www.meetup.com/Go-London-User-Group">Go London User
+Group</a>. His talk was about best
+practices (and advices) when you are programming in Go.</p>
 
-<p>I am a <a href="http://tmux.sourceforge.net/">tmux</a> user since few months ago (if you
-aren&rsquo;t, you should!) so I&rsquo;ve decide to open all of them in different tmux
-panes. Thanks to having a pane for every log what we will achieve is the
-ability to scroll just one of them, maximize it in case that we need it, move
-to a new window, save the buffer&hellip;</p>
+<p>Summarising it a little bit, I would say that some of the cases explained there
+are things that you are going to finish doing even without knowing that you are
+doing &ldquo;best practices&rdquo;, but they are other examples that are incredible useful
+and clever &amp; I would love to assist to this conference few months ago.</p>
 
-<p>How can you achieve that? Quite simple, just download this script to some
-place:</p>
+<p>At the beginning of the slides you are going to see an step-by-step refactoring
+which could (and should) be applied to any other language out there. You will
+realise of the major improvement on the readability of that piece of code.
+Francesc said that the refactored version could possibly be a little bit
+slower, but you will have in your power a piece of maintainable code.</p>
 
-<script src="https://gist.github.com/agonzalezro/9573541.js"></script>
+<p>If I need to choose one of the tricks showed, I would definitely go for the
+type switch on the (<a href="http://talks.golang.org/2013/bestpractices.slide#8">slide
+#8</a>). Basically, you can
+receive an interface as parameter and do a quick casting to whatever kind of
+type that you want:</p>
 
-<p>Once you have saved it installed, run it with the base log file:</p>
-
-<pre><code>sh tail_several_logs.sh /var/log/baselog
+<pre><code>....
+switch x := v.(type) {  // where v is an interface{}
+case string:
+    w.Write(int32(len(x)))
+    w.Write([]byte(x))
+...
 </code></pre>
 
-<p>The script have some limitations easily fixable:</p>
+<p>I would say too that coming from a language like Python, it&rsquo;s really easy to be
+temped to overuse that functionality :) What do you think?</p>
 
-<ul>
-<li>You should provide a fullpath.</li>
-<li>The logs should be in the form of baselog.N where N is a number.</li>
-<li>I am pretty sure that the loop can be done better.</li>
-<li>And select the layout in every iteration is not the best of the ideas, but it
-works.</li>
-</ul>
-
-<p>Feel free of do whatever you want with the script. I just hope that it&rsquo;s useful
-for somebody else.</p>
+<p>Finally, <a href="http://talks.golang.org/2013/bestpractices.slide#1">here you have the
+slides</a> enjoy them as I
+did!</p>
 
 
 <h2>Comments</h2>
@@ -522,7 +527,7 @@ for somebody else.</p>
   var disqus_shortname = 'agonzalezro';
   
   
-  var disqus_identifier = 'tailing-multiple-logs-with-tmux.html';
+  var disqus_identifier = '12-go-best-practices.html';
 
   (function() {
     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
