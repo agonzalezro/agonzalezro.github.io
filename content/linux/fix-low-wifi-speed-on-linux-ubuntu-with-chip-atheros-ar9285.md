@@ -14,7 +14,7 @@ you must install `linux-backports-modules-net-natty-generic`, you can do
 it via synaptic, ubuntu software center, aptitude, apt... I show you a
 screenshot doing it with ubuntu software center:
 
-![image](static/software_center.png%0A%20:width:%2050%%0A%20:align:%20center%0A%20:target:%20static/software_center.png)
+![image](static/software_center.png)
 
 The second "solution" is deactivate the hardware cryptography of the
 module, I don't know if this could cause security problems or instead

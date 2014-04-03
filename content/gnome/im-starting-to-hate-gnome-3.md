@@ -15,7 +15,7 @@ After see my arguments, perhaps you can help me to change my opinion but
 possibily my next post will treat about how erase GNOME 3 and go back to
 Unity. Go to see them:
 
-![image](static/fuuuu.jpg%0A%20:width:%2050%%0A%20:align:%20center%0A%20:target:%20static/fuuuu.jpg)
+![image](static/fuuuu.jpg)
 
 Dynamic virtual desktops
 ------------------------

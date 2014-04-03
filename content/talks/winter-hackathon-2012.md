@@ -89,7 +89,7 @@ Resources
 -   You can [try a demo](http://nameless-spire-1402.herokuapp.com/) too!
 -   And if you are too lazy to try it, here you have an screenshot:
 
-![image](static/hovercraft.png%0A%20:width:%2066%%0A%20:align:%20center%0A%20:target:%20static/hovercraft.png)
+![image](static/hovercraft.png)
 
 Thanks!
 -------

@@ -36,7 +36,7 @@ I recommend you to have this themes configuration (you can change the
 icons if you like) and activate the option on the first tab called "Have
 file manager handle the desktop":
 
-![image](static/tweak_tool.png%0A%20:width:%2050%%0A%20:align:%20center%0A%20:target:%20static/tweak_tool.png)
+![image](static/tweak_tool.png)
 
 Good luck! And if you have any trouble, please, feel free to ask me in
 the comments!
@@ -44,4 +44,4 @@ the comments!
 PS: [@marioquartz](http://twitter.com/marioquartz) wants to see the
 result, so here it is (click to enlarge)!
 
-![image](static/gnome3_desktop.png%0A%20:width:%2050%%0A%20:align:%20center%0A%20:target:%20static/gnome3_desktop.png)
+![image](static/gnome3_desktop.png)
