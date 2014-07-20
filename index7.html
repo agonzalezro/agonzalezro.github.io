@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>
-gnome | agonzalezro.github.io
+agonzalezro.github.io
 </title>
 
     <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
@@ -455,14 +455,248 @@ gnome | agonzalezro.github.io
 
     <div class="container col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
       
-<h1>gnome</h1>
-<ul>
-  
-  <li><a href="/im-starting-to-hate-gnome-3.html">I&#39;m starting to hate GNOME 3</a></li>
-  
-  <li><a href="/how-to-install-gnome-3-instead-of-unity-on-ubuntu-1104.html">How-to install GNOME 3 instead of Unity on Ubuntu 11.04</a></li>
-  
-</ul>
+
+
+
+<article>
+<h1><a href="fix-low-wifi-speed-on-linux-ubuntu-with-chip-atheros-ar9285.html">Fix low wifi speed on Linux (Ubuntu) with chip Atheros AR9285</a></h1>
+
+<p>
+
+<span class="label label-default">by Álex</span>
+
+
+
+<span class="label label-default">2011-07-03 13:07</span>
+
+
+
+<a class="label label-success" href="/category/linux.html">linux</a>
+
+
+
+
+<a class="label label-info" href="/tag/.html"></a>
+
+<a class="label label-info" href="/tag/lowspeed.html">lowspeed</a>
+
+<a class="label label-info" href="/tag/linux.html">linux</a>
+
+<a class="label label-info" href="/tag/atheros.html">atheros</a>
+
+<a class="label label-info" href="/tag/wifi.html">wifi</a>
+
+<a class="label label-info" href="/tag/ath9k.html">ath9k</a>
+
+<a class="label label-info" href="/tag/ubuntu.html">ubuntu</a>
+
+<a class="label label-info" href="/tag/ar9285.html">ar9285</a>
+
+<a class="label label-info" href="/tag/.html"></a>
+
+
+</p>
+
+<p>I was very happer after buy my new computer Dell Vostro v130, but after
+install Linux on it I&rsquo;ve realized that the download speed via WiFi was
+very slow! To solve this I found two &ldquo;solutions&rdquo;, one of them works, but
+the other not (for me).</p>
+
+<p>The solutions that didn&rsquo;t work is more easy, so I will start with it,
+you must install <code>linux-backports-modules-net-natty-generic</code>, you can do
+it via synaptic, ubuntu software center, aptitude, apt&hellip; I show you a
+screenshot doing it with ubuntu software center:</p>
+
+<p><img src="static/software_center.png" alt="image">
+</p>
+
+<p>The second &ldquo;solution&rdquo; is deactivate the hardware cryptography of the
+module, I don&rsquo;t know if this could cause security problems or instead
+use hardware it will use software crypt, anyway, it is the best
+solutions that I find until the moment.</p>
+
+<p>To do that, you must create the file <code>/etc/modprobe.d/ath9k.conf</code> with
+the content: <code>options ath9k nohwcrypt=1</code>, you can do it easily with:</p>
+
+<pre><code>echo &quot;options ath9k nohwcrypt=1&quot; &gt; /etc/modprobe.d/ath9k.conf
+</code></pre>
+
+<p>If you have any questions, or you find a better solution, please, let me
+know.</p>
+
+<p class="text-right"><a class="btn btn-default" href="fix-low-wifi-speed-on-linux-ubuntu-with-chip-atheros-ar9285.html#disqus_thread">Leave a comment!</a></p>
+</article>
+<hr>
+
+<article>
+<h1><a href="im-starting-to-hate-gnome-3.html">I&#39;m starting to hate GNOME 3</a></h1>
+
+<p>
+
+<span class="label label-default">by Álex</span>
+
+
+
+<span class="label label-default">2011-06-08 19:02</span>
+
+
+
+<a class="label label-success" href="/category/gnome.html">gnome</a>
+
+
+
+
+<a class="label label-info" href="/tag/.html"></a>
+
+<a class="label label-info" href="/tag/unity.html">unity</a>
+
+<a class="label label-info" href="/tag/gnome3.html">gnome3</a>
+
+<a class="label label-info" href="/tag/hate.html">hate</a>
+
+<a class="label label-info" href="/tag/.html"></a>
+
+
+</p>
+
+<p>First of all, I&rsquo;m GNOME user as main desktop on Linux since the version
+1.x (about 10 years ago). I&rsquo;ve played with another desktops but GNOME
+was always in my heart. But now, with the arrival of GNOME 3 and after
+two weeks using it I can say that I&rsquo;m starting to hate it. In this new
+version it has a lot of functions that I don&rsquo;t like and doesn&rsquo;t have a
+lot of functions that I like :)</p>
+
+<p>After see my arguments, perhaps you can help me to change my opinion but
+possibily my next post will treat about how erase GNOME 3 and go back to
+Unity. Go to see them:</p>
+
+<p><img src="static/fuuuu.jpg" alt="image">
+</p>
+
+<h2>Dynamic virtual desktops</h2>
+
+<p>I&rsquo;ve always used virtual desktops. One for terminals, antoher for
+explorers, another for music and a extra one for all other stuff. When I
+want to go to my explorer I push Alt+2 and change my virtual desktop to
+2. But now, I can&rsquo;t do it, because if I want to open the explorers in
+the desktop 2 I must open something in the desktop one, but I don&rsquo;t like
+it!</p>
+
+<p>This is a very big problem for me because I&rsquo;m not accustomed to use
+Alt-Tab to change the windows.</p>
+
+<h2>When you close the las window in a desktop&hellip;</h2>
+
+<p>the gnome-shell will be open! I don&rsquo;t like it! Perhpas I&rsquo;ve closed this
+window to go to my home folder, let me do that!</p>
+
+<h2>Alt+F2 doesn&rsquo;t autocomplete</h2>
+
+<p>GNOME always had this option instead KDE that didn&rsquo;t have it, and now,
+they erase it? I can&rsquo;t understand why! I know that you can use the Super
+key (the fuc***g windows key presented on all keyboards), but use the
+gnome-shell to open a program isn&rsquo;t so quickly as open it with alt-f2.</p>
+
+<h2>Autologin on GDM</h2>
+
+<p>I like to suppose that this bug is only on my pc, because I&rsquo;ve tried to
+configure my autologin user and never ever is autologued. Perhaps I
+should submit a bug for this case.</p>
+
+<h2>Difficulty to install extensions</h2>
+
+<p>I will not say anything more about this.</p>
+
+<h2>No autohide bar, and no more bars?</h2>
+
+<p>I know that gnome-shell isn&rsquo;t thinked to do that, but perhaps they must
+give a chance to do that to the users that like it.</p>
+
+<p>And finally, one thing that happens with gnome-shell, gnome-do, meego
+desktop&hellip; Why if you have hide files they appear on recent documents or
+in the shell when you start to type? Of course&hellip; this hide files isn&rsquo;t
+for p0rn, they are my personal documents only.</p>
+
+<p class="text-right"><a class="btn btn-default" href="im-starting-to-hate-gnome-3.html#disqus_thread">Leave a comment!</a></p>
+</article>
+<hr>
+
+
+
+
+
+<div class="text-center"><ul class="pagination">
+
+    <li class="
+    
+    ">
+    <a href="/index6.html">&laquo;</a>
+    </li>
+
+    
+    <li >
+    <a href="/index.html">
+      1
+    </a>
+    </li>
+    
+    <li >
+    <a href="/index2.html">
+      2
+    </a>
+    </li>
+    
+    <li >
+    <a href="/index3.html">
+      3
+    </a>
+    </li>
+    
+    <li >
+    <a href="/index4.html">
+      4
+    </a>
+    </li>
+    
+    <li >
+    <a href="/index5.html">
+      5
+    </a>
+    </li>
+    
+    <li >
+    <a href="/index6.html">
+      6
+    </a>
+    </li>
+    
+    <li class="active">
+    <a href="/index7.html">
+      7
+    </a>
+    </li>
+    
+    <li >
+    <a href="/index8.html">
+      8
+    </a>
+    </li>
+    
+    <li >
+    <a href="/index9.html">
+      9
+    </a>
+    </li>
+     
+
+    <li class="
+    
+    ">
+    <a href="/index8.html">&raquo;</a>
+    </li>
+
+</ul></div>
+ 
 
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
