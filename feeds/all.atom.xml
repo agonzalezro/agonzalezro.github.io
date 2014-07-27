@@ -3,9 +3,28 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>agonzalezro.github.io</title>
   <link href="http://agonzalezro.github.io" />
-  <updated>2014-07-27T22:42:39&#43;01:00</updated>
+  <updated>2014-07-27T23:09:52&#43;01:00</updated>
 
   
+  
+  <entry>
+    <title>polo supports theming now!</title>
+    <link href="http://agonzalezro.github.io/polo-supports-theming-now.html" />
+    
+    <updated>2014-07-27</updated>
+    
+    <summary>
+      <p>If you have seen my blog before I am pretty sure that you remember that the
+current theme is not the one that it used to be. I&rsquo;ve created a theming
+&ldquo;engine&rdquo; for <a href="https://github.com/agonzalezro/polo">polo</a> and for doing the
+showcase of the functionality I&rsquo;ve chosen the awesome
+<a href="https://github.com/kristopolous/BOOTSTRA.386">BOOTSTRAP/386</a> theme.</p>
+
+    </summary>
+    <author>
+      <name>Álex</name>
+    </author>
+  </entry>
   
   <entry>
     <title>12 Go Best Practices</title>
@@ -153,21 +172,6 @@ us talk about the internal architecture that they are using at
     
     <summary>
       <h2>Introduction</h2>
-
-    </summary>
-    <author>
-      <name>Álex</name>
-    </author>
-  </entry>
-  
-  <entry>
-    <title>codereview from the POV of a noob</title>
-    <link href="http://agonzalezro.github.io/codereview-from-the-pov-of-a-noob.html" />
-    
-    <updated>2013-01-29 19:16</updated>
-    
-    <summary>
-      <p>Hi g(irl|uy)s! I would like to start with a disclaimer:</p>
 
     </summary>
     <author>
