@@ -3,9 +3,26 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>agonzalezro.github.io</title>
   <link href="http://agonzalezro.github.io" />
-  <updated>2014-07-27T23:09:52&#43;01:00</updated>
+  <updated>2014-08-04T10:47:54&#43;01:00</updated>
 
   
+  
+  <entry>
+    <title>How to find a flat in London with some help</title>
+    <link href="http://agonzalezro.github.io/how-to-find-a-flat-in-london-with-some-help.html" />
+    
+    <updated>2014-09-03</updated>
+    
+    <summary>
+      <p>At the end of this month I am going to move with a friend. This movement is
+going to be something like the 7th one since I am living here (little bit less
+than 2 years).</p>
+
+    </summary>
+    <author>
+      <name>Álex</name>
+    </author>
+  </entry>
   
   <entry>
     <title>polo supports theming now!</title>
@@ -157,21 +174,6 @@ us talk about the internal architecture that they are using at
     <summary>
       <p>This talk was made by Peter Ingles, you can check his twitter here:
 <a href="http://twitter.com/inglesp">@inglesp</a>.</p>
-
-    </summary>
-    <author>
-      <name>Álex</name>
-    </author>
-  </entry>
-  
-  <entry>
-    <title>TechTalk: from python 2.x to python 3</title>
-    <link href="http://agonzalezro.github.io/techtalk-from-python-2x-to-python-3.html" />
-    
-    <updated>2013-02-12 00:30</updated>
-    
-    <summary>
-      <h2>Introduction</h2>
 
     </summary>
     <author>
