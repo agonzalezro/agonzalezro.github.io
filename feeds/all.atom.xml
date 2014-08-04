@@ -3,7 +3,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>agonzalezro.github.io</title>
   <link href="http://agonzalezro.github.io" />
-  <updated>2014-08-04T17:41:21&#43;01:00</updated>
+  <updated>2014-08-04T21:21:15&#43;01:00</updated>
 
   
   
@@ -14,9 +14,9 @@
     <updated>2014-09-03</updated>
     
     <summary>
-      <p>At the end of this month I am going to move with a friend. This movement is
-going to be something like the 7th one since I am living here (little bit less
-than 2 years).</p>
+      <p><strong>EDIT:</strong> I&rsquo;ve added a little bit more of code to the gist to get the latitude
+and longitude of the flat. This way the process of plotting them is more
+accurate and incredibly easy. Thanks again <a href="http://cartodb.com">CartoDB</a>!</p>
 
     </summary>
     <author>

@@ -523,6 +523,10 @@ How to find a flat in London with some help | agonzalezro.github.io
 
 </p>
 
+<p><strong>EDIT:</strong> I&rsquo;ve added a little bit more of code to the gist to get the latitude
+and longitude of the flat. This way the process of plotting them is more
+accurate and incredibly easy. Thanks again <a href="http://cartodb.com">CartoDB</a>!</p>
+
 <p>At the end of this month I am going to move with a friend. This movement is
 going to be something like the 7th one since I am living here (little bit less
 than 2 years).</p>
@@ -544,21 +548,21 @@ the <a href="https://gist.github.com/agonzalezro/440e7bf41e77c284d735">following
 close to Mile End. Calculate commute times from one address to another one
 doesn&rsquo;t look straightforward and easy to do, so, the best solution (in relation
 dev_time/benefit) was showing all those flats in a map, and I made it thanks to
-the help of <a href="http://cartodb.com/">CartoDB</a>. This piece of software is amazing,
-basically the process was:</p>
+the help of CartoDB. This piece of software is amazing, basically the process
+was:</p>
 
 <ol>
 <li>drag&amp;drop the CSV to your CartoDB account.</li>
-<li>click on the dropdown of the &ldquo;location&rdquo; row and then on &ldquo;Georeference&rdquo;.</li>
-<li>in the popup that will be shown to you, you must select &ldquo;&ldquo;You have one or
+<li><del>click on the dropdown of the &ldquo;location&rdquo; row and then on &ldquo;Georeference&rdquo;.</del></li>
+<li><del>in the popup that will be shown to you, you must select &ldquo;&ldquo;You have one or
 more columns with the address&rdquo;, and after that you will have a georeferenced
 list of points. The only bad point with this solution is that every month
-you just have 100 geoferential queries available for free :(</li>
+you just have 100 geoferential queries available for free :(</del></li>
 </ol>
 
 <p>With that data you can create your own visualisation as I made here:</p>
 
-<iframe width='100%' height='520' frameborder='0' src='http://alex.cartodb.com/viz/7702ecd8-1a9d-11e4-9aa6-0e230854a1cb/embed_map?title=true&description=true&search=false&shareable=true&cartodb_logo=true&layer_selector=false&legends=false&scrollwheel=true&fullscreen=true&sublayer_options=1&sql=&sw_lat=51.31001339554934&sw_lon=-0.545196533203125&ne_lat=51.673406793502615&ne_lon=0.339202880859375' allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+<iframe width='100%' height='520' frameborder='0' src='//alex.cartodb.com/viz/e3731a92-1c13-11e4-9a2d-0e10bcd91c2b/embed_map?title=true&description=true&search=false&shareable=true&cartodb_logo=true&layer_selector=false&legends=false&scrollwheel=true&fullscreen=true&sublayer_options=1&sql=&sw_lat=51.31344707827587&sw_lon=-0.5657958984375&ne_lat=51.67681321379405&ne_lon=0.318603515625' allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
 
 <p>If you want to say something about this post or you want to offer me a nice
 flat in London, feel free of use the comments or find me in twitter:
