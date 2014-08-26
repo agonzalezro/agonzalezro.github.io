@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>
-BOOTSTRA.386 | agonzalezro.github.io
+Draw (and more) your architecture with Neo4J | agonzalezro.github.io
 </title>
 
     <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
@@ -515,12 +515,200 @@ BOOTSTRA.386 | agonzalezro.github.io
 
     <div class="container col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
       
-<h1>BOOTSTRA.386</h1>
+<h1>Draw (and more) your architecture with Neo4J</h1>
+
+<p>
+
+<span class="label label-default">by Álex</span>
+
+
+
+<span class="label label-default">2014-08-26</span>
+
+
+
+<a class="label label-success" href="/category/biz.html">biz</a>
+
+
+
+
+<a class="label label-info" href="/tag/.html"></a>
+
+<a class="label label-info" href="/tag/neo4j.html">neo4j</a>
+
+<a class="label label-info" href="/tag/architecture.html">architecture</a>
+
+<a class="label label-info" href="/tag/people.html">people</a>
+
+<a class="label label-info" href="/tag/organization.html">organization</a>
+
+<a class="label label-info" href="/tag/.html"></a>
+
+
+</p>
+
+<p>As some of you already know I work at <a href="http://greenmangaming.com">Green Man
+Gaming</a> (mainly at the
+<a href="http://playfire.com">playfire</a> project). We were planning to do some changes
+in our architecture but it&rsquo;s extremely hard to have an idea of all our services
+and DBs in just a piece of A4 paper. I was trying, trust me, but it was
+impossible.</p>
+
+<p>When I started with this task I did it with
+<a href="https://www.lucidchart.com">lucidchart</a>, after it got so messy I moved to
+<a href="http://www.graphviz.org/">graphviz</a>, but even with the usual good graphs that
+I get from graphviz it was impossible to get something readable this time.</p>
+
+<p>So, it happened! I remembered <a href="http://ivan.pedrazas.me/?p=280">this post</a> made
+by my friend Iván and I thought, why not?</p>
+
+<p>Sadly, this post is not going to show any real data from GMG, but if you are
+interested it&rsquo;s the moment to apply because we are hiring &amp; we have the graphs
+around all the whiteboard in the office! Just grab me an email.</p>
+
+<h2>What do I need?</h2>
+
+<p>Basically, you just need Neo4J. You can install it however you want, I&rsquo;ve just
+run a Docker container with it:</p>
+
+<pre><code>docker run -d -p 7474:7474 tpires/neo4j
+</code></pre>
+
+<p>Now, if you access to your docker container at <a href="http://localhost:7474">http://localhost:7474</a> (or using
+the host from <code>boot2docker ip</code> if you run docker with boot2docker) you will see
+the cypher shell which is one of the ways that you can use to interact with
+your DB.</p>
+
+<h2>What I am going to draw?</h2>
+
+<p>In my case, and for a POC, I&rsquo;ve written the following entities:</p>
+
 <ul>
-  
-  <li><a href="/polo-supports-theming-now.html">polo supports theming now!</a></li>
-  
+<li>Person</li>
+<li>Technology</li>
+<li>Service</li>
 </ul>
+
+<p>You could write some other entities as for example DBs.</p>
+
+<p>The connections here are kinda clear: a person knows a technology which is
+used to write a service that use a DB as backend, so, let&rsquo;s write it!</p>
+
+<p>To create entities the syntax is as follow:</p>
+
+<pre><code>CREATE (variable:Type{attributes})
+</code></pre>
+
+<p>And to create Relations (one of the ways):</p>
+
+<pre><code>CREATE (variable1)-[:RELATION_NAME]-&gt;(variable2)
+</code></pre>
+
+<p>You will understand this better after we start creating our entities.</p>
+
+<p>Create your engineers:</p>
+
+<pre><code>CREATE
+  (dev1:Person{name:&quot;Alex&quot;}),
+  (dev2:Person{name:&quot;Maria&quot;}),
+  (dev3:Person{name:&quot;Pepe&quot;}),
+</code></pre>
+
+<p>Before the : you can see that we have defined a variable to refer to this
+just-created entities. All the nodes that we are creating here are of type
+Person and each of them have a different name.</p>
+
+<p>To create the relationships between Technology and Person, we define the
+technology using the same method that we used to create the Person, but we add
+the relationships:</p>
+
+<pre><code>...
+  (python:Technology{name:&quot;Python&quot;}),
+  (go:Technology{name:&quot;Go&quot;}),
+
+  (dev1)-[:KNOWS]-&gt;(python),
+  (dev1)-[:KNOWS]-&gt;(go),
+  (dev2)-[:KNOWS]-&gt;(python),
+  (dev3)-[:KNOWS]-&gt;(go),
+</code></pre>
+
+<p>And finally, we add our services:</p>
+
+<pre><code>...
+  (service1:Service{name:&quot;Service #1&quot;}),
+  (service2:Service{name:&quot;Service #2&quot;}),
+
+  (service1)-[:CONNECTS]-&gt;(service2),
+  (service1)-[:WRITTEN_WITH]-&gt;(go),
+  (service2)-[:WRITTEN_WITH]-&gt;(python)
+</code></pre>
+
+<h2>Querying for drawing</h2>
+
+<p>Now, you can run all the script and we can see the result. For the first output
+we are going just to show everything:</p>
+
+<pre><code>MATCH (n)-[r]-() RETURN n, r
+</code></pre>
+
+<p>And you will get this!</p>
+
+<p><img src="static/biz/neo4j_architecture/1.png" alt="Cypher MATCH #1">
+</p>
+
+<p>So, what&rsquo;s the point of all this? Basically, that you can do queries that will
+make the graph smaller for your needs. This example data that we have added is
+quite small (just few nodes), in the real graph that I am working on we have
+already few dozens. For example, imagine that you just want to see python
+related information:</p>
+
+<pre><code>MATCH (a)-[r]-() WHERE a.name=&quot;Python&quot; RETURN a, r
+</code></pre>
+
+<p><img src="static/biz/neo4j_architecture/2.png" alt="Cypher MATCH #2">
+</p>
+
+<p>Or you just want to see the people that can work with the Server #1</p>
+
+<pre><code>MATCH (s:Service)-[r]-()-[r2:KNOWS]-(p:Person)
+WHERE s.name=&quot;Service #1&quot; RETURN s, p
+</code></pre>
+
+<p><img src="static/biz/neo4j_architecture/3.png" alt="Cypher MATCH #2">
+</p>
+
+<h2>One more thing</h2>
+
+<p>For now, this project in my company is just a POC and I have not really clear
+what attributes and entities I should draw to make this graph useful for the
+present and for the future. If you have previous experiences or you want to
+start a brainstorming, write on the comments or <a href="http://twitter.com/agonzalezro">find me at
+twitter</a>.</p>
+
+<p>Also, for now I am happy with just creating some screenshots from the data that
+Cypher is showing to me, but it would be really nice to find a more
+professional way of sharing this graphs. Cypher renders them with D3, so, I
+don&rsquo;t fully understand why it doesn&rsquo;t support exporting them in a easy way.
+Again, if you know something, just let me know.</p>
+
+
+<h2>Comments</h2>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'agonzalezro';
+  
+  
+  var disqus_identifier = 'draw-your-architecture-with-neo4j.html.html';
+
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
 
     </div>
     

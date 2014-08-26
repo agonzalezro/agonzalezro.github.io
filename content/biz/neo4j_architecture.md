@@ -1,13 +1,16 @@
 date: 2014-08-26
 tags: neo4j, architecture, people, organization
+slug: draw-your-architecture-with-neo4j.html
 
-Draw your architecture with Neo4J
-=================================
+Draw (and more) your architecture with Neo4J
+============================================
 
-As some of you already know at work at greenmangaming.com (mainly at the
-playfire.com) project. We were planning to do some changes in our architecture
-but it's extremely hard to have an idea of all our services and DBs in just a
-piece of A4 paper. I was trying, trust me, but it was impossible.
+As some of you already know I work at [Green Man
+Gaming](http://greenmangaming.com) (mainly at the
+[playfire](http://playfire.com) project). We were planning to do some changes
+in our architecture but it's extremely hard to have an idea of all our services
+and DBs in just a piece of A4 paper. I was trying, trust me, but it was
+impossible.
 
 When I started with this task I did it with
 [lucidchart](https://www.lucidchart.com), after it got so messy I moved to
@@ -42,7 +45,8 @@ In my case, and for a POC, I've written the following entities:
 - Person
 - Technology
 - Service
-- DBs
+
+You could write some other entities as for example DBs.
 
 The connections here are kinda clear: a person knows a technology which is
 used to write a service that use a DB as backend, so, let's write it!

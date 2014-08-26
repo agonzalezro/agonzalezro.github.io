@@ -3,21 +3,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>agonzalezro.github.io</title>
   <link href="http://agonzalezro.github.io" />
-  <updated>2014-08-26T23:00:07&#43;01:00</updated>
+  <updated>2014-08-27T09:49:43&#43;01:00</updated>
 
   
   
   <entry>
-    <title>Draw your architecture with Neo4J</title>
-    <link href="http://agonzalezro.github.io/draw-your-architecture-with-neo4j.html" />
+    <title>Draw (and more) your architecture with Neo4J</title>
+    <link href="http://agonzalezro.github.io/draw-your-architecture-with-neo4j.html.html" />
     
     <updated>2014-08-26</updated>
     
     <summary>
-      <p>As some of you already know at work at greenmangaming.com (mainly at the
-playfire.com) project. We were planning to do some changes in our architecture
-but it&rsquo;s extremely hard to have an idea of all our services and DBs in just a
-piece of A4 paper. I was trying, trust me, but it was impossible.</p>
+      <p>As some of you already know I work at <a href="http://greenmangaming.com">Green Man
+Gaming</a> (mainly at the
+<a href="http://playfire.com">playfire</a> project). We were planning to do some changes
+in our architecture but it&rsquo;s extremely hard to have an idea of all our services
+and DBs in just a piece of A4 paper. I was trying, trust me, but it was
+impossible.</p>
 
     </summary>
     <author>
