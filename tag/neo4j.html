@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>
-How to find a flat in London with a external help | agonzalezro.github.io
+neo4j | agonzalezro.github.io
 </title>
 
     <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
@@ -48,6 +48,11 @@ How to find a flat in London with a external help | agonzalezro.github.io
             <li class="dropdown">
             <a href="#" data-toggle="dropdown">Categories <b class="caret"></b></a>
             <ul class="dropdown-menu">
+              
+              
+              <li>
+              <a href="/category/biz.html">biz <span class="badge pull-right">1</span></a>
+              </li>
               
               
               <li>
@@ -115,6 +120,11 @@ How to find a flat in London with a external help | agonzalezro.github.io
               
               <li>
               <a href="/tag/ar9285.html">ar9285 <span class="badge pull-right">1</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/tag/architecture.html">architecture <span class="badge pull-right">1</span></a>
               </li>
               
               
@@ -334,12 +344,27 @@ How to find a flat in London with a external help | agonzalezro.github.io
               
               
               <li>
+              <a href="/tag/neo4j.html">neo4j <span class="badge pull-right">1</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/tag/organization.html">organization <span class="badge pull-right">1</span></a>
+              </li>
+              
+              
+              <li>
               <a href="/tag/paylogic.html">paylogic <span class="badge pull-right">1</span></a>
               </li>
               
               
               <li>
               <a href="/tag/pelican.html">pelican <span class="badge pull-right">1</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/tag/people.html">people <span class="badge pull-right">1</span></a>
               </li>
               
               
@@ -489,96 +514,12 @@ How to find a flat in London with a external help | agonzalezro.github.io
 
     <div class="container col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
       
-<h1>How to find a flat in London with a external help</h1>
-
-<p>
-
-<span class="label label-default">by Álex</span>
-
-
-
-<span class="label label-default">2014-09-03</span>
-
-
-
-<a class="label label-success" href="/category/dev.html">dev</a>
-
-
-
-
-<a class="label label-info" href="/tag/.html"></a>
-
-<a class="label label-info" href="/tag/flats.html">flats</a>
-
-<a class="label label-info" href="/tag/london.html">london</a>
-
-<a class="label label-info" href="/tag/rent.html">rent</a>
-
-<a class="label label-info" href="/tag/cartodb.html">cartodb</a>
-
-<a class="label label-info" href="/tag/scrape.html">scrape</a>
-
-<a class="label label-info" href="/tag/.html"></a>
-
-
-</p>
-
-<p>At the end of this month I am going to move with a friend, this is going to be
-something like my 7th flat in the less than 2 years that I was living here. We
-are a little bit struggling trying to find a place so I decided that we need a
-little bit of help:</p>
-
-<p>Do you know <a href="http://gumtree.com">gumtree.com</a>? That page is amaizingly good for
-renting if you just take care of the content (aka adverts that users upload)
-but it&rsquo;s extremely bad at searching: I can not say when I would like to move to
-my new flat, seriously?!</p>
-
-<p>To fix this I made a small scraper that is going to scrape few pages of the
-search results filtered already by gumtree, check the <code>QUERY_PARAMS</code> dict:</p>
-
-<script src="https://gist.github.com/agonzalezro/440e7bf41e77c284d735.js"></script>
-
-<p>In the other hand, the location needs to be a place close to King&rsquo;s Cross and
-close to Mile End, calculate commute times from one address to another one
-doesn&rsquo;t look straightforward and easy to do, so, the best solution (in relation
-dev_time/benefit) was showing all those flats in a map, and I made it thanks to
-the help of <a href="http://cartodb.com/">CartoDB</a>. This piece of software is amazing,
-basically the process was:</p>
-
-<ol>
-<li>drag&amp;drop the CSV to your CartoDB account.</li>
-<li>click on the dropdown of the &ldquo;location&rdquo; row and then on &ldquo;Georeference&rdquo;.</li>
-<li>in the popup that will be shown to you, you must select &ldquo;&ldquo;You have one or
-more columns with the address&rdquo;, and after that you will have a georeferenced
-list of points.</li>
-</ol>
-
-<p>With that data you can create your own visualisation as I made here:</p>
-
-<iframe width='100%' height='520' frameborder='0' src='http://alex.cartodb.com/viz/7702ecd8-1a9d-11e4-9aa6-0e230854a1cb/embed_map?title=true&description=true&search=false&shareable=true&cartodb_logo=true&layer_selector=false&legends=false&scrollwheel=true&fullscreen=true&sublayer_options=1&sql=&sw_lat=51.31001339554934&sw_lon=-0.545196533203125&ne_lat=51.673406793502615&ne_lon=0.339202880859375' allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
-
-<p>If you want to say something about this post or you want to offer me a nice
-flat in London, feel free of use the comments or find me in twitter:
-<a href="http://twitter.com/agonzalezro">@agonzalezro</a></p>
-
-
-<h2>Comments</h2>
-<div id="disqus_thread"></div>
-<script type="text/javascript">
-  var disqus_shortname = 'agonzalezro';
+<h1>neo4j</h1>
+<ul>
   
+  <li><a href="/draw-your-architecture-with-neo4j.html">Draw your architecture with Neo4J</a></li>
   
-  var disqus_identifier = 'how-to-find-a-flat-in-london-with-a-external-help.html';
-
-  (function() {
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-  })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
+</ul>
 
     </div>
     
@@ -594,8 +535,8 @@ flat in London, feel free of use the comments or find me in twitter:
 
     (function() {
       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
   </script>
   

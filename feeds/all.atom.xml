@@ -3,15 +3,33 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>agonzalezro.github.io</title>
   <link href="http://agonzalezro.github.io" />
-  <updated>2014-08-04T21:21:15&#43;01:00</updated>
+  <updated>2014-08-26T23:00:07&#43;01:00</updated>
 
   
+  
+  <entry>
+    <title>Draw your architecture with Neo4J</title>
+    <link href="http://agonzalezro.github.io/draw-your-architecture-with-neo4j.html" />
+    
+    <updated>2014-08-26</updated>
+    
+    <summary>
+      <p>As some of you already know at work at greenmangaming.com (mainly at the
+playfire.com) project. We were planning to do some changes in our architecture
+but it&rsquo;s extremely hard to have an idea of all our services and DBs in just a
+piece of A4 paper. I was trying, trust me, but it was impossible.</p>
+
+    </summary>
+    <author>
+      <name>Álex</name>
+    </author>
+  </entry>
   
   <entry>
     <title>How to find a flat in London with some help</title>
     <link href="http://agonzalezro.github.io/how-to-find-a-flat-in-london-with-some-help.html" />
     
-    <updated>2014-09-03</updated>
+    <updated>2014-08-03</updated>
     
     <summary>
       <p><strong>EDIT:</strong> I&rsquo;ve added a little bit more of code to the gist to get the latitude
@@ -158,22 +176,6 @@ django 1.5.</p>
 (<a href="http://twitter.com/andrewgodwin">@andrewgodwin</a> or <a href="http://areacode.org">http://areacode.org</a>) gave
 us talk about the internal architecture that they are using at
 <a href="http://lanyrd.com">lanyrd.com</a>.</p>
-
-    </summary>
-    <author>
-      <name>Álex</name>
-    </author>
-  </entry>
-  
-  <entry>
-    <title>DJUGL: Advanced python trought Django: Metaclasses</title>
-    <link href="http://agonzalezro.github.io/djugl-advanced-python-trought-django-metaclasses.html" />
-    
-    <updated>2013-03-12 20:00</updated>
-    
-    <summary>
-      <p>This talk was made by Peter Ingles, you can check his twitter here:
-<a href="http://twitter.com/inglesp">@inglesp</a>.</p>
 
     </summary>
     <author>

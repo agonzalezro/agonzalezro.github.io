@@ -1,4 +1,4 @@
-date: 2014-09-03
+date: 2014-08-03
 tags: flats, london, rent, cartodb, scrape
 
 How to find a flat in London with some help
