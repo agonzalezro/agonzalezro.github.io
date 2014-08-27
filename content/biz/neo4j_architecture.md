@@ -1,6 +1,6 @@
 date: 2014-08-26
 tags: neo4j, architecture, people, organization
-slug: draw-your-architecture-with-neo4j.html
+slug: draw-your-architecture-with-neo4j
 
 Draw (and more) your architecture with Neo4J
 ============================================

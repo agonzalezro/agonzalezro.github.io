@@ -3,13 +3,13 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>agonzalezro.github.io</title>
   <link href="http://agonzalezro.github.io" />
-  <updated>2014-08-27T09:49:43&#43;01:00</updated>
+  <updated>2014-08-27T11:37:17&#43;01:00</updated>
 
   
   
   <entry>
     <title>Draw (and more) your architecture with Neo4J</title>
-    <link href="http://agonzalezro.github.io/draw-your-architecture-with-neo4j.html.html" />
+    <link href="http://agonzalezro.github.io/draw-your-architecture-with-neo4j.html" />
     
     <updated>2014-08-26</updated>
     

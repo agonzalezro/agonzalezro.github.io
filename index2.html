@@ -435,72 +435,72 @@ agonzalezro.github.io
               
               
               <li>
-              <a href="/tag/solr.html">solr <span class="badge pull-right">1</span></a>
+              <a href="/tag/solr.html">solr <span class="badge pull-right">0</span></a>
               </li>
               
               
               <li>
-              <a href="/tag/static.html">static <span class="badge pull-right">1</span></a>
+              <a href="/tag/static.html">static <span class="badge pull-right">0</span></a>
               </li>
               
               
               <li>
-              <a href="/tag/tail.html">tail <span class="badge pull-right">1</span></a>
+              <a href="/tag/tail.html">tail <span class="badge pull-right">0</span></a>
               </li>
               
               
               <li>
-              <a href="/tag/talk.html">talk <span class="badge pull-right">2</span></a>
+              <a href="/tag/talk.html">talk <span class="badge pull-right">0</span></a>
               </li>
               
               
               <li>
-              <a href="/tag/theme.html">theme <span class="badge pull-right">2</span></a>
+              <a href="/tag/theme.html">theme <span class="badge pull-right">0</span></a>
               </li>
               
               
               <li>
-              <a href="/tag/theming.html">theming <span class="badge pull-right">1</span></a>
+              <a href="/tag/theming.html">theming <span class="badge pull-right">0</span></a>
               </li>
               
               
               <li>
-              <a href="/tag/thrift.html">thrift <span class="badge pull-right">1</span></a>
+              <a href="/tag/thrift.html">thrift <span class="badge pull-right">0</span></a>
               </li>
               
               
               <li>
-              <a href="/tag/tmux.html">tmux <span class="badge pull-right">1</span></a>
+              <a href="/tag/tmux.html">tmux <span class="badge pull-right">0</span></a>
               </li>
               
               
               <li>
-              <a href="/tag/ubuntu.html">ubuntu <span class="badge pull-right">2</span></a>
+              <a href="/tag/ubuntu.html">ubuntu <span class="badge pull-right">0</span></a>
               </li>
               
               
               <li>
-              <a href="/tag/undercore.html">undercore <span class="badge pull-right">1</span></a>
+              <a href="/tag/undercore.html">undercore <span class="badge pull-right">0</span></a>
               </li>
               
               
               <li>
-              <a href="/tag/unity.html">unity <span class="badge pull-right">2</span></a>
+              <a href="/tag/unity.html">unity <span class="badge pull-right">0</span></a>
               </li>
               
               
               <li>
-              <a href="/tag/varnish.html">varnish <span class="badge pull-right">1</span></a>
+              <a href="/tag/varnish.html">varnish <span class="badge pull-right">0</span></a>
               </li>
               
               
               <li>
-              <a href="/tag/wifi.html">wifi <span class="badge pull-right">1</span></a>
+              <a href="/tag/wifi.html">wifi <span class="badge pull-right">0</span></a>
               </li>
               
               
               <li>
-              <a href="/tag/winsterday.html">winsterday <span class="badge pull-right">1</span></a>
+              <a href="/tag/winsterday.html">winsterday <span class="badge pull-right">0</span></a>
               </li>
               
             </ul>
@@ -516,304 +516,8 @@ agonzalezro.github.io
     <div class="container col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
       
 
-
-
-<article>
-<h1><a href="tailing-multiple-logs-with-tmux.html">Tailing multiple logs with tmux</a></h1>
-
-<p>
-
-<span class="label label-default">by Álex</span>
-
-
-
-<span class="label label-default">2014-03-15</span>
-
-
-
-<a class="label label-success" href="/category/devop.html">devop</a>
-
-
-
-
-<a class="label label-info" href="/tag/.html"></a>
-
-<a class="label label-info" href="/tag/tail.html">tail</a>
-
-<a class="label label-info" href="/tag/tmux.html">tmux</a>
-
-<a class="label label-info" href="/tag/.html"></a>
-
-
-</p>
-
-<p>I had a system that was creating a different log for each worker. Those logs
-where in the form: <code>/var/log/baselog</code>, <code>/var/log/baselog.1</code>,
-<code>/var/log/baselog.2</code> and so on. I wanted to tail them but they were being
-updated simultaneously so the output of the tail was being a mess.</p>
-
-<p>I am a <a href="http://tmux.sourceforge.net/">tmux</a> user since few months ago (if you
-aren&rsquo;t, you should!) so I&rsquo;ve decide to open all of them in different tmux
-panes. Thanks to having a pane for every log what we will achieve is the
-ability to scroll just one of them, maximize it in case that we need it, move
-to a new window, save the buffer&hellip;</p>
-
-<p>How can you achieve that? Quite simple, just download this script to some
-place:</p>
-
-<script src="https://gist.github.com/agonzalezro/9573541.js"></script>
-
-<p>Once you have saved it installed, run it with the base log file:</p>
-
-<pre><code>sh tail_several_logs.sh /var/log/baselog
-</code></pre>
-
-<p>The script have some limitations easily fixable:</p>
-
-<ul>
-<li>You should provide a fullpath.</li>
-<li>The logs should be in the form of baselog.N where N is a number.</li>
-<li>I am pretty sure that the loop can be done better.</li>
-<li>And select the layout in every iteration is not the best of the ideas, but it
-works.</li>
-</ul>
-
-<p>Feel free of do whatever you want with the script. I just hope that it&rsquo;s useful
-for somebody else.</p>
-
-<p class="text-right"><a class="btn btn-default" href="tailing-multiple-logs-with-tmux.html#disqus_thread">Leave a comment!</a></p>
-</article>
+<h1>Nothing to see here!</h1>
 <hr>
-
-<article>
-<h1><a href="hi-all-from-my-new-blog-engine.html">Hi all from my new blog engine!</a></h1>
-
-<p>
-
-<span class="label label-default">by Álex</span>
-
-
-
-<span class="label label-default">2014-02-23</span>
-
-
-
-<a class="label label-success" href="/category/go.html">go</a>
-
-
-
-
-<a class="label label-info" href="/tag/.html"></a>
-
-<a class="label label-info" href="/tag/go.html">go</a>
-
-<a class="label label-info" href="/tag/golang.html">golang</a>
-
-<a class="label label-info" href="/tag/polo.html">polo</a>
-
-<a class="label label-info" href="/tag/pelican.html">pelican</a>
-
-<a class="label label-info" href="/tag/static.html">static</a>
-
-<a class="label label-info" href="/tag/.html"></a>
-
-
-</p>
-
-<p>After a really, really long time I am finally updating my old blog. Time ago I
-tried to update it but I&rsquo;ve realised that a lot of JS of the site was
-completely broken &amp; instead spend some time fixing it I&rsquo;ve decided to start it
-from scratch with <strong>my own blog site generator written in Golang:
-<a href="http://github.com/agonzalezro/polo">Polo</a></strong>.</p>
-
-<p>I know that from a point of view of a software engineer, start something from
-scratch when you have something that was already working, perhaps is not the
-best of the ideas, but ehy! My blog, my rules :) And it&rsquo;s kinda tradition that
-<strong>I develop a blog CMS every time that I learn a new language</strong>, with the only
-difference that this time it&rsquo;s going to be an static one.</p>
-
-<h2>Past</h2>
-
-<p>Why I&rsquo;ve started my own? I was thinking a lot about this question and I only
-found 2 points:</p>
-
-<ul>
-<li>As I said, I wanted to learn some Golang development, so, I made it with Go.</li>
-<li>I think that the template inheritance in <a href="http://getpelican.com">Pelican</a> (my
-old site generator, and a really really good piece of software) were a little
-over complex for my needs.</li>
-</ul>
-
-<h2>Present</h2>
-
-<p><strong>My old blog generator was Pelican so I tried to keep Polo as much compatible
-as possible</strong> with it:</p>
-
-<ul>
-<li>the default slugs are the same that Pelican generates to avoid 404s after the
-migration.</li>
-<li>the markdown metadata is exactly the same too.</li>
-</ul>
-
-<h2>Future</h2>
-
-<p>There is few capabilities that I would like to implement ASAP:</p>
-
-<ul>
-<li>pagination.</li>
-<li>generate html indexes for the tags.</li>
-<li>a proper design that doesn&rsquo;t make it look extremely awful.</li>
-<li>add the templates as part of the binary package.</li>
-</ul>
-
-<p>The generator is in a really early state which means that it can be some
-errors. I was moving all my old posts too and I didn&rsquo;t manually try all of
-them, so, it&rsquo;s possible that the content on some of them -specially images- is
-broken too. Please, contact me if you find something.</p>
-
-<p><strong>I am open to suggestions</strong>, feel free to <a href="https://github.com/agonzalezro/polo/issues">create an
-issue</a> or take a look to the ones
-that are already open. If you prefer you can just use twitter:
-<a href="http://twitter.com/agonzalezro">@agonzalezro</a>.</p>
-
-<p class="text-right"><a class="btn btn-default" href="hi-all-from-my-new-blog-engine.html#disqus_thread">Leave a comment!</a></p>
-</article>
-<hr>
-
-<article>
-<h1><a href="python-and-scala-smoke-the-peace-pipe.html">Python and Scala smoke the peace pipe</a></h1>
-
-<p>
-
-<span class="label label-default">by Álex</span>
-
-
-
-<span class="label label-default">2013-05-13</span>
-
-
-
-<a class="label label-success" href="/category/talks.html">talks</a>
-
-
-
-
-<a class="label label-info" href="/tag/.html"></a>
-
-<a class="label label-info" href="/tag/pygrunn.html">pygrunn</a>
-
-<a class="label label-info" href="/tag/talk.html">talk</a>
-
-<a class="label label-info" href="/tag/apache.html">apache</a>
-
-<a class="label label-info" href="/tag/thrift.html">thrift</a>
-
-<a class="label label-info" href="/tag/python.html">python</a>
-
-<a class="label label-info" href="/tag/scala.html">scala</a>
-
-<a class="label label-info" href="/tag/.html"></a>
-
-
-</p>
-
-<p>This was my talk on the <a href="http://pygrunn.nl">PyGrunn</a> conference last
-Friday.</p>
-
-<p>I was explaining how can you communicate services written in different
-languages using <a href="http://thrift.apache.org/">Apache Thrift</a> for that.</p>
-
-<p>In few days the videos will be available, but TBH, I don&rsquo;t really know
-if I will publish it here. It was not the first time that I talk in
-public using English, but it will be the first time that it is
-recorded&hellip; I don&rsquo;t really know if I want to see that! :D</p>
-
-<p>I really need to improve my speed talking for the next time. I thought
-that I will not have enough time to explain all, so, my subconscious
-decided that I should be talking as a machine gun.</p>
-
-<p>Below, you will find the slides, if not, <a href="https://speakerdeck.com/agonzalezro/python-and-scala-smoke-the-peace-pipe">try this
-link</a>.</p>
-
-<script async class="speakerdeck-embed" data-id="398a32709de70130aa882eefb3b6c3d2" data-ratio="1.6" src="//speakerdeck.com/assets/embed.js"></script>
-
-<p>PS: you can find the source code of the slides here
-<a href="https://github.com/agonzalezro/slides/tree/master/thrift">[1]</a> &amp; the
-source code of the demo here
-<a href="https://github.com/agonzalezro/thriftest">[2]</a>.</p>
-
-<p>Enjoy them!</p>
-
-<p class="text-right"><a class="btn btn-default" href="python-and-scala-smoke-the-peace-pipe.html#disqus_thread">Leave a comment!</a></p>
-</article>
-<hr>
-
-<article>
-<h1><a href="here-i-go-pygrunn13.html">Here I go PyGrunn&#39;13!</a></h1>
-
-<p>
-
-<span class="label label-default">by Álex</span>
-
-
-
-<span class="label label-default">2013-04-17</span>
-
-
-
-<a class="label label-success" href="/category/talks.html">talks</a>
-
-
-
-
-<a class="label label-info" href="/tag/.html"></a>
-
-<a class="label label-info" href="/tag/pygrunn.html">pygrunn</a>
-
-<a class="label label-info" href="/tag/talk.html">talk</a>
-
-<a class="label label-info" href="/tag/friends.html">friends</a>
-
-<a class="label label-info" href="/tag/groningen.html">groningen</a>
-
-<a class="label label-info" href="/tag/my-english-is-crap.html">my-english-is-crap</a>
-
-<a class="label label-info" href="/tag/.html"></a>
-
-
-</p>
-
-<p>I am really proud of say that the next month I will be giving a talk at
-PyGrunn!</p>
-
-<p>This is a really good new for me because PyGrunn is the conference that
-my old colleagues organize since years ago. I was on it first time in
-2011 just one week after I started working at
-<a href="http://paylogic.com">Paylogic</a>. I meet a lot of interesting people
-there and I will see them again this year!</p>
-
-<p>In 2012 I repeat, but at that time I had already started to organize the
-&ldquo;Monthly PyGrunn&rdquo;s with <a href="http://twitter.com/_ivor">Ivor</a>. TBH that talks
-were quite successful, and not for the quantity of people that we get
-there, if not for the quality of them and the networking after!</p>
-
-<p>I am really happy too because going there I will be able to see a lot of
-friends that I miss! I just moved here 5 months ago but I really want to
-see them!</p>
-
-<p>Now, the less important thing: about the talk! I will be talking about
-Thrift and how can we use it to talk between different applications in
-different languages (in the examples: Python &amp; Scala). When PyGrunn
-finish I think that I will have a video where you can see the talk (or
-check my English) and I will upload the slides too!</p>
-
-<p>Thanks to <a href="http://www.pygrunn.org">PyGrunn</a> for give me this chance!</p>
-
-<p class="text-right"><a class="btn btn-default" href="here-i-go-pygrunn13.html#disqus_thread">Leave a comment!</a></p>
-</article>
-<hr>
-
-
 
 
 
