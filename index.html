@@ -57,7 +57,7 @@ agonzalezro.github.io
               
               
               <li>
-              <a href="/category/blog.html">blog <span class="badge pull-right">2</span></a>
+              <a href="/category/blog.html">blog <span class="badge pull-right">3</span></a>
               </li>
               
               
@@ -235,7 +235,7 @@ agonzalezro.github.io
               
               
               <li>
-              <a href="/tag/go.html">go <span class="badge pull-right">2</span></a>
+              <a href="/tag/go.html">go <span class="badge pull-right">3</span></a>
               </li>
               
               
@@ -370,7 +370,7 @@ agonzalezro.github.io
               
               
               <li>
-              <a href="/tag/polo.html">polo <span class="badge pull-right">2</span></a>
+              <a href="/tag/polo.html">polo <span class="badge pull-right">3</span></a>
               </li>
               
               
@@ -426,6 +426,11 @@ agonzalezro.github.io
               
               <li>
               <a href="/tag/scrape.html">scrape <span class="badge pull-right">1</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/tag/server.html">server <span class="badge pull-right">1</span></a>
               </li>
               
               
@@ -517,6 +522,69 @@ agonzalezro.github.io
       
 
 
+
+<article>
+<h1><a href="polo-has-his-own-static-server.html">polo has his own static server</a></h1>
+
+<p>
+
+<span class="label label-default">by Álex</span>
+
+
+
+<span class="label label-default">2014-08-30</span>
+
+
+
+<a class="label label-success" href="/category/blog.html">blog</a>
+
+
+
+
+<a class="label label-info" href="/tag/.html"></a>
+
+<a class="label label-info" href="/tag/polo.html">polo</a>
+
+<a class="label label-info" href="/tag/server.html">server</a>
+
+<a class="label label-info" href="/tag/go.html">go</a>
+
+<a class="label label-info" href="/tag/.html"></a>
+
+
+</p>
+
+<p>I&rsquo;ve added a small but useful functionality to the <a href="http://github.com/agonzalezro/polo">polo static site
+generator</a> that I am using here. Now, after
+you generate your content from your files, you are going to be able to run a
+small http server to see the content easily.</p>
+
+<p>This post is more to show you how to use polo and the new functionality than
+anything else.</p>
+
+<p>Let&rsquo;s imagine that you have your markdown contents on <code>~/blog</code>, if you don&rsquo;t
+have any example, you can <a href="http://github.com/agonzalezro/agonzalezro.github.io">use my blog
+markdowns</a>.</p>
+
+<p>First thing that you need to do is install polo:</p>
+
+<pre><code>$ go install github.com/agonzalezro/polo
+</code></pre>
+
+<p>Second &amp; final thing:</p>
+
+<pre><code>$ polo -daemon
+</code></pre>
+
+<p>And now, you are going to be able to see your rendered content on
+<a href="http://localhost:8080">http://localhost:8080</a>. If you want to configure the port, just use the <code>-port</code>
+flag.</p>
+
+<p>Easy peasy. So, use it!</p>
+
+<p class="text-right"><a class="btn btn-default" href="polo-has-his-own-static-server.html#disqus_thread">Leave a comment!</a></p>
+</article>
+<hr>
 
 <article>
 <h1><a href="draw-your-architecture-with-neo4j.html">Draw (and more) your architecture with Neo4J</a></h1>
@@ -854,78 +922,6 @@ If you want to take a look forget about the <code>*.html</code> changes and sear
 <code>templates/</code> changes. As you can see it is really straightforward.</p>
 
 <p class="text-right"><a class="btn btn-default" href="polo-supports-theming-now.html#disqus_thread">Leave a comment!</a></p>
-</article>
-<hr>
-
-<article>
-<h1><a href="12-go-best-practices.html">12 Go Best Practices</a></h1>
-
-<p>
-
-<span class="label label-default">by Álex</span>
-
-
-
-<span class="label label-default">2014-04-02</span>
-
-
-
-<a class="label label-success" href="/category/talks.html">talks</a>
-
-
-
-
-<a class="label label-info" href="/tag/.html"></a>
-
-<a class="label label-info" href="/tag/go.html">go</a>
-
-<a class="label label-info" href="/tag/best.html">best</a>
-
-<a class="label label-info" href="/tag/practices.html">practices</a>
-
-<a class="label label-info" href="/tag/.html"></a>
-
-
-</p>
-
-<p>Last Monday I had the chance to see <a href="https://twitter.com/francesc">@francesc</a>
-talking on the <a href="http://www.meetup.com/Go-London-User-Group">Go London User
-Group</a>. His talk was about best
-practices (and advices) when you are programming in Go.</p>
-
-<p>Summarising it a little bit, I would say that some of the cases explained there
-are things that you are going to finish doing even without knowing that you are
-doing &ldquo;best practices&rdquo;, but they are other examples that are incredible useful
-and clever &amp; I would love to assist to this conference few months ago.</p>
-
-<p>At the beginning of the slides you are going to see an step-by-step refactoring
-which could (and should) be applied to any other language out there. You will
-realise of the major improvement on the readability of that piece of code.
-Francesc said that the refactored version could possibly be a little bit
-slower, but you will have in your power a piece of maintainable code.</p>
-
-<p>If I need to choose one of the tricks showed, I would definitely go for the
-type switch on the (<a href="http://talks.golang.org/2013/bestpractices.slide#8">slide
-#8</a>). Basically, you can
-receive an interface as parameter and do a quick casting to whatever kind of
-type that you want:</p>
-
-<pre><code>....
-switch x := v.(type) {  // where v is an interface{}
-case string:
-    w.Write(int32(len(x)))
-    w.Write([]byte(x))
-...
-</code></pre>
-
-<p>I would say too that coming from a language like Python, it&rsquo;s really easy to be
-temped to overuse that functionality :) What do you think?</p>
-
-<p>Finally, <a href="http://talks.golang.org/2013/bestpractices.slide#1">here you have the
-slides</a> enjoy them as I
-did!</p>
-
-<p class="text-right"><a class="btn btn-default" href="12-go-best-practices.html#disqus_thread">Leave a comment!</a></p>
 </article>
 <hr>
 

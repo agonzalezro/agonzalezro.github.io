@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>
-clarity | agonzalezro.github.io
+polo has his own static server | agonzalezro.github.io
 </title>
 
     <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
@@ -520,12 +520,82 @@ clarity | agonzalezro.github.io
 
     <div class="container col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
       
-<h1>clarity</h1>
-<ul>
+<h1>polo has his own static server</h1>
+
+<p>
+
+<span class="label label-default">by Álex</span>
+
+
+
+<span class="label label-default">2014-08-30</span>
+
+
+
+<a class="label label-success" href="/category/blog.html">blog</a>
+
+
+
+
+<a class="label label-info" href="/tag/.html"></a>
+
+<a class="label label-info" href="/tag/polo.html">polo</a>
+
+<a class="label label-info" href="/tag/server.html">server</a>
+
+<a class="label label-info" href="/tag/go.html">go</a>
+
+<a class="label label-info" href="/tag/.html"></a>
+
+
+</p>
+
+<p>I&rsquo;ve added a small but useful functionality to the <a href="http://github.com/agonzalezro/polo">polo static site
+generator</a> that I am using here. Now, after
+you generate your content from your files, you are going to be able to run a
+small http server to see the content easily.</p>
+
+<p>This post is more to show you how to use polo and the new functionality than
+anything else.</p>
+
+<p>Let&rsquo;s imagine that you have your markdown contents on <code>~/blog</code>, if you don&rsquo;t
+have any example, you can <a href="http://github.com/agonzalezro/agonzalezro.github.io">use my blog
+markdowns</a>.</p>
+
+<p>First thing that you need to do is install polo:</p>
+
+<pre><code>$ go install github.com/agonzalezro/polo
+</code></pre>
+
+<p>Second &amp; final thing:</p>
+
+<pre><code>$ polo -daemon
+</code></pre>
+
+<p>And now, you are going to be able to see your rendered content on
+<a href="http://localhost:8080">http://localhost:8080</a>. If you want to configure the port, just use the <code>-port</code>
+flag.</p>
+
+<p>Easy peasy. So, use it!</p>
+
+
+<h2>Comments</h2>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'agonzalezro';
   
-  <li><a href="/best-vim-colors-ever.html">Best vim colors ever!</a></li>
   
-</ul>
+  var disqus_identifier = 'polo-has-his-own-static-server.html';
+
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
 
     </div>
     
