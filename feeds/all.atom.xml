@@ -3,7 +3,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>agonzalezro.github.io</title>
   <link href="http://agonzalezro.github.io" />
-  <updated>2014-08-30T16:44:04&#43;01:00</updated>
+  <updated>2014-09-15T22:47:20&#43;01:00</updated>
 
   
   
@@ -11,7 +11,7 @@
     <title>polo has his own static server</title>
     <link href="http://agonzalezro.github.io/polo-has-his-own-static-server.html" />
     
-    <updated>2014-08-30</updated>
+    <updated>2014-08-30 00:00:00 &#43;0000 UTC</updated>
     
     <summary>
       <p>I&rsquo;ve added a small but useful functionality to the <a href="http://github.com/agonzalezro/polo">polo static site
@@ -29,7 +29,7 @@ small http server to see the content easily.</p>
     <title>Draw (and more) your architecture with Neo4J</title>
     <link href="http://agonzalezro.github.io/draw-your-architecture-with-neo4j.html" />
     
-    <updated>2014-08-26</updated>
+    <updated>2014-08-26 00:00:00 &#43;0000 UTC</updated>
     
     <summary>
       <p>As some of you already know I work at <a href="http://greenmangaming.com">Green Man
@@ -49,7 +49,7 @@ impossible.</p>
     <title>How to find a flat in London with some help</title>
     <link href="http://agonzalezro.github.io/how-to-find-a-flat-in-london-with-some-help.html" />
     
-    <updated>2014-08-03</updated>
+    <updated>2014-08-03 00:00:00 &#43;0000 UTC</updated>
     
     <summary>
       <p><strong>EDIT:</strong> I&rsquo;ve added a little bit more of code to the gist to get the latitude
@@ -66,7 +66,7 @@ accurate and incredibly easy. Thanks again <a href="http://cartodb.com">CartoDB<
     <title>polo supports theming now!</title>
     <link href="http://agonzalezro.github.io/polo-supports-theming-now.html" />
     
-    <updated>2014-07-27</updated>
+    <updated>2014-07-27 00:00:00 &#43;0000 UTC</updated>
     
     <summary>
       <p>If you have seen my blog before I am pretty sure that you remember that the
@@ -85,7 +85,7 @@ showcase of the functionality I&rsquo;ve chosen the awesome
     <title>12 Go Best Practices</title>
     <link href="http://agonzalezro.github.io/12-go-best-practices.html" />
     
-    <updated>2014-04-02</updated>
+    <updated>2014-04-02 00:00:00 &#43;0000 UTC</updated>
     
     <summary>
       <p>Last Monday I had the chance to see <a href="https://twitter.com/francesc">@francesc</a>
@@ -103,7 +103,7 @@ practices (and advices) when you are programming in Go.</p>
     <title>Tailing multiple logs with tmux</title>
     <link href="http://agonzalezro.github.io/tailing-multiple-logs-with-tmux.html" />
     
-    <updated>2014-03-15</updated>
+    <updated>2014-03-15 00:00:00 &#43;0000 UTC</updated>
     
     <summary>
       <p>I had a system that was creating a different log for each worker. Those logs
@@ -121,7 +121,7 @@ updated simultaneously so the output of the tail was being a mess.</p>
     <title>Hi all from my new blog engine!</title>
     <link href="http://agonzalezro.github.io/hi-all-from-my-new-blog-engine.html" />
     
-    <updated>2014-02-23</updated>
+    <updated>2014-02-23 00:00:00 &#43;0000 UTC</updated>
     
     <summary>
       <p>After a really, really long time I am finally updating my old blog. Time ago I
@@ -140,7 +140,7 @@ from scratch with <strong>my own blog site generator written in Golang:
     <title>Python and Scala smoke the peace pipe</title>
     <link href="http://agonzalezro.github.io/python-and-scala-smoke-the-peace-pipe.html" />
     
-    <updated>2013-05-13</updated>
+    <updated>2013-05-13 00:00:00 &#43;0000 UTC</updated>
     
     <summary>
       <p>This was my talk on the <a href="http://pygrunn.nl">PyGrunn</a> conference last
@@ -156,7 +156,7 @@ Friday.</p>
     <title>Here I go PyGrunn&#39;13!</title>
     <link href="http://agonzalezro.github.io/here-i-go-pygrunn13.html" />
     
-    <updated>2013-04-17</updated>
+    <updated>2013-04-17 00:00:00 &#43;0000 UTC</updated>
     
     <summary>
       <p>I am really proud of say that the next month I will be giving a talk at
@@ -169,15 +169,16 @@ PyGrunn!</p>
   </entry>
   
   <entry>
-    <title>DJUGL: What&#39;s new on Django 1.5</title>
-    <link href="http://agonzalezro.github.io/djgul-whats-new-on-django-15.html" />
+    <title>Changes on the blog</title>
+    <link href="http://agonzalezro.github.io/changes-on-the-blog.html" />
     
-    <updated>2013-03-12 21:30</updated>
+    <updated>2013-03-20 00:48:00 &#43;0000 UTC</updated>
     
     <summary>
-      <p>In this talk Marc Tamlyn (<a href="https://twitter.com/mjtamlyn">@mjtamlyn</a>) was
-explained to us all the changes in the new &ldquo;major&rdquo; version of django,
-django 1.5.</p>
+      <p>One of the problems that I always have when I start trying to blog
+something is that I get bored very quick of writing and I focus in other
+things like CMS, CSS or this kind of things that really doesn&rsquo;t matter
+if you have good content.</p>
 
     </summary>
     <author>
