@@ -3,10 +3,13 @@ all:
 	make html
 
 clean:
-	rm -rf -- *.html pages feeds
+	rm -rf -- *.html pages feeds tag tags category
 
 html:
-	polo -input content
+	polo
+
+server:
+	polo -daemon
 
 github:
 	make all
