@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>
-backbone | agonzalezro.github.io
+How to manager multiple errors in Go | agonzalezro.github.io
 </title>
 
     <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
@@ -538,14 +538,95 @@ backbone | agonzalezro.github.io
 
     <div class="container col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
       
-<h1>backbone</h1>
-<ul>
+<h1>How to manager multiple errors in Go</h1>
+
+<p>
+
+<span class="label label-default">by Álex</span>
+
+
+
+<span class="label label-default">2014-10-17</span>
+
+
+
+<a class="label label-success" href="/category/go.html">go</a>
+
+
+
+
+<a class="label label-info" href="/tag/error.html">error</a>
+
+<a class="label label-info" href="/tag/handling.html">handling</a>
+
+<a class="label label-info" href="/tag/go.html">go</a>
+
+
+</p>
+
+<p>Let me start with a disclaimer, I don&rsquo;t really know if this is a pattern that
+must be followed or it&rsquo;s just a weird idea coming out of my head.</p>
+
+<p>The second disclaimer is that I am pretty sure that I am not the only mind that
+thought about this, but I didn&rsquo;t see it in use in any place. Why?</p>
+
+<p>Error handling in Go has his advantages and disadvantages, for me, the most
+important disadvantage is the &ldquo;weird&rdquo; way of checking the error just after the
+line that can raise it.</p>
+
+<p>I&rsquo;ve experimenting a little bit with it and I found this solution:</p>
+
+<script src="https://gist.github.com/agonzalezro/ccd3c29a24149f7787ea.js"></script>
+
+<p>Basically, with the default approach you would need 2 new lines as follows:</p>
+
+<pre><code>if err != nil {
+   ...
+}
+</code></pre>
+
+<p>I find this pattern pretty useful for things like http handlers or so.</p>
+
+<p>Also, you are able to add a <code>switch</code> at the end to check the kind of error and
+keep your code more &ldquo;organized&rdquo;.</p>
+
+<p>What do you think? Should I use it in every place I can? Do you do it in a
+better way?</p>
+
+
+
+
+<br>
+<span class='st_sharethis_large' displayText='ShareThis'></span>
+<span class='st_facebook_large' displayText='Facebook'></span>
+<span class='st_twitter_large' displayText='Tweet'></span>
+<span class='st_linkedin_large' displayText='LinkedIn'></span>
+<span class='st_googleplus_large' displayText='Google +'></span>
+<span class='st_reddit_large' displayText='Reddit'></span>
+<span class='st_email_large' displayText='Email'></span>
+
+
+
+
+
+<h2>Comments</h2>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'agonzalezro';
   
-  <li><a href="/pygrunn-winter-hackathon-2012.html">PyGrunn Winter Hackathon 2012</a></li>
   
-  <li><a href="/backbonejs-underscore-small-intro.html">backbone.js &#43; underscore: small intro</a></li>
-  
-</ul>
+  var disqus_identifier = '\/how-to-manager-multiple-errors-in-go.html';
+
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
 
     </div>
     

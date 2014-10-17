@@ -85,7 +85,7 @@ agonzalezro.github.io
               
               
               <li>
-              <a href="/category/go.html">go <span class="badge pull-right">1</span></a>
+              <a href="/category/go.html">go <span class="badge pull-right">2</span></a>
               </li>
               
               
@@ -143,7 +143,7 @@ agonzalezro.github.io
               
               
               <li>
-              <a href="/tag/go.html">go <span class="badge pull-right">3</span></a>
+              <a href="/tag/go.html">go <span class="badge pull-right">4</span></a>
               </li>
               
               
@@ -264,6 +264,16 @@ agonzalezro.github.io
               
               <li>
               <a href="/tag/hate.html">hate <span class="badge pull-right">1</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/tag/error.html">error <span class="badge pull-right">1</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/tag/handling.html">handling <span class="badge pull-right">1</span></a>
               </li>
               
               
@@ -530,6 +540,66 @@ agonzalezro.github.io
       
 
 
+
+<article>
+<h1><a href="/how-to-manager-multiple-errors-in-go.html">How to manager multiple errors in Go</a></h1>
+
+<p>
+
+<span class="label label-default">by Álex</span>
+
+
+
+<span class="label label-default">2014-10-17</span>
+
+
+
+<a class="label label-success" href="/category/go.html">go</a>
+
+
+
+
+<a class="label label-info" href="/tag/error.html">error</a>
+
+<a class="label label-info" href="/tag/handling.html">handling</a>
+
+<a class="label label-info" href="/tag/go.html">go</a>
+
+
+</p>
+
+<p>Let me start with a disclaimer, I don&rsquo;t really know if this is a pattern that
+must be followed or it&rsquo;s just a weird idea coming out of my head.</p>
+
+<p>The second disclaimer is that I am pretty sure that I am not the only mind that
+thought about this, but I didn&rsquo;t see it in use in any place. Why?</p>
+
+<p>Error handling in Go has his advantages and disadvantages, for me, the most
+important disadvantage is the &ldquo;weird&rdquo; way of checking the error just after the
+line that can raise it.</p>
+
+<p>I&rsquo;ve experimenting a little bit with it and I found this solution:</p>
+
+<script src="https://gist.github.com/agonzalezro/ccd3c29a24149f7787ea.js"></script>
+
+<p>Basically, with the default approach you would need 2 new lines as follows:</p>
+
+<pre><code>if err != nil {
+   ...
+}
+</code></pre>
+
+<p>I find this pattern pretty useful for things like http handlers or so.</p>
+
+<p>Also, you are able to add a <code>switch</code> at the end to check the kind of error and
+keep your code more &ldquo;organized&rdquo;.</p>
+
+<p>What do you think? Should I use it in every place I can? Do you do it in a
+better way?</p>
+
+<p class="text-right"><a class="btn btn-default" href="/how-to-manager-multiple-errors-in-go.html#disqus_thread">Leave a comment!</a></p>
+</article>
+<hr>
 
 <article>
 <h1><a href="/polo-has-his-own-static-server.html">polo has his own static server</a></h1>
@@ -844,76 +914,6 @@ flat in London, feel free of use the comments or find me in twitter:
 <a href="http://twitter.com/agonzalezro">@agonzalezro</a></p>
 
 <p class="text-right"><a class="btn btn-default" href="/how-to-find-a-flat-in-london-with-some-help.html#disqus_thread">Leave a comment!</a></p>
-</article>
-<hr>
-
-<article>
-<h1><a href="/polo-supports-theming-now.html">polo supports theming now!</a></h1>
-
-<p>
-
-<span class="label label-default">by Álex</span>
-
-
-
-<span class="label label-default">2014-07-27</span>
-
-
-
-<a class="label label-success" href="/category/blog.html">blog</a>
-
-
-
-
-<a class="label label-info" href="/tag/theme.html">theme</a>
-
-<a class="label label-info" href="/tag/theming.html">theming</a>
-
-<a class="label label-info" href="/tag/polo.html">polo</a>
-
-<a class="label label-info" href="/tag/BOOTSTRA.386.html">BOOTSTRA.386</a>
-
-
-</p>
-
-<p>If you have seen my blog before I am pretty sure that you remember that the
-current theme is not the one that it used to be. I&rsquo;ve created a theming
-&ldquo;engine&rdquo; for <a href="https://github.com/agonzalezro/polo">polo</a> and for doing the
-showcase of the functionality I&rsquo;ve chosen the awesome
-<a href="https://github.com/kristopolous/BOOTSTRA.386">BOOTSTRAP/386</a> theme.</p>
-
-<p>In this post I am going to try to explain how the theming works. First of all I
-wanted a really easy way of implementing/overriding/composite themes so I
-decided for the following:</p>
-
-<ol>
-<li>Using <a href="https://github.com/jteeuwen/go-bindata">go-bindata</a> (thanks again to
-<a href="https://twitter.com/francesc">@francesc</a> for the recommendation) I include all
-the default templates (with a basic bootstrap theme) in the polo binary.</li>
-<li>If the place where you have your content override some of the <a href="https://github.com/agonzalezro/polo/tree/master/templates">default
-templates</a> as for
-example <a href="https://github.com/agonzalezro/agonzalezro.github.io/tree/master/templates">I am doing
-here</a>
-it will used those.</li>
-<li>If you don&rsquo;t have a local template, polo will use the ones included in the
-binary.</li>
-<li>Profit!</li>
-</ol>
-
-<p>As you can see is really straightforward to create your own theme for polo now.
-As I said before I wanted to showcase the theming &ldquo;engine&rdquo; with something that
-you are going to remember as it can be the <code>BOOTSTRA.386</code> theme, but I suspect
-that in few days I am going to change it back to something more standard.</p>
-
-<p>PS: I was really missing this blue/grey DOS design: <code>EDIT</code>, <code>QBASIC</code>,
-<code>DBASE</code>&hellip; so much fun!</p>
-
-<p>PS2: this is the commit where I&rsquo;ve changed the blog theme:
-<a href="https://github.com/agonzalezro/agonzalezro.github.io/commit/12d73af4a6b68182dd4fd67db03df4da5c8aea2f">12d73af</a>.
-If you want to take a look forget about the <code>*.html</code> changes and search for the
-<code>templates/</code> changes. As you can see it is really straightforward.</p>
-
-<p class="text-right"><a class="btn btn-default" href="/polo-supports-theming-now.html#disqus_thread">Leave a comment!</a></p>
 </article>
 <hr>
 

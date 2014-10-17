@@ -3,9 +3,25 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>agonzalezro.github.io</title>
   <link href="http://agonzalezro.github.io" />
-  <updated>2014-09-28T01:25:29&#43;01:00</updated>
+  <updated>2014-10-17T17:55:52&#43;01:00</updated>
 
   
+  
+  <entry>
+    <title>How to manager multiple errors in Go</title>
+    <link href="http://agonzalezro.github.io/how-to-manager-multiple-errors-in-go.html" />
+    
+    <updated>2014-10-17 00:00:00 &#43;0000 UTC</updated>
+    
+    <summary>
+      <p>Let me start with a disclaimer, I don&rsquo;t really know if this is a pattern that
+must be followed or it&rsquo;s just a weird idea coming out of my head.</p>
+
+    </summary>
+    <author>
+      <name>Álex</name>
+    </author>
+  </entry>
   
   <entry>
     <title>polo has his own static server</title>
@@ -161,24 +177,6 @@ Friday.</p>
     <summary>
       <p>I am really proud of say that the next month I will be giving a talk at
 PyGrunn!</p>
-
-    </summary>
-    <author>
-      <name>Álex</name>
-    </author>
-  </entry>
-  
-  <entry>
-    <title>Changes on the blog</title>
-    <link href="http://agonzalezro.github.io/changes-on-the-blog.html" />
-    
-    <updated>2013-03-20 00:48:00 &#43;0000 UTC</updated>
-    
-    <summary>
-      <p>One of the problems that I always have when I start trying to blog
-something is that I get bored very quick of writing and I focus in other
-things like CMS, CSS or this kind of things that really doesn&rsquo;t matter
-if you have good content.</p>
 
     </summary>
     <author>
