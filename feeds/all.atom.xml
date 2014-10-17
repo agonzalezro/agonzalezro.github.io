@@ -3,13 +3,13 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>agonzalezro.github.io</title>
   <link href="http://agonzalezro.github.io" />
-  <updated>2014-10-17T17:55:52&#43;01:00</updated>
+  <updated>2014-10-17T18:07:54&#43;01:00</updated>
 
   
   
   <entry>
-    <title>How to manager multiple errors in Go</title>
-    <link href="http://agonzalezro.github.io/how-to-manager-multiple-errors-in-go.html" />
+    <title>How to manage multiple errors in Go</title>
+    <link href="http://agonzalezro.github.io/how-to-manage-multiple-errors-in-go.html" />
     
     <updated>2014-10-17 00:00:00 &#43;0000 UTC</updated>
     

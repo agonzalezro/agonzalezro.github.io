@@ -3,8 +3,8 @@ date: 2014-10-17
 tags: error, handling, go
 ---
 
-How to manager multiple errors in Go
-====================================
+How to manage multiple errors in Go
+===================================
 
 Let me start with a disclaimer, I don't really know if this is a pattern that
 must be followed or it's just a weird idea coming out of my head.
