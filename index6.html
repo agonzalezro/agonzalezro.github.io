@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>
-DJUGL: What&#39;s new on Django 1.5 | agonzalezro.github.io
+agonzalezro.github.io
 </title>
 
     <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
@@ -553,7 +553,11 @@ DJUGL: What&#39;s new on Django 1.5 | agonzalezro.github.io
 
     <div class="container col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
       
-<h1>DJUGL: What&#39;s new on Django 1.5</h1>
+
+
+
+<article>
+<h1><a href="/backbonejs-underscore-small-intro.html">backbone.js &#43; underscore: small intro</a></h1>
 
 <p>
 
@@ -561,191 +565,477 @@ DJUGL: What&#39;s new on Django 1.5 | agonzalezro.github.io
 
 
 
-<span class="label label-default">2013-03-12 21:30</span>
+<span class="label label-default">2012-11-01 00:30</span>
 
 
 
-<a class="label label-success" href="/category/talks.html">talks</a>
+<a class="label label-success" href="/category/dev.html">dev</a>
 
 
 
 
-<a class="label label-info" href="/tag/djugl.html">djugl</a>
+<a class="label label-info" href="/tag/backbone.html">backbone</a>
 
-<a class="label label-info" href="/tag/march.html">march</a>
+<a class="label label-info" href="/tag/undercore.html">undercore</a>
 
-<a class="label label-info" href="/tag/django.html">django</a>
+<a class="label label-info" href="/tag/javascript.html">javascript</a>
 
-<a class="label label-info" href="/tag/1.5.html">1.5</a>
+<a class="label label-info" href="/tag/gui.html">gui</a>
 
 
 </p>
 
-<p>In this talk Marc Tamlyn (<a href="https://twitter.com/mjtamlyn">@mjtamlyn</a>) was
-explained to us all the changes in the new &ldquo;major&rdquo; version of django,
-django 1.5.</p>
+<p>Today, <a href="http://twitter.com/olegpidsadnyi/">Oleg</a> gave a talk about
+backbone at <a href="http://paylogic.nl/">Paylogic</a>. We were using it for a
+really fancy application inside our backoffice, it was quite funny write
+it and Oleg decided to share the knowledge.</p>
 
-<p>As always you can find the original talks in Internet:
-<a href="https://speakerdeck.com/mjtamlyn/whats-new-in-django-1-dot-5">https://speakerdeck.com/mjtamlyn/whats-new-in-django-1-dot-5</a></p>
+<p>I used the techtalk to take some notes and, since this piece of code
+will have no sense out of our backoffice, I&rsquo;ve written a small example
+that you can find as a <a href="https://gist.github.com/3982819">gist</a> on my
+github. I will use it to explain to you some of the useful things that
+you can do with backbone and underscore. Feel free to improve it.</p>
 
-<h2>Major changes</h2>
+<p>This is only a introductory post, if you want advance stuff you should
+go to the <a href="http://backbonejs.org/">backbone official documentation</a> &amp;
+<a href="http://underscorejs.org/">underscore docs</a>.</p>
 
-<ul>
-<li>Pluggable user models. Which means that you will need some proxy
-classes magic or similar to extend your users.</li>
-<li>Python 3 support.</li>
-<li>Security improvements.</li>
-<li><code>StreamingHTTPResponse</code>.</li>
-<li>The {% url %} tag change his behaviour. It seems that using <code>future</code>
-you can had this behaviour before (1.3?) but&hellip; who use <code>future</code>? :)</li>
-</ul>
+<h2>Why?</h2>
 
-<p>You can see a better explanation of this points here:</p>
+<p>Backbone is really useful when you make complex GUIs on client side. You
+can make your code like in a desktop app using events to handle the
+actions. It&rsquo;s not needed to pass around instances of parents views,
+let&rsquo;s use only the events for that purpose, and let the child decide.</p>
 
-<h3>Pluggable user models</h3>
+<p>You have models too, that you can sync (or not) with the server.</p>
 
-<ul>
-<li>Solution to schema chnages on the default user model.</li>
-<li><code>AUTH_PROFILE_MODEL</code> becomes <code>AUTH_USER_MODEL</code>.</li>
-</ul>
+<h2>Models</h2>
 
-<p>This was a problem since 2014 when Django was created.</p>
+<p>In backbone you can have local model and sync them with the server or
+with local storage (not explained in this intro). In our example we
+will:</p>
 
-<p>If you want to change something this is your first start point:
-<code>auth.models.AbstractUser</code>. If you want to go one step forward:
-<code>auth.models.PermissionMixin</code> &amp; <code>auth.models.AbstractBaseUse</code>.</p>
+<ol>
+<li>Create a collection to save our objects (type Item) in.</li>
+<li>Create the model Item.</li>
+<li>Create 2 object type Item inside this collection.</li>
+<li>Render them.</li>
+</ol>
 
-<p>You can override <code>USERNAME_FIELD</code> too, to override the standard username
-field of the model.</p>
+<p>The 3 points can be made only with these lines of code. It&rsquo;s really
+simple! (after know how to do it :p):</p>
 
-<p><code>contrib.admin</code> integration. Which I didn&rsquo;t try yet (Álex) but if it
-works as they said, it should be just amazing!</p>
+<pre><code class="language-javascript">var Item = Backbone.Model.extend();
 
-<h3>Python 3</h3>
+var Items = Backbone.Collection.extend({
+  model: Item
+});
 
-<ul>
-<li>3.2 and 3.3 supported, but python 2.5 was gone.</li>
-<li>Not yet &ldquo;production ready&rdquo;. You will probably be ok, but it&rsquo;s up to
-you to give it a chance.</li>
-<li>Upgrade your third party apps! You will be able to import
-compatibility apps from django that will help you using this apps.</li>
-</ul>
+var items = new Items();
+items.add([{name: &quot;foo&quot;}, {name: &quot;bar&quot;}]);
+</code></pre>
 
-<p><strong>Caveats</strong>: MySQL, PIL, Selenium&hellip; this all need to be migrated also
-:(</p>
+<p><strong>Note</strong>: Setting values in the objects With .set will trigger the event
+    change. You can silent it in case that needed, but it&rsquo;s really
+    useful, for example, to save it.</p>
 
-<p>Armin (<a href="https://twitter.com/mitsuhiko">@mitsuhiko</a>) said that PIL is
-already supported o/</p>
+<p><strong>Second note</strong>: backbone is f***ing clever! Imagine, you are changing a
+    name, if the name has changed on the collection, the event will be raised,
+    if not, it will not. This means that if you are editing, but finally
+    you change your mind and you didn&rsquo;t made any change, the event will
+    not be raised.</p>
 
-<h3>Security</h3>
+<h2>Events</h2>
 
-<p><code>ALLOWED_HOSTS</code> is a whitelist backported to django 1.3.x and 1.4.x but
-required in 1.5.</p>
+<p>They are really useful to remove dependencies between elements. For
+example, with jQuery if you change a element from another, the first one
+needs to know about the second. With backbone you can catch the event
+with the child element and do whatever you want with it.</p>
 
-<p>You can read the django documentation about this here:
-<a href="https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts">https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts</a></p>
+<p>On the example of my <a href="https://gist.github.com/3982819">gist</a> I show an
+alert box with the name of the element. But you could, for example,
+change it to an editable input.</p>
 
-<h3>StreamingHTTPResponse</h3>
+<p>This is the code of the example:</p>
 
-<p>Fixes the handling of streaming http responses. Instead use the normal
-<code>.content</code> you need to use <code>streamed_content</code> if you want to access to
-the content.</p>
+<pre><code class="language-javascript">var ItemView = Backbone.View.extend({
+  ...
+  events: {
+    &quot;dblclick&quot;: &quot;onDoubleClick&quot;
+  },
+  ...
+  onDoubleClick: function(ev) {
+    var text = $.trim($(ev.target).text());
+    alert(&quot;Hey! Why do you click on &quot; + text + &quot;?&quot;);
+    console.log(ev); //Play with this :)
+  }
+});
+</code></pre>
 
-<h3>{% url %}</h3>
+<p>We are binding the <code>dblclick</code> event to the function <code>onDoubleClick</code>.
+This function will receive the event, and the event will have the target
+(in this case the <code>&lt;li/&gt;</code> that we are clicking.</p>
 
-<ul>
-<li>The API was wrong, it was fixed in 1.3 loading from future&hellip; but
-hey, who made that? :)</li>
-<li>Old style is actually gone now.</li>
-</ul>
+<h2>Underscore</h2>
 
-<h2>More new things</h2>
+<p>It&rsquo;s really useful to Work with collections. In out example we are using
+it to iterate over the items:</p>
 
-<ul>
-<li>Caching of related model instances&hellip; this will transparently
-improve the performance of your site a lot. It was one of the
-biggest causes of delay on this new django version.</li>
-<li><code>update_fields</code> is a new variable received on the save method that
-allows you to know what are the fileds that has changed.</li>
-<li>PostGIS 2.0 is supported now.</li>
-<li><code>{% verbatim %}</code> that allows a little bit more easy javascript (for
-example) development in django templates.</li>
-</ul>
+<pre><code class="language-javascript">render: function() {
+  _.each(this.items.models, function(item) {
+    var itemview = new ItemView(item);
+    $(this.el).append(itemview.render().el);
+  }, this);
+}
+</code></pre>
 
-<h2>Backwards incompatibilities (perhaps)</h2>
+<p>If you read carefully this piece of code you will realize that we are
+instantiating a new ItemView for each particular item, so it has its own
+container element created on the fly, re-renderable each time when data
+is updated and all events are delegated to this element.</p>
 
-<ul>
-<li>Context in various class views can break.</li>
-<li>Simplejson could cause incompatibilities since python 2.5 was
-removed from django compatibility.</li>
-<li>Session not saved on 500 errors.</li>
-</ul>
+<p>The amazing thing that you can do with underscore is use templates (yes,
+like jinja or django-templates, but in JS)! And we are doing it:</p>
 
-<h3>Testing</h3>
+<pre><code class="language-html">&lt;script&gt;
+  var ItemView = Backbone.View.extend({
+  ...
+  template: _.template($(&quot;#item-template&quot;).html()),
+  ...
+  render: function() {
+     $(this.el).html(this.template(this.item.toJSON()));
+     return this;
+  },
+  ...
+&lt;/script&gt;
+&lt;script type=&quot;text/template&quot; id=&quot;item-template&quot;&gt;
+  &lt;%= name %&gt;
+&lt;/script&gt;
+</code></pre>
 
-<ul>
-<li><code>OPTIONS</code>, <code>PUT</code> and <code>DELETE</code>.</li>
-<li>DB flushing, it was move from the end of the test to the beginning
-of the test.</li>
-<li>Ordering of test executing changes, this shouldn&rsquo;t matter because
-your test will be always non dependant, right?</li>
-<li>contrib.localflavor has some changes too.</li>
-<li>contrib.markup usually marked all at safe and hope for the best, now
-it&rsquo;s not doing it.</li>
-<li><code>django-admin.py cleanup</code> clear up the sessions, actually, now it&rsquo;s
-called <code>django-admin.py clearsessions</code>.</li>
-<li>depth argument to select related, to don&rsquo;t follow all the possible
-joins.</li>
-</ul>
+<h2>Extra ball</h2>
 
-<h2>Nice things you may have missed</h2>
+<p>Use <code>_.debounce</code> to don&rsquo;t call the functions thousands of times, example
+drag&amp;dropping an element it will be useful.</p>
 
-<ul>
-<li><code>LOGIN_URL</code> can be an url name now, and django will make the
-<code>reverse()</code> for you.</li>
-<li>True, False and None in templates.</li>
-<li><code>user_login_failed</code> signal.</li>
-<li><code>assertXMLEqual()</code>.</li>
-<li><code>index_together</code>, create a indexes with several fields.</li>
-<li>admin lists customisable by request.</li>
-<li><code>django.utils.text.slugify</code> get an string in and returns an slug for
-you.</li>
-</ul>
+<p>For example in our project we had to sort with drag and drop some
+elements of a list, instead send this event in each drag movement, we
+made it after 200s being quiet with:</p>
 
+<pre><code class="language-javascript">onChange: _.debounce(function(ev) {
+    this.pools.save();
+}, 200),
+</code></pre>
 
+<p>Please comment your thoughts about the post. We are all here to learn,
+and it&rsquo;s really easy that I made some mistake explaining this.
+Furhtermore, I know that my English is not really good, so, I will
+apreciate constructive comments about it too :)</p>
 
+<p>Enjoy it!</p>
 
-<br>
-<span class='st_sharethis_large' displayText='ShareThis'></span>
-<span class='st_facebook_large' displayText='Facebook'></span>
-<span class='st_twitter_large' displayText='Tweet'></span>
-<span class='st_linkedin_large' displayText='LinkedIn'></span>
-<span class='st_googleplus_large' displayText='Google +'></span>
-<span class='st_reddit_large' displayText='Reddit'></span>
-<span class='st_email_large' displayText='Email'></span>
+<p class="text-right"><a class="btn btn-default" href="/backbonejs-underscore-small-intro.html#disqus_thread">Leave a comment!</a></p>
+</article>
+<hr>
 
+<article>
+<h1><a href="/fix-low-wifi-speed-on-linux-ubuntu-with-chip-atheros-ar9285.html">Fix low wifi speed on Linux (Ubuntu) with chip Atheros AR9285</a></h1>
 
+<p>
 
-
-
-<h2>Comments</h2>
-<div id="disqus_thread"></div>
-<script type="text/javascript">
-  var disqus_shortname = 'agonzalezro';
-  
-  
-  var disqus_identifier = '\/djgul-whats-new-on-django-15.html';
-
-  (function() {
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-  })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+<span class="label label-default">by Álex</span>
 
 
+
+<span class="label label-default">2011-07-03 13:07</span>
+
+
+
+<a class="label label-success" href="/category/linux.html">linux</a>
+
+
+
+
+<a class="label label-info" href="/tag/lowspeed.html">lowspeed</a>
+
+<a class="label label-info" href="/tag/linux.html">linux</a>
+
+<a class="label label-info" href="/tag/atheros.html">atheros</a>
+
+<a class="label label-info" href="/tag/wifi.html">wifi</a>
+
+<a class="label label-info" href="/tag/ath9k.html">ath9k</a>
+
+<a class="label label-info" href="/tag/ubuntu.html">ubuntu</a>
+
+<a class="label label-info" href="/tag/ar9285.html">ar9285</a>
+
+
+</p>
+
+<p>I was very happer after buy my new computer Dell Vostro v130, but after
+install Linux on it I&rsquo;ve realized that the download speed via WiFi was
+very slow! To solve this I found two &ldquo;solutions&rdquo;, one of them works, but
+the other not (for me).</p>
+
+<p>The solutions that didn&rsquo;t work is more easy, so I will start with it,
+you must install <code>linux-backports-modules-net-natty-generic</code>, you can do
+it via synaptic, ubuntu software center, aptitude, apt&hellip; I show you a
+screenshot doing it with ubuntu software center:</p>
+
+<p><img src="static/software_center.png" alt="image">
+</p>
+
+<p>The second &ldquo;solution&rdquo; is deactivate the hardware cryptography of the
+module, I don&rsquo;t know if this could cause security problems or instead
+use hardware it will use software crypt, anyway, it is the best
+solutions that I find until the moment.</p>
+
+<p>To do that, you must create the file <code>/etc/modprobe.d/ath9k.conf</code> with
+the content: <code>options ath9k nohwcrypt=1</code>, you can do it easily with:</p>
+
+<pre><code>echo &quot;options ath9k nohwcrypt=1&quot; &gt; /etc/modprobe.d/ath9k.conf
+</code></pre>
+
+<p>If you have any questions, or you find a better solution, please, let me
+know.</p>
+
+<p class="text-right"><a class="btn btn-default" href="/fix-low-wifi-speed-on-linux-ubuntu-with-chip-atheros-ar9285.html#disqus_thread">Leave a comment!</a></p>
+</article>
+<hr>
+
+<article>
+<h1><a href="/im-starting-to-hate-gnome-3.html">I&#39;m starting to hate GNOME 3</a></h1>
+
+<p>
+
+<span class="label label-default">by Álex</span>
+
+
+
+<span class="label label-default">2011-06-08 19:02</span>
+
+
+
+<a class="label label-success" href="/category/gnome.html">gnome</a>
+
+
+
+
+<a class="label label-info" href="/tag/unity.html">unity</a>
+
+<a class="label label-info" href="/tag/gnome3.html">gnome3</a>
+
+<a class="label label-info" href="/tag/hate.html">hate</a>
+
+
+</p>
+
+<p>First of all, I&rsquo;m GNOME user as main desktop on Linux since the version
+1.x (about 10 years ago). I&rsquo;ve played with another desktops but GNOME
+was always in my heart. But now, with the arrival of GNOME 3 and after
+two weeks using it I can say that I&rsquo;m starting to hate it. In this new
+version it has a lot of functions that I don&rsquo;t like and doesn&rsquo;t have a
+lot of functions that I like :)</p>
+
+<p>After see my arguments, perhaps you can help me to change my opinion but
+possibily my next post will treat about how erase GNOME 3 and go back to
+Unity. Go to see them:</p>
+
+<p><img src="static/fuuuu.jpg" alt="image">
+</p>
+
+<h2>Dynamic virtual desktops</h2>
+
+<p>I&rsquo;ve always used virtual desktops. One for terminals, antoher for
+explorers, another for music and a extra one for all other stuff. When I
+want to go to my explorer I push Alt+2 and change my virtual desktop to
+2. But now, I can&rsquo;t do it, because if I want to open the explorers in
+the desktop 2 I must open something in the desktop one, but I don&rsquo;t like
+it!</p>
+
+<p>This is a very big problem for me because I&rsquo;m not accustomed to use
+Alt-Tab to change the windows.</p>
+
+<h2>When you close the las window in a desktop&hellip;</h2>
+
+<p>the gnome-shell will be open! I don&rsquo;t like it! Perhpas I&rsquo;ve closed this
+window to go to my home folder, let me do that!</p>
+
+<h2>Alt+F2 doesn&rsquo;t autocomplete</h2>
+
+<p>GNOME always had this option instead KDE that didn&rsquo;t have it, and now,
+they erase it? I can&rsquo;t understand why! I know that you can use the Super
+key (the fuc***g windows key presented on all keyboards), but use the
+gnome-shell to open a program isn&rsquo;t so quickly as open it with alt-f2.</p>
+
+<h2>Autologin on GDM</h2>
+
+<p>I like to suppose that this bug is only on my pc, because I&rsquo;ve tried to
+configure my autologin user and never ever is autologued. Perhaps I
+should submit a bug for this case.</p>
+
+<h2>Difficulty to install extensions</h2>
+
+<p>I will not say anything more about this.</p>
+
+<h2>No autohide bar, and no more bars?</h2>
+
+<p>I know that gnome-shell isn&rsquo;t thinked to do that, but perhaps they must
+give a chance to do that to the users that like it.</p>
+
+<p>And finally, one thing that happens with gnome-shell, gnome-do, meego
+desktop&hellip; Why if you have hide files they appear on recent documents or
+in the shell when you start to type? Of course&hellip; this hide files isn&rsquo;t
+for p0rn, they are my personal documents only.</p>
+
+<p class="text-right"><a class="btn btn-default" href="/im-starting-to-hate-gnome-3.html#disqus_thread">Leave a comment!</a></p>
+</article>
+<hr>
+
+<article>
+<h1><a href="/how-to-install-gnome-3-instead-of-unity-on-ubuntu-1104.html">How-to install GNOME 3 instead of Unity on Ubuntu 11.04</a></h1>
+
+<p>
+
+<span class="label label-default">by Álex</span>
+
+
+
+<span class="label label-default">2011-06-08 18:28</span>
+
+
+
+<a class="label label-success" href="/category/gnome.html">gnome</a>
+
+
+
+
+<a class="label label-info" href="/tag/unity.html">unity</a>
+
+<a class="label label-info" href="/tag/gnome3.html">gnome3</a>
+
+<a class="label label-info" href="/tag/desktop.html">desktop</a>
+
+<a class="label label-info" href="/tag/ubuntu.html">ubuntu</a>
+
+<a class="label label-info" href="/tag/gnome.html">gnome</a>
+
+
+</p>
+
+<p>I don&rsquo;t have anything against Unity, but sometimes I want to test, and
+this is one of this times.</p>
+
+<p>I don&rsquo;t know the reason (or perhaps I do), but install GNOME 3 on a
+ubuntu system isn&rsquo;t as easy as it must be.</p>
+
+<p>First of all we need to add the GNOME 3 repos, so, in a console (Alt+F2
+and then write gnome-terminal) you must write:</p>
+
+<pre><code>sudo add-apt-repository ppa:gnome3-team/gnome3
+</code></pre>
+
+<p>Then, we must update our system and install the gnome shell:</p>
+
+<pre><code>sudo apt-get updatesudo apt-get dist-upgradesudo apt-get install gnome-shell
+</code></pre>
+
+<p>After that, sometimes we have problems with the themes (you can reboot
+to test it, but I recommend you to follow this steps), so, we must
+remove the accesibility themes and install the new ones (and another
+program that we will need after that):</p>
+
+<pre><code>sudo apt-get remove gnome-accessibility-themessudo apt-get install gnome-themes-standard gnome-tweak-tool
+</code></pre>
+
+<p>Well&hellip; now, you can reboot your system and login with GNOME selected as
+session. You will see your new GNOME 3, but, we must tweak it, for this,
+you can push Alt+F2 and write:</p>
+
+<pre><code>gnome-tweak-tool
+</code></pre>
+
+<p>I recommend you to have this themes configuration (you can change the
+icons if you like) and activate the option on the first tab called &ldquo;Have
+file manager handle the desktop&rdquo;:</p>
+
+<p><img src="static/tweak_tool.png" alt="image">
+</p>
+
+<p>Good luck! And if you have any trouble, please, feel free to ask me in
+the comments!</p>
+
+<p>PS: <a href="http://twitter.com/marioquartz">@marioquartz</a> wants to see the
+result, so here it is (click to enlarge)!</p>
+
+<p><img src="static/gnome3_desktop.png" alt="image">
+</p>
+
+<p class="text-right"><a class="btn btn-default" href="/how-to-install-gnome-3-instead-of-unity-on-ubuntu-1104.html#disqus_thread">Leave a comment!</a></p>
+</article>
+<hr>
+
+
+
+
+
+<div class="text-center"><ul class="pagination">
+
+    <li class="
+    
+    ">
+    <a href="/index5.html">&laquo;</a>
+    </li>
+
+    
+    <li >
+    <a href="/index.html">
+      1
+    </a>
+    </li>
+    
+    <li >
+    <a href="/index2.html">
+      2
+    </a>
+    </li>
+    
+    <li >
+    <a href="/index3.html">
+      3
+    </a>
+    </li>
+    
+    <li >
+    <a href="/index4.html">
+      4
+    </a>
+    </li>
+    
+    <li >
+    <a href="/index5.html">
+      5
+    </a>
+    </li>
+    
+    <li class="active">
+    <a href="/index6.html">
+      6
+    </a>
+    </li>
+     
+
+    <li class="
+    
+    disabled
+    
+    ">
+    <a href="#">&raquo;</a>
+    </li>
+
+</ul></div>
+ 
 
     </div>
     

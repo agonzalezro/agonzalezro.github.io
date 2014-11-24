@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>
-DJUGL: What&#39;s new on Django 1.5 | agonzalezro.github.io
+Dockerizing Pligg with Fig | agonzalezro.github.io
 </title>
 
     <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
@@ -553,7 +553,7 @@ DJUGL: What&#39;s new on Django 1.5 | agonzalezro.github.io
 
     <div class="container col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
       
-<h1>DJUGL: What&#39;s new on Django 1.5</h1>
+<h1>Dockerizing Pligg with Fig</h1>
 
 <p>
 
@@ -561,156 +561,137 @@ DJUGL: What&#39;s new on Django 1.5 | agonzalezro.github.io
 
 
 
-<span class="label label-default">2013-03-12 21:30</span>
+<span class="label label-default">2014-11-24</span>
 
 
 
-<a class="label label-success" href="/category/talks.html">talks</a>
+<a class="label label-success" href="/category/devop.html">devop</a>
 
 
 
 
-<a class="label label-info" href="/tag/djugl.html">djugl</a>
+<a class="label label-info" href="/tag/docker.html">docker</a>
 
-<a class="label label-info" href="/tag/march.html">march</a>
+<a class="label label-info" href="/tag/pligg.html">pligg</a>
 
-<a class="label label-info" href="/tag/django.html">django</a>
-
-<a class="label label-info" href="/tag/1.5.html">1.5</a>
+<a class="label label-info" href="/tag/fig.html">fig</a>
 
 
 </p>
 
-<p>In this talk Marc Tamlyn (<a href="https://twitter.com/mjtamlyn">@mjtamlyn</a>) was
-explained to us all the changes in the new &ldquo;major&rdquo; version of django,
-django 1.5.</p>
+<p>For a pet project I needed <a href="http://pligg.com/">Pligg</a> which is kinda a social
+network site in the style of the old-digg (with karma and this kind of things).</p>
 
-<p>As always you can find the original talks in Internet:
-<a href="https://speakerdeck.com/mjtamlyn/whats-new-in-django-1-dot-5">https://speakerdeck.com/mjtamlyn/whats-new-in-django-1-dot-5</a></p>
+<p>Installing a LAMP system is kinda boring stuff, so, for that and for the sake
+of learning I decided to go with <a href="https://www.docker.com/">Docker</a> &amp;
+<a href="http://www.fig.sh/">Fig</a>. Sadly or luckily, every time that I dockerize
+something I find a lot of unexpected problems that slow me down, but&hellip; you
+always learn something!</p>
 
-<h2>Major changes</h2>
+<p>This post is to explain a little bit the process and the problems that I found
+and how I solved them. It&rsquo;s not a how to, it&rsquo;s more a explanation of what I did
+and perhaps you can provide a better solution on the comments.</p>
 
-<ul>
-<li>Pluggable user models. Which means that you will need some proxy
-classes magic or similar to extend your users.</li>
-<li>Python 3 support.</li>
-<li>Security improvements.</li>
-<li><code>StreamingHTTPResponse</code>.</li>
-<li>The {% url %} tag change his behaviour. It seems that using <code>future</code>
-you can had this behaviour before (1.3?) but&hellip; who use <code>future</code>? :)</li>
-</ul>
+<h2>What do I need?</h2>
 
-<p>You can see a better explanation of this points here:</p>
+<p>The site is &ldquo;simple&rdquo; so the only required stuff will be a MySQL server and an
+Apache2 server. You could run 2 Docker instances manually, or&hellip; use the magic
+provided by Fig. This is the <code>fig.yml</code> file that explains my service:</p>
 
-<h3>Pluggable user models</h3>
+<pre><code>web:
+  build: .
+  links:
+   - db
+  volumes:
+   - /var/log:/var/www/logs
+  ports:
+   - &quot;80:80&quot;
+  environment:
+   - MYSQL_PASSWORD
+   - MY_BASE_URL
+db:
+  image: mysql
+  volumes:
+   - /var/lib/mysql:/var/lib/mysql
+  environment:
+   - MYSQL_DATABASE=dbpligg
+   - MYSQL_USER=pligguser
+   - MYSQL_ROOT_PASSWORD
+   - MYSQL_PASSWORD
+  ports:
+   - &quot;3306:3306&quot;
+</code></pre>
 
-<ul>
-<li>Solution to schema chnages on the default user model.</li>
-<li><code>AUTH_PROFILE_MODEL</code> becomes <code>AUTH_USER_MODEL</code>.</li>
-</ul>
+<p>Basically I am saying that I will have 2 servers: &ldquo;web&rdquo; &amp; &ldquo;db&rdquo; and specifying
+their volumes, environment variables and exported ports.</p>
 
-<p>This was a problem since 2014 when Django was created.</p>
+<h3>Problem?</h3>
 
-<p>If you want to change something this is your first start point:
-<code>auth.models.AbstractUser</code>. If you want to go one step forward:
-<code>auth.models.PermissionMixin</code> &amp; <code>auth.models.AbstractBaseUse</code>.</p>
+<p>First thing that we see here: <code>MY_BASE_URL</code> &amp; <code>MYSQL_{,ROOT_}PASSWORD</code> don&rsquo;t
+have any value, this is because Fig is going to got those values from the
+current Docker host. I need them for specified some settings file that
+originally were written in a normal file (difficult to change while deploying).</p>
 
-<p>You can override <code>USERNAME_FIELD</code> too, to override the standard username
-field of the model.</p>
+<p>Also, <code>MY_BASE_URL</code> is a small/ugly trick. It seems that Pligg requires to know
+the host were it&rsquo;s running to serve static assets as CSS or JS.</p>
 
-<p><code>contrib.admin</code> integration. Which I didn&rsquo;t try yet (Álex) but if it
-works as they said, it should be just amazing!</p>
+<p>If you take a look to <a href="https://github.com/agonzalezro/docker-pligg/tree/master/config">my repo <code>config</code>
+folder</a> you
+will see the slightly modified versions of two configuration files for Pligg
+that are making use of this environment variables.</p>
 
-<h3>Python 3</h3>
+<h3>More problems?</h3>
 
-<ul>
-<li>3.2 and 3.3 supported, but python 2.5 was gone.</li>
-<li>Not yet &ldquo;production ready&rdquo;. You will probably be ok, but it&rsquo;s up to
-you to give it a chance.</li>
-<li>Upgrade your third party apps! You will be able to import
-compatibility apps from django that will help you using this apps.</li>
-</ul>
-
-<p><strong>Caveats</strong>: MySQL, PIL, Selenium&hellip; this all need to be migrated also
-:(</p>
-
-<p>Armin (<a href="https://twitter.com/mitsuhiko">@mitsuhiko</a>) said that PIL is
-already supported o/</p>
-
-<h3>Security</h3>
-
-<p><code>ALLOWED_HOSTS</code> is a whitelist backported to django 1.3.x and 1.4.x but
-required in 1.5.</p>
-
-<p>You can read the django documentation about this here:
-<a href="https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts">https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts</a></p>
-
-<h3>StreamingHTTPResponse</h3>
-
-<p>Fixes the handling of streaming http responses. Instead use the normal
-<code>.content</code> you need to use <code>streamed_content</code> if you want to access to
-the content.</p>
-
-<h3>{% url %}</h3>
+<p>For running Pligg we need a minimal DB structure I&rsquo;ve found 2 different ways of
+creating this data in my data container, but none of them are optimal for me,
+mainly because they require an extra step:</p>
 
 <ul>
-<li>The API was wrong, it was fixed in 1.3 loading from future&hellip; but
-hey, who made that? :)</li>
-<li>Old style is actually gone now.</li>
+<li><p>I&rsquo;ve created minimal SQL dump with some default values and on the <code>README.md</code>
+provide a quick way of ingest this data using the same container:</p>
+
+<pre><code>$ docker exec dockerpligg_db_1 \
+  mysql -u pligguser -p$MYSQL_PASSWORD dbpligg &lt; &quot;`cat pligg.sql`&quot;
+</code></pre></li>
+
+<li><p>Another way is going through all the installation process accessing to
+<a href="http://example.com/install">http://example.com/install</a></p></li>
 </ul>
 
-<h2>More new things</h2>
+<p>I think that perhaps creating a script that checks is the DB if empty and if it
+is it uses the SQL to dump the DB back would be an option, but seems kinda
+dangerous to automate that process in a live environment (anybody said delete
+data by a mistaken dump?).</p>
 
-<ul>
-<li>Caching of related model instances&hellip; this will transparently
-improve the performance of your site a lot. It was one of the
-biggest causes of delay on this new django version.</li>
-<li><code>update_fields</code> is a new variable received on the save method that
-allows you to know what are the fileds that has changed.</li>
-<li>PostGIS 2.0 is supported now.</li>
-<li><code>{% verbatim %}</code> that allows a little bit more easy javascript (for
-example) development in django templates.</li>
-</ul>
+<p><a href="http://acalustra.com/">@eloycoto</a> has recommended me to use inheritance of
+containers. But I am not happy with that solution either: I would need two
+<code>Dockerfile</code>s and possibly two <code>fig.yml</code> files as well or add some weird magic
+to replace one container with the other after the installation.</p>
 
-<h2>Backwards incompatibilities (perhaps)</h2>
+<h3>Third thing that I don&rsquo;t really like</h3>
 
-<ul>
-<li>Context in various class views can break.</li>
-<li>Simplejson could cause incompatibilities since python 2.5 was
-removed from django compatibility.</li>
-<li>Session not saved on 500 errors.</li>
-</ul>
+<p>After the first time that you run the installation you need to manually remove
+the install path (this seems quite common in PHP apps?). I am doing that
+running a <code>docker exec</code> to that container, but I would prefer to manually
+remove it with the <code>Dockerfile</code>. Why I don&rsquo;t do so? Because if I remove that
+folder I am forcing all the users of my configuration to use the dump SQL
+method explained above and I don&rsquo;t give them any change.</p>
 
-<h3>Testing</h3>
+<h2>So&hellip;</h2>
 
-<ul>
-<li><code>OPTIONS</code>, <code>PUT</code> and <code>DELETE</code>.</li>
-<li>DB flushing, it was move from the end of the test to the beginning
-of the test.</li>
-<li>Ordering of test executing changes, this shouldn&rsquo;t matter because
-your test will be always non dependant, right?</li>
-<li>contrib.localflavor has some changes too.</li>
-<li>contrib.markup usually marked all at safe and hope for the best, now
-it&rsquo;s not doing it.</li>
-<li><code>django-admin.py cleanup</code> clear up the sessions, actually, now it&rsquo;s
-called <code>django-admin.py clearsessions</code>.</li>
-<li>depth argument to select related, to don&rsquo;t follow all the possible
-joins.</li>
-</ul>
+<p>I suspect that it&rsquo;s normal to have that kind of problems trying to &ldquo;migrate&rdquo; an
+application that was never used before in a Docker container.</p>
 
-<h2>Nice things you may have missed</h2>
+<p>To be honest with Pligg, the only changes that I required were minimal, but I
+don&rsquo;t know if that &ldquo;install&rdquo; part could be just removed with my own settings
+file, I tried that and it was asking me to repeat values that were already set
+in the <code>settings.php</code>.</p>
 
-<ul>
-<li><code>LOGIN_URL</code> can be an url name now, and django will make the
-<code>reverse()</code> for you.</li>
-<li>True, False and None in templates.</li>
-<li><code>user_login_failed</code> signal.</li>
-<li><code>assertXMLEqual()</code>.</li>
-<li><code>index_together</code>, create a indexes with several fields.</li>
-<li>admin lists customisable by request.</li>
-<li><code>django.utils.text.slugify</code> get an string in and returns an slug for
-you.</li>
-</ul>
+<p>I am not happy with the dump/install solution that I&rsquo;ve found, but it works™!</p>
+
+<p>I am sure that if you were using Docker or Fig before you will have plenty of
+complaints about my article, let me know leaving a comment or just <a href="http://twitter.com/agonzalezro">tweet me
+something</a>.</p>
 
 
 
@@ -734,7 +715,7 @@ you.</li>
   var disqus_shortname = 'agonzalezro';
   
   
-  var disqus_identifier = '\/djgul-whats-new-on-django-15.html';
+  var disqus_identifier = '\/dockerizing-pligg-with-fig.html';
 
   (function() {
     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

@@ -75,7 +75,7 @@ backbone.js &#43; underscore: small intro | agonzalezro.github.io
               
               
               <li>
-              <a href="/category/devop.html">devop <span class="badge pull-right">1</span></a>
+              <a href="/category/devop.html">devop <span class="badge pull-right">2</span></a>
               </li>
               
               
@@ -224,6 +224,21 @@ backbone.js &#43; underscore: small intro | agonzalezro.github.io
               
               <li>
               <a href="/tag/scrape.html">scrape <span class="badge pull-right">1</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/tag/docker.html">docker <span class="badge pull-right">1</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/tag/pligg.html">pligg <span class="badge pull-right">1</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/tag/fig.html">fig <span class="badge pull-right">1</span></a>
               </li>
               
               
@@ -606,7 +621,7 @@ will:</p>
 <p>The 3 points can be made only with these lines of code. It&rsquo;s really
 simple! (after know how to do it :p):</p>
 
-<pre><code class="javascript">var Item = Backbone.Model.extend();
+<pre><code class="language-javascript">var Item = Backbone.Model.extend();
 
 var Items = Backbone.Collection.extend({
   model: Item
@@ -639,7 +654,7 @@ change it to an editable input.</p>
 
 <p>This is the code of the example:</p>
 
-<pre><code class="javascript">var ItemView = Backbone.View.extend({
+<pre><code class="language-javascript">var ItemView = Backbone.View.extend({
   ...
   events: {
     &quot;dblclick&quot;: &quot;onDoubleClick&quot;
@@ -662,7 +677,7 @@ This function will receive the event, and the event will have the target
 <p>It&rsquo;s really useful to Work with collections. In out example we are using
 it to iterate over the items:</p>
 
-<pre><code class="javascript">render: function() {
+<pre><code class="language-javascript">render: function() {
   _.each(this.items.models, function(item) {
     var itemview = new ItemView(item);
     $(this.el).append(itemview.render().el);
@@ -678,7 +693,7 @@ is updated and all events are delegated to this element.</p>
 <p>The amazing thing that you can do with underscore is use templates (yes,
 like jinja or django-templates, but in JS)! And we are doing it:</p>
 
-<pre><code class="html">&lt;script&gt;
+<pre><code class="language-html">&lt;script&gt;
   var ItemView = Backbone.View.extend({
   ...
   template: _.template($(&quot;#item-template&quot;).html()),
@@ -703,7 +718,7 @@ drag&amp;dropping an element it will be useful.</p>
 elements of a list, instead send this event in each drag movement, we
 made it after 200s being quiet with:</p>
 
-<pre><code class="javascript">onChange: _.debounce(function(ev) {
+<pre><code class="language-javascript">onChange: _.debounce(function(ev) {
     this.pools.save();
 }, 200),
 </code></pre>

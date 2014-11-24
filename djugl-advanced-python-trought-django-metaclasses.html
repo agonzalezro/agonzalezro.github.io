@@ -75,7 +75,7 @@ DJUGL: Advanced python trought Django: Metaclasses | agonzalezro.github.io
               
               
               <li>
-              <a href="/category/devop.html">devop <span class="badge pull-right">1</span></a>
+              <a href="/category/devop.html">devop <span class="badge pull-right">2</span></a>
               </li>
               
               
@@ -224,6 +224,21 @@ DJUGL: Advanced python trought Django: Metaclasses | agonzalezro.github.io
               
               <li>
               <a href="/tag/scrape.html">scrape <span class="badge pull-right">1</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/tag/docker.html">docker <span class="badge pull-right">1</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/tag/pligg.html">pligg <span class="badge pull-right">1</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/tag/fig.html">fig <span class="badge pull-right">1</span></a>
               </li>
               
               
@@ -583,7 +598,7 @@ explain it to you (shame on me!).</p>
 <p>For some reason, Peter was in love with the Ponies, so, he tried to
 create some meta stable:</p>
 
-<pre><code class="python">class A(models.Model):
+<pre><code class="language-python">class A(models.Model):
     class Meta:
         app_label = 'ponies'
         abstract = True
@@ -597,7 +612,7 @@ class Stable(models.Models):
 
 <h2>Create classes dinamycally:</h2>
 
-<pre><code class="python">def init(self, x):
+<pre><code class="language-python">def init(self, x):
     self.x =x
 
 name = 'ExampleClass'
@@ -618,13 +633,13 @@ comparation, but never for create classes&hellip;</p>
 <p>Some &ldquo;strange&rdquo; (puzzling) things about <code>type</code> is that <code>type</code> is a class
 of type type:</p>
 
-<pre><code class="python">type(type)
+<pre><code class="language-python">type(type)
 &lt;type 'type'&gt;
 </code></pre>
 
 <p>And we can subclass <code>type</code>:</p>
 
-<pre><code class="python">class A(type):
+<pre><code class="language-python">class A(type):
     pass
 </code></pre>
 
@@ -632,7 +647,7 @@ of type type:</p>
 
 <p>The syntax to create a metaclass is sightly different:</p>
 
-<pre><code class="python">class Form(metaclass=Formtype):
+<pre><code class="language-python">class Form(metaclass=Formtype):
     ...
 </code></pre>
 

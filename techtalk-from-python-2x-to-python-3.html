@@ -75,7 +75,7 @@ TechTalk: from python 2.x to python 3 | agonzalezro.github.io
               
               
               <li>
-              <a href="/category/devop.html">devop <span class="badge pull-right">1</span></a>
+              <a href="/category/devop.html">devop <span class="badge pull-right">2</span></a>
               </li>
               
               
@@ -224,6 +224,21 @@ TechTalk: from python 2.x to python 3 | agonzalezro.github.io
               
               <li>
               <a href="/tag/scrape.html">scrape <span class="badge pull-right">1</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/tag/docker.html">docker <span class="badge pull-right">1</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/tag/pligg.html">pligg <span class="badge pull-right">1</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/tag/fig.html">fig <span class="badge pull-right">1</span></a>
               </li>
               
               
@@ -613,7 +628,7 @@ without tests :D</li>
 
 <p>This piece of code is compatible with both versions, why don&rsquo;t use them?</p>
 
-<pre><code class="python">print(x)
+<pre><code class="language-python">print(x)
 exec(x)
 </code></pre>
 
@@ -621,12 +636,12 @@ exec(x)
 import the function from future to have the same behaviour in python
 2.x:</p>
 
-<pre><code class="python">from __future__ import print_function
+<pre><code class="language-python">from __future__ import print_function
 </code></pre>
 
 <p>Let&rsquo;s make it bigger:</p>
 
-<pre><code class="python">from __future__ import (
+<pre><code class="language-python">from __future__ import (
     division,
     absolute_import,
     print_function,
@@ -645,7 +660,7 @@ bit, instead create list, they will create sets.</p>
 
 <p>python 2 is strict, but python 3 is kinda lazy.</p>
 
-<pre><code class="python">map(lambda x: x * x, filter(lambda x: x % 10 == 0, range(100))
+<pre><code class="language-python">map(lambda x: x * x, filter(lambda x: x % 10 == 0, range(100))
 </code></pre>
 
 <p>Will produce an iterator in python 3, in python 2 is a data structure.</p>
@@ -658,7 +673,7 @@ with same problems will be, for example: <code>items</code>, <code>keys</code>, 
 <p>If you want a data structure instead a iterator, you should make it
 manually:</p>
 
-<pre><code class="python">range(10)  # python 2.x
+<pre><code class="language-python">range(10)  # python 2.x
 tuple(range(10)  # python 3
 </code></pre>
 

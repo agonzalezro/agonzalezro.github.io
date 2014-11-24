@@ -3,9 +3,25 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>agonzalezro.github.io</title>
   <link href="http://agonzalezro.github.io" />
-  <updated>2014-10-17T18:07:54&#43;01:00</updated>
+  <updated>2014-11-24T23:06:12Z</updated>
 
   
+  
+  <entry>
+    <title>Dockerizing Pligg with Fig</title>
+    <link href="http://agonzalezro.github.io/dockerizing-pligg-with-fig.html" />
+    
+    <updated>2014-11-24 00:00:00 &#43;0000 UTC</updated>
+    
+    <summary>
+      <p>For a pet project I needed <a href="http://pligg.com/">Pligg</a> which is kinda a social
+network site in the style of the old-digg (with karma and this kind of things).</p>
+
+    </summary>
+    <author>
+      <name>Álex</name>
+    </author>
+  </entry>
   
   <entry>
     <title>How to manage multiple errors in Go</title>
@@ -161,22 +177,6 @@ from scratch with <strong>my own blog site generator written in Golang:
     <summary>
       <p>This was my talk on the <a href="http://pygrunn.nl">PyGrunn</a> conference last
 Friday.</p>
-
-    </summary>
-    <author>
-      <name>Álex</name>
-    </author>
-  </entry>
-  
-  <entry>
-    <title>Here I go PyGrunn&#39;13!</title>
-    <link href="http://agonzalezro.github.io/here-i-go-pygrunn13.html" />
-    
-    <updated>2013-04-17 00:00:00 &#43;0000 UTC</updated>
-    
-    <summary>
-      <p>I am really proud of say that the next month I will be giving a talk at
-PyGrunn!</p>
 
     </summary>
     <author>

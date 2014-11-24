@@ -75,7 +75,7 @@ agonzalezro.github.io
               
               
               <li>
-              <a href="/category/devop.html">devop <span class="badge pull-right">1</span></a>
+              <a href="/category/devop.html">devop <span class="badge pull-right">2</span></a>
               </li>
               
               
@@ -224,6 +224,21 @@ agonzalezro.github.io
               
               <li>
               <a href="/tag/scrape.html">scrape <span class="badge pull-right">1</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/tag/docker.html">docker <span class="badge pull-right">1</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/tag/pligg.html">pligg <span class="badge pull-right">1</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/tag/fig.html">fig <span class="badge pull-right">1</span></a>
               </li>
               
               
@@ -540,6 +555,139 @@ agonzalezro.github.io
       
 
 
+
+<article>
+<h1><a href="/codereview-from-the-pov-of-a-noob.html">codereview from the POV of a noob</a></h1>
+
+<p>
+
+<span class="label label-default">by Álex</span>
+
+
+
+<span class="label label-default">2013-01-29 19:16</span>
+
+
+
+<a class="label label-success" href="/category/dev.html">dev</a>
+
+
+
+
+<a class="label label-info" href="/tag/codereview.html">codereview</a>
+
+<a class="label label-info" href="/tag/python.html">python</a>
+
+
+</p>
+
+<p>Hi g(irl|uy)s! I would like to start with a disclaimer:</p>
+
+<p><em>I am not (and I don&rsquo;t pretend to be) a craftmanship trooper (they like
+to be called like that isn&rsquo;t?), senior engineer with more years of
+experience that the technology has, guru, blablabla&hellip;</em></p>
+
+<p><em>I just want to show my opinion about this process (which I really
+like!). But more important that share my opinion, is to know what is
+yours, so, please, comment!</em></p>
+
+<p>Today we had an interesting conversation at work about how we make and
+how we should make our codereviews. My point of view is that there are
+three different things to check:</p>
+
+<ol>
+<li><strong>Code syntax.</strong> It&rsquo;s a part that should be 100% automagically done.
+I usually work with python and I let this work to
+<a href="http://pypi.python.org/pypi/flake8">Flake8</a> on vim, but it&rsquo;s always
+good to have a git hook.</li>
+<li><strong>Reusability and maintainability.</strong> I am afraid that this is the
+worst part to check, it&rsquo;s a manual process and it is really
+subjective. Some people can think that use itertools with 2 lambda
+functions is pretty clear and comprehensible, other people can think
+that this code is the result of a dirty mind developer.</li>
+<li><strong>Functionality.</strong> Automated test! All the test that you can, and of
+course, they worst the time that you will spent developing them.
+There are things that can not be easily tested but in that case
+let&rsquo;s suppose that you were clever enough to test them manually and
+in the case that is possible you can show it to anybody else (this
+really helps!).</li>
+</ol>
+
+<p>As I said the point 1 can be (and should be) automated! It&rsquo;s really easy
+to do, the same way that <a href="http://pypi.python.org/pypi/flake8">Flake8</a>
+exists for python, I am pretty sure that you will have one for your
+favourite language. It&rsquo;s really painful get back a pull request just for
+some spaces that are not in place.</p>
+
+<p>For the point 3, yep, let me jump the second for now. Unit testing,
+integration testing, functional testing&hellip; whatever you want, but try to
+automate it. This + a CI server will make your live really &ldquo;easy&rdquo;!</p>
+
+<p>And finally, about the second point. Each developer have their way to do
+the things, but usually there are some points that can be fixed and
+sometimes because we don&rsquo;t know, other times just because we are lazy
+but we post code like this:</p>
+
+<pre><code class="language-python">def f(a, b, c):
+    if (a &lt; 1 and
+        request.user and
+        request.user.is_authenticated() and request.user.has_perm('write')
+    ):
+        return HttpResponse(json.dumps('{authorized: True, 'a': a}))
+    if a &gt;= 1
+        return HttpResponse(json.dumps('{authorized: True, 'a': a}))
+</code></pre>
+
+<p>This is just an example, but you should agree with me that it&rsquo;s really
+easy to improve. This is what, in my opinion should be more checked in
+the reviews.</p>
+
+<p>This was just an example (please, remember that :D), but could be
+improved with something like this:</p>
+
+<pre><code class="language-python">def proper_function_name(proper_variable_name):
+    &quot;&quot;&quot;This is an amazing function that will do just a thing.
+
+    :param proper_variable_name: what I am?
+
+    :returns: An HttpResponse object with the following JSON content:
+
+        {'authorized': bool,
+         'proper_variable_name: int}
+
+    &quot;&quot;&quot;
+    is_authorized = (
+        request.user and
+        request.user.is_authenticated() and
+        request.user.has_perm('write-resource')
+    )
+
+    return HttpResponse(
+        json.dumps({
+            'authorized': is_authorized,
+            'proper_variable_name': proper_variable_name
+        })
+    )
+</code></pre>
+
+<p>Those were the improvements (again, remember that it&rsquo;s just an example):</p>
+
+<ol>
+<li>Give a proper name to the function. Don&rsquo;t be afraid, everybody has
+autocompletion! :D</li>
+<li>Give a proper name to the vars.</li>
+<li>DOCUMENT! In this example, ready for Sphinx.</li>
+<li>Simplify the if statements, actually, after take a look you made it
+dissapear.</li>
+<li>One return.</li>
+</ol>
+
+<p>So, what&rsquo;s your opinion? What do you think that is more important in a
+codereview.</p>
+
+<p class="text-right"><a class="btn btn-default" href="/codereview-from-the-pov-of-a-noob.html#disqus_thread">Leave a comment!</a></p>
+</article>
+<hr>
 
 <article>
 <h1><a href="/best-vim-colors-ever.html">Best vim colors ever!</a></h1>
@@ -954,188 +1102,6 @@ slides to see the screenshots that show the use).</p>
 </article>
 <hr>
 
-<article>
-<h1><a href="/backbonejs-underscore-small-intro.html">backbone.js &#43; underscore: small intro</a></h1>
-
-<p>
-
-<span class="label label-default">by Álex</span>
-
-
-
-<span class="label label-default">2012-11-01 00:30</span>
-
-
-
-<a class="label label-success" href="/category/dev.html">dev</a>
-
-
-
-
-<a class="label label-info" href="/tag/backbone.html">backbone</a>
-
-<a class="label label-info" href="/tag/undercore.html">undercore</a>
-
-<a class="label label-info" href="/tag/javascript.html">javascript</a>
-
-<a class="label label-info" href="/tag/gui.html">gui</a>
-
-
-</p>
-
-<p>Today, <a href="http://twitter.com/olegpidsadnyi/">Oleg</a> gave a talk about
-backbone at <a href="http://paylogic.nl/">Paylogic</a>. We were using it for a
-really fancy application inside our backoffice, it was quite funny write
-it and Oleg decided to share the knowledge.</p>
-
-<p>I used the techtalk to take some notes and, since this piece of code
-will have no sense out of our backoffice, I&rsquo;ve written a small example
-that you can find as a <a href="https://gist.github.com/3982819">gist</a> on my
-github. I will use it to explain to you some of the useful things that
-you can do with backbone and underscore. Feel free to improve it.</p>
-
-<p>This is only a introductory post, if you want advance stuff you should
-go to the <a href="http://backbonejs.org/">backbone official documentation</a> &amp;
-<a href="http://underscorejs.org/">underscore docs</a>.</p>
-
-<h2>Why?</h2>
-
-<p>Backbone is really useful when you make complex GUIs on client side. You
-can make your code like in a desktop app using events to handle the
-actions. It&rsquo;s not needed to pass around instances of parents views,
-let&rsquo;s use only the events for that purpose, and let the child decide.</p>
-
-<p>You have models too, that you can sync (or not) with the server.</p>
-
-<h2>Models</h2>
-
-<p>In backbone you can have local model and sync them with the server or
-with local storage (not explained in this intro). In our example we
-will:</p>
-
-<ol>
-<li>Create a collection to save our objects (type Item) in.</li>
-<li>Create the model Item.</li>
-<li>Create 2 object type Item inside this collection.</li>
-<li>Render them.</li>
-</ol>
-
-<p>The 3 points can be made only with these lines of code. It&rsquo;s really
-simple! (after know how to do it :p):</p>
-
-<pre><code class="javascript">var Item = Backbone.Model.extend();
-
-var Items = Backbone.Collection.extend({
-  model: Item
-});
-
-var items = new Items();
-items.add([{name: &quot;foo&quot;}, {name: &quot;bar&quot;}]);
-</code></pre>
-
-<p><strong>Note</strong>: Setting values in the objects With .set will trigger the event
-    change. You can silent it in case that needed, but it&rsquo;s really
-    useful, for example, to save it.</p>
-
-<p><strong>Second note</strong>: backbone is f***ing clever! Imagine, you are changing a
-    name, if the name has changed on the collection, the event will be raised,
-    if not, it will not. This means that if you are editing, but finally
-    you change your mind and you didn&rsquo;t made any change, the event will
-    not be raised.</p>
-
-<h2>Events</h2>
-
-<p>They are really useful to remove dependencies between elements. For
-example, with jQuery if you change a element from another, the first one
-needs to know about the second. With backbone you can catch the event
-with the child element and do whatever you want with it.</p>
-
-<p>On the example of my <a href="https://gist.github.com/3982819">gist</a> I show an
-alert box with the name of the element. But you could, for example,
-change it to an editable input.</p>
-
-<p>This is the code of the example:</p>
-
-<pre><code class="javascript">var ItemView = Backbone.View.extend({
-  ...
-  events: {
-    &quot;dblclick&quot;: &quot;onDoubleClick&quot;
-  },
-  ...
-  onDoubleClick: function(ev) {
-    var text = $.trim($(ev.target).text());
-    alert(&quot;Hey! Why do you click on &quot; + text + &quot;?&quot;);
-    console.log(ev); //Play with this :)
-  }
-});
-</code></pre>
-
-<p>We are binding the <code>dblclick</code> event to the function <code>onDoubleClick</code>.
-This function will receive the event, and the event will have the target
-(in this case the <code>&lt;li/&gt;</code> that we are clicking.</p>
-
-<h2>Underscore</h2>
-
-<p>It&rsquo;s really useful to Work with collections. In out example we are using
-it to iterate over the items:</p>
-
-<pre><code class="javascript">render: function() {
-  _.each(this.items.models, function(item) {
-    var itemview = new ItemView(item);
-    $(this.el).append(itemview.render().el);
-  }, this);
-}
-</code></pre>
-
-<p>If you read carefully this piece of code you will realize that we are
-instantiating a new ItemView for each particular item, so it has its own
-container element created on the fly, re-renderable each time when data
-is updated and all events are delegated to this element.</p>
-
-<p>The amazing thing that you can do with underscore is use templates (yes,
-like jinja or django-templates, but in JS)! And we are doing it:</p>
-
-<pre><code class="html">&lt;script&gt;
-  var ItemView = Backbone.View.extend({
-  ...
-  template: _.template($(&quot;#item-template&quot;).html()),
-  ...
-  render: function() {
-     $(this.el).html(this.template(this.item.toJSON()));
-     return this;
-  },
-  ...
-&lt;/script&gt;
-&lt;script type=&quot;text/template&quot; id=&quot;item-template&quot;&gt;
-  &lt;%= name %&gt;
-&lt;/script&gt;
-</code></pre>
-
-<h2>Extra ball</h2>
-
-<p>Use <code>_.debounce</code> to don&rsquo;t call the functions thousands of times, example
-drag&amp;dropping an element it will be useful.</p>
-
-<p>For example in our project we had to sort with drag and drop some
-elements of a list, instead send this event in each drag movement, we
-made it after 200s being quiet with:</p>
-
-<pre><code class="javascript">onChange: _.debounce(function(ev) {
-    this.pools.save();
-}, 200),
-</code></pre>
-
-<p>Please comment your thoughts about the post. We are all here to learn,
-and it&rsquo;s really easy that I made some mistake explaining this.
-Furhtermore, I know that my English is not really good, so, I will
-apreciate constructive comments about it too :)</p>
-
-<p>Enjoy it!</p>
-
-<p class="text-right"><a class="btn btn-default" href="/backbonejs-underscore-small-intro.html#disqus_thread">Leave a comment!</a></p>
-</article>
-<hr>
-
 
 
 
@@ -1178,14 +1144,18 @@ apreciate constructive comments about it too :)</p>
       5
     </a>
     </li>
+    
+    <li >
+    <a href="/index6.html">
+      6
+    </a>
+    </li>
      
 
     <li class="
     
-    disabled
-    
     ">
-    <a href="#">&raquo;</a>
+    <a href="/index6.html">&raquo;</a>
     </li>
 
 </ul></div>

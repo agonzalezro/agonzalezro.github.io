@@ -75,7 +75,7 @@ agonzalezro.github.io
               
               
               <li>
-              <a href="/category/devop.html">devop <span class="badge pull-right">1</span></a>
+              <a href="/category/devop.html">devop <span class="badge pull-right">2</span></a>
               </li>
               
               
@@ -224,6 +224,21 @@ agonzalezro.github.io
               
               <li>
               <a href="/tag/scrape.html">scrape <span class="badge pull-right">1</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/tag/docker.html">docker <span class="badge pull-right">1</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/tag/pligg.html">pligg <span class="badge pull-right">1</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/tag/fig.html">fig <span class="badge pull-right">1</span></a>
               </li>
               
               
@@ -542,6 +557,151 @@ agonzalezro.github.io
 
 
 <article>
+<h1><a href="/dockerizing-pligg-with-fig.html">Dockerizing Pligg with Fig</a></h1>
+
+<p>
+
+<span class="label label-default">by Álex</span>
+
+
+
+<span class="label label-default">2014-11-24</span>
+
+
+
+<a class="label label-success" href="/category/devop.html">devop</a>
+
+
+
+
+<a class="label label-info" href="/tag/docker.html">docker</a>
+
+<a class="label label-info" href="/tag/pligg.html">pligg</a>
+
+<a class="label label-info" href="/tag/fig.html">fig</a>
+
+
+</p>
+
+<p>For a pet project I needed <a href="http://pligg.com/">Pligg</a> which is kinda a social
+network site in the style of the old-digg (with karma and this kind of things).</p>
+
+<p>Installing a LAMP system is kinda boring stuff, so, for that and for the sake
+of learning I decided to go with <a href="https://www.docker.com/">Docker</a> &amp;
+<a href="http://www.fig.sh/">Fig</a>. Sadly or luckily, every time that I dockerize
+something I find a lot of unexpected problems that slow me down, but&hellip; you
+always learn something!</p>
+
+<p>This post is to explain a little bit the process and the problems that I found
+and how I solved them. It&rsquo;s not a how to, it&rsquo;s more a explanation of what I did
+and perhaps you can provide a better solution on the comments.</p>
+
+<h2>What do I need?</h2>
+
+<p>The site is &ldquo;simple&rdquo; so the only required stuff will be a MySQL server and an
+Apache2 server. You could run 2 Docker instances manually, or&hellip; use the magic
+provided by Fig. This is the <code>fig.yml</code> file that explains my service:</p>
+
+<pre><code>web:
+  build: .
+  links:
+   - db
+  volumes:
+   - /var/log:/var/www/logs
+  ports:
+   - &quot;80:80&quot;
+  environment:
+   - MYSQL_PASSWORD
+   - MY_BASE_URL
+db:
+  image: mysql
+  volumes:
+   - /var/lib/mysql:/var/lib/mysql
+  environment:
+   - MYSQL_DATABASE=dbpligg
+   - MYSQL_USER=pligguser
+   - MYSQL_ROOT_PASSWORD
+   - MYSQL_PASSWORD
+  ports:
+   - &quot;3306:3306&quot;
+</code></pre>
+
+<p>Basically I am saying that I will have 2 servers: &ldquo;web&rdquo; &amp; &ldquo;db&rdquo; and specifying
+their volumes, environment variables and exported ports.</p>
+
+<h3>Problem?</h3>
+
+<p>First thing that we see here: <code>MY_BASE_URL</code> &amp; <code>MYSQL_{,ROOT_}PASSWORD</code> don&rsquo;t
+have any value, this is because Fig is going to got those values from the
+current Docker host. I need them for specified some settings file that
+originally were written in a normal file (difficult to change while deploying).</p>
+
+<p>Also, <code>MY_BASE_URL</code> is a small/ugly trick. It seems that Pligg requires to know
+the host were it&rsquo;s running to serve static assets as CSS or JS.</p>
+
+<p>If you take a look to <a href="https://github.com/agonzalezro/docker-pligg/tree/master/config">my repo <code>config</code>
+folder</a> you
+will see the slightly modified versions of two configuration files for Pligg
+that are making use of this environment variables.</p>
+
+<h3>More problems?</h3>
+
+<p>For running Pligg we need a minimal DB structure I&rsquo;ve found 2 different ways of
+creating this data in my data container, but none of them are optimal for me,
+mainly because they require an extra step:</p>
+
+<ul>
+<li><p>I&rsquo;ve created minimal SQL dump with some default values and on the <code>README.md</code>
+provide a quick way of ingest this data using the same container:</p>
+
+<pre><code>$ docker exec dockerpligg_db_1 \
+  mysql -u pligguser -p$MYSQL_PASSWORD dbpligg &lt; &quot;`cat pligg.sql`&quot;
+</code></pre></li>
+
+<li><p>Another way is going through all the installation process accessing to
+<a href="http://example.com/install">http://example.com/install</a></p></li>
+</ul>
+
+<p>I think that perhaps creating a script that checks is the DB if empty and if it
+is it uses the SQL to dump the DB back would be an option, but seems kinda
+dangerous to automate that process in a live environment (anybody said delete
+data by a mistaken dump?).</p>
+
+<p><a href="http://acalustra.com/">@eloycoto</a> has recommended me to use inheritance of
+containers. But I am not happy with that solution either: I would need two
+<code>Dockerfile</code>s and possibly two <code>fig.yml</code> files as well or add some weird magic
+to replace one container with the other after the installation.</p>
+
+<h3>Third thing that I don&rsquo;t really like</h3>
+
+<p>After the first time that you run the installation you need to manually remove
+the install path (this seems quite common in PHP apps?). I am doing that
+running a <code>docker exec</code> to that container, but I would prefer to manually
+remove it with the <code>Dockerfile</code>. Why I don&rsquo;t do so? Because if I remove that
+folder I am forcing all the users of my configuration to use the dump SQL
+method explained above and I don&rsquo;t give them any change.</p>
+
+<h2>So&hellip;</h2>
+
+<p>I suspect that it&rsquo;s normal to have that kind of problems trying to &ldquo;migrate&rdquo; an
+application that was never used before in a Docker container.</p>
+
+<p>To be honest with Pligg, the only changes that I required were minimal, but I
+don&rsquo;t know if that &ldquo;install&rdquo; part could be just removed with my own settings
+file, I tried that and it was asking me to repeat values that were already set
+in the <code>settings.php</code>.</p>
+
+<p>I am not happy with the dump/install solution that I&rsquo;ve found, but it works™!</p>
+
+<p>I am sure that if you were using Docker or Fig before you will have plenty of
+complaints about my article, let me know leaving a comment or just <a href="http://twitter.com/agonzalezro">tweet me
+something</a>.</p>
+
+<p class="text-right"><a class="btn btn-default" href="/dockerizing-pligg-with-fig.html#disqus_thread">Leave a comment!</a></p>
+</article>
+<hr>
+
+<article>
 <h1><a href="/how-to-manage-multiple-errors-in-go.html">How to manage multiple errors in Go</a></h1>
 
 <p>
@@ -837,86 +997,6 @@ Again, if you know something, just let me know.</p>
 </article>
 <hr>
 
-<article>
-<h1><a href="/how-to-find-a-flat-in-london-with-some-help.html">How to find a flat in London with some help</a></h1>
-
-<p>
-
-<span class="label label-default">by Álex</span>
-
-
-
-<span class="label label-default">2014-08-03</span>
-
-
-
-<a class="label label-success" href="/category/dev.html">dev</a>
-
-
-
-
-<a class="label label-info" href="/tag/flats.html">flats</a>
-
-<a class="label label-info" href="/tag/london.html">london</a>
-
-<a class="label label-info" href="/tag/rent.html">rent</a>
-
-<a class="label label-info" href="/tag/cartodb.html">cartodb</a>
-
-<a class="label label-info" href="/tag/scrape.html">scrape</a>
-
-
-</p>
-
-<p><strong>EDIT:</strong> I&rsquo;ve added a little bit more of code to the gist to get the latitude
-and longitude of the flat. This way the process of plotting them is more
-accurate and incredibly easy. Thanks again <a href="http://cartodb.com">CartoDB</a>!</p>
-
-<p>At the end of this month I am going to move with a friend. This movement is
-going to be something like the 7th one since I am living here (little bit less
-than 2 years).</p>
-
-<p>We are a little bit struggling trying to find a place so I decided that we need
-a little bit of help:</p>
-
-<p>Do you know <a href="http://gumtree.com">gumtree.com</a>? That page is extremely good for
-renting if you just take care of the content (aka adverts that users upload)
-but it&rsquo;s extremely bad at searching: I couldn&rsquo;t filter to know when the flat would be available and I would be able to move in! Seriously?</p>
-
-<p>To fix this I made a small scraper that is going to gather data from few pages
-of the search results already filtered by gumtree, check the <code>QUERY_PARAMS</code> on
-the <a href="https://gist.github.com/agonzalezro/440e7bf41e77c284d735">following gist</a>:</p>
-
-<script src="https://gist.github.com/agonzalezro/440e7bf41e77c284d735.js"></script>
-
-<p>In the other hand, the location needs to be a place close to King&rsquo;s Cross and
-close to Mile End. Calculate commute times from one address to another one
-doesn&rsquo;t look straightforward and easy to do, so, the best solution (in relation
-dev_time/benefit) was showing all those flats in a map, and I made it thanks to
-the help of CartoDB. This piece of software is amazing, basically the process
-was:</p>
-
-<ol>
-<li>drag&amp;drop the CSV to your CartoDB account.</li>
-<li><del>click on the dropdown of the &ldquo;location&rdquo; row and then on &ldquo;Georeference&rdquo;.</del></li>
-<li><del>in the popup that will be shown to you, you must select &ldquo;&ldquo;You have one or
-more columns with the address&rdquo;, and after that you will have a georeferenced
-list of points. The only bad point with this solution is that every month
-you just have 100 geoferential queries available for free :(</del></li>
-</ol>
-
-<p>With that data you can create your own visualisation as I made here:</p>
-
-<iframe width='100%' height='520' frameborder='0' src='//alex.cartodb.com/viz/e3731a92-1c13-11e4-9a2d-0e10bcd91c2b/embed_map?title=true&description=true&search=false&shareable=true&cartodb_logo=true&layer_selector=false&legends=false&scrollwheel=true&fullscreen=true&sublayer_options=1&sql=&sw_lat=51.31344707827587&sw_lon=-0.5657958984375&ne_lat=51.67681321379405&ne_lon=0.318603515625' allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
-
-<p>If you want to say something about this post or you want to offer me a nice
-flat in London, feel free of use the comments or find me in twitter:
-<a href="http://twitter.com/agonzalezro">@agonzalezro</a></p>
-
-<p class="text-right"><a class="btn btn-default" href="/how-to-find-a-flat-in-london-with-some-help.html#disqus_thread">Leave a comment!</a></p>
-</article>
-<hr>
-
 
 
 
@@ -959,6 +1039,12 @@ flat in London, feel free of use the comments or find me in twitter:
     <li >
     <a href="/index5.html">
       5
+    </a>
+    </li>
+    
+    <li >
+    <a href="/index6.html">
+      6
     </a>
     </li>
      
