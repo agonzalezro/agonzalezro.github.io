@@ -70,7 +70,7 @@ agonzalezro.github.io
               
               
               <li>
-              <a href="/category/dev.html">dev <span class="badge pull-right">3</span></a>
+              <a href="/category/dev.html">dev <span class="badge pull-right">4</span></a>
               </li>
               
               
@@ -203,6 +203,16 @@ agonzalezro.github.io
               
               
               <li>
+              <a href="/tag/docker.html">docker <span class="badge pull-right">2</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/tag/environment.html">environment <span class="badge pull-right">1</span></a>
+              </li>
+              
+              
+              <li>
               <a href="/tag/flats.html">flats <span class="badge pull-right">1</span></a>
               </li>
               
@@ -224,11 +234,6 @@ agonzalezro.github.io
               
               <li>
               <a href="/tag/scrape.html">scrape <span class="badge pull-right">1</span></a>
-              </li>
-              
-              
-              <li>
-              <a href="/tag/docker.html">docker <span class="badge pull-right">1</span></a>
               </li>
               
               
@@ -557,6 +562,183 @@ agonzalezro.github.io
 
 
 <article>
+<h1><a href="/draw-your-architecture-with-neo4j.html">Draw (and more) your architecture with Neo4J</a></h1>
+
+<p>
+
+<span class="label label-default">by Álex</span>
+
+
+
+<span class="label label-default">2014-08-26</span>
+
+
+
+<a class="label label-success" href="/category/biz.html">biz</a>
+
+
+
+
+<a class="label label-info" href="/tag/neo4j.html">neo4j</a>
+
+<a class="label label-info" href="/tag/architecture.html">architecture</a>
+
+<a class="label label-info" href="/tag/people.html">people</a>
+
+<a class="label label-info" href="/tag/organization.html">organization</a>
+
+
+</p>
+
+<p>As some of you already know I work at <a href="http://greenmangaming.com">Green Man
+Gaming</a> (mainly at the
+<a href="http://playfire.com">playfire</a> project). We were planning to do some changes
+in our architecture but it&rsquo;s extremely hard to have an idea of all our services
+and DBs in just a piece of A4 paper. I was trying, trust me, but it was
+impossible.</p>
+
+<p>When I started with this task I did it with
+<a href="https://www.lucidchart.com">lucidchart</a>, after it got so messy I moved to
+<a href="http://www.graphviz.org/">graphviz</a>, but even with the usual good graphs that
+I get from graphviz it was impossible to get something readable this time.</p>
+
+<p>So, it happened! I remembered <a href="http://ivan.pedrazas.me/?p=280">this post</a> made
+by my friend Iván and I thought, why not?</p>
+
+<p>Sadly, this post is not going to show any real data from GMG, but if you are
+interested it&rsquo;s the moment to apply because we are hiring &amp; we have the graphs
+around all the whiteboard in the office! Just grab me an email.</p>
+
+<h2>What do I need?</h2>
+
+<p>Basically, you just need Neo4J. You can install it however you want, I&rsquo;ve just
+run a Docker container with it:</p>
+
+<pre><code>docker run -d -p 7474:7474 tpires/neo4j
+</code></pre>
+
+<p>Now, if you access to your docker container at <a href="http://localhost:7474">http://localhost:7474</a> (or using
+the host from <code>boot2docker ip</code> if you run docker with boot2docker) you will see
+the cypher shell which is one of the ways that you can use to interact with
+your DB.</p>
+
+<h2>What I am going to draw?</h2>
+
+<p>In my case, and for a POC, I&rsquo;ve written the following entities:</p>
+
+<ul>
+<li>Person</li>
+<li>Technology</li>
+<li>Service</li>
+</ul>
+
+<p>You could write some other entities as for example DBs.</p>
+
+<p>The connections here are kinda clear: a person knows a technology which is
+used to write a service that use a DB as backend, so, let&rsquo;s write it!</p>
+
+<p>To create entities the syntax is as follow:</p>
+
+<pre><code>CREATE (variable:Type{attributes})
+</code></pre>
+
+<p>And to create Relations (one of the ways):</p>
+
+<pre><code>CREATE (variable1)-[:RELATION_NAME]-&gt;(variable2)
+</code></pre>
+
+<p>You will understand this better after we start creating our entities.</p>
+
+<p>Create your engineers:</p>
+
+<pre><code>CREATE
+  (dev1:Person{name:&quot;Alex&quot;}),
+  (dev2:Person{name:&quot;Maria&quot;}),
+  (dev3:Person{name:&quot;Pepe&quot;}),
+</code></pre>
+
+<p>Before the : you can see that we have defined a variable to refer to this
+just-created entities. All the nodes that we are creating here are of type
+Person and each of them have a different name.</p>
+
+<p>To create the relationships between Technology and Person, we define the
+technology using the same method that we used to create the Person, but we add
+the relationships:</p>
+
+<pre><code>...
+  (python:Technology{name:&quot;Python&quot;}),
+  (go:Technology{name:&quot;Go&quot;}),
+
+  (dev1)-[:KNOWS]-&gt;(python),
+  (dev1)-[:KNOWS]-&gt;(go),
+  (dev2)-[:KNOWS]-&gt;(python),
+  (dev3)-[:KNOWS]-&gt;(go),
+</code></pre>
+
+<p>And finally, we add our services:</p>
+
+<pre><code>...
+  (service1:Service{name:&quot;Service #1&quot;}),
+  (service2:Service{name:&quot;Service #2&quot;}),
+
+  (service1)-[:CONNECTS]-&gt;(service2),
+  (service1)-[:WRITTEN_WITH]-&gt;(go),
+  (service2)-[:WRITTEN_WITH]-&gt;(python)
+</code></pre>
+
+<h2>Querying for drawing</h2>
+
+<p>Now, you can run all the script and we can see the result. For the first output
+we are going just to show everything:</p>
+
+<pre><code>MATCH (n)-[r]-() RETURN n, r
+</code></pre>
+
+<p>And you will get this!</p>
+
+<p><img src="static/biz/neo4j_architecture/1.png" alt="Cypher MATCH #1">
+</p>
+
+<p>So, what&rsquo;s the point of all this? Basically, that you can do queries that will
+make the graph smaller for your needs. This example data that we have added is
+quite small (just few nodes), in the real graph that I am working on we have
+already few dozens. For example, imagine that you just want to see python
+related information:</p>
+
+<pre><code>MATCH (a)-[r]-() WHERE a.name=&quot;Python&quot; RETURN a, r
+</code></pre>
+
+<p><img src="static/biz/neo4j_architecture/2.png" alt="Cypher MATCH #2">
+</p>
+
+<p>Or you just want to see the people that can work with the Server #1</p>
+
+<pre><code>MATCH (s:Service)-[r]-()-[r2:KNOWS]-(p:Person)
+WHERE s.name=&quot;Service #1&quot; RETURN s, p
+</code></pre>
+
+<p><img src="static/biz/neo4j_architecture/3.png" alt="Cypher MATCH #2">
+</p>
+
+<h2>One more thing</h2>
+
+<p>For now, this project in my company is just a POC and I have not really clear
+what attributes and entities I should draw to make this graph useful for the
+present and for the future. If you have previous experiences or you want to
+start a brainstorming, write on the comments or <a href="http://twitter.com/agonzalezro">find me at
+twitter</a>.</p>
+
+<p>Also, for now I am happy with just creating some screenshots from the data that
+Cypher is showing to me, but it would be really nice to find a more
+professional way of sharing this graphs. Cypher renders them with D3, so, I
+don&rsquo;t fully understand why it doesn&rsquo;t support exporting them in a easy way.
+Again, if you know something, just let me know.</p>
+
+<p class="text-right"><a class="btn btn-default" href="/draw-your-architecture-with-neo4j.html#disqus_thread">Leave a comment!</a></p>
+</article>
+<hr>
+
+<article>
 <h1><a href="/how-to-find-a-flat-in-london-with-some-help.html">How to find a flat in London with some help</a></h1>
 
 <p>
@@ -771,69 +953,6 @@ slides</a> enjoy them as I
 did!</p>
 
 <p class="text-right"><a class="btn btn-default" href="/12-go-best-practices.html#disqus_thread">Leave a comment!</a></p>
-</article>
-<hr>
-
-<article>
-<h1><a href="/tailing-multiple-logs-with-tmux.html">Tailing multiple logs with tmux</a></h1>
-
-<p>
-
-<span class="label label-default">by Álex</span>
-
-
-
-<span class="label label-default">2014-03-15</span>
-
-
-
-<a class="label label-success" href="/category/devop.html">devop</a>
-
-
-
-
-<a class="label label-info" href="/tag/tail.html">tail</a>
-
-<a class="label label-info" href="/tag/tmux.html">tmux</a>
-
-
-</p>
-
-<p>I had a system that was creating a different log for each worker. Those logs
-where in the form: <code>/var/log/baselog</code>, <code>/var/log/baselog.1</code>,
-<code>/var/log/baselog.2</code> and so on. I wanted to tail them but they were being
-updated simultaneously so the output of the tail was being a mess.</p>
-
-<p>I am a <a href="http://tmux.sourceforge.net/">tmux</a> user since few months ago (if you
-aren&rsquo;t, you should!) so I&rsquo;ve decide to open all of them in different tmux
-panes. Thanks to having a pane for every log what we will achieve is the
-ability to scroll just one of them, maximize it in case that we need it, move
-to a new window, save the buffer&hellip;</p>
-
-<p>How can you achieve that? Quite simple, just download this script to some
-place:</p>
-
-<script src="https://gist.github.com/agonzalezro/9573541.js"></script>
-
-<p>Once you have saved it installed, run it with the base log file:</p>
-
-<pre><code>sh tail_several_logs.sh /var/log/baselog
-</code></pre>
-
-<p>The script have some limitations easily fixable:</p>
-
-<ul>
-<li>You should provide a fullpath.</li>
-<li>The logs should be in the form of baselog.N where N is a number.</li>
-<li>I am pretty sure that the loop can be done better.</li>
-<li>And select the layout in every iteration is not the best of the ideas, but it
-works.</li>
-</ul>
-
-<p>Feel free of do whatever you want with the script. I just hope that it&rsquo;s useful
-for somebody else.</p>
-
-<p class="text-right"><a class="btn btn-default" href="/tailing-multiple-logs-with-tmux.html#disqus_thread">Leave a comment!</a></p>
 </article>
 <hr>
 

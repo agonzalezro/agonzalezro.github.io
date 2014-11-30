@@ -3,9 +3,25 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>agonzalezro.github.io</title>
   <link href="http://agonzalezro.github.io" />
-  <updated>2014-11-24T23:06:12Z</updated>
+  <updated>2014-11-30T23:49:27Z</updated>
 
   
+  
+  <entry>
+    <title>How I prepared my Mac to make some Docker development</title>
+    <link href="http://agonzalezro.github.io/how-i-prepared-my-mac-to-make-some-docker-development.html" />
+    
+    <updated>2014-12-01 00:00:00 &#43;0000 UTC</updated>
+    
+    <summary>
+      <p>This post is about <strong>how I did it!</strong> not about a standard way or something like
+that, if you use any other way I would be happy to hear it on the comments.</p>
+
+    </summary>
+    <author>
+      <name>Álex</name>
+    </author>
+  </entry>
   
   <entry>
     <title>Dockerizing Pligg with Fig</title>
@@ -161,22 +177,6 @@ tried to update it but I&rsquo;ve realised that a lot of JS of the site was
 completely broken &amp; instead spend some time fixing it I&rsquo;ve decided to start it
 from scratch with <strong>my own blog site generator written in Golang:
 <a href="http://github.com/agonzalezro/polo">Polo</a></strong>.</p>
-
-    </summary>
-    <author>
-      <name>Álex</name>
-    </author>
-  </entry>
-  
-  <entry>
-    <title>Python and Scala smoke the peace pipe</title>
-    <link href="http://agonzalezro.github.io/python-and-scala-smoke-the-peace-pipe.html" />
-    
-    <updated>2013-05-13 00:00:00 &#43;0000 UTC</updated>
-    
-    <summary>
-      <p>This was my talk on the <a href="http://pygrunn.nl">PyGrunn</a> conference last
-Friday.</p>
 
     </summary>
     <author>

@@ -70,7 +70,7 @@ agonzalezro.github.io
               
               
               <li>
-              <a href="/category/dev.html">dev <span class="badge pull-right">3</span></a>
+              <a href="/category/dev.html">dev <span class="badge pull-right">4</span></a>
               </li>
               
               
@@ -203,6 +203,16 @@ agonzalezro.github.io
               
               
               <li>
+              <a href="/tag/docker.html">docker <span class="badge pull-right">2</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/tag/environment.html">environment <span class="badge pull-right">1</span></a>
+              </li>
+              
+              
+              <li>
               <a href="/tag/flats.html">flats <span class="badge pull-right">1</span></a>
               </li>
               
@@ -224,11 +234,6 @@ agonzalezro.github.io
               
               <li>
               <a href="/tag/scrape.html">scrape <span class="badge pull-right">1</span></a>
-              </li>
-              
-              
-              <li>
-              <a href="/tag/docker.html">docker <span class="badge pull-right">1</span></a>
               </li>
               
               
@@ -557,6 +562,120 @@ agonzalezro.github.io
 
 
 <article>
+<h1><a href="/how-i-prepared-my-mac-to-make-some-docker-development.html">How I prepared my Mac to make some Docker development</a></h1>
+
+<p>
+
+<span class="label label-default">by Álex</span>
+
+
+
+<span class="label label-default">2014-12-01</span>
+
+
+
+<a class="label label-success" href="/category/dev.html">dev</a>
+
+
+
+
+<a class="label label-info" href="/tag/docker.html">docker</a>
+
+<a class="label label-info" href="/tag/environment.html">environment</a>
+
+
+</p>
+
+<p>This post is about <strong>how I did it!</strong> not about a standard way or something like
+that, if you use any other way I would be happy to hear it on the comments.</p>
+
+<p>I usually use <code>boot2docker</code> on my machine to run container, but it looks like
+it was misbehaving a little bit when I was trying to create the binary of my
+dev branch with:</p>
+
+<pre><code>$ make binary
+</code></pre>
+
+<p>Actually, it was just not creating it.</p>
+
+<p>I could also create some cross-compiled binaries but that didn&rsquo;t work either.
+It was a really weird situation because I couldn&rsquo;t find the path that it was
+saying that it was creating. Not in my machine, not in my boot2docker VM
+either. So, after some frustrating time I decided to go with vagrant.</p>
+
+<h2>What I wanted?</h2>
+
+<ul>
+<li>My vim! I couldn&rsquo;t live without that.</li>
+<li>My ssh keys for github and similar without copying them to the vagrant box.</li>
+</ul>
+
+<h2>How I did it?</h2>
+
+<h3>vagrant</h3>
+
+<p>It was a simple process after you have clear what you really want to do:</p>
+
+<pre><code>$ cd myawesomebox
+$ vagrant init  # Edit the file if you want more memory or similar
+$ git clone git@github.com:YOUR_USERNAME/docker
+$ vagrant ssh
+$ sudo su -
+</code></pre>
+
+<p>What we did there? We have created a <code>Vagrantfile</code> and we clone the repo in the
+same folder. Thanks to that when we are inside the vagrant box (with <code>vagrant
+ssh</code>) we will be able to access to it on the path <code>/vagrant</code> of your box.</p>
+
+<p>The advantage of this approach is that you can access to all the docker code
+from your host machine in the path <code>myawesomebox</code> so you will not need to copy
+any key, any conf or anything like that.</p>
+
+<h3>docker</h3>
+
+<p>Now it&rsquo;s time to update your docker server and create your on docker client
+(remember that we are logged in as root on that box):</p>
+
+<pre><code># cd /vagrant/docker
+# make build&amp;&amp;make binary
+# service docker stop
+# cp bundles/1.3.2-dev/binary/docker-1.3.2-dev /usr/bin/docker
+# service docker start
+</code></pre>
+
+<p>Where <code>1.3.2</code> is the  current version at the time of writing &amp;
+<code>/usr/bin/docker</code> is your old docker server binary.</p>
+
+<p>Now you are running a new server, but where is the client?! Easy peasy, on the
+same place that the server was originally:</p>
+
+<pre><code># bundles/1.3.2-dev/binary/docker
+...
+</code></pre>
+
+<p>I usually alias it to the letter <code>d</code> to access to it quicker without moving
+stuff around:</p>
+
+<pre><code># alias d=&quot;`pwd`/bundles/1.3.2-dev/binary/docker&quot;
+</code></pre>
+
+<h2>What&rsquo;s next?</h2>
+
+<p>I would say that develop some nice pull request? Or at least try! It&rsquo;s fun
+anyway :)</p>
+
+<p>I went through all this pain while <a href="http://twitter.com/eloycoto">@eloycoto</a> &amp;
+me were developing a <a href="https://github.com/docker/docker/pull/9415">small PR to show vertical <code>ps</code>
+outputs</a>, so, thanks mate!</p>
+
+<p>If you have any question or you think that my way of doing this stinks, please,
+let me know! I would really, really appreciate it.</p>
+
+<p class="text-right"><a class="btn btn-default" href="/how-i-prepared-my-mac-to-make-some-docker-development.html#disqus_thread">Leave a comment!</a></p>
+</article>
+<hr>
+
+<article>
 <h1><a href="/dockerizing-pligg-with-fig.html">Dockerizing Pligg with Fig</a></h1>
 
 <p>
@@ -817,183 +936,6 @@ flag.</p>
 <p>Easy peasy. So, use it!</p>
 
 <p class="text-right"><a class="btn btn-default" href="/polo-has-his-own-static-server.html#disqus_thread">Leave a comment!</a></p>
-</article>
-<hr>
-
-<article>
-<h1><a href="/draw-your-architecture-with-neo4j.html">Draw (and more) your architecture with Neo4J</a></h1>
-
-<p>
-
-<span class="label label-default">by Álex</span>
-
-
-
-<span class="label label-default">2014-08-26</span>
-
-
-
-<a class="label label-success" href="/category/biz.html">biz</a>
-
-
-
-
-<a class="label label-info" href="/tag/neo4j.html">neo4j</a>
-
-<a class="label label-info" href="/tag/architecture.html">architecture</a>
-
-<a class="label label-info" href="/tag/people.html">people</a>
-
-<a class="label label-info" href="/tag/organization.html">organization</a>
-
-
-</p>
-
-<p>As some of you already know I work at <a href="http://greenmangaming.com">Green Man
-Gaming</a> (mainly at the
-<a href="http://playfire.com">playfire</a> project). We were planning to do some changes
-in our architecture but it&rsquo;s extremely hard to have an idea of all our services
-and DBs in just a piece of A4 paper. I was trying, trust me, but it was
-impossible.</p>
-
-<p>When I started with this task I did it with
-<a href="https://www.lucidchart.com">lucidchart</a>, after it got so messy I moved to
-<a href="http://www.graphviz.org/">graphviz</a>, but even with the usual good graphs that
-I get from graphviz it was impossible to get something readable this time.</p>
-
-<p>So, it happened! I remembered <a href="http://ivan.pedrazas.me/?p=280">this post</a> made
-by my friend Iván and I thought, why not?</p>
-
-<p>Sadly, this post is not going to show any real data from GMG, but if you are
-interested it&rsquo;s the moment to apply because we are hiring &amp; we have the graphs
-around all the whiteboard in the office! Just grab me an email.</p>
-
-<h2>What do I need?</h2>
-
-<p>Basically, you just need Neo4J. You can install it however you want, I&rsquo;ve just
-run a Docker container with it:</p>
-
-<pre><code>docker run -d -p 7474:7474 tpires/neo4j
-</code></pre>
-
-<p>Now, if you access to your docker container at <a href="http://localhost:7474">http://localhost:7474</a> (or using
-the host from <code>boot2docker ip</code> if you run docker with boot2docker) you will see
-the cypher shell which is one of the ways that you can use to interact with
-your DB.</p>
-
-<h2>What I am going to draw?</h2>
-
-<p>In my case, and for a POC, I&rsquo;ve written the following entities:</p>
-
-<ul>
-<li>Person</li>
-<li>Technology</li>
-<li>Service</li>
-</ul>
-
-<p>You could write some other entities as for example DBs.</p>
-
-<p>The connections here are kinda clear: a person knows a technology which is
-used to write a service that use a DB as backend, so, let&rsquo;s write it!</p>
-
-<p>To create entities the syntax is as follow:</p>
-
-<pre><code>CREATE (variable:Type{attributes})
-</code></pre>
-
-<p>And to create Relations (one of the ways):</p>
-
-<pre><code>CREATE (variable1)-[:RELATION_NAME]-&gt;(variable2)
-</code></pre>
-
-<p>You will understand this better after we start creating our entities.</p>
-
-<p>Create your engineers:</p>
-
-<pre><code>CREATE
-  (dev1:Person{name:&quot;Alex&quot;}),
-  (dev2:Person{name:&quot;Maria&quot;}),
-  (dev3:Person{name:&quot;Pepe&quot;}),
-</code></pre>
-
-<p>Before the : you can see that we have defined a variable to refer to this
-just-created entities. All the nodes that we are creating here are of type
-Person and each of them have a different name.</p>
-
-<p>To create the relationships between Technology and Person, we define the
-technology using the same method that we used to create the Person, but we add
-the relationships:</p>
-
-<pre><code>...
-  (python:Technology{name:&quot;Python&quot;}),
-  (go:Technology{name:&quot;Go&quot;}),
-
-  (dev1)-[:KNOWS]-&gt;(python),
-  (dev1)-[:KNOWS]-&gt;(go),
-  (dev2)-[:KNOWS]-&gt;(python),
-  (dev3)-[:KNOWS]-&gt;(go),
-</code></pre>
-
-<p>And finally, we add our services:</p>
-
-<pre><code>...
-  (service1:Service{name:&quot;Service #1&quot;}),
-  (service2:Service{name:&quot;Service #2&quot;}),
-
-  (service1)-[:CONNECTS]-&gt;(service2),
-  (service1)-[:WRITTEN_WITH]-&gt;(go),
-  (service2)-[:WRITTEN_WITH]-&gt;(python)
-</code></pre>
-
-<h2>Querying for drawing</h2>
-
-<p>Now, you can run all the script and we can see the result. For the first output
-we are going just to show everything:</p>
-
-<pre><code>MATCH (n)-[r]-() RETURN n, r
-</code></pre>
-
-<p>And you will get this!</p>
-
-<p><img src="static/biz/neo4j_architecture/1.png" alt="Cypher MATCH #1">
-</p>
-
-<p>So, what&rsquo;s the point of all this? Basically, that you can do queries that will
-make the graph smaller for your needs. This example data that we have added is
-quite small (just few nodes), in the real graph that I am working on we have
-already few dozens. For example, imagine that you just want to see python
-related information:</p>
-
-<pre><code>MATCH (a)-[r]-() WHERE a.name=&quot;Python&quot; RETURN a, r
-</code></pre>
-
-<p><img src="static/biz/neo4j_architecture/2.png" alt="Cypher MATCH #2">
-</p>
-
-<p>Or you just want to see the people that can work with the Server #1</p>
-
-<pre><code>MATCH (s:Service)-[r]-()-[r2:KNOWS]-(p:Person)
-WHERE s.name=&quot;Service #1&quot; RETURN s, p
-</code></pre>
-
-<p><img src="static/biz/neo4j_architecture/3.png" alt="Cypher MATCH #2">
-</p>
-
-<h2>One more thing</h2>
-
-<p>For now, this project in my company is just a POC and I have not really clear
-what attributes and entities I should draw to make this graph useful for the
-present and for the future. If you have previous experiences or you want to
-start a brainstorming, write on the comments or <a href="http://twitter.com/agonzalezro">find me at
-twitter</a>.</p>
-
-<p>Also, for now I am happy with just creating some screenshots from the data that
-Cypher is showing to me, but it would be really nice to find a more
-professional way of sharing this graphs. Cypher renders them with D3, so, I
-don&rsquo;t fully understand why it doesn&rsquo;t support exporting them in a easy way.
-Again, if you know something, just let me know.</p>
-
-<p class="text-right"><a class="btn btn-default" href="/draw-your-architecture-with-neo4j.html#disqus_thread">Leave a comment!</a></p>
 </article>
 <hr>
 

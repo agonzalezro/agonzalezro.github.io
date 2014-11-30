@@ -70,7 +70,7 @@ agonzalezro.github.io
               
               
               <li>
-              <a href="/category/dev.html">dev <span class="badge pull-right">3</span></a>
+              <a href="/category/dev.html">dev <span class="badge pull-right">4</span></a>
               </li>
               
               
@@ -203,6 +203,16 @@ agonzalezro.github.io
               
               
               <li>
+              <a href="/tag/docker.html">docker <span class="badge pull-right">2</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/tag/environment.html">environment <span class="badge pull-right">1</span></a>
+              </li>
+              
+              
+              <li>
               <a href="/tag/flats.html">flats <span class="badge pull-right">1</span></a>
               </li>
               
@@ -224,11 +234,6 @@ agonzalezro.github.io
               
               <li>
               <a href="/tag/scrape.html">scrape <span class="badge pull-right">1</span></a>
-              </li>
-              
-              
-              <li>
-              <a href="/tag/docker.html">docker <span class="badge pull-right">1</span></a>
               </li>
               
               
@@ -555,6 +560,158 @@ agonzalezro.github.io
       
 
 
+
+<article>
+<h1><a href="/graphite-carbon-and-diamond.html">Graphite, Carbon and Diamond</a></h1>
+
+<p>
+
+<span class="label label-default">by Álex</span>
+
+
+
+<span class="label label-default">2012-11-06 19:30</span>
+
+
+
+<a class="label label-success" href="/category/talks.html">talks</a>
+
+
+
+
+<a class="label label-info" href="/tag/graphite.html">graphite</a>
+
+<a class="label label-info" href="/tag/carbon.html">carbon</a>
+
+<a class="label label-info" href="/tag/diamond.html">diamond</a>
+
+<a class="label label-info" href="/tag/monitoring.html">monitoring</a>
+
+<a class="label label-info" href="/tag/python.html">python</a>
+
+<a class="label label-info" href="/tag/pygrunn.html">pygrunn</a>
+
+
+</p>
+
+<p>Two days ago was my, sadly, last PyGrunn monthly meeting. Thanks to
+<a href="http://www.linkedin.com/profile/view?id=17961952&amp;locale=en_US&amp;trk=tyah">Bram</a>
+now we know a little bit more about how to monitoring with Python
+applications.</p>
+
+<p>Below you will find the notes that I take to the people that couldn&rsquo;t
+assist to the talk. But they are only that, some notes, don&rsquo;t expect to
+find a really cool story on them. I am pretty sure that <a href="/graphite.slides/graphite.html">the original
+slides made by Bram</a> will help you.</p>
+
+<h2>Why graphite?</h2>
+
+<ul>
+<li>Dev friendly</li>
+<li>Ops friendly</li>
+<li>Growth friendly: very scalable</li>
+</ul>
+
+<p>Some important companies are using it: Instragram, Etsy, Github,
+<a href="http://www.kalooga.com">Kalooga</a> (this is the company where Bram is
+working :).</p>
+
+<p>It&rsquo;s a project created by <a href="orbitz.com">Orbitz.com</a>.</p>
+
+<h2>Ecosystem</h2>
+
+<p>Graphite
+:   The tool that makes the graphs.</p>
+
+<p>Carbon
+:   Colects the statistics.</p>
+
+<p>Whisper
+:   Metrics RRD (Round Robin database).</p>
+
+<p>Diamond
+:   It&rsquo;s the metrics collector, they are others: CollectD, Munin,
+    Ganglia&hellip; Of course, you can develop yours.</p>
+
+<h2>How do you gate the data in?</h2>
+
+<ol>
+<li>Create an HTTP connection to the server.</li>
+<li>Each line will be a data point.</li>
+</ol>
+
+<p>If you want namespaces you can always use dots .. Example: pygrunn.load
+[load] [now].</p>
+
+<h2>Improvements</h2>
+
+<p>Why don&rsquo;t use statsd? It&rsquo;s a layer for Graphite that you can use to keep
+your application running and send the data to statsd. If it can write it
+ok, if not, you have a problem.</p>
+
+<p>The original implementation of StatsD is in Node.js but there are
+another projects that do it with C (StatsD-c) or python (Bucky) or
+-write your prefered language here-.</p>
+
+<h2>Uses</h2>
+
+<ul>
+<li>Open a dev file and write directly to it.</li>
+<li>Open HTTP connection.</li>
+<li>Use a statsd decorator.</li>
+<li>&hellip;</li>
+</ul>
+
+<h2>Plots</h2>
+
+<p>You can plot data with:</p>
+
+<ul>
+<li>JSON</li>
+<li>CSV</li>
+<li>HTML</li>
+<li>XML</li>
+<li>&hellip;</li>
+</ul>
+
+<h2>API</h2>
+
+<p>You can do funny things as:</p>
+
+<ul>
+<li>Check the registered users over past day in json data</li>
+<li>Keep track of your 404 errors</li>
+<li>&hellip;</li>
+</ul>
+
+<h2>Where is the data store?</h2>
+
+<p>They are stored in files, in case that you run out of space this data
+will be stored on the Carbon cache until something happen to it.a</p>
+
+<h2>Functions</h2>
+
+<p>You can filter results, for example mostDeviant (take a look to the
+slides to see the screenshots that show the use).</p>
+
+<h2>What&rsquo;s also nice?</h2>
+
+<p>Sentry
+:   Error caching middleware that you can run with your WSGI application
+    to check the Exceptions and the stacktraces.</p>
+
+<p>Shinken
+:   It&rsquo;s also written in python and it&rsquo;s compatible with Nagios. It
+    could be a good complement to Graphite to show some alerts when the
+    thing are really wrong.</p>
+
+<p>New Relic
+:   It&rsquo;s a Web Application Performance Management (APM (Application
+    Performance Management).</p>
+
+<p class="text-right"><a class="btn btn-default" href="/graphite-carbon-and-diamond.html#disqus_thread">Leave a comment!</a></p>
+</article>
+<hr>
 
 <article>
 <h1><a href="/backbonejs-underscore-small-intro.html">backbone.js &#43; underscore: small intro</a></h1>
@@ -890,89 +1047,6 @@ in the shell when you start to type? Of course&hellip; this hide files isn&rsquo
 for p0rn, they are my personal documents only.</p>
 
 <p class="text-right"><a class="btn btn-default" href="/im-starting-to-hate-gnome-3.html#disqus_thread">Leave a comment!</a></p>
-</article>
-<hr>
-
-<article>
-<h1><a href="/how-to-install-gnome-3-instead-of-unity-on-ubuntu-1104.html">How-to install GNOME 3 instead of Unity on Ubuntu 11.04</a></h1>
-
-<p>
-
-<span class="label label-default">by Álex</span>
-
-
-
-<span class="label label-default">2011-06-08 18:28</span>
-
-
-
-<a class="label label-success" href="/category/gnome.html">gnome</a>
-
-
-
-
-<a class="label label-info" href="/tag/unity.html">unity</a>
-
-<a class="label label-info" href="/tag/gnome3.html">gnome3</a>
-
-<a class="label label-info" href="/tag/desktop.html">desktop</a>
-
-<a class="label label-info" href="/tag/ubuntu.html">ubuntu</a>
-
-<a class="label label-info" href="/tag/gnome.html">gnome</a>
-
-
-</p>
-
-<p>I don&rsquo;t have anything against Unity, but sometimes I want to test, and
-this is one of this times.</p>
-
-<p>I don&rsquo;t know the reason (or perhaps I do), but install GNOME 3 on a
-ubuntu system isn&rsquo;t as easy as it must be.</p>
-
-<p>First of all we need to add the GNOME 3 repos, so, in a console (Alt+F2
-and then write gnome-terminal) you must write:</p>
-
-<pre><code>sudo add-apt-repository ppa:gnome3-team/gnome3
-</code></pre>
-
-<p>Then, we must update our system and install the gnome shell:</p>
-
-<pre><code>sudo apt-get updatesudo apt-get dist-upgradesudo apt-get install gnome-shell
-</code></pre>
-
-<p>After that, sometimes we have problems with the themes (you can reboot
-to test it, but I recommend you to follow this steps), so, we must
-remove the accesibility themes and install the new ones (and another
-program that we will need after that):</p>
-
-<pre><code>sudo apt-get remove gnome-accessibility-themessudo apt-get install gnome-themes-standard gnome-tweak-tool
-</code></pre>
-
-<p>Well&hellip; now, you can reboot your system and login with GNOME selected as
-session. You will see your new GNOME 3, but, we must tweak it, for this,
-you can push Alt+F2 and write:</p>
-
-<pre><code>gnome-tweak-tool
-</code></pre>
-
-<p>I recommend you to have this themes configuration (you can change the
-icons if you like) and activate the option on the first tab called &ldquo;Have
-file manager handle the desktop&rdquo;:</p>
-
-<p><img src="static/tweak_tool.png" alt="image">
-</p>
-
-<p>Good luck! And if you have any trouble, please, feel free to ask me in
-the comments!</p>
-
-<p>PS: <a href="http://twitter.com/marioquartz">@marioquartz</a> wants to see the
-result, so here it is (click to enlarge)!</p>
-
-<p><img src="static/gnome3_desktop.png" alt="image">
-</p>
-
-<p class="text-right"><a class="btn btn-default" href="/how-to-install-gnome-3-instead-of-unity-on-ubuntu-1104.html#disqus_thread">Leave a comment!</a></p>
 </article>
 <hr>
 

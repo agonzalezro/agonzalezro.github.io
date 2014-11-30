@@ -70,7 +70,7 @@ agonzalezro.github.io
               
               
               <li>
-              <a href="/category/dev.html">dev <span class="badge pull-right">3</span></a>
+              <a href="/category/dev.html">dev <span class="badge pull-right">4</span></a>
               </li>
               
               
@@ -203,6 +203,16 @@ agonzalezro.github.io
               
               
               <li>
+              <a href="/tag/docker.html">docker <span class="badge pull-right">2</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/tag/environment.html">environment <span class="badge pull-right">1</span></a>
+              </li>
+              
+              
+              <li>
               <a href="/tag/flats.html">flats <span class="badge pull-right">1</span></a>
               </li>
               
@@ -224,11 +234,6 @@ agonzalezro.github.io
               
               <li>
               <a href="/tag/scrape.html">scrape <span class="badge pull-right">1</span></a>
-              </li>
-              
-              
-              <li>
-              <a href="/tag/docker.html">docker <span class="badge pull-right">1</span></a>
               </li>
               
               
@@ -557,6 +562,69 @@ agonzalezro.github.io
 
 
 <article>
+<h1><a href="/tailing-multiple-logs-with-tmux.html">Tailing multiple logs with tmux</a></h1>
+
+<p>
+
+<span class="label label-default">by Álex</span>
+
+
+
+<span class="label label-default">2014-03-15</span>
+
+
+
+<a class="label label-success" href="/category/devop.html">devop</a>
+
+
+
+
+<a class="label label-info" href="/tag/tail.html">tail</a>
+
+<a class="label label-info" href="/tag/tmux.html">tmux</a>
+
+
+</p>
+
+<p>I had a system that was creating a different log for each worker. Those logs
+where in the form: <code>/var/log/baselog</code>, <code>/var/log/baselog.1</code>,
+<code>/var/log/baselog.2</code> and so on. I wanted to tail them but they were being
+updated simultaneously so the output of the tail was being a mess.</p>
+
+<p>I am a <a href="http://tmux.sourceforge.net/">tmux</a> user since few months ago (if you
+aren&rsquo;t, you should!) so I&rsquo;ve decide to open all of them in different tmux
+panes. Thanks to having a pane for every log what we will achieve is the
+ability to scroll just one of them, maximize it in case that we need it, move
+to a new window, save the buffer&hellip;</p>
+
+<p>How can you achieve that? Quite simple, just download this script to some
+place:</p>
+
+<script src="https://gist.github.com/agonzalezro/9573541.js"></script>
+
+<p>Once you have saved it installed, run it with the base log file:</p>
+
+<pre><code>sh tail_several_logs.sh /var/log/baselog
+</code></pre>
+
+<p>The script have some limitations easily fixable:</p>
+
+<ul>
+<li>You should provide a fullpath.</li>
+<li>The logs should be in the form of baselog.N where N is a number.</li>
+<li>I am pretty sure that the loop can be done better.</li>
+<li>And select the layout in every iteration is not the best of the ideas, but it
+works.</li>
+</ul>
+
+<p>Feel free of do whatever you want with the script. I just hope that it&rsquo;s useful
+for somebody else.</p>
+
+<p class="text-right"><a class="btn btn-default" href="/tailing-multiple-logs-with-tmux.html#disqus_thread">Leave a comment!</a></p>
+</article>
+<hr>
+
+<article>
 <h1><a href="/hi-all-from-my-new-blog-engine.html">Hi all from my new blog engine!</a></h1>
 
 <p>
@@ -769,60 +837,6 @@ check my English) and I will upload the slides too!</p>
 <p>Thanks to <a href="http://www.pygrunn.org">PyGrunn</a> for give me this chance!</p>
 
 <p class="text-right"><a class="btn btn-default" href="/here-i-go-pygrunn13.html#disqus_thread">Leave a comment!</a></p>
-</article>
-<hr>
-
-<article>
-<h1><a href="/changes-on-the-blog.html">Changes on the blog</a></h1>
-
-<p>
-
-<span class="label label-default">by Álex</span>
-
-
-
-<span class="label label-default">2013-03-20 00:48</span>
-
-
-
-<a class="label label-success" href="/category/blog.html">blog</a>
-
-
-
-
-<a class="label label-info" href="/tag/theme.html">theme</a>
-
-<a class="label label-info" href="/tag/readable.html">readable</a>
-
-<a class="label label-info" href="/tag/layout.html">layout</a>
-
-
-</p>
-
-<p>One of the problems that I always have when I start trying to blog
-something is that I get bored very quick of writing and I focus in other
-things like CMS, CSS or this kind of things that really doesn&rsquo;t matter
-if you have good content.</p>
-
-<p>Today was one of those day when I got bored about it and I decided to
-make some changes:</p>
-
-<ul>
-<li>The theme is <a href="http://bootswatch.com/readable">readable</a> instead
-<a href="http://bootswatch.com/journal">journal</a>.</li>
-<li>I&rsquo;ve added a <a href="http://twitter.com/agonzalezro">twitter</a> widget
-because I post half of my life there :D</li>
-<li>I don&rsquo;t post so often, so I decided that the pagination was not
-really needed and instead that I am showing a column with 16 old
-post. If you look for a tag you will find this column too, but just
-for the post on that tag.</li>
-</ul>
-
-<p>I hope that you enjoy the changes, and if you are a master of the
-design, please, help me! :D You can find all the <a href="http://github.com/agonzalezro/agonzalezro.github.com">source code of the
-blog here</a>!</p>
-
-<p class="text-right"><a class="btn btn-default" href="/changes-on-the-blog.html#disqus_thread">Leave a comment!</a></p>
 </article>
 <hr>
 
