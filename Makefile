@@ -6,7 +6,7 @@ clean:
 	rm -rf -- *.html pages feeds tag tags category
 
 html:
-	polo
+	polo content .
 
 server:
 	polo -daemon

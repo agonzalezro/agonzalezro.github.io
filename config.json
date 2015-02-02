@@ -6,9 +6,9 @@
 
   "showArchive": true,
   "showCategories": true,
-  "showTags": true,
+  "showTags": false,
 
-  "paginationSize": 4,
+  "paginationSize": 1024,
 
   "disqusSitename": "agonzalezro",
   "googleAnalyticsId": "UA-35984509-1",
