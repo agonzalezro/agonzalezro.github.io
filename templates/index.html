@@ -8,14 +8,13 @@
 {{range $_, $article := .Articles}}
 <article>
 <p>
-      <a href="{{$article.Slug}}">{{$article.Title}}</a>
-
-      {{if $article.Tags}}
-      {{range $_, $tag := $article.Tags}}
-      <a class="label label-default pull-right" href="/tag/{{$tag}}.html">{{$tag}}</a><span class="pull-right">&nbsp;</span>
-      {{end}}
-      {{end}}
-      </p>
+  <a href="{{$article.Slug}}">{{$article.Title}}</a>
+  {{if $article.Tags}}
+  {{range $_, $tag := $article.Tags}}
+    <a class="label label-default pull-right" href="/tag/{{$tag}}.html">{{$tag}}</a><span class="pull-right">&nbsp;</span>
+  {{end}}
+  {{end}}
+</p>
 </article>
 <hr>
 {{end}}

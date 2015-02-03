@@ -36,7 +36,7 @@
           </button>
           <a class="navbar-brand" href="/">{{.Site.Config.Title}}</a>
         </div>
-        {{if or .Site.Pages (and .Site.Tags .Site.Config.ShowTags) (and .Site.Categories .Site.Config.ShowCategories) (and .Site.Articles .Site.Config.ShowArchive)}}
+        {{if or (and .Site.Categories .Site.Config.ShowCategories) (and .Site.Articles .Site.Config.ShowArchive)}}
         <div class="navbar-collapse collapse">
           {{if or .Site.Pages (and .Site.Articles .Site.Config.ShowArchive)}}
           <ul class="nav navbar-nav">
@@ -48,7 +48,7 @@
             {{end}}
           </ul>
           {{ end }}
-          {{if or (and .Site.Categories .Site.Config.ShowCategories) (and .Site.Tags .Site.Config.ShowTags)}}
+          {{if and .Site.Categories .Site.Config.ShowCategories}}
           <ul class="nav navbar-nav navbar-right">
             {{if and .Site.Categories .Site.Config.ShowCategories}}
             <li class="dropdown">
@@ -63,20 +63,7 @@
             </ul>
             </li>
             {{end}}
-            {{if and .Site.Tags .Site.Config.ShowTags}}
-            <li class="dropdown">
-            <a href="#" data-toggle="dropdown">Tags <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              {{range $_, $tag := .Site.Tags}}
-              {{$articles := $.ArticlesByTag $tag}}
-              <li>
-              <a href="/tag/{{$tag}}.html">{{$tag}} <span class="badge pull-right">{{len $articles}}</span></a>
-              </li>
-              {{end}}
-            </ul>
-            </li>
-            {{end}}
-          </ul>
+           </ul>
           {{end}}
         </div>
         {{end}}

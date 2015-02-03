@@ -6,7 +6,7 @@
 
   "showArchive": true,
   "showCategories": true,
-  "showTags": false,
+  "showTags": true,
 
   "paginationSize": 1024,
 
