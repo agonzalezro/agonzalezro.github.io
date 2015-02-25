@@ -3,9 +3,30 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Álex Go{,nzález}</title>
   <link href="http://agonzalezro.github.io" />
-  <updated>2015-02-03T00:44:36Z</updated>
+  <updated>2015-02-25T13:23:11Z</updated>
 
   
+  
+  <entry>
+    <title>Graph your meetup.com group with Neo4J and some Go</title>
+    <link href="http://agonzalezro.github.io/graph-your-meetupcom-group-with-neo4j-and-some-go.html" />
+    
+    <updated>2015-02-25 00:00:00 &#43;0000 UTC</updated>
+    
+    <summary>
+      <p>Last days I&rsquo;ve been spending sometime in a small project for fun. Sadly I
+couldn&rsquo;t do <a href="https://twitter.com/agonzalezro/status/567823851791589376">anything for
+production</a> so I
+hacked <a href="https://github.com/agonzalezro/gotagmee">gotagmee</a> which is a tiny
+thingy that will created some goroutines to get all the members in a
+<a href="http://meetup.com">meetup.com</a> group with their interests and store them in a
+Neo4J DB as <code>Member</code> or <code>Topic</code> entities with their respective relations.</p>
+
+    </summary>
+    <author>
+      <name>Álex</name>
+    </author>
+  </entry>
   
   <entry>
     <title>How I prepared my Mac to make some Docker development</title>
@@ -158,25 +179,6 @@ practices (and advices) when you are programming in Go.</p>
 where in the form: <code>/var/log/baselog</code>, <code>/var/log/baselog.1</code>,
 <code>/var/log/baselog.2</code> and so on. I wanted to tail them but they were being
 updated simultaneously so the output of the tail was being a mess.</p>
-
-    </summary>
-    <author>
-      <name>Álex</name>
-    </author>
-  </entry>
-  
-  <entry>
-    <title>Hi all from my new blog engine!</title>
-    <link href="http://agonzalezro.github.io/hi-all-from-my-new-blog-engine.html" />
-    
-    <updated>2014-02-23 00:00:00 &#43;0000 UTC</updated>
-    
-    <summary>
-      <p>After a really, really long time I am finally updating my old blog. Time ago I
-tried to update it but I&rsquo;ve realised that a lot of JS of the site was
-completely broken &amp; instead spend some time fixing it I&rsquo;ve decided to start it
-from scratch with <strong>my own blog site generator written in Golang:
-<a href="http://github.com/agonzalezro/polo">Polo</a></strong>.</p>
 
     </summary>
     <author>

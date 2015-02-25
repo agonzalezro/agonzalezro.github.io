@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>
-Python and Scala smoke the peace pipe | Álex Go{,nzález}
+Graph your meetup.com group with Neo4J and some Go | Álex Go{,nzález}
 </title>
 
     <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
@@ -119,7 +119,7 @@ Python and Scala smoke the peace pipe | Álex Go{,nzález}
 
     <div class="container col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
       
-<h1>Python and Scala smoke the peace pipe</h1>
+<h1>Graph your meetup.com group with Neo4J and some Go</h1>
 
 <p>
 
@@ -127,56 +127,144 @@ Python and Scala smoke the peace pipe | Álex Go{,nzález}
 
 
 
-<span class="label label-info">2013-05-13</span>
+<span class="label label-info">2015-02-25</span>
 
 
 
-<a class="label label-info" href="/category/talks.html">talks</a>
+<a class="label label-info" href="/category/dev.html">dev</a>
 
 
 
 
-<a class="label label-default" href="/tag/pygrunn.html">pygrunn</a>
+<a class="label label-default" href="/tag/neo4j.html">neo4j</a>
 
-<a class="label label-default" href="/tag/talk.html">talk</a>
+<a class="label label-default" href="/tag/meetup.com.html">meetup.com</a>
 
-<a class="label label-default" href="/tag/apache.html">apache</a>
-
-<a class="label label-default" href="/tag/thrift.html">thrift</a>
-
-<a class="label label-default" href="/tag/python.html">python</a>
-
-<a class="label label-default" href="/tag/scala.html">scala</a>
+<a class="label label-default" href="/tag/go.html">go</a>
 
 
 </p>
 
-<p>This was my talk on the <a href="http://pygrunn.nl">PyGrunn</a> conference last
-Friday.</p>
+<p>Last days I&rsquo;ve been spending sometime in a small project for fun. Sadly I
+couldn&rsquo;t do <a href="https://twitter.com/agonzalezro/status/567823851791589376">anything for
+production</a> so I
+hacked <a href="https://github.com/agonzalezro/gotagmee">gotagmee</a> which is a tiny
+thingy that will created some goroutines to get all the members in a
+<a href="http://meetup.com">meetup.com</a> group with their interests and store them in a
+Neo4J DB as <code>Member</code> or <code>Topic</code> entities with their respective relations.</p>
 
-<p>I was explaining how can you communicate services written in different
-languages using <a href="http://thrift.apache.org/">Apache Thrift</a> for that.</p>
+<p>I wrote this because I wanted to get the data,  but then I realised that this
+piece of code is pretty neat (check the github repo for the original):</p>
 
-<p>In few days the videos will be available, but TBH, I don&rsquo;t really know
-if I will publish it here. It was not the first time that I talk in
-public using English, but it will be the first time that it is
-recorded&hellip; I don&rsquo;t really know if I want to see that! :D</p>
+<pre><code>membersChan := make(chan db.Member, 1)
+go api.Members(membersChan)
 
-<p>I really need to improve my speed talking for the next time. I thought
-that I will not have enough time to explain all, so, my subconscious
-decided that I should be talking as a machine gun.</p>
+db, _ := db.NewDB(*neo4jDB)
 
-<p>Below, you will find the slides, if not, <a href="https://speakerdeck.com/agonzalezro/python-and-scala-smoke-the-peace-pipe">try this
-link</a>.</p>
+for m := range membersChan {
+    db.Store(m)
+}
+</code></pre>
 
-<script async class="speakerdeck-embed" data-id="398a32709de70130aa882eefb3b6c3d2" data-ratio="1.6" src="//speakerdeck.com/assets/embed.js"></script>
+<p>Basically I am creating a channel that is going to be used to receive the
+members (1 by 1) whenever one of the subroutines scraping the API have one
+ready. Perhaps there are better ways to do it, but I really like it :)</p>
 
-<p>PS: you can find the source code of the slides here
-<a href="https://github.com/agonzalezro/slides/tree/master/thrift">[1]</a> &amp; the
-source code of the demo here
-<a href="https://github.com/agonzalezro/thriftest">[2]</a>.</p>
+<p>Let&rsquo;s go to the important part: <code>**the data**</code>. I&rsquo;ve used the code to extract
+the data of the meetup that I co-organize here at London, the <a href="http://www.meetup.com/Go-London-User-Group">Go London User
+Group</a> if you are interested, I
+could share with you a dump. For this example I was just interested in the
+users and topics, but if you want, change it to get more data:
+<a href="http://www.meetup.com/meetup_api/docs/2/members/">http://www.meetup.com/meetup_api/docs/2/members/</a></p>
 
-<p>Enjoy them!</p>
+<p>We knew this already, but how many users do we have, easy peasy:</p>
+
+<pre><code>neo4j-sh (?)$ match (n:Member) return count(n);
++----------+
+| count(n) |
++----------+
+| 671      |
++----------+
+1 row
+27 ms
+</code></pre>
+
+<p>But perhaps the number of topic that our users follow is not (was not) as easy
+to know:</p>
+
+<pre><code>neo4j-sh (?)$ match (n:Topic) return count(n);
++----------+
+| count(n) |
++----------+
+| 1204     |
++----------+
+1 row
+30 ms
+</code></pre>
+
+<p>I know that I am part of that meeting, what do I &ldquo;like&rdquo;:</p>
+
+<pre><code>neo4j-sh (?)$ match (n)-[]-(t) where n.name =~ &quot;Alexandre.*&quot; return count(t);
++----------+
+| count(t) |
++----------+
+| 17       |
++----------+
+1 row
+255 ms
+</code></pre>
+
+<p>I think that I didn&rsquo;t impress anybody until here, but one of the ideas behind
+graph DBs is easily find connections between entities, for example what do I
+have in common with my friend <a href="http://twitter.com/ipedrazas">@ipedrazas</a>? I
+know that he likes beers as me, but I am talking about meetup.com relations,
+let&rsquo;s see!</p>
+
+<pre><code>neo4j-sh (?)$ match (n)-[]-(t:Topic)-[]-(m) where n.name =~ &quot;Alexandre.*&quot; and m.name =~ &quot;Ivan Pedrazas&quot; return t.name;
++----------------------+
+| t.name               |
++----------------------+
+| &quot;Open Source&quot;        |
+| &quot;Programming&quot;        |
+| &quot;Mobile Development&quot; |
+| &quot;golang&quot;             |
++----------------------+
+4 rows
+91 ms
+</code></pre>
+
+<p>Nice! But if you want to do it beautiful for your boss, you could as well use Cypher:</p>
+
+<p><style>img[alt=meetup_neo4j_example] { width: 75%; display: block; margin: auto; }</style>
+<img src="static/dev/meetup_neo4j_example.png" alt="meetup_neo4j_example">
+</p>
+
+<p>Now imagine that I want to target the interest of my group by the things that
+they like more, which ones are those?</p>
+
+<pre><code>neo4j-sh (?)$ match ()-[r]-&gt;(t:Topic) with t, count(r) as rel return t.name order by rel desc limit 10;
++------------------------+
+| t.name                 |
++------------------------+
+| &quot;Programming&quot;          |
+| &quot;Software Development&quot; |
+| &quot;Open Source&quot;          |
+| &quot;New Technology&quot;       |
+| &quot;Technology&quot;           |
+| &quot;Web Development&quot;      |
+| &quot;Startup Businesses&quot;   |
+| &quot;Big Data&quot;             |
+| &quot;Cloud Computing&quot;      |
+| &quot;Internet Startups&quot;    |
++------------------------+
+10 rows
+99 ms
+</code></pre>
+
+<p>They were kinda clear for this kind of geeky meetup :)</p>
+
+<p>Hope that you enjoyed, and if you have any more question or queries for the data,
+ping me here or at <a href="http://twitter.com/agonzalezro">@agonzalezro</a>.</p>
 
 
 
@@ -200,7 +288,7 @@ source code of the demo here
   var disqus_shortname = 'agonzalezro';
   
   
-  var disqus_identifier = '\/python-and-scala-smoke-the-peace-pipe.html';
+  var disqus_identifier = '\/graph-your-meetupcom-group-with-neo4j-and-some-go.html';
 
   (function() {
     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
