@@ -30,7 +30,7 @@ Basically I am creating a channel that is going to be used to receive the
 members (1 by 1) whenever one of the subroutines scraping the API have one
 ready. Perhaps there are better ways to do it, but I really like it :)
 
-Let's go to the important part: `**the data**`. I've used the code to extract
+Let's go to the important part: **the data**. I've used the code to extract
 the data of the meetup that I co-organize here at London, the [Go London User
 Group](http://www.meetup.com/Go-London-User-Group) if you are interested, I
 could share with you a dump. For this example I was just interested in the
