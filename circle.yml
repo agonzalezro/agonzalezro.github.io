@@ -1,0 +1,19 @@
+dependencies:
+  override:
+    - go get github.com/agonzalezro/polo
+    - git config --global user.email "agonzalezro@gmail.com"
+    - git config --global user.name "Alexandre González"
+
+test:
+  override:
+    - echo "Please CircleCI, stop sending me emails."
+
+deployment:
+  master:
+    branch: polo
+    commands:
+      - polo content .
+      - rm -rf Makefile config.json content templates
+      - git add -A .
+      - git commit -m 'Site generation from CircleCI'
+      - git push origin HEAD:master -f
