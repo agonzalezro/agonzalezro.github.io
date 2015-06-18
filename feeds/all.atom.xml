@@ -3,9 +3,27 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Álex Go{,nzález}</title>
   <link href="http://agonzalezro.github.io" />
-  <updated>2015-04-18T17:03:34&#43;01:00</updated>
+  <updated>2015-06-18T18:52:16&#43;01:00</updated>
 
   
+  
+  <entry>
+    <title>IoT hackathon with Intel Edison and Go</title>
+    <link href="http://agonzalezro.github.io/iot-hackathon-with-intel-edison-and-go.html" />
+    
+    <updated>2015-06-18 00:00:00 &#43;0000 UTC</updated>
+    
+    <summary>
+      <p>I spent last weekend in a hackathon organised by Intel to show their Intel
+Edison platform. I can just say that it was awesome, the quality of the
+projects, the pizes, the food, the freebies (yes, they gave us an Intel
+Edison)&hellip;</p>
+
+    </summary>
+    <author>
+      <name>Álex</name>
+    </author>
+  </entry>
   
   <entry>
     <title>The well deserved Golang UK conference is here</title>
@@ -161,24 +179,6 @@ current theme is not the one that it used to be. I&rsquo;ve created a theming
 &ldquo;engine&rdquo; for <a href="https://github.com/agonzalezro/polo">polo</a> and for doing the
 showcase of the functionality I&rsquo;ve chosen the awesome
 <a href="https://github.com/kristopolous/BOOTSTRA.386">BOOTSTRAP/386</a> theme.</p>
-
-    </summary>
-    <author>
-      <name>Álex</name>
-    </author>
-  </entry>
-  
-  <entry>
-    <title>12 Go Best Practices</title>
-    <link href="http://agonzalezro.github.io/12-go-best-practices.html" />
-    
-    <updated>2014-04-02 00:00:00 &#43;0000 UTC</updated>
-    
-    <summary>
-      <p>Last Monday I had the chance to see <a href="https://twitter.com/francesc">@francesc</a>
-talking on the <a href="http://www.meetup.com/Go-London-User-Group">Go London User
-Group</a>. His talk was about best
-practices (and advices) when you are programming in Go.</p>
 
     </summary>
     <author>
