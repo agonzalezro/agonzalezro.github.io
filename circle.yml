@@ -15,5 +15,5 @@ deployment:
       - polo content .
       - rm -rf Makefile config.json content templates
       - git add -A .
-      - git commit -m 'Site generation from CircleCI'
+      - git commit -m 'Site generation with polo from CircleCI'
       - git push origin HEAD:master -f
