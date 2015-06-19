@@ -6,7 +6,7 @@ IoT hackathon with Intel Edison and Go
 
 I spent last weekend in a hackathon organised by Intel to show their Intel
 Edison platform. I can just say that it was awesome, the quality of the
-projects, the pizes, the food, the freebies (yes, they gave us an Intel
+projects, the prizes, the food, the freebies (yes, they gave us an Intel
 Edison)...
 
 But this post is not about that, I want to explain my project and how I made
@@ -16,8 +16,8 @@ As you are already aware, Go easily supports cross compiling creating a binary
 that you can use in your other devices. In this case, the Intel Edison is (by
 default) a Linux distribution with i386 architecture.
 
-What I did?
------------
+What did I do?
+--------------
 
 I did a simple project to track the happiness of the assistant to a conference:
 they can vote if it was a good one ro not & the Edison is also tracking the
