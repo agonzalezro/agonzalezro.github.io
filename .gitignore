@@ -1,3 +1,4 @@
 srv.pid
 pelican.pid
 *.pyc
+.DS_Store
