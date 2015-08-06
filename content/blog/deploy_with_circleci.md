@@ -27,31 +27,11 @@ Your repo git
 1. Create a branch called polo (or whatever you prefer).
 2. Add there all your content and remove all the html and generated files and
    folder.
-3. Add this `circle.yml` file:
+3. Add this `circle.yml` file (this is the example I use in this blog):
 
-````
-dependencies:
-  override:
-    - go get github.com/agonzalezro/polo
-    - git config --global user.email "Your email here"
-    - git config --global user.name "Your name here"
+<script src="http://gist-it.appspot.com/https://github.com/agonzalezro/agonzalezro.github.io/blob/polo/circle.yml"></script>
 
-test:
-  override:
-    - echo "Please CircleCI, stop sending me emails."
-
-deployment:
-  master:
-    branch: polo
-    commands:
-      - polo content .
-      - rm -rf Makefile config.json content templates
-      - git add -A .
-      - git commit -m 'Site generation with polo from CircleCI'
-      - git push origin HEAD:master -f
-````
-
-What this will do? It will install polo, compile your site, remove all the
+What this will do? It will download polo, compile your site, remove all the
 unneeded files and push the new htmls to the `master` branch of your repo.
 
 Two notes here:
