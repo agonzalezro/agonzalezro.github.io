@@ -1,5 +1,5 @@
 date: 2015-08-17
-tags: packetbeat, docker, 101
+tags: packetbeat, docker, 101, elasticsearch, kibana
 
 Log your Docker containers from a container with packetbeat
 ===========================================================
