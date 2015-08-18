@@ -57,6 +57,6 @@ If you have any comment, let me know here or in
 [twitter](http://twitter.com/agonzalezro). Also, if you are interested in
 monitoring with packetbeat you should definitely take a look to ["Kamailio
 monitoring with statsd, SIPCapture or
-Packetbeat"](http://acalustra.com/how-can-i-monitor-my-voip-application.html<F37>)
+Packetbeat"](http://acalustra.com/how-can-i-monitor-my-voip-application.html)
 by my friend [eloycoto](http://twitter.com/eloycoto) who introduced me to
 packetbeat :a)
