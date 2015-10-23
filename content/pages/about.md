@@ -1,50 +1,17 @@
 About
 =====
 
-<script>
-function getAge(dateString) {
-    var today = new Date();
-    var birthDate = new Date(dateString);
-    var age = today.getFullYear() - birthDate.getFullYear();
-    var m = today.getMonth() - birthDate.getMonth();
-    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-        age--;
-    }
-    return age;
-}
-var age = getAge('4-4-1984');
-</script>
-
-My name is Alexandre González, I am a <script>document.write(age);</script> years
-old Spanish developer currently working in UK, exactly in London at
-[Shopa](http://www.shopa.com).
-
-I came here in December 2012 to work from
-[GreenManGaming](http://www.greenmangaming.com), I had a great time there but I
-moved in October of 2014. I love travelling, so before working in London I was
-doing it in Groningen, a beautiful place in Holland with my excolleagues of
-[Paylogic](http://paylogic.nl).
-
 ![Photo of Alexandre González](../static/me.jpg)
 <style>img{float: left; padding: 10px 15px 10px 0px;}</style>
 
-My background is mainly technical, I studied Computer Science in Spain,
-but at some point during my life I was interested in business too, so I
-created my own company which was a complete economic disaster, but, I
-learned a lot! At that time I studied a Master in Electronic Commerce too
-because I thought that it could be useful. You should know too that I am
-really passionate about FLOSS (Free as Libre Open Source Software).
+Hi there! My name is Álex. I am an IT guy with passion on development and nowadays in infrastructure as well since Docker, Kubernetes and others happened.
 
-Why?
-----
+On my day to day job I work as software architect for [jobandtalent.com](https://jobandtalent.com). I came to work here (Madrid) in October 2015 after expending some years in London (UK) and in Groningen (NL).
 
-The main reason of writing this blog is to improve my poor English and
-talk about the things that I really love, that usually are related with
-technology and specially with Python. You can see in the photo that I am
-not lying about my passion :D If you want to take a photo like mine, you
-can go to [Efteling](http://en.wikipedia.org/wiki/Efteling), I really
-recommend it!
+While I was in London I worked in [Shopa](http://shopa.com) & [GreenManGaming](http://greenmangaming.com) but you can find more info about that on my [LinkedIn profile](http://linkedin.com/in/alexandregonzalezrodriguez). Before moving to Madrid I was working as contractor with [Jetstack](http://www.jetstack.io/) doing [this PR for Kubernetes](https://github.com/kubernetes/kubernetes/pull/14328), it's the [Flocker](https://clusterhq.com/flocker/introduction/) plugin for k8s.
 
-BTW, you can find the source code of this blog (generated with
-[Polo](https://github.com/agonzalezro/polo)) at my [GitHub
-profile](http://github.com/agonzalez/agonzalezro.github.io).
+As you have probably deducted my background is mainly technical, but I got interested by business at the beginning of my career so I started my own company in Spain which was a completely economic disaster but I learned a lot & I studied a MSc in Electronic Commerce too hoping that it would be handy in the future.
+
+As a FLOSS passionate I think that sharing is caring, this is why I try to share things that I think can be interesting for the community. Also, being selfish, writing the blog helps me a lot in two things: keeping up to my English & organise my ideas in a meaningful format.
+
+Do you like the blog? You can find the source code of this blog (generated with [Polo](https://github.com/agonzalezro/polo)) at my [GitHub profile](http://github.com/agonzalez/agonzalezro.github.io).
