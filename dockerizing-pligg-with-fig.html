@@ -1,0 +1,328 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+Dockerizing Pligg with Fig | Álex Go{,nzález}
+</title>
+
+    <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    
+
+    
+  <meta name="theme-color" content="#ffffff">
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+
+
+    
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript" src="//w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">
+      stLight.options({publisher: "db740e9c-f490-4a3f-813a-5d257e1ea7f8", doNotHash: false, doNotCopy: false, hashAddressBar: false});
+    </script>
+    
+  </head>
+
+  <body>
+    <div class="navbar navbar-default navbar-static-top navbar-inverse" role="navigation">
+      <div class="container col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Álex Go{,nzález}</a>
+        </div>
+        
+        <div class="navbar-collapse collapse">
+          
+          <ul class="nav navbar-nav">
+            
+            <li><a href="/archives.html">Archives</a></li>
+            
+            
+            <li><a href="/pages/about.html">About</a></li>
+            
+            <li><a href="/pages/contact.html">Contact</a></li>
+            
+          </ul>
+          
+          
+          <ul class="nav navbar-nav navbar-right">
+            
+            <li class="dropdown">
+            <a href="#" data-toggle="dropdown">Categories <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              
+              
+              <li>
+              <a href="/category/biz.html">biz <span class="badge pull-right">1</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/category/blog.html">blog <span class="badge pull-right">4</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/category/dev.html">dev <span class="badge pull-right">6</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/category/devops.html">devops <span class="badge pull-right">3</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/category/gnome.html">gnome <span class="badge pull-right">2</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/category/go.html">go <span class="badge pull-right">2</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/category/linux.html">linux <span class="badge pull-right">1</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/category/talks.html">talks <span class="badge pull-right">14</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/category/vim.html">vim <span class="badge pull-right">1</span></a>
+              </li>
+              
+            </ul>
+            </li>
+            
+           </ul>
+          
+        </div>
+        
+      </div>
+    </div>
+
+    <div class="container col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+      
+<h1>Dockerizing Pligg with Fig</h1>
+
+<p>
+
+<span class="label label-info">by Álex</span>
+
+
+
+<span class="label label-info">2014-11-24</span>
+
+
+
+<a class="label label-info" href="/category/devops.html">devops</a>
+
+
+
+
+<a class="label label-default" href="/tag/docker.html">docker</a>
+
+<a class="label label-default" href="/tag/pligg.html">pligg</a>
+
+<a class="label label-default" href="/tag/fig.html">fig</a>
+
+
+</p>
+
+<p>For a pet project I needed <a href="http://pligg.com/">Pligg</a> which is kinda a social
+network site in the style of the old-digg (with karma and this kind of things).</p>
+
+<p>Installing a LAMP system is kinda boring stuff, so, for that and for the sake
+of learning I decided to go with <a href="https://www.docker.com/">Docker</a> &amp;
+<a href="http://www.fig.sh/">Fig</a>. Sadly or luckily, every time that I dockerize
+something I find a lot of unexpected problems that slow me down, but&hellip; you
+always learn something!</p>
+
+<p>This post is to explain a little bit the process and the problems that I found
+and how I solved them. It&rsquo;s not a how to, it&rsquo;s more a explanation of what I did
+and perhaps you can provide a better solution on the comments.</p>
+
+<h2>What do I need?</h2>
+
+<p>The site is &ldquo;simple&rdquo; so the only required stuff will be a MySQL server and an
+Apache2 server. You could run 2 Docker instances manually, or&hellip; use the magic
+provided by Fig. This is the <code>fig.yml</code> file that explains my service:</p>
+
+<pre><code>web:
+  build: .
+  links:
+   - db
+  volumes:
+   - /var/log:/var/www/logs
+  ports:
+   - &quot;80:80&quot;
+  environment:
+   - MYSQL_PASSWORD
+   - MY_BASE_URL
+db:
+  image: mysql
+  volumes:
+   - /var/lib/mysql:/var/lib/mysql
+  environment:
+   - MYSQL_DATABASE=dbpligg
+   - MYSQL_USER=pligguser
+   - MYSQL_ROOT_PASSWORD
+   - MYSQL_PASSWORD
+  ports:
+   - &quot;3306:3306&quot;
+</code></pre>
+
+<p>Basically I am saying that I will have 2 servers: &ldquo;web&rdquo; &amp; &ldquo;db&rdquo; and specifying
+their volumes, environment variables and exported ports.</p>
+
+<h3>Problem?</h3>
+
+<p>First thing that we see here: <code>MY_BASE_URL</code> &amp; <code>MYSQL_{,ROOT_}PASSWORD</code> don&rsquo;t
+have any value, this is because Fig is going to got those values from the
+current Docker host. I need them for specified some settings file that
+originally were written in a normal file (difficult to change while deploying).</p>
+
+<p>Also, <code>MY_BASE_URL</code> is a small/ugly trick. It seems that Pligg requires to know
+the host were it&rsquo;s running to serve static assets as CSS or JS.</p>
+
+<p>If you take a look to <a href="https://github.com/agonzalezro/docker-pligg/tree/master/config">my repo <code>config</code>
+folder</a> you
+will see the slightly modified versions of two configuration files for Pligg
+that are making use of this environment variables.</p>
+
+<h3>More problems?</h3>
+
+<p>For running Pligg we need a minimal DB structure I&rsquo;ve found 2 different ways of
+creating this data in my data container, but none of them are optimal for me,
+mainly because they require an extra step:</p>
+
+<ul>
+<li><p>I&rsquo;ve created minimal SQL dump with some default values and on the <code>README.md</code>
+provide a quick way of ingest this data using the same container:</p>
+
+<pre><code>$ docker exec dockerpligg_db_1 \
+  mysql -u pligguser -p$MYSQL_PASSWORD dbpligg &lt; &quot;`cat pligg.sql`&quot;
+</code></pre></li>
+
+<li><p>Another way is going through all the installation process accessing to
+<a href="http://example.com/install">http://example.com/install</a></p></li>
+</ul>
+
+<p>I think that perhaps creating a script that checks is the DB if empty and if it
+is it uses the SQL to dump the DB back would be an option, but seems kinda
+dangerous to automate that process in a live environment (anybody said delete
+data by a mistaken dump?).</p>
+
+<p><a href="http://acalustra.com/">@eloycoto</a> has recommended me to use inheritance of
+containers. But I am not happy with that solution either: I would need two
+<code>Dockerfile</code>s and possibly two <code>fig.yml</code> files as well or add some weird magic
+to replace one container with the other after the installation.</p>
+
+<h3>Third thing that I don&rsquo;t really like</h3>
+
+<p>After the first time that you run the installation you need to manually remove
+the install path (this seems quite common in PHP apps?). I am doing that
+running a <code>docker exec</code> to that container, but I would prefer to manually
+remove it with the <code>Dockerfile</code>. Why I don&rsquo;t do so? Because if I remove that
+folder I am forcing all the users of my configuration to use the dump SQL
+method explained above and I don&rsquo;t give them any change.</p>
+
+<h2>So&hellip;</h2>
+
+<p>I suspect that it&rsquo;s normal to have that kind of problems trying to &ldquo;migrate&rdquo; an
+application that was never used before in a Docker container.</p>
+
+<p>To be honest with Pligg, the only changes that I required were minimal, but I
+don&rsquo;t know if that &ldquo;install&rdquo; part could be just removed with my own settings
+file, I tried that and it was asking me to repeat values that were already set
+in the <code>settings.php</code>.</p>
+
+<p>I am not happy with the dump/install solution that I&rsquo;ve found, but it works™!</p>
+
+<p>I am sure that if you were using Docker or Fig before you will have plenty of
+complaints about my article, let me know leaving a comment or just <a href="http://twitter.com/agonzalezro">tweet me
+something</a>.</p>
+
+
+
+
+<br>
+<span class='st_sharethis_large' displayText='ShareThis'></span>
+<span class='st_facebook_large' displayText='Facebook'></span>
+<span class='st_twitter_large' displayText='Tweet'></span>
+<span class='st_linkedin_large' displayText='LinkedIn'></span>
+<span class='st_googleplus_large' displayText='Google +'></span>
+<span class='st_reddit_large' displayText='Reddit'></span>
+<span class='st_email_large' displayText='Email'></span>
+
+
+
+
+
+<h2>Comments</h2>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'agonzalezro';
+  
+  
+  var disqus_identifier = '\/dockerizing-pligg-with-fig.html';
+
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+    </div>
+    
+  
+  <div class="container col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+    <div class="text-center">
+      <p>
+        <a href="http://github.com/agonzalezro/polo">polo</a> is made with
+        <span class="glyphicon glyphicon-heart"></span> by
+        <a href="http://twitter.com/agonzalezro">@agonzalezro</a>
+      </p>
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="//getbootstrap.com/dist/js/bootstrap.min.js"></script>
+
+    
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-35984509-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+  
+
+  </body>
+</html>

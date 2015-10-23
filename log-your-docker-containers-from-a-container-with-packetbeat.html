@@ -1,0 +1,279 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+Log your Docker containers from a container with packetbeat | Álex Go{,nzález}
+</title>
+
+    <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    
+
+    
+  <meta name="theme-color" content="#ffffff">
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+
+
+    
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript" src="//w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">
+      stLight.options({publisher: "db740e9c-f490-4a3f-813a-5d257e1ea7f8", doNotHash: false, doNotCopy: false, hashAddressBar: false});
+    </script>
+    
+  </head>
+
+  <body>
+    <div class="navbar navbar-default navbar-static-top navbar-inverse" role="navigation">
+      <div class="container col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Álex Go{,nzález}</a>
+        </div>
+        
+        <div class="navbar-collapse collapse">
+          
+          <ul class="nav navbar-nav">
+            
+            <li><a href="/archives.html">Archives</a></li>
+            
+            
+            <li><a href="/pages/about.html">About</a></li>
+            
+            <li><a href="/pages/contact.html">Contact</a></li>
+            
+          </ul>
+          
+          
+          <ul class="nav navbar-nav navbar-right">
+            
+            <li class="dropdown">
+            <a href="#" data-toggle="dropdown">Categories <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              
+              
+              <li>
+              <a href="/category/biz.html">biz <span class="badge pull-right">1</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/category/blog.html">blog <span class="badge pull-right">4</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/category/dev.html">dev <span class="badge pull-right">6</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/category/devops.html">devops <span class="badge pull-right">3</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/category/gnome.html">gnome <span class="badge pull-right">2</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/category/go.html">go <span class="badge pull-right">2</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/category/linux.html">linux <span class="badge pull-right">1</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/category/talks.html">talks <span class="badge pull-right">14</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/category/vim.html">vim <span class="badge pull-right">1</span></a>
+              </li>
+              
+            </ul>
+            </li>
+            
+           </ul>
+          
+        </div>
+        
+      </div>
+    </div>
+
+    <div class="container col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+      
+<h1>Log your Docker containers from a container with packetbeat</h1>
+
+<p>
+
+<span class="label label-info">by Álex</span>
+
+
+
+<span class="label label-info">2015-08-17</span>
+
+
+
+<a class="label label-info" href="/category/devops.html">devops</a>
+
+
+
+
+<a class="label label-default" href="/tag/packetbeat.html">packetbeat</a>
+
+<a class="label label-default" href="/tag/docker.html">docker</a>
+
+<a class="label label-default" href="/tag/101.html">101</a>
+
+<a class="label label-default" href="/tag/elasticsearch.html">elasticsearch</a>
+
+<a class="label label-default" href="/tag/kibana.html">kibana</a>
+
+
+</p>
+
+<p><a href="https://github.com/elastic/packetbeat">packetbeat</a> is one of the best
+application performance management tools in the opensource community. It&rsquo;s now
+part of the <a href="https://www.elastic.co/products/beats">beats</a> that Elastic provide
+us to monitor our applications. What it does is analyze our data packets to
+send some useful information to ElasticSearch.</p>
+
+<p>After the introduction you probably realize that we will need: ElasticSearch
+installed and if you want to see something useful you will need Kibana as well.
+There is a <a href="https://www.elastic.co/guide/en/beats/packetbeat/current/packetbeat-getting-started.html">guide for getting
+started</a>
+that explains the process pretty clearly. The &ldquo;problem&rdquo; with that guide is that
+you need to install everything in your machine, this blog post is a 101 to have
+it quickly running into containers.</p>
+
+<p>As mentioned, we will need ES and Kibana:</p>
+
+<pre><code>docker run -d -p 9200:9200 -p 9300:9300 --name elasticsearch-pb elasticsearch
+docker run -d -p 5601:5601 --name kibana-pb --link elasticsearch-pb:elasticsearch \
+  -e ELASTICSEARCH_URL=http://elasticsearch:9200 kibana
+</code></pre>
+
+<p>Now we have all the required things to run our packetbeat. There are few points
+that I want to raise before doing so:</p>
+
+<ol>
+<li>packetbeat will be monitoring our network traffic, this means that our
+container running packetbeat needs to have access to the host network.</li>
+<li>the last <code>Dockerfile</code> I found regarding this was:
+<a href="https://github.com/packetbeat/packetbeat-docker">https://github.com/packetbeat/packetbeat-docker</a> by
+<a href="https://twitter.com/tudor_g">Tudor</a> (one of the original developers) but
+it is a little bit old. So I made my own based on that (should PR but I
+wonder why the previous was not updated yet, and it would be nice to run
+something more actual than 0.5 but there are no binaries):</li>
+</ol>
+
+<script src="https://gist.github.com/agonzalezro/3405735989c967c11ff8.js"></script>
+
+<p>The previous docker image will require a file <code>packetbeat.yml</code> to work after.
+As a quick start you can use this one:
+<a href="https://github.com/elastic/packetbeat/blob/master/packetbeat.dev.yml">https://github.com/elastic/packetbeat/blob/master/packetbeat.dev.yml</a> but
+probably you would like to change your device from <code>en0</code> to <code>docker0</code>.</p>
+
+<pre><code>docker build -t agonzalezro/packetbeat .
+docker run --net=host agonzalezro/packetbeat
+</code></pre>
+
+<p>Cool, now you are ready to go! Everything that you do into your containers will
+be show on Kibana, to test it go to you docker host port <code>5601</code>, it will ask
+for an index pattern, change the default <code>logstash-*</code> to <code>packetbeat-*</code> and
+enjoy it!</p>
+
+<p><a href="static/packetbeat/kibana.png"><img src="static/packetbeat/kibana-thumb.png" alt="kibana-screenshot"></a></p>
+
+<p>If you have any comment, let me know here or in
+<a href="http://twitter.com/agonzalezro">twitter</a>. Also, if you are interested in
+monitoring with packetbeat you should definitely take a look to <a href="http://acalustra.com/how-can-i-monitor-my-voip-application.html">&ldquo;Kamailio
+monitoring with statsd, SIPCapture or
+Packetbeat&rdquo;</a>
+by my friend <a href="http://twitter.com/eloycoto">eloycoto</a> who introduced me to
+packetbeat :a)</p>
+
+
+
+
+<br>
+<span class='st_sharethis_large' displayText='ShareThis'></span>
+<span class='st_facebook_large' displayText='Facebook'></span>
+<span class='st_twitter_large' displayText='Tweet'></span>
+<span class='st_linkedin_large' displayText='LinkedIn'></span>
+<span class='st_googleplus_large' displayText='Google +'></span>
+<span class='st_reddit_large' displayText='Reddit'></span>
+<span class='st_email_large' displayText='Email'></span>
+
+
+
+
+
+<h2>Comments</h2>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'agonzalezro';
+  
+  
+  var disqus_identifier = '\/log-your-docker-containers-from-a-container-with-packetbeat.html';
+
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+    </div>
+    
+  
+  <div class="container col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+    <div class="text-center">
+      <p>
+        <a href="http://github.com/agonzalezro/polo">polo</a> is made with
+        <span class="glyphicon glyphicon-heart"></span> by
+        <a href="http://twitter.com/agonzalezro">@agonzalezro</a>
+      </p>
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="//getbootstrap.com/dist/js/bootstrap.min.js"></script>
+
+    
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-35984509-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+  
+
+  </body>
+</html>

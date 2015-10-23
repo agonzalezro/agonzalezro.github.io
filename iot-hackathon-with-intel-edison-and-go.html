@@ -1,0 +1,323 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+IoT hackathon with Intel Edison and Go | Álex Go{,nzález}
+</title>
+
+    <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    
+
+    
+  <meta name="theme-color" content="#ffffff">
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+
+
+    
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript" src="//w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">
+      stLight.options({publisher: "db740e9c-f490-4a3f-813a-5d257e1ea7f8", doNotHash: false, doNotCopy: false, hashAddressBar: false});
+    </script>
+    
+  </head>
+
+  <body>
+    <div class="navbar navbar-default navbar-static-top navbar-inverse" role="navigation">
+      <div class="container col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Álex Go{,nzález}</a>
+        </div>
+        
+        <div class="navbar-collapse collapse">
+          
+          <ul class="nav navbar-nav">
+            
+            <li><a href="/archives.html">Archives</a></li>
+            
+            
+            <li><a href="/pages/about.html">About</a></li>
+            
+            <li><a href="/pages/contact.html">Contact</a></li>
+            
+          </ul>
+          
+          
+          <ul class="nav navbar-nav navbar-right">
+            
+            <li class="dropdown">
+            <a href="#" data-toggle="dropdown">Categories <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              
+              
+              <li>
+              <a href="/category/biz.html">biz <span class="badge pull-right">1</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/category/blog.html">blog <span class="badge pull-right">4</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/category/dev.html">dev <span class="badge pull-right">6</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/category/devops.html">devops <span class="badge pull-right">3</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/category/gnome.html">gnome <span class="badge pull-right">2</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/category/go.html">go <span class="badge pull-right">2</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/category/linux.html">linux <span class="badge pull-right">1</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/category/talks.html">talks <span class="badge pull-right">14</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/category/vim.html">vim <span class="badge pull-right">1</span></a>
+              </li>
+              
+            </ul>
+            </li>
+            
+           </ul>
+          
+        </div>
+        
+      </div>
+    </div>
+
+    <div class="container col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+      
+<h1>IoT hackathon with Intel Edison and Go</h1>
+
+<p>
+
+<span class="label label-info">by Álex</span>
+
+
+
+<span class="label label-info">2015-06-18</span>
+
+
+
+<a class="label label-info" href="/category/dev.html">dev</a>
+
+
+
+
+<a class="label label-default" href="/tag/intel.html">intel</a>
+
+<a class="label label-default" href="/tag/edison.html">edison</a>
+
+<a class="label label-default" href="/tag/go.html">go</a>
+
+<a class="label label-default" href="/tag/iot.html">iot</a>
+
+<a class="label label-default" href="/tag/gobot.html">gobot</a>
+
+<a class="label label-default" href="/tag/influxdb.html">influxdb</a>
+
+<a class="label label-default" href="/tag/grafana.html">grafana</a>
+
+
+</p>
+
+<p>I spent last weekend in a hackathon organised by Intel to show their Intel
+Edison platform. I can just say that it was awesome, the quality of the
+projects, the prizes, the food, the freebies (yes, they gave us an Intel
+Edison)&hellip;</p>
+
+<p>But this post is not about that, I want to explain my project and how I made
+Golang work in an Intel Edison thanks to <a href="http://gobot.io/">gobot</a>.</p>
+
+<p>As you are already aware, Go easily supports cross compiling creating a binary
+that you can use in your other devices. In this case, the Intel Edison is (by
+default) a Linux distribution with i386 architecture.</p>
+
+<h2>What did I do?</h2>
+
+<p>I did a simple project to track the happiness of the assistant to a conference:
+they can vote if it was a good one ro not &amp; the Edison is also tracking the
+clapping. All this information is stored into a
+<a href="https://influxdb.com/">InfluxDB</a> and I was using
+<a href="http://grafana.org/">Grafana</a> to demo it:</p>
+
+<p><img src="static/iot_grafana.png" alt="image"></p>
+
+<p>Ok, let&rsquo;s start!</p>
+
+<h2>First step: setup the wifi</h2>
+
+<p>After you connect the Edison you will have a new decive in <code>/dev/</code> with the
+form: <code>/dev/tty.usbserial-...</code>. You can just use screen to connect to it, in my
+case:</p>
+
+<pre><code>screen /dev/tty.usbserial-A903BU3J 115200 -L
+</code></pre>
+
+<p>Inside the machine:</p>
+
+<pre><code>configure_edison --wifi
+</code></pre>
+
+<p>You could as well use <code>--setup</code> if you want to change the name, password, etc&hellip;</p>
+
+<p>Cool! Now we have the device in out network, let&rsquo;s see the IP with <code>ifconfig</code>
+and copy/paste it somewhere.</p>
+
+<h2>Second step: Code!</h2>
+
+<p>As I said before I was using the gobot framework. This framework easily allows
+you to access to the GPIO that I&rsquo;ve been using in the Edison (buttons, lights &amp;
+sound sensor).</p>
+
+<p>Here is a snippet:</p>
+
+<pre><code>gbot := gobot.NewGobot()
+
+edisonAdaptor := edison.NewEdisonAdaptor(&quot;edison&quot;)
+buttonPositive := gpio.NewButtonDriver(edisonAdaptor, &quot;button_positive&quot;, &quot;4&quot;)
+
+...
+
+robot := gobot.NewRobot(
+    &quot;buttonBot&quot;,
+    []gobot.Connection{edisonAdaptor},
+    []gobot.Device{buttonPositive, buttonNegative, redLed, greenLed, blueLed, soundSensor},
+    work,
+)
+</code></pre>
+
+<p><code>work</code> is a loop where you can heard for the events created by the devices.</p>
+
+<p>If you want to see the full code: <a href="https://github.com/agonzalezro/iotroadshow_june_2015/blob/master/main.go">https://github.com/agonzalezro/iotroadshow_june_2015/blob/master/main.go</a></p>
+
+<h2>Third step: compile, deploy &amp; run</h2>
+
+<p>Crosscompile it. I was using <a href="https://github.com/mitchellh/gox">gox</a> but you
+can use the default tools for that as well. In my case:</p>
+
+<pre><code>gox -arch=&quot;386&quot; -os=&quot;linux&quot;
+</code></pre>
+
+<p>This will generate a file called <code>project_linux_386</code> that is what you will need
+to copy to the Edison.</p>
+
+<p>To copy it you just need a simple scp:</p>
+
+<pre><code>scp project_linux_i386 root@[the_edison_ip]:/home/root/my_program
+</code></pre>
+
+<p>And to run it you can ssh and manually run it or as I was doing:</p>
+
+<pre><code>ssh root@[the_edison_ip] /home/root/my_program
+</code></pre>
+
+<p>I&rsquo;ve automated this process in a
+<a href="https://github.com/agonzalezro/iotroadshow_june_2015/blob/master/Makefile">Makefile</a>.</p>
+
+<p>Also, feel free to check the
+<a href="https://github.com/agonzalezro/iotroadshow_june_2015/blob/master/README.md">README.md</a>
+with a better explanation about what my project was.</p>
+
+<p>Any question? Reach me on twitter as
+<a href="http://twitter.com/agonzalezro">@agonzalezro</a> or just post a comment here.</p>
+
+
+
+
+<br>
+<span class='st_sharethis_large' displayText='ShareThis'></span>
+<span class='st_facebook_large' displayText='Facebook'></span>
+<span class='st_twitter_large' displayText='Tweet'></span>
+<span class='st_linkedin_large' displayText='LinkedIn'></span>
+<span class='st_googleplus_large' displayText='Google +'></span>
+<span class='st_reddit_large' displayText='Reddit'></span>
+<span class='st_email_large' displayText='Email'></span>
+
+
+
+
+
+<h2>Comments</h2>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'agonzalezro';
+  
+  
+  var disqus_identifier = '\/iot-hackathon-with-intel-edison-and-go.html';
+
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+    </div>
+    
+  
+  <div class="container col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+    <div class="text-center">
+      <p>
+        <a href="http://github.com/agonzalezro/polo">polo</a> is made with
+        <span class="glyphicon glyphicon-heart"></span> by
+        <a href="http://twitter.com/agonzalezro">@agonzalezro</a>
+      </p>
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="//getbootstrap.com/dist/js/bootstrap.min.js"></script>
+
+    
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-35984509-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+  
+
+  </body>
+</html>

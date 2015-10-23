@@ -1,0 +1,258 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+How to automagically generate your polo blog with CircleCI | Álex Go{,nzález}
+</title>
+
+    <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    
+
+    
+  <meta name="theme-color" content="#ffffff">
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+
+
+    
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript" src="//w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">
+      stLight.options({publisher: "db740e9c-f490-4a3f-813a-5d257e1ea7f8", doNotHash: false, doNotCopy: false, hashAddressBar: false});
+    </script>
+    
+  </head>
+
+  <body>
+    <div class="navbar navbar-default navbar-static-top navbar-inverse" role="navigation">
+      <div class="container col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Álex Go{,nzález}</a>
+        </div>
+        
+        <div class="navbar-collapse collapse">
+          
+          <ul class="nav navbar-nav">
+            
+            <li><a href="/archives.html">Archives</a></li>
+            
+            
+            <li><a href="/pages/about.html">About</a></li>
+            
+            <li><a href="/pages/contact.html">Contact</a></li>
+            
+          </ul>
+          
+          
+          <ul class="nav navbar-nav navbar-right">
+            
+            <li class="dropdown">
+            <a href="#" data-toggle="dropdown">Categories <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              
+              
+              <li>
+              <a href="/category/biz.html">biz <span class="badge pull-right">1</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/category/blog.html">blog <span class="badge pull-right">4</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/category/dev.html">dev <span class="badge pull-right">6</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/category/devops.html">devops <span class="badge pull-right">3</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/category/gnome.html">gnome <span class="badge pull-right">2</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/category/go.html">go <span class="badge pull-right">2</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/category/linux.html">linux <span class="badge pull-right">1</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/category/talks.html">talks <span class="badge pull-right">14</span></a>
+              </li>
+              
+              
+              <li>
+              <a href="/category/vim.html">vim <span class="badge pull-right">1</span></a>
+              </li>
+              
+            </ul>
+            </li>
+            
+           </ul>
+          
+        </div>
+        
+      </div>
+    </div>
+
+    <div class="container col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+      
+<h1>How to automagically generate your polo blog with CircleCI</h1>
+
+<p>
+
+<span class="label label-info">by Álex</span>
+
+
+
+<span class="label label-info">2015-06-18</span>
+
+
+
+<a class="label label-info" href="/category/blog.html">blog</a>
+
+
+
+
+<a class="label label-default" href="/tag/polo.html">polo</a>
+
+<a class="label label-default" href="/tag/deploy.html">deploy</a>
+
+<a class="label label-default" href="/tag/circleci.html">circleci</a>
+
+
+</p>
+
+<p>If you are using <a href="http://github.com/agonzalezro/polo">polo</a> and you want to generate
+the HTML files every time that you push to a branch you can easily do that with
+<a href="http://circleci.com">CircleCI</a>.</p>
+
+<p>What are the steps that I need to follow to achieve this?</p>
+
+<h2>CircleCI</h2>
+
+<ol>
+<li>Create a CircleCI account.</li>
+<li>Add your blog repo.</li>
+<li>Give CircleCI permissions to write to your repo.</li>
+</ol>
+
+<p>For the third point you need to go to the configuration of your repo (the gear
+close to the name of your blog repo) &gt; SSH Keys &gt; Create and add &ldquo;your user
+here&rdquo; key.</p>
+
+<h2>Your repo git</h2>
+
+<ol>
+<li>Create a branch called polo (or whatever you prefer).</li>
+<li>Add there all your content and remove all the html and generated files and
+folder.</li>
+<li>Add this <code>circle.yml</code> file (this is the example I use in this blog):</li>
+</ol>
+
+<script src="http://gist-it.appspot.com/https://github.com/agonzalezro/agonzalezro.github.io/blob/polo/circle.yml"></script>
+
+<p>What this will do? It will download polo, compile your site, remove all the
+unneeded files and push the new htmls to the <code>master</code> branch of your repo.</p>
+
+<p>Two notes here:</p>
+
+<ul>
+<li>Please, be aware that step 1 is move all the content to another branch,
+if not it will get deleted. You can restore it later, but better if you don&rsquo;t
+need to do it.</li>
+<li>I am using master to push because I am using it for agonzalezro.github.io, if
+you want to use it for github pages you will need to push to <code>gh-pages</code>.</li>
+</ul>
+
+<p>Happy blogging!</p>
+
+
+
+
+<br>
+<span class='st_sharethis_large' displayText='ShareThis'></span>
+<span class='st_facebook_large' displayText='Facebook'></span>
+<span class='st_twitter_large' displayText='Tweet'></span>
+<span class='st_linkedin_large' displayText='LinkedIn'></span>
+<span class='st_googleplus_large' displayText='Google +'></span>
+<span class='st_reddit_large' displayText='Reddit'></span>
+<span class='st_email_large' displayText='Email'></span>
+
+
+
+
+
+<h2>Comments</h2>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'agonzalezro';
+  
+  
+  var disqus_identifier = '\/how-to-automagically-generate-your-polo-blog-with-circleci.html';
+
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+    </div>
+    
+  
+  <div class="container col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+    <div class="text-center">
+      <p>
+        <a href="http://github.com/agonzalezro/polo">polo</a> is made with
+        <span class="glyphicon glyphicon-heart"></span> by
+        <a href="http://twitter.com/agonzalezro">@agonzalezro</a>
+      </p>
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="//getbootstrap.com/dist/js/bootstrap.min.js"></script>
+
+    
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-35984509-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+  
+
+  </body>
+</html>

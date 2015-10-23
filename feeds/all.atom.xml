@@ -1,0 +1,183 @@
+&lt;?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Álex Go{,nzález}</title>
+  <link href="http://agonzalezro.github.io" />
+  <updated>2015-10-23T13:48:09Z</updated>
+
+  
+  
+  <entry>
+    <title>Kubernetes volume plugins and Flocker</title>
+    <link href="http://agonzalezro.github.io/kubernetes-volume-plugins-and-flocker.html" />
+    
+    <updated>2015-10-20 00:00:00 &#43;0000 UTC</updated>
+    
+    <summary>
+      <p>Last month I was working with the guys from <a href="http://www.jetstack.io/">Jetstack</a> &amp; <a href="https://clusterhq.com/">ClusterHQ</a> developing a plugina for Kubernetes that will allow the people to easily use <a href="https://clusterhq.com/flocker/introduction/">Flocker</a> there.</p>
+
+    </summary>
+    <author>
+      <name>Álex</name>
+    </author>
+  </entry>
+  
+  <entry>
+    <title>How to deploy and update a python app using Kubernetes</title>
+    <link href="http://agonzalezro.github.io/how-to-deploy-and-update-a-python-app-using-kubernetes.html" />
+    
+    <updated>2015-10-09 20:00:00 &#43;0000 UTC</updated>
+    
+    <summary>
+      <p>Two days ago I gave a small talk in the <a href="https://twitter.com/DJUGL">DJUGL (Django User Group London</a> explaining how we could deploy a test application into Kubernetes. This post is going to explain something pretty similar, how to deploy a Flask app into Kubernetes and how to rolling update it.</p>
+
+    </summary>
+    <author>
+      <name>Álex</name>
+    </author>
+  </entry>
+  
+  <entry>
+    <title>Log your Docker containers from a container with packetbeat</title>
+    <link href="http://agonzalezro.github.io/log-your-docker-containers-from-a-container-with-packetbeat.html" />
+    
+    <updated>2015-08-17 00:00:00 &#43;0000 UTC</updated>
+    
+    <summary>
+      <p><a href="https://github.com/elastic/packetbeat">packetbeat</a> is one of the best
+application performance management tools in the opensource community. It&rsquo;s now
+part of the <a href="https://www.elastic.co/products/beats">beats</a> that Elastic provide
+us to monitor our applications. What it does is analyze our data packets to
+send some useful information to ElasticSearch.</p>
+
+    </summary>
+    <author>
+      <name>Álex</name>
+    </author>
+  </entry>
+  
+  <entry>
+    <title>Go introduction at Shopa</title>
+    <link href="http://agonzalezro.github.io/go-introduction-at-shopa.html" />
+    
+    <updated>2015-08-05 00:00:00 &#43;0000 UTC</updated>
+    
+    <summary>
+      <p>Here at <a href="http://shopa.com">Shopa</a> we use Go for some services but we use a lot
+of Rails as well so not everybody needs to know Go. This is why I&rsquo;ve decided to
+do a small introduction to it in one of our workshops.</p>
+
+    </summary>
+    <author>
+      <name>Álex</name>
+    </author>
+  </entry>
+  
+  <entry>
+    <title>Docker workshop at Shopa</title>
+    <link href="http://agonzalezro.github.io/docker-workshop-at-shopa.html" />
+    
+    <updated>2015-06-24 00:00:00 &#43;0000 UTC</updated>
+    
+    <summary>
+      <p>Today I gave a workshop at Shopa about Docker: what is it, why it&rsquo;s useful for
+us and why it can even be more useful.</p>
+
+    </summary>
+    <author>
+      <name>Álex</name>
+    </author>
+  </entry>
+  
+  <entry>
+    <title>IoT hackathon with Intel Edison and Go</title>
+    <link href="http://agonzalezro.github.io/iot-hackathon-with-intel-edison-and-go.html" />
+    
+    <updated>2015-06-18 00:00:00 &#43;0000 UTC</updated>
+    
+    <summary>
+      <p>I spent last weekend in a hackathon organised by Intel to show their Intel
+Edison platform. I can just say that it was awesome, the quality of the
+projects, the prizes, the food, the freebies (yes, they gave us an Intel
+Edison)&hellip;</p>
+
+    </summary>
+    <author>
+      <name>Álex</name>
+    </author>
+  </entry>
+  
+  <entry>
+    <title>How to automagically generate your polo blog with CircleCI</title>
+    <link href="http://agonzalezro.github.io/how-to-automagically-generate-your-polo-blog-with-circleci.html" />
+    
+    <updated>2015-06-18 00:00:00 &#43;0000 UTC</updated>
+    
+    <summary>
+      <p>If you are using <a href="http://github.com/agonzalezro/polo">polo</a> and you want to generate
+the HTML files every time that you push to a branch you can easily do that with
+<a href="http://circleci.com">CircleCI</a>.</p>
+
+    </summary>
+    <author>
+      <name>Álex</name>
+    </author>
+  </entry>
+  
+  <entry>
+    <title>The well deserved Golang UK conference is here</title>
+    <link href="http://agonzalezro.github.io/the-well-deserved-golang-uk-conference-is-here.html" />
+    
+    <updated>2015-03-29 00:00:00 &#43;0000 UTC</updated>
+    
+    <summary>
+      <p>Hi mum &amp; dad (my 2 followers on the blog?) some friends,
+(<a href="https://twitter.com/johannacherry">Johanna</a>,
+<a href="https://twitter.com/_samdb">Sam</a> &amp; <a href="https://twitter.com/_samdb">David</a>) and
+myself have decided to organize a Go conference in the UK the next August 21.</p>
+
+    </summary>
+    <author>
+      <name>Álex</name>
+    </author>
+  </entry>
+  
+  <entry>
+    <title>Graph your meetup.com group with Neo4J and some Go</title>
+    <link href="http://agonzalezro.github.io/graph-your-meetupcom-group-with-neo4j-and-some-go.html" />
+    
+    <updated>2015-02-25 00:00:00 &#43;0000 UTC</updated>
+    
+    <summary>
+      <p>Last days I&rsquo;ve been spending sometime in a small project for fun. Sadly I
+couldn&rsquo;t do <a href="https://twitter.com/agonzalezro/status/567823851791589376">anything for
+production</a> so I
+hacked <a href="https://github.com/agonzalezro/gotagmee">gotagmee</a> which is a tiny
+thingy that will created some goroutines to get all the members in a
+<a href="http://meetup.com">meetup.com</a> group with their interests and store them in a
+Neo4J DB as <code>Member</code> or <code>Topic</code> entities with their respective relations.</p>
+
+    </summary>
+    <author>
+      <name>Álex</name>
+    </author>
+  </entry>
+  
+  <entry>
+    <title>How I prepared my Mac to make some Docker development</title>
+    <link href="http://agonzalezro.github.io/how-i-prepared-my-mac-to-make-some-docker-development.html" />
+    
+    <updated>2014-12-01 00:00:00 &#43;0000 UTC</updated>
+    
+    <summary>
+      <p>This post is about <strong>how I did it!</strong> not about a standard way or something like
+that, if you use any other way I would be happy to hear it on the comments.</p>
+
+    </summary>
+    <author>
+      <name>Álex</name>
+    </author>
+  </entry>
+  
+  
+</feed>
