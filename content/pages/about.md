@@ -14,4 +14,4 @@ As you have probably deducted my background is mainly technical, but I got inter
 
 As a FLOSS passionate I think that sharing is caring, this is why I try to share things that I think can be interesting for the community. Also, being selfish, writing the blog helps me a lot in two things: keeping up to my English & organise my ideas in a meaningful format.
 
-Do you like the blog? You can find the source code of this blog (generated with [Polo](https://github.com/agonzalezro/polo)) at my [GitHub profile](http://github.com/agonzalez/agonzalezro.github.io).
+Do you like the blog? You can find the source code of this blog (generated with [Polo](https://github.com/agonzalezro/polo)) at my [GitHub profile](https://github.com/agonzalezro).
