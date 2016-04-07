@@ -54,6 +54,8 @@ sub  4096R/74F6172C  created: 2014-03-11  expires: 2024-03-08  usage: SEA
 [ unknown] (2). Alexandre González Rodríguez <agonzalezro@gmail.com>
 ```
 
+**Update: Chris Miller showed me on the comments that this step is not really needed, so don't delete you key, just write `q` to exit and save the changes.**
+
 And delete the `keybase.io` one:
 
 ```
