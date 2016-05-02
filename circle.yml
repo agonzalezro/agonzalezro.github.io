@@ -1,7 +1,7 @@
 dependencies:
   override:
-    - wget https://github.com/agonzalezro/polo/releases/download/v1.0-RC1/polo_linux_amd64
-    - chmod a+x polo_linux_amd64
+    - wget https://github.com/agonzalezro/polo/releases/download/v1.1/polo-linux-amd64
+    - chmod a+x polo-linux-amd64
     - git config --global user.email "agonzalezro@gmail.com"
     - git config --global user.name "Alexandre González"
 
@@ -13,8 +13,8 @@ deployment:
   master:
     branch: polo
     commands:
-      - ./polo_linux_amd64 content .
-      - rm -rf Makefile config.json content templates polo_linux_amd64
+      - ./polo-linux-amd64 content .
+      - rm -rf Makefile config.json content templates polo-linux-amd64
       - git add -A .
       - git commit -m 'Site generation with polo from CircleCI'
       - git push origin HEAD:master -f

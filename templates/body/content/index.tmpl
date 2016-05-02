@@ -1,8 +1,9 @@
 {{define "title"}}
-{{.Site.Config.Title}}
+{{.Config.Title}}
 {{end}}
 
 {{define "content"}}
+<div class="container col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 {{if .Articles}}
 
 {{range $_, $article := .Articles}}
@@ -24,7 +25,7 @@
 <hr>
 {{end}}
 
-{{if gt .Site.NumberOfPages 1 }}
+{{if gt .NumberOfPages 1 }}
 <div class="text-center"><ul class="pagination">
 
     <li class="
@@ -44,7 +45,7 @@
     {{end}} {{/* range */}}
 
     <li class="
-    {{if eq $.PageNumber $.Site.NumberOfPages}}
+    {{if eq $.PageNumber $.NumberOfPages}}
     disabled
     {{end}}
     ">
@@ -53,4 +54,5 @@
 
 </ul></div>
 {{end}} {{/* if */}}
+</div>
 {{end}} {{/* content */}}
