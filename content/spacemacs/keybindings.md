@@ -12,4 +12,6 @@ So, now that you know why I did the change let me show you the key bindings that
 
 <script src="https://gist.github.com/agonzalezro/1bf818c2db629d7cce0b.js"></script>
 
+Please, share yours with me! [@agonzalezro](https://twitter.com/agonzalezro) or leave a comment :)
+
 PS: if you are starting in development I would start with Atom or some other editor. I moved from vim to Spacemacs because 1) I already knew some vim & 2) it works in terminal, and this is a must for me since I am a heavy user of tmux too.
