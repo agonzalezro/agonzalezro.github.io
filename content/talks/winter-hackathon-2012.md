@@ -1,5 +1,5 @@
 date: 2012-11-27
-tags: hackathon, pygrunn, paylogic, backbone, flask, slides, pygrunn
+tags: hackathon, pygrunn, paylogic, backbone, flask, slides
 
 PyGrunn Winter Hackathon 2012
 =============================
