@@ -17,3 +17,7 @@ h5 {
 p {
   font-size: 1.1em;
 }
+
+a.label.label-info:before {
+  content: '#';
+}
