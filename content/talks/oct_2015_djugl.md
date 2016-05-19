@@ -4,7 +4,7 @@ tags: djugl, python, kubernetes, rolling-update
 How to deploy and update a python app using Kubernetes
 ======================================================
 
-Two days ago I gave a small talk in the [DJUGL (Django User Group London](https://twitter.com/DJUGL) explaining how we could deploy a test application into Kubernetes. This post is going to explain something pretty similar, how to deploy a Flask app into Kubernetes and how to rolling update it.
+Two days ago I gave a small talk in the [DJUGL (Django User Group London)](https://twitter.com/DJUGL) explaining how we could deploy a test application into Kubernetes. This post is going to explain something pretty similar, how to deploy a Flask app into Kubernetes and how to rolling update it.
 
 Before starting, you can find all the materials of this post in my [k8s-py-example](https://github.com/agonzalezro/k8s-py-example) repo.
 
