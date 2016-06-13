@@ -18,6 +18,10 @@ p {
   font-size: 1.1em;
 }
 
+ul li li, ul li li li, ul li li li li {
+  font-size: 1em;
+}
+
 a.label.label-info:before {
   content: '#';
 }
