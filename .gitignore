@@ -1,4 +1,7 @@
-srv.pid
-pelican.pid
-*.pyc
 .DS_Store
+*.html
+category/
+feeds/
+pages/
+tag/
+tags/

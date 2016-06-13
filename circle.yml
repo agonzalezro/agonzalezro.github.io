@@ -14,7 +14,7 @@ deployment:
     branch: polo
     commands:
       - ./polo-linux-amd64 content .
-      - rm -rf Makefile config.json content templates polo-linux-amd64
+      - rm -rf .gitignore Makefile config.json content templates polo-linux-amd64
       - git add -A .
       - git commit -m 'Site generation with polo from CircleCI'
       - git push origin HEAD:master -f
