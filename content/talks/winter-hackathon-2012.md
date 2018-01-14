@@ -14,17 +14,12 @@ introduction about what I wanted:
 *A small platform to create slides and have them always associated to a
 web with this possibilities:*
 
--   *Create an account with Google (or perhaps twitter, facebook...),
-    but Google seems the best option for me now.*
--   *Create or edit new slides related with this account. This slides
-    creator/editor will have the following functionalities:*
-
-    -   *Select one image for background in fullscreen.*
-    -   *Write one or 2 lines of text that will always fulfill the width
-        of the slide.*
-
-    + *Change the font family.*
--   *Have a permanent link to your slide (completely public for now).*
+- *Create an account with Google (or perhaps twitter, facebook...), but Google seems the best option for me now.*
+- *Create or edit new slides related with this account. This slides creator/editor will have the following functionalities:*
+  + *Select one image for background in fullscreen.*
+  + *Write one or 2 lines of text that will always fulfill the width of the slide.*
+  + *Change the font family.*
+- *Have a permanent link to your slide (completely public for now).*
 
 After the hackathon we got something very similar to what I wanted, with
 some small issues. But this post is not about what we did wrong! This
