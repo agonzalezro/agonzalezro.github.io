@@ -14,12 +14,12 @@ h5 {
   font-size: 1.2em;
 }
 
-p {
+p, ul li, ol li {
   font-size: 1.1em;
 }
 
-ul li li, ul li li li, ul li li li li {
-  font-size: 1em;
+ul li li, ul li li li, ul li li li li, ol li li, ol li li li, ol li li li li {
+  font-size: 1.1em;
 }
 
 a.label.label-info:before {
