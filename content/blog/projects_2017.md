@@ -13,8 +13,8 @@ In 2017 I had some ideas that after further investigation or after just chatting
 
 Why am I sharing them? Because to be fair I don't think I will never start them, also, maybe we can start a good brainstorm here!
 
-![A cow](static/lazy-cat.jpg)
-<p align="center"><em>Lazy cat proudly brought to you by [huffintonpost](https://www.huffingtonpost.com/jon-jachimowicz/laziness-is-more-complex-_b_6802854.html)</em></p>
+![A lazy cat](static/lazy-cat.jpg)
+<p align="center"><em>Lazy cat proudly brought to you by [huffingtonpost](https://www.huffingtonpost.com/jon-jachimowicz/laziness-is-more-complex-_b_6802854.html)</em></p>
 
 Tool to review Tweets
 ---------------------
