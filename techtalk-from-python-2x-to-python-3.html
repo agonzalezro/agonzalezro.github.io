@@ -1,0 +1,387 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+
+    <title>
+TechTalk: from python 2.x to python 3 | // Álex Go{,5z}
+</title>
+
+    
+  <meta name="theme-color" content="#ffffff">
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+
+    
+    
+
+  <script type="text/javascript">var switchTo5x=true;</script>
+  <script type="text/javascript" src="//w.sharethis.com/button/buttons.js"></script>
+  <script type="text/javascript">
+    stLight.options({publisher: "db740e9c-f490-4a3f-813a-5d257e1ea7f8", doNotHash: false, doNotCopy: false, hashAddressBar: false});
+  </script>
+
+
+
+    <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+  </head>
+
+  <body>
+    
+<div class="navbar navbar-default navbar-static-top navbar" role="navigation">
+  <div class="container col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">// Álex Go{,5z}</a>
+    </div>
+    
+    <div class="navbar-collapse collapse">
+      
+      <ul class="nav navbar-nav">
+        
+        <li><a href="/archive.html">Archive</a></li>
+        
+
+        
+        <li><a href="/pages/about.html">About</a></li>
+        
+        <li><a href="/pages/contact.html">Contact</a></li>
+        
+      </ul>
+      
+
+      
+      <ul class="nav navbar-nav navbar-right">
+        
+        <li class="dropdown">
+        <a href="#" data-toggle="dropdown">Categories <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          
+          
+          <li>
+          <a href="/category/android.html">android <span class="badge pull-right">1</span></a>
+          </li>
+          
+          
+          <li>
+          <a href="/category/biz.html">biz <span class="badge pull-right">1</span></a>
+          </li>
+          
+          
+          <li>
+          <a href="/category/blog.html">blog <span class="badge pull-right">5</span></a>
+          </li>
+          
+          
+          <li>
+          <a href="/category/dev.html">dev <span class="badge pull-right">6</span></a>
+          </li>
+          
+          
+          <li>
+          <a href="/category/devops.html">devops <span class="badge pull-right">5</span></a>
+          </li>
+          
+          
+          <li>
+          <a href="/category/gnome.html">gnome <span class="badge pull-right">2</span></a>
+          </li>
+          
+          
+          <li>
+          <a href="/category/go.html">go <span class="badge pull-right">3</span></a>
+          </li>
+          
+          
+          <li>
+          <a href="/category/kubernetes.html">kubernetes <span class="badge pull-right">1</span></a>
+          </li>
+          
+          
+          <li>
+          <a href="/category/linux.html">linux <span class="badge pull-right">1</span></a>
+          </li>
+          
+          
+          <li>
+          <a href="/category/security.html">security <span class="badge pull-right">1</span></a>
+          </li>
+          
+          
+          <li>
+          <a href="/category/spacemacs.html">spacemacs <span class="badge pull-right">2</span></a>
+          </li>
+          
+          
+          <li>
+          <a href="/category/talks.html">talks <span class="badge pull-right">15</span></a>
+          </li>
+          
+          
+          <li>
+          <a href="/category/vim.html">vim <span class="badge pull-right">1</span></a>
+          </li>
+          
+        </ul>
+        </li>
+        
+      </ul>
+      
+    </div>
+    
+  </div>
+</div>
+
+    
+<div class="container col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+  <h1>TechTalk: from python 2.x to python 3</h1>
+
+  <p>
+    
+    <span class="label label-default">by Álex</span>
+
+    
+    <span class="label label-default">2013-02-12 00:30</span>
+    
+
+    
+    <a class="label label-success" href="/category/talks.html">talks</a>
+    
+
+    
+    
+    <a class="label label-info" href="/tag/python.html">python</a>
+    
+    <a class="label label-info" href="/tag/migration.html">migration</a>
+    
+    <a class="label label-info" href="/tag/python3k.html">python3k</a>
+    
+    
+  </p>
+
+  <h2>Introduction</h2>
+
+<p>This are some notes that I took while the talk that I saw today, the
+original title of the talk that I had the chance to see today was:
+&ldquo;Switch to Python 3&hellip; Now&hellip; Inmediately&rdquo; by the <a href="http://www.russel.org.uk">professor Russel
+Winder</a>.</p>
+
+<p>More or less all that you will find here is a transaction, just ordered
+in my style and perhaps with some notes by myself.</p>
+
+<p>Python 2.x remains being the default python. Too many people and
+organizations are afraid of the change.</p>
+
+<p>Python software foundation should declare python 3 the default python
+immediately.</p>
+
+<h3>Problems</h3>
+
+<ul>
+<li>some big companies are telling people to don&rsquo;t use it.</li>
+<li>some crucial projects are not using Python 3 yet.</li>
+</ul>
+
+<h3>Companies and people</h3>
+
+<ul>
+<li>from the point of view of Russel, the problem are those companies
+that doesn&rsquo;t want to migrate, and not the fact that the code needs
+to be migrate.</li>
+<li>at least they should have version 2 and 3 compatible on the
+codebase.</li>
+</ul>
+
+<h3>Migration</h3>
+
+<ul>
+<li><code>2to3</code> tool is not useful at all. Just one shot transform tool.</li>
+<li>the manual the better? From my POV (Álex) you can never let a
+machine this kind of work and it usually will be a biblical
+proportion job for large codebases. And more important&hellip; usually
+without tests :D</li>
+</ul>
+
+<h2>Justifications</h2>
+
+<p>Python 2 is a dead end and python 3 is the developing future.</p>
+
+<p>This piece of code is compatible with both versions, why don&rsquo;t use them?</p>
+
+<pre><code class="language-python">print(x)
+exec(x)
+</code></pre>
+
+<p>Problem: <code>print(x)</code> support multiple parameter in python 3, so, let&rsquo;s
+import the function from future to have the same behaviour in python
+2.x:</p>
+
+<pre><code class="language-python">from __future__ import print_function
+</code></pre>
+
+<p>Let&rsquo;s make it bigger:</p>
+
+<pre><code class="language-python">from __future__ import (
+    division,
+    absolute_import,
+    print_function,
+    unicode_literals
+)
+</code></pre>
+
+<p>With this we will avoid problems with floats on divisions, add . to the
+imports, import the python3 version of print and work always with
+unicode.</p>
+
+<p>Another problem is the list-comprehensions which will change a little
+bit, instead create list, they will create sets.</p>
+
+<h3>Some other problems</h3>
+
+<p>python 2 is strict, but python 3 is kinda lazy.</p>
+
+<pre><code class="language-python">map(lambda x: x * x, filter(lambda x: x % 10 == 0, range(100))
+</code></pre>
+
+<p>Will produce an iterator in python 3, in python 2 is a data structure.</p>
+
+<p>This is one of the biggest issues into the migration, other functions
+with same problems will be, for example: <code>items</code>, <code>keys</code>, <code>values</code>,
+<code>iteritems</code>, <code>iterkeys</code> &amp; <code>itervalues</code> which in python 3 will become:
+<code>items</code>, <code>keys</code> &amp; <code>values</code>.</p>
+
+<p>If you want a data structure instead a iterator, you should make it
+manually:</p>
+
+<pre><code class="language-python">range(10)  # python 2.x
+tuple(range(10)  # python 3
+</code></pre>
+
+<h3>Concurrency</h3>
+
+<p>At least IronPython and Jython do not have a
+<a href="http://wiki.python.org/moin/GlobalInterpreterLock">GIL</a> as CPython and
+PyPy do.</p>
+
+<p>There is an experiment to mode GIL out of PyPy.</p>
+
+<p>Actors
+:   communicate processes with messages.</p>
+
+<p>Dataflow
+:   operators connected by channels with activity triggered by arrival
+    of data on the channels.</p>
+
+<p>CSP
+:   we have <a href="http://code.google.com/p/pycsp/">PyCSP</a> and
+    <a href="https://github.com/python-concurrency/python-csp">PythonCSP</a>.</p>
+
+<h3>Data parallelism</h3>
+
+<p>Transform a sequence to another sequence where all individual actions
+happen at the same time. Python has not a lot of utilities for that,
+since Go or D do.</p>
+
+<h3>Futures are the future</h3>
+
+<p>concurrent.futures
+:   python 3.2 package to abstract over threads and processes to give an
+    asynchronous function call and future system.</p>
+
+<h2>Under challengue</h2>
+
+<ul>
+<li>Go is taking over from Python, because it&rsquo;s native and it has a
+solid concurrency models (CSP).</li>
+<li>D is on the market too.</li>
+<li>Native programs are almost always quicker than python.</li>
+</ul>
+
+<h2>Funny points</h2>
+
+<ul>
+<li>One rule of the guy is to use one month a year just <code>ed</code> no <code>vim</code> or
+<code>emacs</code> rubbish.</li>
+<li>C has a rubbish syntax in comparison with Python. You will touch
+your head if you check some C++ code: why!?</li>
+</ul>
+
+
+  
+
+<br>
+<span class='st_sharethis_large' displayText='ShareThis'></span>
+<span class='st_facebook_large' displayText='Facebook'></span>
+<span class='st_twitter_large' displayText='Tweet'></span>
+<span class='st_linkedin_large' displayText='LinkedIn'></span>
+<span class='st_googleplus_large' displayText='Google +'></span>
+<span class='st_reddit_large' displayText='Reddit'></span>
+<span class='st_email_large' displayText='Email'></span>
+
+
+  
+
+<h2>Comments</h2>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'agonzalezro';
+  // TODO (agonzalezro): Compatibility with my old blog articles
+  // I don't know if it will work for other users
+  var disqus_identifier = 'techtalk-from-python-2x-to-python-3.html';
+
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+</div>
+
+
+    
+<div class="container col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+  <div class="text-center">
+    <p>
+      <a href="http://github.com/agonzalezro/polo">polo</a> is made with
+      <span class="glyphicon glyphicon-heart"></span> by
+      <a href="http://twitter.com/agonzalezro">@agonzalezro</a>
+    </p>
+  </div>
+</div>
+
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//getbootstrap.com/dist/js/bootstrap.min.js"></script>
+
+    
+
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-35984509-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+  
+
+  </body>
+</html>

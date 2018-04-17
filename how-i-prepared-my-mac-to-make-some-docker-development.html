@@ -1,0 +1,323 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+
+    <title>
+How I prepared my Mac to make some Docker development | // Álex Go{,5z}
+</title>
+
+    
+  <meta name="theme-color" content="#ffffff">
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+
+    
+    
+
+  <script type="text/javascript">var switchTo5x=true;</script>
+  <script type="text/javascript" src="//w.sharethis.com/button/buttons.js"></script>
+  <script type="text/javascript">
+    stLight.options({publisher: "db740e9c-f490-4a3f-813a-5d257e1ea7f8", doNotHash: false, doNotCopy: false, hashAddressBar: false});
+  </script>
+
+
+
+    <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+  </head>
+
+  <body>
+    
+<div class="navbar navbar-default navbar-static-top navbar" role="navigation">
+  <div class="container col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">// Álex Go{,5z}</a>
+    </div>
+    
+    <div class="navbar-collapse collapse">
+      
+      <ul class="nav navbar-nav">
+        
+        <li><a href="/archive.html">Archive</a></li>
+        
+
+        
+        <li><a href="/pages/about.html">About</a></li>
+        
+        <li><a href="/pages/contact.html">Contact</a></li>
+        
+      </ul>
+      
+
+      
+      <ul class="nav navbar-nav navbar-right">
+        
+        <li class="dropdown">
+        <a href="#" data-toggle="dropdown">Categories <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          
+          
+          <li>
+          <a href="/category/android.html">android <span class="badge pull-right">1</span></a>
+          </li>
+          
+          
+          <li>
+          <a href="/category/biz.html">biz <span class="badge pull-right">1</span></a>
+          </li>
+          
+          
+          <li>
+          <a href="/category/blog.html">blog <span class="badge pull-right">5</span></a>
+          </li>
+          
+          
+          <li>
+          <a href="/category/dev.html">dev <span class="badge pull-right">6</span></a>
+          </li>
+          
+          
+          <li>
+          <a href="/category/devops.html">devops <span class="badge pull-right">5</span></a>
+          </li>
+          
+          
+          <li>
+          <a href="/category/gnome.html">gnome <span class="badge pull-right">2</span></a>
+          </li>
+          
+          
+          <li>
+          <a href="/category/go.html">go <span class="badge pull-right">3</span></a>
+          </li>
+          
+          
+          <li>
+          <a href="/category/kubernetes.html">kubernetes <span class="badge pull-right">1</span></a>
+          </li>
+          
+          
+          <li>
+          <a href="/category/linux.html">linux <span class="badge pull-right">1</span></a>
+          </li>
+          
+          
+          <li>
+          <a href="/category/security.html">security <span class="badge pull-right">1</span></a>
+          </li>
+          
+          
+          <li>
+          <a href="/category/spacemacs.html">spacemacs <span class="badge pull-right">2</span></a>
+          </li>
+          
+          
+          <li>
+          <a href="/category/talks.html">talks <span class="badge pull-right">15</span></a>
+          </li>
+          
+          
+          <li>
+          <a href="/category/vim.html">vim <span class="badge pull-right">1</span></a>
+          </li>
+          
+        </ul>
+        </li>
+        
+      </ul>
+      
+    </div>
+    
+  </div>
+</div>
+
+    
+<div class="container col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+  <h1>How I prepared my Mac to make some Docker development</h1>
+
+  <p>
+    
+    <span class="label label-default">by Álex</span>
+
+    
+    <span class="label label-default">2014-12-01</span>
+    
+
+    
+    <a class="label label-success" href="/category/dev.html">dev</a>
+    
+
+    
+    
+    <a class="label label-info" href="/tag/docker.html">docker</a>
+    
+    <a class="label label-info" href="/tag/environment.html">environment</a>
+    
+    
+  </p>
+
+  <p>This post is about <strong>how I did it!</strong> not about a standard way or something like
+that, if you use any other way I would be happy to hear it on the comments.</p>
+
+<p>I usually use <code>boot2docker</code> on my machine to run container, but it looks like
+it was misbehaving a little bit when I was trying to create the binary of my
+dev branch with:</p>
+
+<pre><code>$ make binary
+</code></pre>
+
+<p>Actually, it was just not creating it.</p>
+
+<p>I could also create some cross-compiled binaries but that didn&rsquo;t work either.
+It was a really weird situation because I couldn&rsquo;t find the path that it was
+saying that it was creating. Not in my machine, not in my boot2docker VM
+either. So, after some frustrating time I decided to go with vagrant.</p>
+
+<h2>What I wanted?</h2>
+
+<ul>
+<li>My vim! I couldn&rsquo;t live without that.</li>
+<li>My ssh keys for github and similar without copying them to the vagrant box.</li>
+</ul>
+
+<h2>How I did it?</h2>
+
+<h3>vagrant</h3>
+
+<p>It was a simple process after you have clear what you really want to do:</p>
+
+<pre><code>$ cd myawesomebox
+$ vagrant init  # Edit the file if you want more memory or similar
+$ git clone git@github.com:YOUR_USERNAME/docker
+$ vagrant ssh
+$ sudo su -
+</code></pre>
+
+<p>What we did there? We have created a <code>Vagrantfile</code> and we clone the repo in the
+same folder. Thanks to that when we are inside the vagrant box (with <code>vagrant
+ssh</code>) we will be able to access to it on the path <code>/vagrant</code> of your box.</p>
+
+<p>The advantage of this approach is that you can access to all the docker code
+from your host machine in the path <code>myawesomebox</code> so you will not need to copy
+any key, any conf or anything like that.</p>
+
+<h3>docker</h3>
+
+<p>Now it&rsquo;s time to update your docker server and create your on docker client
+(remember that we are logged in as root on that box):</p>
+
+<pre><code># cd /vagrant/docker
+# make build&amp;&amp;make binary
+# service docker stop
+# cp bundles/1.3.2-dev/binary/docker-1.3.2-dev /usr/bin/docker
+# service docker start
+</code></pre>
+
+<p>Where <code>1.3.2</code> is the  current version at the time of writing &amp;
+<code>/usr/bin/docker</code> is your old docker server binary.</p>
+
+<p>Now you are running a new server, but where is the client?! Easy peasy, on the
+same place that the server was originally:</p>
+
+<pre><code># bundles/1.3.2-dev/binary/docker
+...
+</code></pre>
+
+<p>I usually alias it to the letter <code>d</code> to access to it quicker without moving
+stuff around:</p>
+
+<pre><code># alias d=&quot;`pwd`/bundles/1.3.2-dev/binary/docker&quot;
+</code></pre>
+
+<h2>What&rsquo;s next?</h2>
+
+<p>I would say that develop some nice pull request? Or at least try! It&rsquo;s fun
+anyway :)</p>
+
+<p>I went through all this pain while <a href="http://twitter.com/eloycoto">@eloycoto</a> &amp;
+me were developing a <a href="https://github.com/docker/docker/pull/9415">small PR to show vertical <code>ps</code>
+outputs</a>, so, thanks mate!</p>
+
+<p>If you have any question or you think that my way of doing this stinks, please,
+let me know! I would really, really appreciate it.</p>
+
+
+  
+
+<br>
+<span class='st_sharethis_large' displayText='ShareThis'></span>
+<span class='st_facebook_large' displayText='Facebook'></span>
+<span class='st_twitter_large' displayText='Tweet'></span>
+<span class='st_linkedin_large' displayText='LinkedIn'></span>
+<span class='st_googleplus_large' displayText='Google +'></span>
+<span class='st_reddit_large' displayText='Reddit'></span>
+<span class='st_email_large' displayText='Email'></span>
+
+
+  
+
+<h2>Comments</h2>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'agonzalezro';
+  // TODO (agonzalezro): Compatibility with my old blog articles
+  // I don't know if it will work for other users
+  var disqus_identifier = 'how-i-prepared-my-mac-to-make-some-docker-development.html';
+
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+</div>
+
+
+    
+<div class="container col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+  <div class="text-center">
+    <p>
+      <a href="http://github.com/agonzalezro/polo">polo</a> is made with
+      <span class="glyphicon glyphicon-heart"></span> by
+      <a href="http://twitter.com/agonzalezro">@agonzalezro</a>
+    </p>
+  </div>
+</div>
+
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//getbootstrap.com/dist/js/bootstrap.min.js"></script>
+
+    
+
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-35984509-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+  
+
+  </body>
+</html>

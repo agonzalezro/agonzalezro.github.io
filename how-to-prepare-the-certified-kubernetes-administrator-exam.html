@@ -1,0 +1,302 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+
+    <title>
+How to prepare the Certified Kubernetes Administrator exam | // Álex Go{,5z}
+</title>
+
+    
+  <meta name="theme-color" content="#ffffff">
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+
+    
+    
+
+  <script type="text/javascript">var switchTo5x=true;</script>
+  <script type="text/javascript" src="//w.sharethis.com/button/buttons.js"></script>
+  <script type="text/javascript">
+    stLight.options({publisher: "db740e9c-f490-4a3f-813a-5d257e1ea7f8", doNotHash: false, doNotCopy: false, hashAddressBar: false});
+  </script>
+
+
+
+    <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+  </head>
+
+  <body>
+    
+<div class="navbar navbar-default navbar-static-top navbar" role="navigation">
+  <div class="container col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">// Álex Go{,5z}</a>
+    </div>
+    
+    <div class="navbar-collapse collapse">
+      
+      <ul class="nav navbar-nav">
+        
+        <li><a href="/archive.html">Archive</a></li>
+        
+
+        
+        <li><a href="/pages/about.html">About</a></li>
+        
+        <li><a href="/pages/contact.html">Contact</a></li>
+        
+      </ul>
+      
+
+      
+      <ul class="nav navbar-nav navbar-right">
+        
+        <li class="dropdown">
+        <a href="#" data-toggle="dropdown">Categories <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          
+          
+          <li>
+          <a href="/category/android.html">android <span class="badge pull-right">1</span></a>
+          </li>
+          
+          
+          <li>
+          <a href="/category/biz.html">biz <span class="badge pull-right">1</span></a>
+          </li>
+          
+          
+          <li>
+          <a href="/category/blog.html">blog <span class="badge pull-right">5</span></a>
+          </li>
+          
+          
+          <li>
+          <a href="/category/dev.html">dev <span class="badge pull-right">6</span></a>
+          </li>
+          
+          
+          <li>
+          <a href="/category/devops.html">devops <span class="badge pull-right">5</span></a>
+          </li>
+          
+          
+          <li>
+          <a href="/category/gnome.html">gnome <span class="badge pull-right">2</span></a>
+          </li>
+          
+          
+          <li>
+          <a href="/category/go.html">go <span class="badge pull-right">3</span></a>
+          </li>
+          
+          
+          <li>
+          <a href="/category/kubernetes.html">kubernetes <span class="badge pull-right">1</span></a>
+          </li>
+          
+          
+          <li>
+          <a href="/category/linux.html">linux <span class="badge pull-right">1</span></a>
+          </li>
+          
+          
+          <li>
+          <a href="/category/security.html">security <span class="badge pull-right">1</span></a>
+          </li>
+          
+          
+          <li>
+          <a href="/category/spacemacs.html">spacemacs <span class="badge pull-right">2</span></a>
+          </li>
+          
+          
+          <li>
+          <a href="/category/talks.html">talks <span class="badge pull-right">15</span></a>
+          </li>
+          
+          
+          <li>
+          <a href="/category/vim.html">vim <span class="badge pull-right">1</span></a>
+          </li>
+          
+        </ul>
+        </li>
+        
+      </ul>
+      
+    </div>
+    
+  </div>
+</div>
+
+    
+<div class="container col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+  <h1>How to prepare the Certified Kubernetes Administrator exam</h1>
+
+  <p>
+    
+    <span class="label label-default">by Álex</span>
+
+    
+    <span class="label label-default">2018-04-16</span>
+    
+
+    
+    <a class="label label-success" href="/category/devops.html">devops</a>
+    
+
+    
+    
+    <a class="label label-info" href="/tag/cka.html">cka</a>
+    
+    <a class="label label-info" href="/tag/kubernetes.html">kubernetes</a>
+    
+    <a class="label label-info" href="/tag/linuxfoundation.html">linuxfoundation</a>
+    
+    <a class="label label-info" href="/tag/exam.html">exam</a>
+    
+    
+  </p>
+
+  <p>Finally last weekend I did the CKA exam, I was procrastinating it a bit in part because I didn&rsquo;t know what to expect since Kubernetes is huge and I thought that each day extra I spend reading about it would help me.</p>
+
+<p>TLDR; I did pass the exam and if you work daily with Kubernetes or variants as Openshift you will be ok, they are not trying to catch you in some weird question that not even <a href="https://twitter.com/kelseyhightower">Kelsey</a> would know how to answer 😀</p>
+
+<p align="center">
+<img alt="CKA certificate" src="static/devops/cka.png" />
+</p>
+
+<h2>Preparation</h2>
+
+<p>Giving the long quantity of topics that could be covered in the exam I have used several resources to study it.
+I will try to sort this in a way that makes sense if you have no knowledge about Kubernetes at all, if you are already familiarized with it you probably can skip some of the links.</p>
+
+<p>First of all you will need to know the basic Kubernetes resources, if you are a video fan maybe this video could help you: <a href="https://www.youtube.com/embed/K_Kh4LMiiqQ">&ldquo;From pets to cattle, the way of Kubernetes&rdquo;</a> (no spam 😬) but after watching it you will need to get more in depth, for doing so I recommend the book <a href="http://shop.oreilly.com/product/0636920043874.do">&ldquo;Kubernetes: Up and Running&rdquo;</a>.</p>
+
+<p>Now that you know the basics probably you will want to test it, you have several ways for doing it: minikube, creating a cluster in GKE, etc&hellip; but if you don&rsquo;t want to bother about it yet, use <a href="https://www.katacoda.com/">Katacoda</a> and try to finish some of the free Scenarios they have there.</p>
+
+<p>You are almost there but if you are missing troubleshooting experience because you never administrated a Kubernetes cluster take a look to: <a href="http://shop.oreilly.com/product/0636920064947.do">&ldquo;Kubernetes Cookbook&rdquo;</a>; this book is pretty focused on pragmatic problems, it will definitely help you in case you need to troubleshoot stuff and try to follow <a href="https://github.com/kelseyhightower/kubernetes-the-hard-way">&ldquo;Kubernetes the hard way&rdquo;</a> that would help you a lot to understand how to install or fix the Kubernetes components.</p>
+
+<p>If have read all the previous links but you still want more, take a look to the official documentation at <a href="https://kubernetes.io/">kubernetes.io</a> to review all the concepts.</p>
+
+<h2>The day of the exam</h2>
+
+<p>Part of my anxiety regarding the exam was that I didn&rsquo;t know what to expect after sitting in my PC at 3pm, what would happen if my browser gets blocked? If I can&rsquo;t understand a question? If I break my cluster? What&rsquo;s going to be my &ldquo;IDE&rdquo;?
+I think some of these questions could be easily answered by the Linux Foundation in form of a video explaining how to do the exam, but I couldn&rsquo;t find anything similar so I will try to help you here:</p>
+
+<ul>
+<li><p>Before the exam, the examiner will ask you yo <strong>clean your desk and drawers</strong>, completely, I had some books in drawers that were not covered by the cam and I had to move them. I also had an schedule in a wall and I had to unglue it.</p></li>
+
+<li><p>The <strong>place should be quiet</strong> because even if you usually work with headphones you will not be allowed to use them.</p></li>
+
+<li><p>The examiner will ask you to see all the room, even under the desk.</p></li>
+
+<li><p>The <strong>examiner will not talk to you by voice, only by chat</strong>. He/she will hear you because you will need to share the screen and micro. When you do that he will ask you to show open processes et al to be sure you are not copying. I found this a little bit excessive, but&hellip; rules and probably some previous cheaters (shame on you!).</p></li>
+
+<li><p>The exam happens in a Chrome tab, the left side will show you the questions and the percentage it covers and you will be able to jump from one to another. All the questions are atomic. The right side is for the shell, I tried to use tmux there, but it was pretty difficult inside a browser terminal. You can also have a popup with notes.</p></li>
+
+<li><p>After running a command in the shell it got blocked and I panicked, I went to my Inbox to write an email to support but luckily after few second (maybe a minute or two but it looked like a long time to me) it went back. I let the examiner know just in case he/she saw me in the email, and that&rsquo;s it.</p></li>
+
+<li><p>You can <strong>only open a tab with kubernetes.io</strong> and use its search box, no Google. In the past it seems it wasn&rsquo;t like this. It&rsquo;s ok because the answer is usually there, but you need to get used to it, maybe try it out during the preparation.</p></li>
+
+<li><p><strong>It&rsquo;s ok to request a pause</strong>, but careful because the time doesn&rsquo;t stop.</p></li>
+
+<li><p>You have three hours to finish the exam, <strong>if you get blocked it’s better to skip</strong> that question for now and retake it later.</p></li>
+</ul>
+
+<h2>The wait</h2>
+
+<p>I did the exam last Saturday afternoon, from 3pm to 6pm and when I work up this morning I already had the result in my Inbox so you will not need to wait a lot for it, probably during work days it&rsquo;s going to be even quicker.</p>
+
+<p align="center">
+<img width=800px alt="that's all folks" src="static/devops/thatsall.jpg" />
+<br />
+<em>From <a href="https://www.youtube.com/watch?v=IAmwk8AS-l0">Retrofix</a></em>
+</p>
+
+<p>So, that&rsquo;s it from me.
+If you are interested in Kubernetes and you work with it often you will not have any trouble passing the exam, however, I understand that giving the huge range of things that they could ask you the exam can be intimidating, trust yourself and you will be ok!
+If you do the exam and this helps you somehow or you just want to let me know anything, <a href="https://twitter.com/agonzalezro">please ping me on @agonzalezro</a>!</p>
+
+
+  
+
+<br>
+<span class='st_sharethis_large' displayText='ShareThis'></span>
+<span class='st_facebook_large' displayText='Facebook'></span>
+<span class='st_twitter_large' displayText='Tweet'></span>
+<span class='st_linkedin_large' displayText='LinkedIn'></span>
+<span class='st_googleplus_large' displayText='Google +'></span>
+<span class='st_reddit_large' displayText='Reddit'></span>
+<span class='st_email_large' displayText='Email'></span>
+
+
+  
+
+<h2>Comments</h2>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'agonzalezro';
+  // TODO (agonzalezro): Compatibility with my old blog articles
+  // I don't know if it will work for other users
+  var disqus_identifier = 'how-to-prepare-the-certified-kubernetes-administrator-exam.html';
+
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+</div>
+
+
+    
+<div class="container col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+  <div class="text-center">
+    <p>
+      <a href="http://github.com/agonzalezro/polo">polo</a> is made with
+      <span class="glyphicon glyphicon-heart"></span> by
+      <a href="http://twitter.com/agonzalezro">@agonzalezro</a>
+    </p>
+  </div>
+</div>
+
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//getbootstrap.com/dist/js/bootstrap.min.js"></script>
+
+    
+
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-35984509-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+  
+
+  </body>
+</html>

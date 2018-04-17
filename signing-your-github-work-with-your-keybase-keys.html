@@ -1,0 +1,335 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+
+    <title>
+Signing your GitHub work with your Keybase keys | // Álex Go{,5z}
+</title>
+
+    
+  <meta name="theme-color" content="#ffffff">
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+
+    
+    
+
+  <script type="text/javascript">var switchTo5x=true;</script>
+  <script type="text/javascript" src="//w.sharethis.com/button/buttons.js"></script>
+  <script type="text/javascript">
+    stLight.options({publisher: "db740e9c-f490-4a3f-813a-5d257e1ea7f8", doNotHash: false, doNotCopy: false, hashAddressBar: false});
+  </script>
+
+
+
+    <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+  </head>
+
+  <body>
+    
+<div class="navbar navbar-default navbar-static-top navbar" role="navigation">
+  <div class="container col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">// Álex Go{,5z}</a>
+    </div>
+    
+    <div class="navbar-collapse collapse">
+      
+      <ul class="nav navbar-nav">
+        
+        <li><a href="/archive.html">Archive</a></li>
+        
+
+        
+        <li><a href="/pages/about.html">About</a></li>
+        
+        <li><a href="/pages/contact.html">Contact</a></li>
+        
+      </ul>
+      
+
+      
+      <ul class="nav navbar-nav navbar-right">
+        
+        <li class="dropdown">
+        <a href="#" data-toggle="dropdown">Categories <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          
+          
+          <li>
+          <a href="/category/android.html">android <span class="badge pull-right">1</span></a>
+          </li>
+          
+          
+          <li>
+          <a href="/category/biz.html">biz <span class="badge pull-right">1</span></a>
+          </li>
+          
+          
+          <li>
+          <a href="/category/blog.html">blog <span class="badge pull-right">5</span></a>
+          </li>
+          
+          
+          <li>
+          <a href="/category/dev.html">dev <span class="badge pull-right">6</span></a>
+          </li>
+          
+          
+          <li>
+          <a href="/category/devops.html">devops <span class="badge pull-right">5</span></a>
+          </li>
+          
+          
+          <li>
+          <a href="/category/gnome.html">gnome <span class="badge pull-right">2</span></a>
+          </li>
+          
+          
+          <li>
+          <a href="/category/go.html">go <span class="badge pull-right">3</span></a>
+          </li>
+          
+          
+          <li>
+          <a href="/category/kubernetes.html">kubernetes <span class="badge pull-right">1</span></a>
+          </li>
+          
+          
+          <li>
+          <a href="/category/linux.html">linux <span class="badge pull-right">1</span></a>
+          </li>
+          
+          
+          <li>
+          <a href="/category/security.html">security <span class="badge pull-right">1</span></a>
+          </li>
+          
+          
+          <li>
+          <a href="/category/spacemacs.html">spacemacs <span class="badge pull-right">2</span></a>
+          </li>
+          
+          
+          <li>
+          <a href="/category/talks.html">talks <span class="badge pull-right">15</span></a>
+          </li>
+          
+          
+          <li>
+          <a href="/category/vim.html">vim <span class="badge pull-right">1</span></a>
+          </li>
+          
+        </ul>
+        </li>
+        
+      </ul>
+      
+    </div>
+    
+  </div>
+</div>
+
+    
+<div class="container col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+  <h1>Signing your GitHub work with your Keybase keys</h1>
+
+  <p>
+    
+    <span class="label label-default">by Álex</span>
+
+    
+    <span class="label label-default">2016-04-06</span>
+    
+
+    
+    <a class="label label-success" href="/category/security.html">security</a>
+    
+
+    
+    
+    <a class="label label-info" href="/tag/security.html">security</a>
+    
+    <a class="label label-info" href="/tag/gpg.html">gpg</a>
+    
+    <a class="label label-info" href="/tag/github.html">github</a>
+    
+    <a class="label label-info" href="/tag/git.html">git</a>
+    
+    
+  </p>
+
+  <p>As you may know, yesterday, <a href="https://github.com/blog/2144-gpg-signature-verification">GitHub has presented a way to verify your commits</a> on their platform. This is not something new, it&rsquo;s part of the git protocol, but now, they will show a fancy &ldquo;verified&rdquo; label everytime you push a signed commit. Cool? Yeah, pretty cool.</p>
+
+<p>One of the problems I always had since I know GPG is to keep my keys locally. I am pretty sure that some other people take care of their keys as if they were part of their family, but I didn&rsquo;t feel that need yet. <a href="https://keybase.io/">Keybase</a> partially solved this problem for me, let&rsquo;s hope it did it for you as well (ask me for an invite if you don&rsquo;t have one yet).</p>
+
+<p><em>I want to start this article with a disclaimer, I am not a security professional or anything even closer to it; so, if you think I am saying anything stupid, please, do let me know. Also, if you are a heavy user of Keybase, take my steps carefully because I don&rsquo;t know if you account will continue being usable by Keybase (I would expect so, but a disclaimer is always good).</em></p>
+
+<p><strong>What do we need to do then?</strong> Imagine that you are myself and you don&rsquo;t have <code>keybase</code> installed yet, also, you have a Mac:</p>
+
+<pre><code>brew install keybase
+</code></pre>
+
+<p>Now go to your Keybase account and download the public and private key, if you don&rsquo;t know how to do it, follow <a href="http://www.keybits.net/2016/02/import-keybase-private-key/">this tutorial by Tom Atkins</a>. Summarising it:</p>
+
+<ol>
+<li>Go to your Keybase account.</li>
+<li>Click on your key fingerprint and copy/paste that on a file.</li>
+<li>Click on &ldquo;edit&rdquo;, then &ldquo;export my private key&rdquo; and copy/paste that as well in a different file.</li>
+<li>Now, <code>gpg --allow-secret-key-import --import keybase-private.key</code>.</li>
+<li>And, <code>gpg --import keybase-public.key</code>.</li>
+</ol>
+
+<p>You are good to go now.</p>
+
+<p>The problem that you will face trying to use your Keybase account is that your email address will look something like <code>username@keybase.io</code> and you can not verify that account on github. For that reasonwe will need to update our key for adding your normal account email and delete the keybase one.</p>
+
+<p>So, let&rsquo;s add your normal account:</p>
+
+<pre><code># alex @ Alexs-MacBook-Pro in ~/Desktop [18:14:34]
+$ gpg --edit-key agonzalezro@keybase.io
+...
+gpg&gt; adduid
+Real name: Alexandre González Rodríguez
+Email address: agonzalezro@gmail.com
+Comment:
+You are using the `utf-8' character set.
+You selected this USER-ID:
+    &quot;Alexandre González Rodríguez &lt;agonzalezro@gmail.com&gt;&quot;
+
+Change (N)ame, (C)omment, (E)mail or (O)kay/(Q)uit? o
+
+You need a passphrase to unlock the secret key for
+user: &quot;keybase.io/agonzalezro &lt;agonzalezro@keybase.io&gt;&quot;
+4096-bit RSA key, ID 68C84A97, created 2014-03-11
+
+
+pub  4096R/68C84A97  created: 2014-03-11  expires: 2024-03-08  usage: SCEA
+                     trust: unknown       validity: unknown
+sub  4096R/74F6172C  created: 2014-03-11  expires: 2024-03-08  usage: SEA
+[ unknown] (1)  keybase.io/agonzalezro &lt;agonzalezro@keybase.io&gt;
+[ unknown] (2). Alexandre González Rodríguez &lt;agonzalezro@gmail.com&gt;
+</code></pre>
+
+<p><strong>Update: Chris Miller showed me on the comments that this step is not really needed, so don&rsquo;t delete you key, just write <code>q</code> to exit and save the changes.</strong></p>
+
+<p>And delete the <code>keybase.io</code> one:</p>
+
+<pre><code>...
+gpg&gt; 1
+
+pub  4096R/68C84A97  created: 2014-03-11  expires: 2024-03-08  usage: SCEA
+                     trust: unknown       validity: unknown
+sub  4096R/74F6172C  created: 2014-03-11  expires: 2024-03-08  usage: SEA
+[ unknown] (1). Alexandre González Rodríguez &lt;agonzalezro@gmail.com&gt;
+[ unknown] (2)* keybase.io/agonzalezro &lt;agonzalezro@keybase.io&gt;
+
+gpg&gt; deluid
+Really remove this user ID? (y/N) y
+
+pub  4096R/68C84A97  created: 2014-03-11  expires: 2024-03-08  usage: SCEA
+                     trust: unknown       validity: unknown
+sub  4096R/74F6172C  created: 2014-03-11  expires: 2024-03-08  usage: SEA
+[ unknown] (1). Alexandre González Rodríguez &lt;agonzalezro@gmail.com&gt;
+
+gpg&gt; q
+Save changes? (y/N) y
+</code></pre>
+
+<p>What we did there on the first line was select the account <code>keybase.io</code>, please, check the number associated with your <code>keybase.io</code> account, don&rsquo;t press <code>1</code> just for the sake of it.</p>
+
+<p>You have everything you need now, so you just need to export your key and <a href="https://github.com/settings/keys">import it on github</a>:</p>
+
+<pre><code>gpg --armor --export agonzalezro@gmail.com
+</code></pre>
+
+<p>PS: <code>pbcopy</code> is your friend here if you are using Mac :)</p>
+
+<p>The only thing you need to do now is sign a commit, do that with <code>git commit -S</code> and after pushing you will have this beautiful &ldquo;label&rdquo; close to your commit.</p>
+
+<p><a href="https://github.com/agonzalezro/agonzalezro.github.io/commits/polo"><img src="static/github_verified_commit.png" alt="github verified commit">
+</a></p>
+
+<p>I hope that you enjoyed the tutorial, let me know on the comments or on twitter (<a href="https://twitter.com/agonzalezro">@agonzalezro</a>) if something I do is stupid or if you have found it useful!</p>
+
+
+  
+
+<br>
+<span class='st_sharethis_large' displayText='ShareThis'></span>
+<span class='st_facebook_large' displayText='Facebook'></span>
+<span class='st_twitter_large' displayText='Tweet'></span>
+<span class='st_linkedin_large' displayText='LinkedIn'></span>
+<span class='st_googleplus_large' displayText='Google +'></span>
+<span class='st_reddit_large' displayText='Reddit'></span>
+<span class='st_email_large' displayText='Email'></span>
+
+
+  
+
+<h2>Comments</h2>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'agonzalezro';
+  // TODO (agonzalezro): Compatibility with my old blog articles
+  // I don't know if it will work for other users
+  var disqus_identifier = 'signing-your-github-work-with-your-keybase-keys.html';
+
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+</div>
+
+
+    
+<div class="container col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+  <div class="text-center">
+    <p>
+      <a href="http://github.com/agonzalezro/polo">polo</a> is made with
+      <span class="glyphicon glyphicon-heart"></span> by
+      <a href="http://twitter.com/agonzalezro">@agonzalezro</a>
+    </p>
+  </div>
+</div>
+
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//getbootstrap.com/dist/js/bootstrap.min.js"></script>
+
+    
+
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-35984509-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+  
+
+  </body>
+</html>
