@@ -20,7 +20,6 @@ jobs:
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: '0.81.0'
-          publish_branch: hugo
           # extended: true
 
       - name: Build
@@ -29,5 +28,6 @@ jobs:
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
+          publish_branch: hugo
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
