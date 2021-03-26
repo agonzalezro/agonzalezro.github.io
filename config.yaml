@@ -1,0 +1,22 @@
+baseURL: https://agonzalezro.github.io
+languageCode: en-us
+title: // Álex Go{,5z}
+theme: hello-friend
+googleAnalytics: UA-35984509-1
+rssFullText: true
+
+paginate: 9999 # Let's call it infinite
+
+params:
+  rss:
+    authorName: Álex González
+    authorEmail: agonzalezro@gmail.com
+
+  defaultTheme: light
+  showReadingTime: true
+
+languages:
+  en:
+    params:
+      logo:
+        logoText: "// Álex Go{,5z}"

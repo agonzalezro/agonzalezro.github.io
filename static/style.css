@@ -1,0 +1,7 @@
+.logo__mark, .logo__cursor {
+    display: none;
+}
+
+.footer .logo {
+    visibility: hidden;
+}
