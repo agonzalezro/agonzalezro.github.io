@@ -1,0 +1,47 @@
+<!doctype html><html lang=en><head><title>How I prepared my Mac to make some Docker development ::
+// Álex Go{,5z}</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="This post is about how I did it! not about a standard way or something like that, if you use any other way I would be happy to hear it on the comments.
+I usually use boot2docker on my machine to run container, but it looks like it was misbehaving a little bit when I was trying to create the binary of my dev branch with:
+$ make binary  Actually, it was just not creating it."><meta name=keywords content><meta name=robots content="noodp"><link rel=canonical href=https://agonzalezro.github.io/posts/docker-env/><link rel=stylesheet href=https://agonzalezro.github.io/assets/style.css><link rel=stylesheet href=https://agonzalezro.github.io/style.css><link rel=apple-touch-icon-precomposed sizes=144x144 href=https://agonzalezro.github.io/img/apple-touch-icon-144-precomposed.png><link rel="shortcut icon" href=https://agonzalezro.github.io/img/favicon.png><link href=https://agonzalezro.github.io/assets/fonts/Inter-Italic.woff2 rel=preload type=font/woff2 as=font crossorigin><link href=https://agonzalezro.github.io/assets/fonts/Inter-Regular.woff2 rel=preload type=font/woff2 as=font crossorigin><link href=https://agonzalezro.github.io/assets/fonts/Inter-Medium.woff2 rel=preload type=font/woff2 as=font crossorigin><link href=https://agonzalezro.github.io/assets/fonts/Inter-MediumItalic.woff2 rel=preload type=font/woff2 as=font crossorigin><link href=https://agonzalezro.github.io/assets/fonts/Inter-Bold.woff2 rel=preload type=font/woff2 as=font crossorigin><link href=https://agonzalezro.github.io/assets/fonts/Inter-BoldItalic.woff2 rel=preload type=font/woff2 as=font crossorigin><meta name=twitter:card content="summary"><meta name=twitter:title content="How I prepared my Mac to make some Docker development"><meta name=twitter:description content="This post is about how I did it! not about a standard way or something like that, if you use any other way I would be happy to hear it on the comments.
+I usually use boot2docker on my machine to run container, but it looks like it was misbehaving a little bit when I was trying to create the binary of my dev branch with:
+$ make binary  Actually, it was just not creating it."><meta property="og:title" content="How I prepared my Mac to make some Docker development"><meta property="og:description" content="This post is about how I did it! not about a standard way or something like that, if you use any other way I would be happy to hear it on the comments.
+I usually use boot2docker on my machine to run container, but it looks like it was misbehaving a little bit when I was trying to create the binary of my dev branch with:
+$ make binary  Actually, it was just not creating it."><meta property="og:type" content="article"><meta property="og:url" content="https://agonzalezro.github.io/posts/docker-env/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2014-12-01T00:00:00+00:00"><meta property="article:modified_time" content="2014-12-01T00:00:00+00:00"></head><body><div class=container><header class=header><span class=header__inner><a href=https://agonzalezro.github.io class=logo style=text-decoration:none><span class=logo__mark><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44"><path fill="none" d="M15 8l14.729 14.382L15 35.367"/></svg></span><span class=logo__text>// Álex Go{,5z}</span>
+<span class=logo__cursor></span></a><span class=header__right><span class=theme-toggle><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 41c10.4934.0 19-8.5066 19-19C41 11.5066 32.4934 3 22 3 11.5066 3 3 11.5066 3 22s8.5066 19 19 19zM7 22C7 13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22z"/></svg></span></span></span></header><div class=content><div class=post><h1 class=post-title>How I prepared my Mac to make some Docker development</h1><div class=post-meta><span class=post-date>2014-12-01</span>
+<span class=post-read-time>— 3 min read</span></div><span class=post-tags><a href=https://agonzalezro.github.io/tags/dev/>#dev</a>&nbsp;
+<a href=https://agonzalezro.github.io/tags/docker/>#docker</a>&nbsp;
+<a href=https://agonzalezro.github.io/tags/environment/>#environment</a>&nbsp;</span><div class=post-content><p>This post is about <strong>how I did it!</strong> not about a standard way or something like
+that, if you use any other way I would be happy to hear it on the comments.</p><p>I usually use <code>boot2docker</code> on my machine to run container, but it looks like
+it was misbehaving a little bit when I was trying to create the binary of my
+dev branch with:</p><pre><code>$ make binary
+</code></pre><p>Actually, it was just not creating it.</p><p>I could also create some cross-compiled binaries but that didn&rsquo;t work either.
+It was a really weird situation because I couldn&rsquo;t find the path that it was
+saying that it was creating. Not in my machine, not in my boot2docker VM
+either. So, after some frustrating time I decided to go with vagrant.</p><h2 id=what-i-wanted>What I wanted?</h2><ul><li>My vim! I couldn&rsquo;t live without that.</li><li>My ssh keys for github and similar without copying them to the vagrant box.</li></ul><h2 id=how-i-did-it>How I did it?</h2><h3 id=vagrant>vagrant</h3><p>It was a simple process after you have clear what you really want to do:</p><pre><code>$ cd myawesomebox
+$ vagrant init  # Edit the file if you want more memory or similar
+$ git clone git@github.com:YOUR_USERNAME/docker
+$ vagrant ssh
+$ sudo su -
+</code></pre><p>What we did there? We have created a <code>Vagrantfile</code> and we clone the repo in the
+same folder. Thanks to that when we are inside the vagrant box (with <code>vagrant ssh</code>) we will be able to access to it on the path <code>/vagrant</code> of your box.</p><p>The advantage of this approach is that you can access to all the docker code
+from your host machine in the path <code>myawesomebox</code> so you will not need to copy
+any key, any conf or anything like that.</p><h3 id=docker>docker</h3><p>Now it&rsquo;s time to update your docker server and create your on docker client
+(remember that we are logged in as root on that box):</p><pre><code># cd /vagrant/docker
+# make build&amp;&amp;make binary
+# service docker stop
+# cp bundles/1.3.2-dev/binary/docker-1.3.2-dev /usr/bin/docker
+# service docker start
+</code></pre><p>Where <code>1.3.2</code> is the current version at the time of writing &
+<code>/usr/bin/docker</code> is your old docker server binary.</p><p>Now you are running a new server, but where is the client?! Easy peasy, on the
+same place that the server was originally:</p><pre><code># bundles/1.3.2-dev/binary/docker
+...
+</code></pre><p>I usually alias it to the letter <code>d</code> to access to it quicker without moving
+stuff around:</p><pre><code># alias d=&quot;`pwd`/bundles/1.3.2-dev/binary/docker&quot;
+</code></pre><h2 id=whats-next>What&rsquo;s next?</h2><p>I would say that develop some nice pull request? Or at least try! It&rsquo;s fun
+anyway :)</p><p>I went through all this pain while <a href=http://twitter.com/eloycoto>@eloycoto</a> &
+me were developing a <a href=https://github.com/docker/docker/pull/9415>small PR to show vertical <code>ps</code>
+outputs</a>, so, thanks mate!</p><p>If you have any question or you think that my way of doing this stinks, please,
+let me know! I would really, really appreciate it.</p></div></div></div><footer class=footer><div class=footer__inner><a href=https://agonzalezro.github.io class=logo style=text-decoration:none><span class=logo__mark><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44"><path fill="none" d="M15 8l14.729 14.382L15 35.367"/></svg></span><span class=logo__text>// Álex Go{,5z}</span>
+<span class=logo__cursor></span></a><div class=copyright><span>© 2021 Powered by
+<a href=https://gohugo.io target=_blank rel=noopener>Hugo</a></span>
+<span>Theme created by
+<a href=https://twitter.com/panr target=_blank rel=noopener>panr</a></span></div></div></footer><script src=https://agonzalezro.github.io/assets/main.js></script><script src=https://agonzalezro.github.io/assets/prism.js></script></div><script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-35984509-1','auto'),ga('send','pageview'))</script></body></html>

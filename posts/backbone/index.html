@@ -1,0 +1,96 @@
+<!doctype html><html lang=en><head><title>backbone.js + underscore: small intro ::
+// Álex Go{,5z}</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Today, Oleg gave a talk about backbone at Paylogic. We were using it for a really fancy application inside our backoffice, it was quite funny write it and Oleg decided to share the knowledge.
+I used the techtalk to take some notes and, since this piece of code will have no sense out of our backoffice, I&amp;rsquo;ve written a small example that you can find as a gist on my github."><meta name=keywords content><meta name=robots content="noodp"><link rel=canonical href=https://agonzalezro.github.io/posts/backbone/><link rel=stylesheet href=https://agonzalezro.github.io/assets/style.css><link rel=stylesheet href=https://agonzalezro.github.io/style.css><link rel=apple-touch-icon-precomposed sizes=144x144 href=https://agonzalezro.github.io/img/apple-touch-icon-144-precomposed.png><link rel="shortcut icon" href=https://agonzalezro.github.io/img/favicon.png><link href=https://agonzalezro.github.io/assets/fonts/Inter-Italic.woff2 rel=preload type=font/woff2 as=font crossorigin><link href=https://agonzalezro.github.io/assets/fonts/Inter-Regular.woff2 rel=preload type=font/woff2 as=font crossorigin><link href=https://agonzalezro.github.io/assets/fonts/Inter-Medium.woff2 rel=preload type=font/woff2 as=font crossorigin><link href=https://agonzalezro.github.io/assets/fonts/Inter-MediumItalic.woff2 rel=preload type=font/woff2 as=font crossorigin><link href=https://agonzalezro.github.io/assets/fonts/Inter-Bold.woff2 rel=preload type=font/woff2 as=font crossorigin><link href=https://agonzalezro.github.io/assets/fonts/Inter-BoldItalic.woff2 rel=preload type=font/woff2 as=font crossorigin><meta name=twitter:card content="summary"><meta name=twitter:title content="backbone.js + underscore: small intro"><meta name=twitter:description content="Today, Oleg gave a talk about backbone at Paylogic. We were using it for a really fancy application inside our backoffice, it was quite funny write it and Oleg decided to share the knowledge.
+I used the techtalk to take some notes and, since this piece of code will have no sense out of our backoffice, I&rsquo;ve written a small example that you can find as a gist on my github."><meta property="og:title" content="backbone.js + underscore: small intro"><meta property="og:description" content="Today, Oleg gave a talk about backbone at Paylogic. We were using it for a really fancy application inside our backoffice, it was quite funny write it and Oleg decided to share the knowledge.
+I used the techtalk to take some notes and, since this piece of code will have no sense out of our backoffice, I&rsquo;ve written a small example that you can find as a gist on my github."><meta property="og:type" content="article"><meta property="og:url" content="https://agonzalezro.github.io/posts/backbone/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2012-11-01T00:00:00+00:00"><meta property="article:modified_time" content="2012-11-01T00:00:00+00:00"></head><body><div class=container><header class=header><span class=header__inner><a href=https://agonzalezro.github.io class=logo style=text-decoration:none><span class=logo__mark><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44"><path fill="none" d="M15 8l14.729 14.382L15 35.367"/></svg></span><span class=logo__text>// Álex Go{,5z}</span>
+<span class=logo__cursor></span></a><span class=header__right><span class=theme-toggle><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 41c10.4934.0 19-8.5066 19-19C41 11.5066 32.4934 3 22 3 11.5066 3 3 11.5066 3 22s8.5066 19 19 19zM7 22C7 13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22z"/></svg></span></span></span></header><div class=content><div class=post><h1 class=post-title>backbone.js + underscore: small intro</h1><div class=post-meta><span class=post-date>2012-11-01</span>
+<span class=post-read-time>— 4 min read</span></div><span class=post-tags><a href=https://agonzalezro.github.io/tags/dev/>#dev</a>&nbsp;
+<a href=https://agonzalezro.github.io/tags/backbone/>#backbone</a>&nbsp;
+<a href=https://agonzalezro.github.io/tags/underscore/>#underscore</a>&nbsp;
+<a href=https://agonzalezro.github.io/tags/javascript/>#javascript</a>&nbsp;</span><div class=post-content><p>Today, <a href=http://twitter.com/olegpidsadnyi/>Oleg</a> gave a talk about
+backbone at <a href=http://paylogic.nl/>Paylogic</a>. We were using it for a
+really fancy application inside our backoffice, it was quite funny write
+it and Oleg decided to share the knowledge.</p><p>I used the techtalk to take some notes and, since this piece of code
+will have no sense out of our backoffice, I&rsquo;ve written a small example
+that you can find as a <a href=https://gist.github.com/3982819>gist</a> on my
+github. I will use it to explain to you some of the useful things that
+you can do with backbone and underscore. Feel free to improve it.</p><p>This is only a introductory post, if you want advance stuff you should
+go to the <a href=http://backbonejs.org/>backbone official documentation</a> &
+<a href=http://underscorejs.org/>underscore docs</a>.</p><h2 id=why>Why?</h2><p>Backbone is really useful when you make complex GUIs on client side. You
+can make your code like in a desktop app using events to handle the
+actions. It&rsquo;s not needed to pass around instances of parents views,
+let&rsquo;s use only the events for that purpose, and let the child decide.</p><p>You have models too, that you can sync (or not) with the server.</p><h2 id=models>Models</h2><p>In backbone you can have local model and sync them with the server or
+with local storage (not explained in this intro). In our example we
+will:</p><ol><li>Create a collection to save our objects (type Item) in.</li><li>Create the model Item.</li><li>Create 2 object type Item inside this collection.</li><li>Render them.</li></ol><p>The 3 points can be made only with these lines of code. It&rsquo;s really
+simple! (after know how to do it :p):</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>Item</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>Backbone</span>.<span style=color:#a6e22e>Model</span>.<span style=color:#a6e22e>extend</span>();
+
+<span style=color:#66d9ef>var</span> <span style=color:#a6e22e>Items</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>Backbone</span>.<span style=color:#a6e22e>Collection</span>.<span style=color:#a6e22e>extend</span>({
+  <span style=color:#a6e22e>model</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>Item</span>
+});
+
+<span style=color:#66d9ef>var</span> <span style=color:#a6e22e>items</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Items</span>();
+<span style=color:#a6e22e>items</span>.<span style=color:#a6e22e>add</span>([{<span style=color:#a6e22e>name</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;foo&#34;</span>}, {<span style=color:#a6e22e>name</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;bar&#34;</span>}]);
+</code></pre></div><p><strong>Note</strong>: Setting values in the objects With .set will trigger the event
+change. You can silent it in case that needed, but it&rsquo;s really
+useful, for example, to save it.</p><p><strong>Second note</strong>: backbone is f***ing clever! Imagine, you are changing a
+name, if the name has changed on the collection, the event will be raised,
+if not, it will not. This means that if you are editing, but finally
+you change your mind and you didn&rsquo;t made any change, the event will
+not be raised.</p><h2 id=events>Events</h2><p>They are really useful to remove dependencies between elements. For
+example, with jQuery if you change a element from another, the first one
+needs to know about the second. With backbone you can catch the event
+with the child element and do whatever you want with it.</p><p>On the example of my <a href=https://gist.github.com/3982819>gist</a> I show an
+alert box with the name of the element. But you could, for example,
+change it to an editable input.</p><p>This is the code of the example:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>ItemView</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>Backbone</span>.<span style=color:#a6e22e>View</span>.<span style=color:#a6e22e>extend</span>({
+  ...
+  <span style=color:#a6e22e>events</span><span style=color:#f92672>:</span> {
+    <span style=color:#e6db74>&#34;dblclick&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;onDoubleClick&#34;</span>
+  },
+  ...
+  <span style=color:#a6e22e>onDoubleClick</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>function</span>(<span style=color:#a6e22e>ev</span>) {
+    <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>text</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>$</span>.<span style=color:#a6e22e>trim</span>(<span style=color:#a6e22e>$</span>(<span style=color:#a6e22e>ev</span>.<span style=color:#a6e22e>target</span>).<span style=color:#a6e22e>text</span>());
+    <span style=color:#a6e22e>alert</span>(<span style=color:#e6db74>&#34;Hey! Why do you click on &#34;</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>text</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;?&#34;</span>);
+    <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>ev</span>); <span style=color:#75715e>//Play with this :)
+</span><span style=color:#75715e></span>  }
+});
+</code></pre></div><p>We are binding the <code>dblclick</code> event to the function <code>onDoubleClick</code>.
+This function will receive the event, and the event will have the target
+(in this case the <code>&lt;li/></code> that we are clicking.</p><h2 id=underscore>Underscore</h2><p>It&rsquo;s really useful to Work with collections. In out example we are using
+it to iterate over the items:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=color:#a6e22e>render</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>function</span>() {
+  <span style=color:#a6e22e>_</span>.<span style=color:#a6e22e>each</span>(<span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>items</span>.<span style=color:#a6e22e>models</span>, <span style=color:#66d9ef>function</span>(<span style=color:#a6e22e>item</span>) {
+    <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>itemview</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>ItemView</span>(<span style=color:#a6e22e>item</span>);
+    <span style=color:#a6e22e>$</span>(<span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>el</span>).<span style=color:#a6e22e>append</span>(<span style=color:#a6e22e>itemview</span>.<span style=color:#a6e22e>render</span>().<span style=color:#a6e22e>el</span>);
+  }, <span style=color:#66d9ef>this</span>);
+}
+</code></pre></div><p>If you read carefully this piece of code you will realize that we are
+instantiating a new ItemView for each particular item, so it has its own
+container element created on the fly, re-renderable each time when data
+is updated and all events are delegated to this element.</p><p>The amazing thing that you can do with underscore is use templates (yes,
+like jinja or django-templates, but in JS)! And we are doing it:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html>&lt;<span style=color:#f92672>script</span>&gt;
+  <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>ItemView</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>Backbone</span>.<span style=color:#a6e22e>View</span>.<span style=color:#a6e22e>extend</span>({
+  ...
+  <span style=color:#a6e22e>template</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>_</span>.<span style=color:#a6e22e>template</span>(<span style=color:#a6e22e>$</span>(<span style=color:#e6db74>&#34;#item-template&#34;</span>).<span style=color:#a6e22e>html</span>()),
+  ...
+  <span style=color:#a6e22e>render</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>function</span>() {
+     <span style=color:#a6e22e>$</span>(<span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>el</span>).<span style=color:#a6e22e>html</span>(<span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>template</span>(<span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>item</span>.<span style=color:#a6e22e>toJSON</span>()));
+     <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>this</span>;
+  },
+  ...
+&lt;/<span style=color:#f92672>script</span>&gt;
+&lt;<span style=color:#f92672>script</span> <span style=color:#a6e22e>type</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;text/template&#34;</span> <span style=color:#a6e22e>id</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;item-template&#34;</span>&gt;
+  <span style=color:#f92672>&lt;%=</span> <span style=color:#a6e22e>name</span> <span style=color:#f92672>%&gt;</span>
+&lt;/<span style=color:#f92672>script</span>&gt;
+</code></pre></div><h2 id=extra-ball>Extra ball</h2><p>Use <code>_.debounce</code> to don&rsquo;t call the functions thousands of times, example
+drag&dropping an element it will be useful.</p><p>For example in our project we had to sort with drag and drop some
+elements of a list, instead send this event in each drag movement, we
+made it after 200s being quiet with:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=color:#a6e22e>onChange</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>_</span>.<span style=color:#a6e22e>debounce</span>(<span style=color:#66d9ef>function</span>(<span style=color:#a6e22e>ev</span>) {
+    <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>pools</span>.<span style=color:#a6e22e>save</span>();
+}, <span style=color:#ae81ff>200</span>),
+</code></pre></div><p>Please comment your thoughts about the post. We are all here to learn,
+and it&rsquo;s really easy that I made some mistake explaining this.
+Furhtermore, I know that my English is not really good, so, I will
+apreciate constructive comments about it too :)</p><p>Enjoy it!</p></div></div></div><footer class=footer><div class=footer__inner><a href=https://agonzalezro.github.io class=logo style=text-decoration:none><span class=logo__mark><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44"><path fill="none" d="M15 8l14.729 14.382L15 35.367"/></svg></span><span class=logo__text>// Álex Go{,5z}</span>
+<span class=logo__cursor></span></a><div class=copyright><span>© 2021 Powered by
+<a href=https://gohugo.io target=_blank rel=noopener>Hugo</a></span>
+<span>Theme created by
+<a href=https://twitter.com/panr target=_blank rel=noopener>panr</a></span></div></div></footer><script src=https://agonzalezro.github.io/assets/main.js></script><script src=https://agonzalezro.github.io/assets/prism.js></script></div><script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-35984509-1','auto'),ga('send','pageview'))</script></body></html>

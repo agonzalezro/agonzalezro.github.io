@@ -1,0 +1,75 @@
+<!doctype html><html lang=en><head><title>Dockerizing Pligg with Fig ::
+// Álex Go{,5z}</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="For a pet project I needed Pligg which is kinda a social network site in the style of the old-digg (with karma and this kind of things).
+Installing a LAMP system is kinda boring stuff, so, for that and for the sake of learning I decided to go with Docker &amp;amp; Fig. Sadly or luckily, every time that I dockerize something I find a lot of unexpected problems that slow me down, but&amp;hellip; you always learn something!"><meta name=keywords content><meta name=robots content="noodp"><link rel=canonical href=https://agonzalezro.github.io/posts/pligg-docker/><link rel=stylesheet href=https://agonzalezro.github.io/assets/style.css><link rel=stylesheet href=https://agonzalezro.github.io/style.css><link rel=apple-touch-icon-precomposed sizes=144x144 href=https://agonzalezro.github.io/img/apple-touch-icon-144-precomposed.png><link rel="shortcut icon" href=https://agonzalezro.github.io/img/favicon.png><link href=https://agonzalezro.github.io/assets/fonts/Inter-Italic.woff2 rel=preload type=font/woff2 as=font crossorigin><link href=https://agonzalezro.github.io/assets/fonts/Inter-Regular.woff2 rel=preload type=font/woff2 as=font crossorigin><link href=https://agonzalezro.github.io/assets/fonts/Inter-Medium.woff2 rel=preload type=font/woff2 as=font crossorigin><link href=https://agonzalezro.github.io/assets/fonts/Inter-MediumItalic.woff2 rel=preload type=font/woff2 as=font crossorigin><link href=https://agonzalezro.github.io/assets/fonts/Inter-Bold.woff2 rel=preload type=font/woff2 as=font crossorigin><link href=https://agonzalezro.github.io/assets/fonts/Inter-BoldItalic.woff2 rel=preload type=font/woff2 as=font crossorigin><meta name=twitter:card content="summary"><meta name=twitter:title content="Dockerizing Pligg with Fig"><meta name=twitter:description content="For a pet project I needed Pligg which is kinda a social network site in the style of the old-digg (with karma and this kind of things).
+Installing a LAMP system is kinda boring stuff, so, for that and for the sake of learning I decided to go with Docker & Fig. Sadly or luckily, every time that I dockerize something I find a lot of unexpected problems that slow me down, but&mldr; you always learn something!"><meta property="og:title" content="Dockerizing Pligg with Fig"><meta property="og:description" content="For a pet project I needed Pligg which is kinda a social network site in the style of the old-digg (with karma and this kind of things).
+Installing a LAMP system is kinda boring stuff, so, for that and for the sake of learning I decided to go with Docker & Fig. Sadly or luckily, every time that I dockerize something I find a lot of unexpected problems that slow me down, but&mldr; you always learn something!"><meta property="og:type" content="article"><meta property="og:url" content="https://agonzalezro.github.io/posts/pligg-docker/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2014-11-24T00:00:00+00:00"><meta property="article:modified_time" content="2014-11-24T00:00:00+00:00"></head><body><div class=container><header class=header><span class=header__inner><a href=https://agonzalezro.github.io class=logo style=text-decoration:none><span class=logo__mark><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44"><path fill="none" d="M15 8l14.729 14.382L15 35.367"/></svg></span><span class=logo__text>// Álex Go{,5z}</span>
+<span class=logo__cursor></span></a><span class=header__right><span class=theme-toggle><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 41c10.4934.0 19-8.5066 19-19C41 11.5066 32.4934 3 22 3 11.5066 3 3 11.5066 3 22s8.5066 19 19 19zM7 22C7 13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22z"/></svg></span></span></span></header><div class=content><div class=post><h1 class=post-title>Dockerizing Pligg with Fig</h1><div class=post-meta><span class=post-date>2014-11-24</span>
+<span class=post-read-time>— 4 min read</span></div><span class=post-tags><a href=https://agonzalezro.github.io/tags/devops/>#devops</a>&nbsp;
+<a href=https://agonzalezro.github.io/tags/docker/>#docker</a>&nbsp;
+<a href=https://agonzalezro.github.io/tags/pligg/>#pligg</a>&nbsp;</span><div class=post-content><p>For a pet project I needed <a href=http://pligg.com/>Pligg</a> which is kinda a social
+network site in the style of the old-digg (with karma and this kind of things).</p><p>Installing a LAMP system is kinda boring stuff, so, for that and for the sake
+of learning I decided to go with <a href=https://www.docker.com/>Docker</a> &
+<a href=http://www.fig.sh/>Fig</a>. Sadly or luckily, every time that I dockerize
+something I find a lot of unexpected problems that slow me down, but&mldr; you
+always learn something!</p><p>This post is to explain a little bit the process and the problems that I found
+and how I solved them. It&rsquo;s not a how to, it&rsquo;s more a explanation of what I did
+and perhaps you can provide a better solution on the comments.</p><h2 id=what-do-i-need>What do I need?</h2><p>The site is &ldquo;simple&rdquo; so the only required stuff will be a MySQL server and an
+Apache2 server. You could run 2 Docker instances manually, or&mldr; use the magic
+provided by Fig. This is the <code>fig.yml</code> file that explains my service:</p><pre><code>web:
+  build: .
+  links:
+   - db
+  volumes:
+   - /var/log:/var/www/logs
+  ports:
+   - &quot;80:80&quot;
+  environment:
+   - MYSQL_PASSWORD
+   - MY_BASE_URL
+db:
+  image: mysql
+  volumes:
+   - /var/lib/mysql:/var/lib/mysql
+  environment:
+   - MYSQL_DATABASE=dbpligg
+   - MYSQL_USER=pligguser
+   - MYSQL_ROOT_PASSWORD
+   - MYSQL_PASSWORD
+  ports:
+   - &quot;3306:3306&quot;
+</code></pre><p>Basically I am saying that I will have 2 servers: &ldquo;web&rdquo; & &ldquo;db&rdquo; and specifying
+their volumes, environment variables and exported ports.</p><h3 id=problem>Problem?</h3><p>First thing that we see here: <code>MY_BASE_URL</code> & <code>MYSQL_{,ROOT_}PASSWORD</code> don&rsquo;t
+have any value, this is because Fig is going to got those values from the
+current Docker host. I need them for specified some settings file that
+originally were written in a normal file (difficult to change while deploying).</p><p>Also, <code>MY_BASE_URL</code> is a small/ugly trick. It seems that Pligg requires to know
+the host were it&rsquo;s running to serve static assets as CSS or JS.</p><p>If you take a look to <a href=https://github.com/agonzalezro/docker-pligg/tree/master/config>my repo <code>config</code>
+folder</a> you
+will see the slightly modified versions of two configuration files for Pligg
+that are making use of this environment variables.</p><h3 id=more-problems>More problems?</h3><p>For running Pligg we need a minimal DB structure I&rsquo;ve found 2 different ways of
+creating this data in my data container, but none of them are optimal for me,
+mainly because they require an extra step:</p><ul><li><p>I&rsquo;ve created minimal SQL dump with some default values and on the <code>README.md</code>
+provide a quick way of ingest this data using the same container:</p><pre><code>  $ docker exec dockerpligg_db_1 \
+    mysql -u pligguser -p$MYSQL_PASSWORD dbpligg &lt; &quot;`cat pligg.sql`&quot;
+</code></pre></li><li><p>Another way is going through all the installation process accessing to
+<a href=http://example.com/install>http://example.com/install</a></p></li></ul><p>I think that perhaps creating a script that checks is the DB if empty and if it
+is it uses the SQL to dump the DB back would be an option, but seems kinda
+dangerous to automate that process in a live environment (anybody said delete
+data by a mistaken dump?).</p><p><a href=http://acalustra.com/>@eloycoto</a> has recommended me to use inheritance of
+containers. But I am not happy with that solution either: I would need two
+<code>Dockerfile</code>s and possibly two <code>fig.yml</code> files as well or add some weird magic
+to replace one container with the other after the installation.</p><h3 id=third-thing-that-i-dont-really-like>Third thing that I don&rsquo;t really like</h3><p>After the first time that you run the installation you need to manually remove
+the install path (this seems quite common in PHP apps?). I am doing that
+running a <code>docker exec</code> to that container, but I would prefer to manually
+remove it with the <code>Dockerfile</code>. Why I don&rsquo;t do so? Because if I remove that
+folder I am forcing all the users of my configuration to use the dump SQL
+method explained above and I don&rsquo;t give them any change.</p><h2 id=so>So&mldr;</h2><p>I suspect that it&rsquo;s normal to have that kind of problems trying to &ldquo;migrate&rdquo; an
+application that was never used before in a Docker container.</p><p>To be honest with Pligg, the only changes that I required were minimal, but I
+don&rsquo;t know if that &ldquo;install&rdquo; part could be just removed with my own settings
+file, I tried that and it was asking me to repeat values that were already set
+in the <code>settings.php</code>.</p><p>I am not happy with the dump/install solution that I&rsquo;ve found, but it works™!</p><p>I am sure that if you were using Docker or Fig before you will have plenty of
+complaints about my article, let me know leaving a comment or just <a href=http://twitter.com/agonzalezro>tweet me
+something</a>.</p></div></div></div><footer class=footer><div class=footer__inner><a href=https://agonzalezro.github.io class=logo style=text-decoration:none><span class=logo__mark><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44"><path fill="none" d="M15 8l14.729 14.382L15 35.367"/></svg></span><span class=logo__text>// Álex Go{,5z}</span>
+<span class=logo__cursor></span></a><div class=copyright><span>© 2021 Powered by
+<a href=https://gohugo.io target=_blank rel=noopener>Hugo</a></span>
+<span>Theme created by
+<a href=https://twitter.com/panr target=_blank rel=noopener>panr</a></span></div></div></footer><script src=https://agonzalezro.github.io/assets/main.js></script><script src=https://agonzalezro.github.io/assets/prism.js></script></div><script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-35984509-1','auto'),ga('send','pageview'))</script></body></html>

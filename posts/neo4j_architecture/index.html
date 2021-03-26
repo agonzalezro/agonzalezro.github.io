@@ -1,0 +1,72 @@
+<!doctype html><html lang=en><head><title>Draw (and more) your architecture with Neo4J ::
+// Álex Go{,5z}</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="As some of you already know I work at Green Man Gaming (mainly at the playfire project). We were planning to do some changes in our architecture but it&amp;rsquo;s extremely hard to have an idea of all our services and DBs in just a piece of A4 paper. I was trying, trust me, but it was impossible.
+When I started with this task I did it with lucidchart, after it got so messy I moved to graphviz, but even with the usual good graphs that I get from graphviz it was impossible to get something readable this time."><meta name=keywords content><meta name=robots content="noodp"><link rel=canonical href=https://agonzalezro.github.io/posts/neo4j_architecture/><link rel=stylesheet href=https://agonzalezro.github.io/assets/style.css><link rel=stylesheet href=https://agonzalezro.github.io/style.css><link rel=apple-touch-icon-precomposed sizes=144x144 href=https://agonzalezro.github.io/img/apple-touch-icon-144-precomposed.png><link rel="shortcut icon" href=https://agonzalezro.github.io/img/favicon.png><link href=https://agonzalezro.github.io/assets/fonts/Inter-Italic.woff2 rel=preload type=font/woff2 as=font crossorigin><link href=https://agonzalezro.github.io/assets/fonts/Inter-Regular.woff2 rel=preload type=font/woff2 as=font crossorigin><link href=https://agonzalezro.github.io/assets/fonts/Inter-Medium.woff2 rel=preload type=font/woff2 as=font crossorigin><link href=https://agonzalezro.github.io/assets/fonts/Inter-MediumItalic.woff2 rel=preload type=font/woff2 as=font crossorigin><link href=https://agonzalezro.github.io/assets/fonts/Inter-Bold.woff2 rel=preload type=font/woff2 as=font crossorigin><link href=https://agonzalezro.github.io/assets/fonts/Inter-BoldItalic.woff2 rel=preload type=font/woff2 as=font crossorigin><meta name=twitter:card content="summary"><meta name=twitter:title content="Draw (and more) your architecture with Neo4J"><meta name=twitter:description content="As some of you already know I work at Green Man Gaming (mainly at the playfire project). We were planning to do some changes in our architecture but it&rsquo;s extremely hard to have an idea of all our services and DBs in just a piece of A4 paper. I was trying, trust me, but it was impossible.
+When I started with this task I did it with lucidchart, after it got so messy I moved to graphviz, but even with the usual good graphs that I get from graphviz it was impossible to get something readable this time."><meta property="og:title" content="Draw (and more) your architecture with Neo4J"><meta property="og:description" content="As some of you already know I work at Green Man Gaming (mainly at the playfire project). We were planning to do some changes in our architecture but it&rsquo;s extremely hard to have an idea of all our services and DBs in just a piece of A4 paper. I was trying, trust me, but it was impossible.
+When I started with this task I did it with lucidchart, after it got so messy I moved to graphviz, but even with the usual good graphs that I get from graphviz it was impossible to get something readable this time."><meta property="og:type" content="article"><meta property="og:url" content="https://agonzalezro.github.io/posts/neo4j_architecture/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2014-08-26T00:00:00+00:00"><meta property="article:modified_time" content="2014-08-26T00:00:00+00:00"></head><body><div class=container><header class=header><span class=header__inner><a href=https://agonzalezro.github.io class=logo style=text-decoration:none><span class=logo__mark><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44"><path fill="none" d="M15 8l14.729 14.382L15 35.367"/></svg></span><span class=logo__text>// Álex Go{,5z}</span>
+<span class=logo__cursor></span></a><span class=header__right><span class=theme-toggle><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 41c10.4934.0 19-8.5066 19-19C41 11.5066 32.4934 3 22 3 11.5066 3 3 11.5066 3 22s8.5066 19 19 19zM7 22C7 13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22z"/></svg></span></span></span></header><div class=content><div class=post><h1 class=post-title>Draw (and more) your architecture with Neo4J</h1><div class=post-meta><span class=post-date>2014-08-26</span>
+<span class=post-read-time>— 4 min read</span></div><span class=post-tags><a href=https://agonzalezro.github.io/tags/dev/>#dev</a>&nbsp;
+<a href=https://agonzalezro.github.io/tags/neo4j/>#neo4j</a>&nbsp;
+<a href=https://agonzalezro.github.io/tags/architecture/>#architecture</a>&nbsp;</span><div class=post-content><p>As some of you already know I work at <a href=http://greenmangaming.com>Green Man
+Gaming</a> (mainly at the
+<a href=http://playfire.com>playfire</a> project). We were planning to do some changes
+in our architecture but it&rsquo;s extremely hard to have an idea of all our services
+and DBs in just a piece of A4 paper. I was trying, trust me, but it was
+impossible.</p><p>When I started with this task I did it with
+<a href=https://www.lucidchart.com>lucidchart</a>, after it got so messy I moved to
+<a href=http://www.graphviz.org/>graphviz</a>, but even with the usual good graphs that
+I get from graphviz it was impossible to get something readable this time.</p><p>So, it happened! I remembered <a href="http://ivan.pedrazas.me/?p=280">this post</a> made
+by my friend Iván and I thought, why not?</p><p>Sadly, this post is not going to show any real data from GMG, but if you are
+interested it&rsquo;s the moment to apply because we are hiring & we have the graphs
+around all the whiteboard in the office! Just grab me an email.</p><h2 id=what-do-i-need>What do I need?</h2><p>Basically, you just need Neo4J. You can install it however you want, I&rsquo;ve just
+run a Docker container with it:</p><pre><code>docker run -d -p 7474:7474 tpires/neo4j
+</code></pre><p>Now, if you access to your docker container at http://localhost:7474 (or using
+the host from <code>boot2docker ip</code> if you run docker with boot2docker) you will see
+the cypher shell which is one of the ways that you can use to interact with
+your DB.</p><h2 id=what-i-am-going-to-draw>What I am going to draw?</h2><p>In my case, and for a POC, I&rsquo;ve written the following entities:</p><ul><li>Person</li><li>Technology</li><li>Service</li></ul><p>You could write some other entities as for example DBs.</p><p>The connections here are kinda clear: a person knows a technology which is
+used to write a service that use a DB as backend, so, let&rsquo;s write it!</p><p>To create entities the syntax is as follow:</p><pre><code>CREATE (variable:Type{attributes})
+</code></pre><p>And to create Relations (one of the ways):</p><pre><code>CREATE (variable1)-[:RELATION_NAME]-&gt;(variable2)
+</code></pre><p>You will understand this better after we start creating our entities.</p><p>Create your engineers:</p><pre><code>CREATE
+  (dev1:Person{name:&quot;Alex&quot;}),
+  (dev2:Person{name:&quot;Maria&quot;}),
+  (dev3:Person{name:&quot;Pepe&quot;}),
+</code></pre><p>Before the : you can see that we have defined a variable to refer to this
+just-created entities. All the nodes that we are creating here are of type
+Person and each of them have a different name.</p><p>To create the relationships between Technology and Person, we define the
+technology using the same method that we used to create the Person, but we add
+the relationships:</p><pre><code>...
+  (python:Technology{name:&quot;Python&quot;}),
+  (go:Technology{name:&quot;Go&quot;}),
+
+  (dev1)-[:KNOWS]-&gt;(python),
+  (dev1)-[:KNOWS]-&gt;(go),
+  (dev2)-[:KNOWS]-&gt;(python),
+  (dev3)-[:KNOWS]-&gt;(go),
+</code></pre><p>And finally, we add our services:</p><pre><code>...
+  (service1:Service{name:&quot;Service #1&quot;}),
+  (service2:Service{name:&quot;Service #2&quot;}),
+
+  (service1)-[:CONNECTS]-&gt;(service2),
+  (service1)-[:WRITTEN_WITH]-&gt;(go),
+  (service2)-[:WRITTEN_WITH]-&gt;(python)
+</code></pre><h2 id=querying-for-drawing>Querying for drawing</h2><p>Now, you can run all the script and we can see the result. For the first output
+we are going just to show everything:</p><pre><code>MATCH (n)-[r]-() RETURN n, r
+</code></pre><p>And you will get this!</p><p><img src=/biz/neo4j_architecture/1.png alt="Cypher MATCH #1"></p><p>So, what&rsquo;s the point of all this? Basically, that you can do queries that will
+make the graph smaller for your needs. This example data that we have added is
+quite small (just few nodes), in the real graph that I am working on we have
+already few dozens. For example, imagine that you just want to see python
+related information:</p><pre><code>MATCH (a)-[r]-() WHERE a.name=&quot;Python&quot; RETURN a, r
+</code></pre><p><img src=/biz/neo4j_architecture/2.png alt="Cypher MATCH #2"></p><p>Or you just want to see the people that can work with the Server #1</p><pre><code>MATCH (s:Service)-[r]-()-[r2:KNOWS]-(p:Person)
+WHERE s.name=&quot;Service #1&quot; RETURN s, p
+</code></pre><p><img src=/biz/neo4j_architecture/3.png alt="Cypher MATCH #2"></p><h2 id=one-more-thing>One more thing</h2><p>For now, this project in my company is just a POC and I have not really clear
+what attributes and entities I should draw to make this graph useful for the
+present and for the future. If you have previous experiences or you want to
+start a brainstorming, write on the comments or <a href=http://twitter.com/agonzalezro>find me at
+twitter</a>.</p><p>Also, for now I am happy with just creating some screenshots from the data that
+Cypher is showing to me, but it would be really nice to find a more
+professional way of sharing this graphs. Cypher renders them with D3, so, I
+don&rsquo;t fully understand why it doesn&rsquo;t support exporting them in a easy way.
+Again, if you know something, just let me know.</p></div></div></div><footer class=footer><div class=footer__inner><a href=https://agonzalezro.github.io class=logo style=text-decoration:none><span class=logo__mark><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44"><path fill="none" d="M15 8l14.729 14.382L15 35.367"/></svg></span><span class=logo__text>// Álex Go{,5z}</span>
+<span class=logo__cursor></span></a><div class=copyright><span>© 2021 Powered by
+<a href=https://gohugo.io target=_blank rel=noopener>Hugo</a></span>
+<span>Theme created by
+<a href=https://twitter.com/panr target=_blank rel=noopener>panr</a></span></div></div></footer><script src=https://agonzalezro.github.io/assets/main.js></script><script src=https://agonzalezro.github.io/assets/prism.js></script></div><script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-35984509-1','auto'),ga('send','pageview'))</script></body></html>
