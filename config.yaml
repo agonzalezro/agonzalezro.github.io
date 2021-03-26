@@ -17,6 +17,9 @@ params:
 
 languages:
   en:
+    dateFormatSingle: "02-01-2006" 
+    dateFormatList: "02-01-2006"
+
     params:
       logo:
         logoText: "// Álex Go{,5z}"
