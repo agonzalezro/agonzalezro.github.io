@@ -1,3 +1,101 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>architecture on // Álex Go{,5z}</title><link>https://agonzalezro.github.io/tags/architecture/</link><description>Recent content in architecture on // Álex Go{,5z}</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 26 Aug 2014 00:00:00 +0000</lastBuildDate><atom:link href="https://agonzalezro.github.io/tags/architecture/index.xml" rel="self" type="application/rss+xml"/><item><title>Draw (and more) your architecture with Neo4J</title><link>https://agonzalezro.github.io/posts/neo4j_architecture/</link><pubDate>Tue, 26 Aug 2014 00:00:00 +0000</pubDate><guid>https://agonzalezro.github.io/posts/neo4j_architecture/</guid><description>
-As some of you already know I work at Green Man Gaming (mainly at the playfire project). We were planning to do some changes in our architecture but it&amp;rsquo;s extremely hard to have an idea of all our services and DBs in just a piece of A4 paper. I was trying, trust me, but it was impossible.
-When I started with this task I did it with lucidchart, after it got so messy I moved to graphviz, but even with the usual good graphs that I get from graphviz it was impossible to get something readable this time.</description></item></channel></rss>
+&lt;p>As some of you already know I work at &lt;a href="http://greenmangaming.com">Green Man
+Gaming&lt;/a> (mainly at the
+&lt;a href="http://playfire.com">playfire&lt;/a> project). We were planning to do some changes
+in our architecture but it&amp;rsquo;s extremely hard to have an idea of all our services
+and DBs in just a piece of A4 paper. I was trying, trust me, but it was
+impossible.&lt;/p>
+&lt;p>When I started with this task I did it with
+&lt;a href="https://www.lucidchart.com">lucidchart&lt;/a>, after it got so messy I moved to
+&lt;a href="http://www.graphviz.org/">graphviz&lt;/a>, but even with the usual good graphs that
+I get from graphviz it was impossible to get something readable this time.&lt;/p>
+&lt;p>So, it happened! I remembered &lt;a href="http://ivan.pedrazas.me/?p=280">this post&lt;/a> made
+by my friend Iván and I thought, why not?&lt;/p>
+&lt;p>Sadly, this post is not going to show any real data from GMG, but if you are
+interested it&amp;rsquo;s the moment to apply because we are hiring &amp;amp; we have the graphs
+around all the whiteboard in the office! Just grab me an email.&lt;/p>
+&lt;h2 id="what-do-i-need">What do I need?&lt;/h2>
+&lt;p>Basically, you just need Neo4J. You can install it however you want, I&amp;rsquo;ve just
+run a Docker container with it:&lt;/p>
+&lt;pre>&lt;code>docker run -d -p 7474:7474 tpires/neo4j
+&lt;/code>&lt;/pre>
+&lt;p>Now, if you access to your docker container at http://localhost:7474 (or using
+the host from &lt;code>boot2docker ip&lt;/code> if you run docker with boot2docker) you will see
+the cypher shell which is one of the ways that you can use to interact with
+your DB.&lt;/p>
+&lt;h2 id="what-i-am-going-to-draw">What I am going to draw?&lt;/h2>
+&lt;p>In my case, and for a POC, I&amp;rsquo;ve written the following entities:&lt;/p>
+&lt;ul>
+&lt;li>Person&lt;/li>
+&lt;li>Technology&lt;/li>
+&lt;li>Service&lt;/li>
+&lt;/ul>
+&lt;p>You could write some other entities as for example DBs.&lt;/p>
+&lt;p>The connections here are kinda clear: a person knows a technology which is
+used to write a service that use a DB as backend, so, let&amp;rsquo;s write it!&lt;/p>
+&lt;p>To create entities the syntax is as follow:&lt;/p>
+&lt;pre>&lt;code>CREATE (variable:Type{attributes})
+&lt;/code>&lt;/pre>
+&lt;p>And to create Relations (one of the ways):&lt;/p>
+&lt;pre>&lt;code>CREATE (variable1)-[:RELATION_NAME]-&amp;gt;(variable2)
+&lt;/code>&lt;/pre>
+&lt;p>You will understand this better after we start creating our entities.&lt;/p>
+&lt;p>Create your engineers:&lt;/p>
+&lt;pre>&lt;code>CREATE
+(dev1:Person{name:&amp;quot;Alex&amp;quot;}),
+(dev2:Person{name:&amp;quot;Maria&amp;quot;}),
+(dev3:Person{name:&amp;quot;Pepe&amp;quot;}),
+&lt;/code>&lt;/pre>
+&lt;p>Before the : you can see that we have defined a variable to refer to this
+just-created entities. All the nodes that we are creating here are of type
+Person and each of them have a different name.&lt;/p>
+&lt;p>To create the relationships between Technology and Person, we define the
+technology using the same method that we used to create the Person, but we add
+the relationships:&lt;/p>
+&lt;pre>&lt;code>...
+(python:Technology{name:&amp;quot;Python&amp;quot;}),
+(go:Technology{name:&amp;quot;Go&amp;quot;}),
+(dev1)-[:KNOWS]-&amp;gt;(python),
+(dev1)-[:KNOWS]-&amp;gt;(go),
+(dev2)-[:KNOWS]-&amp;gt;(python),
+(dev3)-[:KNOWS]-&amp;gt;(go),
+&lt;/code>&lt;/pre>
+&lt;p>And finally, we add our services:&lt;/p>
+&lt;pre>&lt;code>...
+(service1:Service{name:&amp;quot;Service #1&amp;quot;}),
+(service2:Service{name:&amp;quot;Service #2&amp;quot;}),
+(service1)-[:CONNECTS]-&amp;gt;(service2),
+(service1)-[:WRITTEN_WITH]-&amp;gt;(go),
+(service2)-[:WRITTEN_WITH]-&amp;gt;(python)
+&lt;/code>&lt;/pre>
+&lt;h2 id="querying-for-drawing">Querying for drawing&lt;/h2>
+&lt;p>Now, you can run all the script and we can see the result. For the first output
+we are going just to show everything:&lt;/p>
+&lt;pre>&lt;code>MATCH (n)-[r]-() RETURN n, r
+&lt;/code>&lt;/pre>
+&lt;p>And you will get this!&lt;/p>
+&lt;p>&lt;img src="https://agonzalezro.github.io/biz/neo4j_architecture/1.png" alt="Cypher MATCH #1">&lt;/p>
+&lt;p>So, what&amp;rsquo;s the point of all this? Basically, that you can do queries that will
+make the graph smaller for your needs. This example data that we have added is
+quite small (just few nodes), in the real graph that I am working on we have
+already few dozens. For example, imagine that you just want to see python
+related information:&lt;/p>
+&lt;pre>&lt;code>MATCH (a)-[r]-() WHERE a.name=&amp;quot;Python&amp;quot; RETURN a, r
+&lt;/code>&lt;/pre>
+&lt;p>&lt;img src="https://agonzalezro.github.io/biz/neo4j_architecture/2.png" alt="Cypher MATCH #2">&lt;/p>
+&lt;p>Or you just want to see the people that can work with the Server #1&lt;/p>
+&lt;pre>&lt;code>MATCH (s:Service)-[r]-()-[r2:KNOWS]-(p:Person)
+WHERE s.name=&amp;quot;Service #1&amp;quot; RETURN s, p
+&lt;/code>&lt;/pre>
+&lt;p>&lt;img src="https://agonzalezro.github.io/biz/neo4j_architecture/3.png" alt="Cypher MATCH #2">&lt;/p>
+&lt;h2 id="one-more-thing">One more thing&lt;/h2>
+&lt;p>For now, this project in my company is just a POC and I have not really clear
+what attributes and entities I should draw to make this graph useful for the
+present and for the future. If you have previous experiences or you want to
+start a brainstorming, write on the comments or &lt;a href="http://twitter.com/agonzalezro">find me at
+twitter&lt;/a>.&lt;/p>
+&lt;p>Also, for now I am happy with just creating some screenshots from the data that
+Cypher is showing to me, but it would be really nice to find a more
+professional way of sharing this graphs. Cypher renders them with D3, so, I
+don&amp;rsquo;t fully understand why it doesn&amp;rsquo;t support exporting them in a easy way.
+Again, if you know something, just let me know.&lt;/p></description></item></channel></rss>

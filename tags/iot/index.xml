@@ -1,4 +1,68 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>iot on // Álex Go{,5z}</title><link>https://agonzalezro.github.io/tags/iot/</link><description>Recent content in iot on // Álex Go{,5z}</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 18 Jun 2015 00:00:00 +0000</lastBuildDate><atom:link href="https://agonzalezro.github.io/tags/iot/index.xml" rel="self" type="application/rss+xml"/><item><title>IoT hackathon with Intel Edison and Go</title><link>https://agonzalezro.github.io/posts/edison_hackathon/</link><pubDate>Thu, 18 Jun 2015 00:00:00 +0000</pubDate><guid>https://agonzalezro.github.io/posts/edison_hackathon/</guid><description>
-I spent last weekend in a hackathon organised by Intel to show their Intel Edison platform. I can just say that it was awesome, the quality of the projects, the prizes, the food, the freebies (yes, they gave us an Intel Edison)&amp;hellip;
-But this post is not about that, I want to explain my project and how I made Golang work in an Intel Edison thanks to gobot.
-As you are already aware, Go easily supports cross compiling creating a binary that you can use in your other devices.</description></item></channel></rss>
+&lt;p>I spent last weekend in a hackathon organised by Intel to show their Intel
+Edison platform. I can just say that it was awesome, the quality of the
+projects, the prizes, the food, the freebies (yes, they gave us an Intel
+Edison)&amp;hellip;&lt;/p>
+&lt;p>But this post is not about that, I want to explain my project and how I made
+Golang work in an Intel Edison thanks to &lt;a href="http://gobot.io/">gobot&lt;/a>.&lt;/p>
+&lt;p>As you are already aware, Go easily supports cross compiling creating a binary
+that you can use in your other devices. In this case, the Intel Edison is (by
+default) a Linux distribution with i386 architecture.&lt;/p>
+&lt;h2 id="what-did-i-do">What did I do?&lt;/h2>
+&lt;p>I did a simple project to track the happiness of the assistant to a conference:
+they can vote if it was a good one ro not &amp;amp; the Edison is also tracking the
+clapping. All this information is stored into a
+&lt;a href="https://influxdb.com/">InfluxDB&lt;/a> and I was using
+&lt;a href="http://grafana.org/">Grafana&lt;/a> to demo it:&lt;/p>
+&lt;p>&lt;img src="https://agonzalezro.github.io/iot_grafana.png" alt="image">&lt;/p>
+&lt;p>Ok, let&amp;rsquo;s start!&lt;/p>
+&lt;h2 id="first-step-setup-the-wifi">First step: setup the wifi&lt;/h2>
+&lt;p>After you connect the Edison you will have a new decive in &lt;code>/dev/&lt;/code> with the
+form: &lt;code>/dev/tty.usbserial-...&lt;/code>. You can just use screen to connect to it, in my
+case:&lt;/p>
+&lt;pre>&lt;code>screen /dev/tty.usbserial-A903BU3J 115200 -L
+&lt;/code>&lt;/pre>
+&lt;p>Inside the machine:&lt;/p>
+&lt;pre>&lt;code>configure_edison --wifi
+&lt;/code>&lt;/pre>
+&lt;p>You could as well use &lt;code>--setup&lt;/code> if you want to change the name, password, etc&amp;hellip;&lt;/p>
+&lt;p>Cool! Now we have the device in out network, let&amp;rsquo;s see the IP with &lt;code>ifconfig&lt;/code>
+and copy/paste it somewhere.&lt;/p>
+&lt;h2 id="second-step-code">Second step: Code!&lt;/h2>
+&lt;p>As I said before I was using the gobot framework. This framework easily allows
+you to access to the GPIO that I&amp;rsquo;ve been using in the Edison (buttons, lights &amp;amp;
+sound sensor).&lt;/p>
+&lt;p>Here is a snippet:&lt;/p>
+&lt;pre>&lt;code>gbot := gobot.NewGobot()
+edisonAdaptor := edison.NewEdisonAdaptor(&amp;quot;edison&amp;quot;)
+buttonPositive := gpio.NewButtonDriver(edisonAdaptor, &amp;quot;button_positive&amp;quot;, &amp;quot;4&amp;quot;)
+...
+robot := gobot.NewRobot(
+&amp;quot;buttonBot&amp;quot;,
+[]gobot.Connection{edisonAdaptor},
+[]gobot.Device{buttonPositive, buttonNegative, redLed, greenLed, blueLed, soundSensor},
+work,
+)
+&lt;/code>&lt;/pre>
+&lt;p>&lt;code>work&lt;/code> is a loop where you can heard for the events created by the devices.&lt;/p>
+&lt;p>If you want to see the full code: &lt;a href="https://github.com/agonzalezro/iotroadshow_june_2015/blob/master/main.go">https://github.com/agonzalezro/iotroadshow_june_2015/blob/master/main.go&lt;/a>&lt;/p>
+&lt;h2 id="third-step-compile-deploy--run">Third step: compile, deploy &amp;amp; run&lt;/h2>
+&lt;p>Crosscompile it. I was using &lt;a href="https://github.com/mitchellh/gox">gox&lt;/a> but you
+can use the default tools for that as well. In my case:&lt;/p>
+&lt;pre>&lt;code>gox -arch=&amp;quot;386&amp;quot; -os=&amp;quot;linux&amp;quot;
+&lt;/code>&lt;/pre>
+&lt;p>This will generate a file called &lt;code>project_linux_386&lt;/code> that is what you will need
+to copy to the Edison.&lt;/p>
+&lt;p>To copy it you just need a simple scp:&lt;/p>
+&lt;pre>&lt;code>scp project_linux_i386 root@[the_edison_ip]:/home/root/my_program
+&lt;/code>&lt;/pre>
+&lt;p>And to run it you can ssh and manually run it or as I was doing:&lt;/p>
+&lt;pre>&lt;code>ssh root@[the_edison_ip] /home/root/my_program
+&lt;/code>&lt;/pre>
+&lt;p>I&amp;rsquo;ve automated this process in a
+&lt;a href="https://github.com/agonzalezro/iotroadshow_june_2015/blob/master/Makefile">Makefile&lt;/a>.&lt;/p>
+&lt;p>Also, feel free to check the
+&lt;a href="https://github.com/agonzalezro/iotroadshow_june_2015/blob/master/README.md">README.md&lt;/a>
+with a better explanation about what my project was.&lt;/p>
+&lt;p>Any question? Reach me on twitter as
+&lt;a href="http://twitter.com/agonzalezro">@agonzalezro&lt;/a> or just post a comment here.&lt;/p></description></item></channel></rss>

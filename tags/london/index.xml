@@ -1,3 +1,35 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>london on // Álex Go{,5z}</title><link>https://agonzalezro.github.io/tags/london/</link><description>Recent content in london on // Álex Go{,5z}</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 03 Aug 2014 00:00:00 +0000</lastBuildDate><atom:link href="https://agonzalezro.github.io/tags/london/index.xml" rel="self" type="application/rss+xml"/><item><title>How to find a flat in London with some help</title><link>https://agonzalezro.github.io/posts/flats/</link><pubDate>Sun, 03 Aug 2014 00:00:00 +0000</pubDate><guid>https://agonzalezro.github.io/posts/flats/</guid><description>
-EDIT: I&amp;rsquo;ve added a little bit more of code to the gist to get the latitude and longitude of the flat. This way the process of plotting them is more accurate and incredibly easy. Thanks again CartoDB!
-At the end of this month I am going to move with a friend. This movement is going to be something like the 7th one since I am living here (little bit less than 2 years).</description></item></channel></rss>
+&lt;p>&lt;strong>EDIT:&lt;/strong> I&amp;rsquo;ve added a little bit more of code to the gist to get the latitude
+and longitude of the flat. This way the process of plotting them is more
+accurate and incredibly easy. Thanks again &lt;a href="http://cartodb.com">CartoDB&lt;/a>!&lt;/p>
+&lt;p>At the end of this month I am going to move with a friend. This movement is
+going to be something like the 7th one since I am living here (little bit less
+than 2 years).&lt;/p>
+&lt;p>We are a little bit struggling trying to find a place so I decided that we need
+a little bit of help:&lt;/p>
+&lt;p>Do you know &lt;a href="http://gumtree.com">gumtree.com&lt;/a>? That page is extremely good for
+renting if you just take care of the content (aka adverts that users upload)
+but it&amp;rsquo;s extremely bad at searching: I couldn&amp;rsquo;t filter to know when the flat would be available and I would be able to move in! Seriously?&lt;/p>
+&lt;p>To fix this I made a small scraper that is going to gather data from few pages
+of the search results already filtered by gumtree, check the &lt;code>QUERY_PARAMS&lt;/code> on
+the &lt;a href="https://gist.github.com/agonzalezro/440e7bf41e77c284d735">following gist&lt;/a>:&lt;/p>
+&lt;!-- raw HTML omitted -->
+&lt;p>In the other hand, the location needs to be a place close to King&amp;rsquo;s Cross and
+close to Mile End. Calculate commute times from one address to another one
+doesn&amp;rsquo;t look straightforward and easy to do, so, the best solution (in relation
+dev_time/benefit) was showing all those flats in a map, and I made it thanks to
+the help of CartoDB. This piece of software is amazing, basically the process
+was:&lt;/p>
+&lt;ol>
+&lt;li>drag&amp;amp;drop the CSV to your CartoDB account.&lt;/li>
+&lt;li>&lt;del>click on the dropdown of the &amp;ldquo;location&amp;rdquo; row and then on &amp;ldquo;Georeference&amp;rdquo;.&lt;/del>&lt;/li>
+&lt;li>&lt;del>in the popup that will be shown to you, you must select &amp;ldquo;&amp;ldquo;You have one or
+more columns with the address&amp;rdquo;, and after that you will have a georeferenced
+list of points. The only bad point with this solution is that every month
+you just have 100 geoferential queries available for free :(&lt;/del>&lt;/li>
+&lt;/ol>
+&lt;p>With that data you can create your own visualisation as I made here:&lt;/p>
+&lt;!-- raw HTML omitted -->
+&lt;p>If you want to say something about this post or you want to offer me a nice
+flat in London, feel free of use the comments or find me in twitter:
+&lt;a href="http://twitter.com/agonzalezro">@agonzalezro&lt;/a>&lt;/p></description></item></channel></rss>

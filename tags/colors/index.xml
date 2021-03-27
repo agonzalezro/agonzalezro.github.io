@@ -1,3 +1,38 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>colors on // Álex Go{,5z}</title><link>https://agonzalezro.github.io/tags/colors/</link><description>Recent content in colors on // Álex Go{,5z}</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 23 Jan 2013 00:00:00 +0000</lastBuildDate><atom:link href="https://agonzalezro.github.io/tags/colors/index.xml" rel="self" type="application/rss+xml"/><item><title>Best vim colors ever!</title><link>https://agonzalezro.github.io/posts/colors/</link><pubDate>Wed, 23 Jan 2013 00:00:00 +0000</pubDate><guid>https://agonzalezro.github.io/posts/colors/</guid><description>
-Sometimes a developer needs a change, and what can you change better that the color scheme that you use to develop? You are more than 8h per day in front of your vim with some beautiful, or crappy, code in front of you. In the first case the colors doesn&amp;rsquo;t matter, but in the second it&amp;rsquo;s really important to enjoy, at least, the colors!
-The colors scheme that you use is something really personal, but it always help when somebody checked them and show them to you without the embarrasment of doing it yourself, and this is what I will do, because I was looking, but out of the amazing vimcolorschemetest project nobody seems to give importance to this.</description></item></channel></rss>
+&lt;p>Sometimes a developer needs a change, and what can you change better
+that the color scheme that you use to develop? You are more than 8h per
+day in front of your vim with some beautiful, or crappy, code in front
+of you. In the first case the colors doesn&amp;rsquo;t matter, but in the second
+it&amp;rsquo;s really important to enjoy, at least, the colors!&lt;/p>
+&lt;p>The colors scheme that you use is something really personal, but it
+always help when somebody checked them and show them to you without the
+embarrasment of doing it yourself, and this is what I will do, because I
+was looking, but out of the amazing vimcolorschemetest project nobody
+seems to give importance to this. This project is really good, but it
+just show to you a bunch of colors without any order of preference, I
+will fix that for you!&lt;/p>
+&lt;p>Below is the list of the colors that I&amp;rsquo;ve tried that need some mention
+here. The order is just alfabetically, not my preferences.&lt;/p>
+&lt;h2 id="my-choices">My choices&lt;/h2>
+&lt;h3 id="bensday">bensday&lt;/h3>
+&lt;p>&lt;img src="https://agonzalezro.github.io/vim/bensday.png" alt="image">&lt;/p>
+&lt;h3 id="clarity">clarity&lt;/h3>
+&lt;p>&lt;img src="https://agonzalezro.github.io/vim/clarity.png" alt="image">&lt;/p>
+&lt;h3 id="desertex">desertEx&lt;/h3>
+&lt;p>It&amp;rsquo;s really similar to deser, which comes by default&lt;/p>
+&lt;p>&lt;img src="https://agonzalezro.github.io/vim/desertEx.png" alt="image">&lt;/p>
+&lt;h3 id="jelleybeans">jelleybeans&lt;/h3>
+&lt;p>My favourite for now, but make me chnage my opinion&lt;/p>
+&lt;p>&lt;img src="https://agonzalezro.github.io/vim/jelleybeans.png" alt="image">&lt;/p>
+&lt;h3 id="winsterday">winsterday&lt;/h3>
+&lt;p>&lt;img src="https://agonzalezro.github.io/vim/winsterday.png" alt="image">&lt;/p>
+&lt;p>I am currently using &lt;em>jelleybeans&lt;/em> (after a recommendation of my
+colleague Robin), I really like it, but a little bit &amp;ldquo;happier&amp;rdquo; colors
+would not be bad either :)&lt;/p>
+&lt;h2 id="find-them">Find them!&lt;/h2>
+&lt;p>You can find all this colors and a lot more here:
+&lt;a href="https://github.com/flazz/vim-colorschemes">https://github.com/flazz/vim-colorschemes&lt;/a>&lt;/p>
+&lt;p>Please, I am open to all the suggestion that you want, since the new
+amazing color scheme for vim that I don&amp;rsquo;t know yet, until the killer
+plugin that I can not miss! And of course, if you want to codereview the
+code that you see on the screenshots feel free too!&lt;/p></description></item></channel></rss>

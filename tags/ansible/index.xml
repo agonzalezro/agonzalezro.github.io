@@ -1,3 +1,37 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ansible on // Álex Go{,5z}</title><link>https://agonzalezro.github.io/tags/ansible/</link><description>Recent content in ansible on // Álex Go{,5z}</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 14 Jan 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://agonzalezro.github.io/tags/ansible/index.xml" rel="self" type="application/rss+xml"/><item><title>Projects I didn't do in 2017</title><link>https://agonzalezro.github.io/posts/projects_2017/</link><pubDate>Sun, 14 Jan 2018 00:00:00 +0000</pubDate><guid>https://agonzalezro.github.io/posts/projects_2017/</guid><description>
-If you know me you probably know that I am always complaining that I want to start some pet project that could give me some kind of income. The income is a nice incentive, but not for the income itself if not because it would be really nice to have somebody paying for a project that you started from scratch.
-In 2017 I had some ideas that after further investigation or after just chatting with some friend about them I decided to not even start or think about them again.</description></item></channel></rss>
+&lt;p>If you know me you probably know that I am always complaining that I want to start some pet project that could give me some kind of income.
+The income is a nice incentive, but not for the income itself if not because it would be really nice to have somebody paying for a project that you started from scratch.&lt;/p>
+&lt;p>In 2017 I had some ideas that after further investigation or after just chatting with some friend about them I decided to not even start or think about them again.&lt;/p>
+&lt;p>Why am I sharing them? Because to be fair I don&amp;rsquo;t think I will never start them, also, maybe we can start a good brainstorm here!&lt;/p>
+&lt;figure class="left" >
+&lt;img src="https://agonzalezro.github.io/lazy-cat.jpg" alt="A lazy cat" />
+&lt;figcaption class="center" >Lazy cat proudly brought to you by huffingtonpost&lt;/figcaption>
+&lt;/figure>
+&lt;h2 id="tool-to-review-tweets">Tool to review Tweets&lt;/h2>
+&lt;p>When I was working at Jobandtalent we had several problems deciding what to tweet in the &lt;a href="https://twitter.com/jobandtalentEng">eng account&lt;/a>. This toold could help you to decide what to publish, fix errors on the tweets, etc (as you would do with Github PRs).&lt;/p>
+&lt;p>In the future, it should be available as well for Instagram, Facebook, etc..&lt;/p>
+&lt;p>Also, it should support bots via API to add comments, for example, about the grammar of the publication.&lt;/p>
+&lt;p>I started this one here: &lt;a href="http://chimpin.io/">chimpin.io&lt;/a> but the interest was near to zero.&lt;/p>
+&lt;h2 id="adventure-tech-book">Adventure tech book&lt;/h2>
+&lt;p>A tech book in the style of &lt;a href="https://en.wikipedia.org/wiki/Choose_Your_Own_Adventure">&amp;ldquo;Choose your own adventure&amp;rdquo;&lt;/a>.&lt;/p>
+&lt;p>It would be a book that would immerse you in an adventure where you should take tech decisions: would you use git or rather copy/paste the folder adding a suffix? One of them will end up in dead, you decide.&lt;/p>
+&lt;h2 id="search-adventures">Search adventures&lt;/h2>
+&lt;p>Something like booking but for activities, ex: I want to do karting in Madrid next Saturday, show me the deals.&lt;/p>
+&lt;p>It would scrape the deals from different sources (not sure if it would even be legal, but I didn&amp;rsquo;t give it that much thought).&lt;/p>
+&lt;h2 id="track-your-friends">Track your friends&lt;/h2>
+&lt;p>I am pretty bad at keeping in touch with my friends/colleagues. This tool will remember you through a simple algorithm when you need to do it! But&amp;hellip; maybe I should fix myself and not use an app like this one 😬&lt;/p>
+&lt;h2 id="status-page">Status page&lt;/h2>
+&lt;p>Yet another application that let you know create a status page for your site.
+It should be reliable, support theming and have nice graphs about the uptimes.&lt;/p>
+&lt;h2 id="logstash-rescuetime">Logstash rescuetime&lt;/h2>
+&lt;p>I use &lt;a href="https://www.rescuetime.com/">rescuetime&lt;/a> to track where do I spend my time with the computer. I thought that having that information in logstash would help me to create nice dashboards about my performance.&lt;/p>
+&lt;p>Probably I would spend more time creating the nice dashboards than doing real job.&lt;/p>
+&lt;h2 id="crypto-present">Crypto present&lt;/h2>
+&lt;p>Nice real life packaging for cryptos. Imagine you are going to a birthday and instead of giving a 20 bucks present you give them a nice package with a hash code that represent its crypto? Wouldn&amp;rsquo;t that be nice? (Or not, that' the problem with crypto).&lt;/p>
+&lt;h2 id="starter-pack-for-wood">Starter pack for wood&lt;/h2>
+&lt;p>Sell packs to start working with wood. For example: a knife + a piece of wood + some instruction to create a spoon. All of it presented in a beautful package.&lt;/p>
+&lt;p>The problem with this is that the recurrent users after they have the tools is going to be minimal.&lt;/p>
+&lt;h2 id="web-for-creating-real-life-exams">Web for creating real life exams&lt;/h2>
+&lt;p>Teachers spend a lot of time preparing their exams, this tool would help them (collaborative) to tag exercises and the time it needs to be done. With a proper base of users they could plug&amp;amp;play the exams.&lt;/p>
+&lt;p>Imagine a Spanish teacher that want to do an exam about &amp;ldquo;infinitive form&amp;rdquo;, the tool could show some exercise and he/she will decide what to use and how many do they need depending on the time the exam should take.&lt;/p>
+&lt;p>I have some other ideas but they are fully techie so not that interesting for my purpose: ansible vendor tool, a Kubernetes bot for &lt;a href="agonzalezro.github.com/botella">botella&lt;/a> (&lt;a href="https://github.com/agonzalezro/agonzalezro.github.io/blob/kubernetes-for-botella/content/kubernetes/kubernetes-for-botella.md">this one is almost done&lt;/a>, but the usability isn&amp;rsquo;t that good 😅), &lt;code>pprof&lt;/code> exporter for Prometheus, ditto for Nats&amp;hellip;&lt;/p></description></item></channel></rss>
