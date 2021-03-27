@@ -3,11 +3,12 @@ languageCode: en-us
 title: // Álex Go{,5z}
 theme: hello-friend
 googleAnalytics: UA-35984509-1
-rssFullText: true
 
 paginate: 9999 # Let's call it infinite
 
 params:
+  rssFullText: true
+
   rss:
     authorName: Álex González
     authorEmail: agonzalezro@gmail.com
