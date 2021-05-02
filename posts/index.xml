@@ -242,7 +242,21 @@ unscheduled_pods
 &lt;h2 id="wrap-up">Wrap Up&lt;/h2>
 &lt;p>For a most things, you probably don&amp;rsquo;t want to write your own scheduler. The one provided by Kubernetes is good for so many things.&lt;/p>
 &lt;p>But if you want to do something the default Kubernetes scheduler can&amp;rsquo;t do, it&amp;rsquo;s not as difficult as you might think to write your own and slot it in, and continue to take advantage of everything Kubernetes has to offer.&lt;/p>
-&lt;p>I&amp;rsquo;ve put my code up for &lt;a href="https://github.com/agonzalezro/escheduler">my Elixir scheduler&lt;/a>, on GitHub in case you want to check it out. This repository has everything you need to follow along with this post, from the YAML pod definition to the scheduler itself.&lt;/p></description></item><item><title>Key bindings for Spacemacs</title><link>https://agonzalezro.github.io/posts/key_bindings/</link><pubDate>Mon, 02 May 2016 00:00:00 +0000</pubDate><guid>https://agonzalezro.github.io/posts/key_bindings/</guid><description>
+&lt;p>I&amp;rsquo;ve put my code up for &lt;a href="https://github.com/agonzalezro/escheduler">my Elixir scheduler&lt;/a>, on GitHub in case you want to check it out. This repository has everything you need to follow along with this post, from the YAML pod definition to the scheduler itself.&lt;/p></description></item><item><title>Save hook for major modes</title><link>https://agonzalezro.github.io/posts/save-hook/</link><pubDate>Thu, 05 May 2016 00:00:00 +0000</pubDate><guid>https://agonzalezro.github.io/posts/save-hook/</guid><description>
+&lt;p>One of the things I like the most about Go is its &lt;code>go fmt&lt;/code> tool. I don&amp;rsquo;t worry about formatting my code while I am writing it because I know that &lt;code>fmt&lt;/code> is going to be there and it will do the work for me later.&lt;/p>
+&lt;p>Said that, the Go layer for Spacemacs is the one that is going to run it for you. Sometimes we need to deal with languages that don&amp;rsquo;t have this functionality, in my case, I found this issue working with Elixir &amp;amp; Ruby (happily Python forces you to write well :D).&lt;/p>
+&lt;p>Since I got really used to the &lt;code>fmt&lt;/code> tool I wanted a similar solution for those languages and it seems that a simple auto indentation all over the file could do it for me. How did I add this behaviour for those languages? Just adding this to my &lt;a href="https://github.com/syl20bnr/spacemacs/blob/master/doc/DOCUMENTATION.org#alternative-setup">&lt;code>init.el&lt;/code>&lt;/a>:&lt;/p>
+&lt;pre>&lt;code>(defun indent-some-languages()
+(case major-mode
+((elixir-mode ruby-mode) (spacemacs/indent-region-or-buffer))))
+(defun dotspacemacs/user-config ()
+...
+(add-hook 'before-save-hook 'indent-some-languages)
+)
+&lt;/code>&lt;/pre>
+&lt;p>What I am doing there is registering a new hook just before saving the file that will check if I am in Ruby or Elixir mode and in that case call &lt;code>spacemacs/indent-region-or-buffer&lt;/code> that will indent the whole file for me.&lt;/p>
+&lt;p>If you are familiarised with Lisp this snippet will probably look pretty simple to you; but trust me, it took me a while to make it work. This is the reason why I thought it could be interesting to share it.&lt;/p>
+&lt;p>I would love to know your tricks for Spacemacs, share them with me here or at &lt;a href="https://twitter.com/agonzalezro">@agonzalezro&lt;/a>.&lt;/p></description></item><item><title>Key bindings for Spacemacs</title><link>https://agonzalezro.github.io/posts/key_bindings/</link><pubDate>Mon, 02 May 2016 00:00:00 +0000</pubDate><guid>https://agonzalezro.github.io/posts/key_bindings/</guid><description>
 &lt;p>I am a happy user of &lt;a href="http://spacemacs.org/">Spacemacs&lt;/a> since few months ago. I was (and I still am) a vim user but Spacemacs provide you extremely good defaults and the installation of layers isn&amp;rsquo;t painful at all, things that I sadly can&amp;rsquo;t say about vim.&lt;/p>
 &lt;p>I ended up with a lot of configuration on &lt;a href="https://github.com/agonzalezro/.dot">my dot files&lt;/a> and everytime I wanted to try, for example, a new language, it was difficult to get it working well.&lt;/p>
 &lt;p>So, now that you know why I did the change let me show you the key bindings that I find useful:&lt;/p>
@@ -1465,18 +1479,4 @@ made it after 200s being quiet with:&lt;/p>
 and it&amp;rsquo;s really easy that I made some mistake explaining this.
 Furhtermore, I know that my English is not really good, so, I will
 apreciate constructive comments about it too :)&lt;/p>
-&lt;p>Enjoy it!&lt;/p></description></item><item><title>Save hook for major modes</title><link>https://agonzalezro.github.io/posts/save-hook/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://agonzalezro.github.io/posts/save-hook/</guid><description>
-&lt;p>One of the things I like the most about Go is its &lt;code>go fmt&lt;/code> tool. I don&amp;rsquo;t worry about formatting my code while I am writing it because I know that &lt;code>fmt&lt;/code> is going to be there and it will do the work for me later.&lt;/p>
-&lt;p>Said that, the Go layer for Spacemacs is the one that is going to run it for you. Sometimes we need to deal with languages that don&amp;rsquo;t have this functionality, in my case, I found this issue working with Elixir &amp;amp; Ruby (happily Python forces you to write well :D).&lt;/p>
-&lt;p>Since I got really used to the &lt;code>fmt&lt;/code> tool I wanted a similar solution for those languages and it seems that a simple auto indentation all over the file could do it for me. How did I add this behaviour for those languages? Just adding this to my &lt;a href="https://github.com/syl20bnr/spacemacs/blob/master/doc/DOCUMENTATION.org#alternative-setup">&lt;code>init.el&lt;/code>&lt;/a>:&lt;/p>
-&lt;pre>&lt;code>(defun indent-some-languages()
-(case major-mode
-((elixir-mode ruby-mode) (spacemacs/indent-region-or-buffer))))
-(defun dotspacemacs/user-config ()
-...
-(add-hook 'before-save-hook 'indent-some-languages)
-)
-&lt;/code>&lt;/pre>
-&lt;p>What I am doing there is registering a new hook just before saving the file that will check if I am in Ruby or Elixir mode and in that case call &lt;code>spacemacs/indent-region-or-buffer&lt;/code> that will indent the whole file for me.&lt;/p>
-&lt;p>If you are familiarised with Lisp this snippet will probably look pretty simple to you; but trust me, it took me a while to make it work. This is the reason why I thought it could be interesting to share it.&lt;/p>
-&lt;p>I would love to know your tricks for Spacemacs, share them with me here or at &lt;a href="https://twitter.com/agonzalezro">@agonzalezro&lt;/a>.&lt;/p></description></item></channel></rss>
+&lt;p>Enjoy it!&lt;/p></description></item></channel></rss>
