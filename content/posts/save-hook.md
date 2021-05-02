@@ -1,6 +1,6 @@
 ---
 title: Save hook for major modes
-date: 2016-5-5
+date: 2016-05-05
 tags:
   - spacemacs
   - hook
