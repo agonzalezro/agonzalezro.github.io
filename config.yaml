@@ -1,8 +1,11 @@
 baseURL: https://agonzalezro.github.io
 languageCode: en-us
 title: // Álex Go{,5z}
-theme: hello-friend
-googleAnalytics: UA-35984509-1
+theme: hello-friend-ng
+
+services:
+  googleAnalytics:
+    id: 363076712 # UA-35984509-1
 
 paginate: 9999 # Let's call it infinite
 
@@ -13,14 +16,21 @@ params:
     authorName: Álex González
     authorEmail: agonzalezro@gmail.com
 
-  defaultTheme: light
   showReadingTime: true
+  disableReadOtherPosts: true
+  enableSharingButtons: false
+  enableGlobalLanguageMenu: false
+  enableThemeToggle: true
+  logo:
+    logoMark: ""
 
 languages:
   en:
-    dateFormatSingle: "02-01-2006" 
-    dateFormatList: "02-01-2006"
-
     params:
+      dateFormatSingle: "02-01-2006" 
+      dateFormatList: "02-01-2006"
       logo:
+        logoMark: " "
         logoText: "// Álex Go{,5z}"
+        logoCursorDisabled: true
+
