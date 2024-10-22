@@ -27,8 +27,9 @@ params:
 languages:
   en:
     params:
-      dateFormatSingle: "02-01-2006" 
-      dateFormatList: "02-01-2006"
+      dateFormatSingle: "02 Jan 2006" 
+      dateFormatList: "02 Jan 2006"
+      dateformNumTime: "02 Jan 2006"
       logo:
         logoMark: " "
         logoText: "// Álex Go{,5z}"
