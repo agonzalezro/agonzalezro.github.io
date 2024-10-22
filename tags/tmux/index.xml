@@ -1,26 +1,2 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>tmux on // Álex Go{,5z}</title><link>https://agonzalezro.github.io/tags/tmux/</link><description>Recent content in tmux on // Álex Go{,5z}</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 15 Mar 2014 00:00:00 +0000</lastBuildDate><atom:link href="https://agonzalezro.github.io/tags/tmux/index.xml" rel="self" type="application/rss+xml"/><item><title>Tailing multiple logs with tmux</title><link>https://agonzalezro.github.io/posts/tailing-with-tmux/</link><pubDate>Sat, 15 Mar 2014 00:00:00 +0000</pubDate><guid>https://agonzalezro.github.io/posts/tailing-with-tmux/</guid><description>
-&lt;p>I had a system that was creating a different log for each worker. Those logs
-where in the form: &lt;code>/var/log/baselog&lt;/code>, &lt;code>/var/log/baselog.1&lt;/code>,
-&lt;code>/var/log/baselog.2&lt;/code> and so on. I wanted to tail them but they were being
-updated simultaneously so the output of the tail was being a mess.&lt;/p>
-&lt;p>I am a &lt;a href="http://tmux.sourceforge.net/">tmux&lt;/a> user since few months ago (if you
-aren&amp;rsquo;t, you should!) so I&amp;rsquo;ve decide to open all of them in different tmux
-panes. Thanks to having a pane for every log what we will achieve is the
-ability to scroll just one of them, maximize it in case that we need it, move
-to a new window, save the buffer&amp;hellip;&lt;/p>
-&lt;p>How can you achieve that? Quite simple, just download this script to some
-place:&lt;/p>
-&lt;!-- raw HTML omitted -->
-&lt;p>Once you have saved it installed, run it with the base log file:&lt;/p>
-&lt;pre>&lt;code>sh tail_several_logs.sh /var/log/baselog
-&lt;/code>&lt;/pre>
-&lt;p>The script have some limitations easily fixable:&lt;/p>
-&lt;ul>
-&lt;li>You should provide a fullpath.&lt;/li>
-&lt;li>The logs should be in the form of baselog.N where N is a number.&lt;/li>
-&lt;li>I am pretty sure that the loop can be done better.&lt;/li>
-&lt;li>And select the layout in every iteration is not the best of the ideas, but it
-works.&lt;/li>
-&lt;/ul>
-&lt;p>Feel free of do whatever you want with the script. I just hope that it&amp;rsquo;s useful
-for somebody else.&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tmux on // Álex Go{,5z}</title><link>https://agonzalezro.github.io/tags/tmux/</link><description>Recent content in Tmux on // Álex Go{,5z}</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sat, 15 Mar 2014 00:00:00 +0000</lastBuildDate><atom:link href="https://agonzalezro.github.io/tags/tmux/index.xml" rel="self" type="application/rss+xml"/><item><title>Tailing multiple logs with tmux</title><link>https://agonzalezro.github.io/posts/tailing-with-tmux/</link><pubDate>Sat, 15 Mar 2014 00:00:00 +0000</pubDate><guid>https://agonzalezro.github.io/posts/tailing-with-tmux/</guid><description>I had a system that was creating a different log for each worker. Those logs where in the form: /var/log/baselog, /var/log/baselog.1, /var/log/baselog.2 and so on. I wanted to tail them but they were being updated simultaneously so the output of the tail was being a mess.
+I am a tmux user since few months ago (if you aren&amp;rsquo;t, you should!) so I&amp;rsquo;ve decide to open all of them in different tmux panes.</description></item></channel></rss>
