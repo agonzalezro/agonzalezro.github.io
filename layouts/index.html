@@ -1,4 +1,10 @@
 {{ define "main" }}
+  <style>
+  .post-date:after {
+    content: '';
+  }
+  </style>
+
   {{ $isntDefault := not (or (eq (trim $.Site.Params.contentTypeName " ") "posts") (eq (trim $.Site.Params.contentTypeName " ") "")) }}
   {{ $contentTypeName := cond $isntDefault (string $.Site.Params.contentTypeName) "posts" }}
 
@@ -34,7 +40,7 @@
         {{ end }}
 
         {{ if $.Site.Params.ShowReadingTime }}
-          <span class="post-read-time"> {{ .ReadingTime }} {{ $.Site.Params.MinuteReadingTime | default "min read" }}</span>
+          <span class="post-read-time">— {{ .ReadingTime }} {{ $.Site.Params.MinuteReadingTime | default "min read" }}</span>
         {{ end }}
       </div>
 
@@ -59,8 +65,8 @@
           {{ end }}
         </figure>
       {{ end }}
+      <hr style="margin-top: 60px !important; margin-bottom: -20px !important;">
     </div>
-    <hr>
     {{ end }}
     {{ partial "partials/pagination-list.html" . }}
   </div>
